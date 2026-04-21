@@ -54,7 +54,13 @@ async def lifespan(app: FastAPI):
     logger.info("FraudRAG shutting down")
 
 
-def create_app() -> FastAPI:
+@asynccontextmanager
+async def _noop_lifespan(app: FastAPI):
+    """No-op lifespan for testing — skips all real service connections."""
+    yield
+
+
+def create_app(testing: bool = False) -> FastAPI:
     app = FastAPI(
         title="FraudRAG — Statement Fraud Detection via Knowledge Graph RAG",
         description="""
@@ -81,7 +87,7 @@ Gold Layer    →  Fraud signals, graph embeddings, risk scores
         version=settings.APP_VERSION,
         docs_url="/docs",
         redoc_url="/redoc",
-        lifespan=lifespan,
+        lifespan=_noop_lifespan if testing else lifespan,
     )
 
     # Middleware

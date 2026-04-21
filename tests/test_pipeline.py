@@ -5,7 +5,7 @@ All external services (Neo4j, LLM, ChromaDB) are mocked for CI.
 """
 
 import pytest
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
 
 # ─── Domain Model Tests ───────────────────────────────────────
@@ -176,20 +176,20 @@ class TestGoldPipeline:
 
 @pytest.fixture
 def mock_app():
-    with patch("backend.core.database.init_db", new=AsyncMock()):
-        from backend.main import create_app
-        app = create_app()
-        mock_neo4j = AsyncMock()
-        mock_neo4j.initialize_schema = AsyncMock()
-        mock_neo4j.close = AsyncMock()
-        mock_neo4j.get_graph_context_for_rag = AsyncMock(return_value="ctx")
-        mock_neo4j.driver = MagicMock()
-        mock_neo4j.database = "neo4j"
-        mock_rag = AsyncMock()
-        mock_rag.initialize = AsyncMock()
-        app.state.neo4j = mock_neo4j
-        app.state.rag_service = mock_rag
-        yield app
+    # testing=True bypasses real lifespan (no Neo4j/ChromaDB connections needed)
+    from backend.main import create_app
+    app = create_app(testing=True)
+    mock_neo4j = AsyncMock()
+    mock_neo4j.initialize_schema = AsyncMock()
+    mock_neo4j.close = AsyncMock()
+    mock_neo4j.get_graph_context_for_rag = AsyncMock(return_value="ctx")
+    mock_neo4j.driver = MagicMock()
+    mock_neo4j.database = "neo4j"
+    mock_rag = AsyncMock()
+    mock_rag.initialize = AsyncMock()
+    app.state.neo4j = mock_neo4j
+    app.state.rag_service = mock_rag
+    yield app
 
 
 @pytest.mark.asyncio
