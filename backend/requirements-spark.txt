@@ -1,0 +1,8 @@
+# Spark/Delta requirements — requires Java 11+
+# Used in batch pipeline containers (Dockerfile.backend-spark), NOT the API container
+# Install: pip install -r requirements-spark.txt (after requirements.txt)
+
+pyspark==3.5.1
+delta-spark==3.1.0
+faiss-cpu==1.8.0
+sentence-transformers==3.0.1
