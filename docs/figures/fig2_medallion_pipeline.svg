@@ -1,0 +1,85 @@
+<svg width="700" height="400" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="background:#fff;font-family:'Times New Roman',serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 2L8 5L1 8" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <text x="350" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#111">Fig. 2. Medallion Architecture Data Flow (Bronze → Silver → Gold)</text>
+
+  <!-- Input document -->
+  <rect x="20" y="80" width="100" height="50" rx="6" fill="#F5F5F5" stroke="#888" stroke-width="1"/>
+  <text x="70" y="101" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Uploaded</text>
+  <text x="70" y="116" text-anchor="middle" font-size="9" fill="#555">Statement</text>
+  <text x="70" y="129" text-anchor="middle" font-size="8" fill="#777">PDF/IMG/DOCX</text>
+  <line x1="120" y1="105" x2="148" y2="105" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Bronze Layer -->
+  <rect x="150" y="55" width="160" height="165" rx="8" fill="#FEF3E4" stroke="#D4800A" stroke-width="1.5"/>
+  <text x="230" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#7A4500">🥉 Bronze Layer</text>
+  <rect x="162" y="82" width="136" height="30" rx="4" fill="#fff" stroke="#D4800A" stroke-width="0.6"/>
+  <text x="230" y="101" text-anchor="middle" font-size="9" fill="#5A3000">SHA-256 fingerprint</text>
+  <rect x="162" y="118" width="136" height="30" rx="4" fill="#fff" stroke="#D4800A" stroke-width="0.6"/>
+  <text x="230" y="137" text-anchor="middle" font-size="9" fill="#5A3000">OCR / text extraction</text>
+  <rect x="162" y="154" width="136" height="30" rx="4" fill="#fff" stroke="#D4800A" stroke-width="0.6"/>
+  <text x="230" y="173" text-anchor="middle" font-size="9" fill="#5A3000">Provenance metadata</text>
+
+  <!-- Bronze outputs: hash + raw text -->
+  <text x="230" y="230" text-anchor="middle" font-size="8.5" fill="#D4800A">RawStatement aggregate</text>
+  <rect x="165" y="235" width="130" height="22" rx="3" fill="#FEF0D0" stroke="#D4800A" stroke-width="0.6"/>
+  <text x="230" y="249" text-anchor="middle" font-size="8.5" fill="#7A4500">id · hash · raw_text · ocr_conf</text>
+
+  <!-- Arrow Bronze → Silver -->
+  <line x1="310" y1="137" x2="338" y2="137" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Silver Layer -->
+  <rect x="340" y="55" width="170" height="165" rx="8" fill="#EAF3FB" stroke="#2A7FBD" stroke-width="1.5"/>
+  <text x="425" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#0D4A7A">🥈 Silver Layer</text>
+  <rect x="352" y="82" width="146" height="30" rx="4" fill="#fff" stroke="#2A7FBD" stroke-width="0.6"/>
+  <text x="425" y="101" text-anchor="middle" font-size="9" fill="#0D4A7A">NER · entity extraction</text>
+  <rect x="352" y="118" width="146" height="30" rx="4" fill="#fff" stroke="#2A7FBD" stroke-width="0.6"/>
+  <text x="425" y="133" text-anchor="middle" font-size="8.5" fill="#0D4A7A">Balance arithmetic check</text>
+  <text x="425" y="146" text-anchor="middle" font-size="8" fill="#C0392B">open + Σcr − Σdr = close</text>
+  <rect x="352" y="154" width="146" height="30" rx="4" fill="#fff" stroke="#2A7FBD" stroke-width="0.6"/>
+  <text x="425" y="173" text-anchor="middle" font-size="9" fill="#0D4A7A">Quality score (0–1)</text>
+
+  <text x="425" y="230" text-anchor="middle" font-size="8.5" fill="#2A7FBD">NormalizedStatement aggregate</text>
+  <rect x="352" y="235" width="146" height="22" rx="3" fill="#D5EAF8" stroke="#2A7FBD" stroke-width="0.6"/>
+  <text x="425" y="249" text-anchor="middle" font-size="8.5" fill="#0D4A7A">entities · transactions · quality</text>
+
+  <!-- Arrow Silver → Gold -->
+  <line x1="510" y1="137" x2="538" y2="137" stroke="#555" stroke-width="1.2" marker-end="url(#arr)"/>
+
+  <!-- Gold Layer -->
+  <rect x="540" y="55" width="148" height="165" rx="8" fill="#FFF8E4" stroke="#B8960A" stroke-width="1.5"/>
+  <text x="614" y="75" text-anchor="middle" font-size="11" font-weight="bold" fill="#6B5500">🥇 Gold Layer</text>
+  <rect x="552" y="82" width="124" height="30" rx="4" fill="#fff" stroke="#B8960A" stroke-width="0.6"/>
+  <text x="614" y="101" text-anchor="middle" font-size="9" fill="#6B5500">Feature engineering</text>
+  <rect x="552" y="118" width="124" height="30" rx="4" fill="#fff" stroke="#B8960A" stroke-width="0.6"/>
+  <text x="614" y="133" text-anchor="middle" font-size="8.5" fill="#6B5500">Graph-RAG fraud score</text>
+  <text x="614" y="146" text-anchor="middle" font-size="8" fill="#B8960A">LLM reasoning</text>
+  <rect x="552" y="154" width="124" height="30" rx="4" fill="#fff" stroke="#B8960A" stroke-width="0.6"/>
+  <text x="614" y="173" text-anchor="middle" font-size="9" fill="#6B5500">Analyst review verdict</text>
+
+  <text x="614" y="230" text-anchor="middle" font-size="8.5" fill="#B8960A">FraudAnalysis aggregate</text>
+  <rect x="552" y="235" width="124" height="22" rx="3" fill="#FFF0CC" stroke="#B8960A" stroke-width="0.6"/>
+  <text x="614" y="249" text-anchor="middle" font-size="8.5" fill="#6B5500">score · indicators · reasoning</text>
+
+  <!-- Bottom: data quality checks row -->
+  <rect x="20" y="285" width="660" height="90" rx="6" fill="#F9F9F9" stroke="#CCC" stroke-width="0.5"/>
+  <text x="350" y="302" text-anchor="middle" font-size="9.5" font-weight="bold" fill="#333">Data Quality Gates (enforced at each layer boundary)</text>
+
+  <rect x="35" y="312" width="170" height="50" rx="4" fill="#FEF3E4" stroke="#D4800A" stroke-width="0.7"/>
+  <text x="120" y="328" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#7A4500">Bronze → Silver gate</text>
+  <text x="120" y="341" text-anchor="middle" font-size="8" fill="#A05000">OCR confidence ≥ 0.6</text>
+  <text x="120" y="354" text-anchor="middle" font-size="8" fill="#A05000">Hash uniqueness check</text>
+
+  <rect x="220" y="312" width="240" height="50" rx="4" fill="#EAF3FB" stroke="#2A7FBD" stroke-width="0.7"/>
+  <text x="340" y="328" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#0D4A7A">Silver → Gold gate</text>
+  <text x="340" y="341" text-anchor="middle" font-size="8" fill="#1A5E96">|open + Σcr − Σdr − close| ≤ $0.50</text>
+  <text x="340" y="354" text-anchor="middle" font-size="8" fill="#1A5E96">Quality score ≥ 0.40 required</text>
+
+  <rect x="475" y="312" width="190" height="50" rx="4" fill="#FFF8E4" stroke="#B8960A" stroke-width="0.7"/>
+  <text x="570" y="328" text-anchor="middle" font-size="8.5" font-weight="bold" fill="#6B5500">Gold output</text>
+  <text x="570" y="341" text-anchor="middle" font-size="8" fill="#8A7000">Fraud score ∈ [0, 1]</text>
+  <text x="570" y="354" text-anchor="middle" font-size="8" fill="#8A7000">risk_level ∈ {minimal…critical}</text>
+</svg>

@@ -1,0 +1,83 @@
+<svg width="700" height="400" viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" style="background:#fff;font-family:'Times New Roman',serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 2L8 5L1 8" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <text x="350" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#111">Fig. 6. Domain-Driven Design Bounded Contexts</text>
+
+  <!-- Statement Context -->
+  <rect x="20" y="50" width="310" height="145" rx="10" fill="#FEF3E4" stroke="#D4800A" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="175" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#7A4500">StatementContext</text>
+  <rect x="35" y="78" width="130" height="48" rx="5" fill="#fff" stroke="#D4800A" stroke-width="0.8"/>
+  <text x="100" y="96" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A4500">RawStatement</text>
+  <text x="100" y="109" text-anchor="middle" font-size="8" fill="#A05000">Aggregate Root</text>
+  <text x="100" y="120" text-anchor="middle" font-size="7.5" fill="#C07030">id · hash · raw_text · ocr_conf</text>
+  <rect x="180" y="78" width="135" height="48" rx="5" fill="#fff" stroke="#D4800A" stroke-width="0.8"/>
+  <text x="247" y="96" text-anchor="middle" font-size="9" font-weight="bold" fill="#7A4500">NormalizedStatement</text>
+  <text x="247" y="109" text-anchor="middle" font-size="8" fill="#A05000">Entity</text>
+  <text x="247" y="120" text-anchor="middle" font-size="7.5" fill="#C07030">entities · transactions · quality</text>
+  <!-- Domain services -->
+  <rect x="35" y="134" width="280" height="48" rx="5" fill="#FAEBD4" stroke="#D4800A" stroke-width="0.5"/>
+  <text x="175" y="150" text-anchor="middle" font-size="9" font-weight="bold" fill="#6B4000">Services</text>
+  <text x="175" y="163" text-anchor="middle" font-size="8" fill="#A05000">BronzePipeline · SilverPipeline · GoldPipeline</text>
+  <text x="175" y="175" text-anchor="middle" font-size="7.5" fill="#C07030">OCRService · DocumentHasher · BalanceValidator</text>
+
+  <!-- Fraud Context -->
+  <rect x="370" y="50" width="310" height="145" rx="10" fill="#FEF0F0" stroke="#C0392B" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="525" y="70" text-anchor="middle" font-size="10" font-weight="bold" fill="#7B1A11">FraudContext</text>
+  <rect x="385" y="78" width="130" height="48" rx="5" fill="#fff" stroke="#C0392B" stroke-width="0.8"/>
+  <text x="450" y="96" text-anchor="middle" font-size="9" font-weight="bold" fill="#7B1A11">FraudAnalysis</text>
+  <text x="450" y="109" text-anchor="middle" font-size="8" fill="#A52819">Aggregate Root</text>
+  <text x="450" y="120" text-anchor="middle" font-size="7.5" fill="#C03030">score · indicators · reasoning</text>
+  <rect x="525" y="78" width="140" height="48" rx="5" fill="#fff" stroke="#C0392B" stroke-width="0.8"/>
+  <text x="595" y="96" text-anchor="middle" font-size="9" font-weight="bold" fill="#7B1A11">FraudScore</text>
+  <text x="595" y="109" text-anchor="middle" font-size="8" fill="#A52819">Value Object</text>
+  <text x="595" y="120" text-anchor="middle" font-size="7.5" fill="#C03030">score · confidence · model_ver</text>
+  <rect x="385" y="134" width="280" height="48" rx="5" fill="#FCE8E8" stroke="#C0392B" stroke-width="0.5"/>
+  <text x="525" y="150" text-anchor="middle" font-size="9" font-weight="bold" fill="#7B1A11">Services</text>
+  <text x="525" y="163" text-anchor="middle" font-size="8" fill="#A52819">GraphRAGService · FraudIndicatorClassifier</text>
+  <text x="525" y="175" text-anchor="middle" font-size="7.5" fill="#C03030">AnalystReviewService · RiskPropagationService</text>
+
+  <!-- Graph Context -->
+  <rect x="20" y="225" width="310" height="145" rx="10" fill="#E6F3F0" stroke="#27927A" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="175" y="245" text-anchor="middle" font-size="10" font-weight="bold" fill="#0D5E4E">GraphContext</text>
+  <rect x="35" y="253" width="120" height="48" rx="5" fill="#fff" stroke="#27927A" stroke-width="0.8"/>
+  <text x="95" y="271" text-anchor="middle" font-size="9" font-weight="bold" fill="#0D5E4E">CustomerNode</text>
+  <text x="95" y="284" text-anchor="middle" font-size="8" fill="#1D7A65">Neo4j Entity</text>
+  <text x="95" y="295" text-anchor="middle" font-size="7.5" fill="#3A9A80">risk_score · embedding</text>
+  <rect x="165" y="253" width="120" height="48" rx="5" fill="#fff" stroke="#27927A" stroke-width="0.8"/>
+  <text x="225" y="271" text-anchor="middle" font-size="9" font-weight="bold" fill="#0D5E4E">FraudPatternNode</text>
+  <text x="225" y="284" text-anchor="middle" font-size="8" fill="#1D7A65">Neo4j Entity</text>
+  <text x="225" y="295" text-anchor="middle" font-size="7.5" fill="#3A9A80">frequency · embedding</text>
+  <rect x="35" y="309" width="280" height="48" rx="5" fill="#D4EDE8" stroke="#27927A" stroke-width="0.5"/>
+  <text x="175" y="325" text-anchor="middle" font-size="9" font-weight="bold" fill="#0D5E4E">Services</text>
+  <text x="175" y="338" text-anchor="middle" font-size="8" fill="#1D7A65">Neo4jClient · SubgraphRetriever</text>
+  <text x="175" y="350" text-anchor="middle" font-size="7.5" fill="#3A9A80">FraudRingDetector · RiskPropagator</text>
+
+  <!-- Customer Context -->
+  <rect x="370" y="225" width="310" height="145" rx="10" fill="#EFF2FB" stroke="#4A60C0" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="525" y="245" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A2E80">CustomerContext</text>
+  <rect x="385" y="253" width="130" height="48" rx="5" fill="#fff" stroke="#4A60C0" stroke-width="0.8"/>
+  <text x="450" y="271" text-anchor="middle" font-size="9" font-weight="bold" fill="#1A2E80">CustomerProfile</text>
+  <text x="450" y="284" text-anchor="middle" font-size="8" fill="#2E45A0">Aggregate Root</text>
+  <text x="450" y="295" text-anchor="middle" font-size="7.5" fill="#4A60C0">risk_level · statement_count</text>
+  <rect x="525" y="253" width="140" height="48" rx="5" fill="#fff" stroke="#4A60C0" stroke-width="0.8"/>
+  <text x="595" y="271" text-anchor="middle" font-size="9" font-weight="bold" fill="#1A2E80">DocumentHash</text>
+  <text x="595" y="284" text-anchor="middle" font-size="8" fill="#2E45A0">Value Object</text>
+  <text x="595" y="295" text-anchor="middle" font-size="7.5" fill="#4A60C0">SHA-256 hex · immutable</text>
+  <rect x="385" y="309" width="280" height="48" rx="5" fill="#DDE3F6" stroke="#4A60C0" stroke-width="0.5"/>
+  <text x="525" y="325" text-anchor="middle" font-size="9" font-weight="bold" fill="#1A2E80">Services</text>
+  <text x="525" y="338" text-anchor="middle" font-size="8" fill="#2E45A0">CustomerRepository · IdentityService</text>
+  <text x="525" y="350" text-anchor="middle" font-size="7.5" fill="#4A60C0">RiskProfileUpdater · AliasResolver</text>
+
+  <!-- Cross-context arrows -->
+  <line x1="330" y1="122" x2="368" y2="122" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="349" y="117" text-anchor="middle" font-size="7.5" fill="#555">triggers</text>
+  <line x1="175" y1="195" x2="175" y2="223" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="205" y="212" text-anchor="middle" font-size="7.5" fill="#555">enriches</text>
+  <line x1="525" y1="195" x2="525" y2="223" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="555" y="212" text-anchor="middle" font-size="7.5" fill="#555">scores</text>
+  <line x1="330" y1="310" x2="368" y2="310" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="349" y="305" text-anchor="middle" font-size="7.5" fill="#555">links to</text>
+</svg>

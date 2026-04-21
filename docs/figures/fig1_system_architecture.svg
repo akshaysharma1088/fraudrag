@@ -1,0 +1,169 @@
+<svg width="700" height="560" viewBox="0 0 700 560" xmlns="http://www.w3.org/2000/svg" style="background:#fff;font-family:'Times New Roman',serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 2L8 5L1 8" fill="none" stroke="#555" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <!-- Title -->
+  <text x="350" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#111" font-family="Times New Roman">Fig. 1. FraudRAG End-to-End System Architecture</text>
+
+  <!-- ── React UI Box ── -->
+  <rect x="20" y="40" width="110" height="44" rx="6" fill="#EEF4FB" stroke="#5B8FCA" stroke-width="1"/>
+  <text x="75" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A4D8F">React UI</text>
+  <text x="75" y="73" text-anchor="middle" font-size="9" fill="#3A6FAA">Upload / Dashboard</text>
+
+  <!-- Arrow: UI → API -->
+  <line x1="130" y1="62" x2="168" y2="62" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="149" y="57" text-anchor="middle" font-size="8" fill="#888">HTTP</text>
+
+  <!-- ── FastAPI Box ── -->
+  <rect x="170" y="40" width="120" height="44" rx="6" fill="#EDF7EE" stroke="#4F9A61" stroke-width="1"/>
+  <text x="230" y="58" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A5E2E">FastAPI Backend</text>
+  <text x="230" y="73" text-anchor="middle" font-size="9" fill="#317840">REST + WebSocket</text>
+
+  <!-- Arrow: API → Pipeline -->
+  <line x1="290" y1="62" x2="328" y2="62" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- ── Medallion Pipeline outer box ── -->
+  <rect x="330" y="35" width="345" height="200" rx="10" fill="#FAFAFA" stroke="#999" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="502" y="52" text-anchor="middle" font-size="10" font-weight="bold" fill="#444">Medallion Pipeline</text>
+
+  <!-- Bronze -->
+  <rect x="344" y="60" width="96" height="60" rx="6" fill="#FEF0E0" stroke="#D4800A" stroke-width="1"/>
+  <text x="392" y="78" text-anchor="middle" font-size="10" font-weight="bold" fill="#7A4500">Bronze</text>
+  <text x="392" y="92" text-anchor="middle" font-size="8.5" fill="#A05A10">OCR · Hash</text>
+  <text x="392" y="106" text-anchor="middle" font-size="8.5" fill="#A05A10">Provenance</text>
+
+  <!-- Arrow Bronze → Silver -->
+  <line x1="440" y1="90" x2="464" y2="90" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Silver -->
+  <rect x="466" y="60" width="96" height="60" rx="6" fill="#ECF5FB" stroke="#2A7FBD" stroke-width="1"/>
+  <text x="514" y="78" text-anchor="middle" font-size="10" font-weight="bold" fill="#0D4A7A">Silver</text>
+  <text x="514" y="92" text-anchor="middle" font-size="8.5" fill="#1F6098">NER · Validate</text>
+  <text x="514" y="106" text-anchor="middle" font-size="8.5" fill="#1F6098">Balance Check</text>
+
+  <!-- Arrow Silver → Gold -->
+  <line x1="562" y1="90" x2="586" y2="90" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Gold -->
+  <rect x="588" y="60" width="78" height="60" rx="6" fill="#FFF8E8" stroke="#B8960A" stroke-width="1"/>
+  <text x="627" y="78" text-anchor="middle" font-size="10" font-weight="bold" fill="#6B5500">Gold</text>
+  <text x="627" y="92" text-anchor="middle" font-size="8.5" fill="#8A6E00">Features</text>
+  <text x="627" y="106" text-anchor="middle" font-size="8.5" fill="#8A6E00">RAG Score</text>
+
+  <!-- Arrow: Gold → Graph-RAG box -->
+  <line x1="627" y1="120" x2="627" y2="145" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Graph-RAG Service box (inside pipeline) -->
+  <rect x="344" y="148" width="322" height="78" rx="6" fill="#F3EEF9" stroke="#7A52B5" stroke-width="1"/>
+  <text x="505" y="166" text-anchor="middle" font-size="10" font-weight="bold" fill="#4A2880">Graph-RAG Service</text>
+  <text x="408" y="182" text-anchor="middle" font-size="8.5" fill="#6040A0">① Neo4j k-hop traversal</text>
+  <text x="408" y="196" text-anchor="middle" font-size="8.5" fill="#6040A0">② ChromaDB similarity</text>
+  <text x="600" y="182" text-anchor="middle" font-size="8.5" fill="#6040A0">③ Prompt augment</text>
+  <text x="600" y="196" text-anchor="middle" font-size="8.5" fill="#6040A0">④ LLM reasoning</text>
+  <line x1="486" y1="163" x2="486" y2="210" stroke="#C0A0E0" stroke-width="0.5" stroke-dasharray="3,2"/>
+
+  <!-- Arrow: Pipeline result → FraudAnalysis -->
+  <line x1="330" y1="190" x2="295" y2="190" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- ── FraudAnalysis Aggregate ── -->
+  <rect x="170" y="165" width="120" height="50" rx="6" fill="#FEF0F0" stroke="#C0392B" stroke-width="1"/>
+  <text x="230" y="183" text-anchor="middle" font-size="10" font-weight="bold" fill="#7B1A11">FraudAnalysis</text>
+  <text x="230" y="197" text-anchor="middle" font-size="8.5" fill="#A52819">Score · Indicators</text>
+  <text x="230" y="210" text-anchor="middle" font-size="8.5" fill="#A52819">Reasoning</text>
+
+  <!-- Arrow: FraudAnalysis → UI -->
+  <line x1="170" y1="190" x2="132" y2="190" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="75" y1="190" x2="75" y2="84" stroke="#555" stroke-width="0.8" stroke-dasharray="4,3" marker-end="url(#arr)"/>
+
+  <!-- ── Data Stores Row ── -->
+  <!-- Neo4j -->
+  <rect x="20" y="290" width="130" height="56" rx="6" fill="#E6F3F0" stroke="#27927A" stroke-width="1"/>
+  <text x="85" y="310" text-anchor="middle" font-size="10" font-weight="bold" fill="#0D5E4E">Neo4j 5.20</text>
+  <text x="85" y="324" text-anchor="middle" font-size="8.5" fill="#1D7A65">Knowledge Graph</text>
+  <text x="85" y="337" text-anchor="middle" font-size="8.5" fill="#1D7A65">Customer · Pattern</text>
+
+  <!-- ChromaDB -->
+  <rect x="170" y="290" width="130" height="56" rx="6" fill="#EFF2FB" stroke="#4A60C0" stroke-width="1"/>
+  <text x="235" y="310" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A2E80">ChromaDB</text>
+  <text x="235" y="324" text-anchor="middle" font-size="8.5" fill="#2E45A0">Vector Store</text>
+  <text x="235" y="337" text-anchor="middle" font-size="8.5" fill="#2E45A0">Embeddings</text>
+
+  <!-- PostgreSQL -->
+  <rect x="320" y="290" width="130" height="56" rx="6" fill="#F0EFF8" stroke="#6B5EA8" stroke-width="1"/>
+  <text x="385" y="310" text-anchor="middle" font-size="10" font-weight="bold" fill="#3A2870">PostgreSQL 16</text>
+  <text x="385" y="324" text-anchor="middle" font-size="8.5" fill="#5040A0">Metadata · Audit</text>
+  <text x="385" y="337" text-anchor="middle" font-size="8.5" fill="#5040A0">Review Records</text>
+
+  <!-- Redis -->
+  <rect x="470" y="290" width="100" height="56" rx="6" fill="#FEF0ED" stroke="#C0391A" stroke-width="1"/>
+  <text x="520" y="310" text-anchor="middle" font-size="10" font-weight="bold" fill="#7A1A08">Redis 7</text>
+  <text x="520" y="324" text-anchor="middle" font-size="8.5" fill="#A02810">Cache</text>
+  <text x="520" y="337" text-anchor="middle" font-size="8.5" fill="#A02810">Session</text>
+
+  <!-- AWS -->
+  <rect x="590" y="290" width="90" height="56" rx="6" fill="#FFF3E0" stroke="#C06000" stroke-width="1"/>
+  <text x="635" y="310" text-anchor="middle" font-size="10" font-weight="bold" fill="#7A3800">AWS S3</text>
+  <text x="635" y="324" text-anchor="middle" font-size="8.5" fill="#A05000">Delta Lake</text>
+  <text x="635" y="337" text-anchor="middle" font-size="8.5" fill="#A05000">Bronze/Silver/Gold</text>
+
+  <!-- Connector lines: RAG Service → Stores -->
+  <line x1="392" y1="226" x2="392" y2="260" stroke="#7A52B5" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="392" y1="260" x2="85" y2="260" stroke="#7A52B5" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="85" y1="260" x2="85" y2="290" stroke="#27927A" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="392" y1="260" x2="235" y2="260" stroke="#7A52B5" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="235" y1="260" x2="235" y2="290" stroke="#4A60C0" stroke-width="1" marker-end="url(#arr)"/>
+  <line x1="505" y1="226" x2="505" y2="260" stroke="#7A52B5" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="505" y1="260" x2="385" y2="260" stroke="#7A52B5" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="385" y1="260" x2="385" y2="290" stroke="#6B5EA8" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- Pipeline → AWS -->
+  <line x1="627" y1="235" x2="627" y2="260" stroke="#C06000" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="627" y1="260" x2="635" y2="260" stroke="#C06000" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <line x1="635" y1="260" x2="635" y2="290" stroke="#C06000" stroke-width="1" marker-end="url(#arr)"/>
+
+  <!-- ── Monitoring Row ── -->
+  <rect x="20" y="385" width="150" height="44" rx="6" fill="#F5F5F5" stroke="#999" stroke-width="0.8"/>
+  <text x="95" y="403" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Prometheus</text>
+  <text x="95" y="418" text-anchor="middle" font-size="8.5" fill="#666">Metrics · Alerts</text>
+
+  <rect x="190" y="385" width="130" height="44" rx="6" fill="#F5F5F5" stroke="#999" stroke-width="0.8"/>
+  <text x="255" y="403" text-anchor="middle" font-size="10" font-weight="bold" fill="#333">Grafana</text>
+  <text x="255" y="418" text-anchor="middle" font-size="8.5" fill="#666">Dashboards · SLAs</text>
+
+  <!-- Arrow API → Prometheus -->
+  <line x1="230" y1="215" x2="230" y2="250" stroke="#888" stroke-width="0.6" stroke-dasharray="2,3"/>
+  <line x1="230" y1="250" x2="95" y2="250" stroke="#888" stroke-width="0.6" stroke-dasharray="2,3"/>
+  <line x1="95" y1="250" x2="95" y2="385" stroke="#888" stroke-width="0.7" stroke-dasharray="2,3" marker-end="url(#arr)"/>
+
+  <!-- Legend -->
+  <rect x="20" y="450" width="660" height="90" rx="6" fill="#FAFAFA" stroke="#CCC" stroke-width="0.5"/>
+  <text x="350" y="466" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">Legend</text>
+  <!-- Row 1 -->
+  <rect x="35" y="474" width="14" height="10" rx="2" fill="#EEF4FB" stroke="#5B8FCA" stroke-width="0.8"/>
+  <text x="55" y="483" font-size="8.5" fill="#333">UI / API Layer</text>
+  <rect x="145" y="474" width="14" height="10" rx="2" fill="#FEF0E0" stroke="#D4800A" stroke-width="0.8"/>
+  <text x="165" y="483" font-size="8.5" fill="#333">Medallion Pipeline</text>
+  <rect x="285" y="474" width="14" height="10" rx="2" fill="#F3EEF9" stroke="#7A52B5" stroke-width="0.8"/>
+  <text x="305" y="483" font-size="8.5" fill="#333">Graph-RAG Service</text>
+  <rect x="430" y="474" width="14" height="10" rx="2" fill="#FEF0F0" stroke="#C0392B" stroke-width="0.8"/>
+  <text x="450" y="483" font-size="8.5" fill="#333">Domain Aggregate</text>
+  <rect x="570" y="474" width="14" height="10" rx="2" fill="#F5F5F5" stroke="#999" stroke-width="0.8"/>
+  <text x="590" y="483" font-size="8.5" fill="#333">Monitoring</text>
+  <!-- Row 2 -->
+  <rect x="35" y="494" width="14" height="10" rx="2" fill="#E6F3F0" stroke="#27927A" stroke-width="0.8"/>
+  <text x="55" y="503" font-size="8.5" fill="#333">Graph DB (Neo4j)</text>
+  <rect x="145" y="494" width="14" height="10" rx="2" fill="#EFF2FB" stroke="#4A60C0" stroke-width="0.8"/>
+  <text x="165" y="503" font-size="8.5" fill="#333">Vector DB (ChromaDB)</text>
+  <rect x="285" y="494" width="14" height="10" rx="2" fill="#F0EFF8" stroke="#6B5EA8" stroke-width="0.8"/>
+  <text x="305" y="503" font-size="8.5" fill="#333">Metadata DB (PostgreSQL)</text>
+  <rect x="430" y="494" width="14" height="10" rx="2" fill="#FFF3E0" stroke="#C06000" stroke-width="0.8"/>
+  <text x="450" y="503" font-size="8.5" fill="#333">Object Store (AWS S3)</text>
+  <line x1="35" y1="519" x2="49" y2="519" stroke="#555" stroke-width="1" marker-end="url(#arr)"/>
+  <text x="55" y="523" font-size="8.5" fill="#333">Synchronous call</text>
+  <line x1="145" y1="519" x2="159" y2="519" stroke="#555" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="165" y="523" font-size="8.5" fill="#333">Async / observed</text>
+  <line x1="285" y1="519" x2="299" y2="519" stroke="#7A52B5" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <text x="305" y="523" font-size="8.5" fill="#333">RAG retrieval path</text>
+</svg>

@@ -1,0 +1,84 @@
+<svg width="700" height="440" viewBox="0 0 700 440" xmlns="http://www.w3.org/2000/svg" style="background:#fff;font-family:'Times New Roman',serif">
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 2L8 5L1 8" fill="none" stroke="#777" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+    <marker id="arr2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M1 2L8 5L1 8" fill="none" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <text x="350" y="22" text-anchor="middle" font-size="11" font-weight="bold" fill="#111">Fig. 3. FraudRAG Knowledge Graph Schema (Neo4j Property Graph)</text>
+
+  <!-- Customer node (center-left) -->
+  <ellipse cx="170" cy="170" rx="70" ry="38" fill="#E6F3F0" stroke="#27927A" stroke-width="1.5"/>
+  <text x="170" y="165" text-anchor="middle" font-size="10" font-weight="bold" fill="#0D5E4E">:Customer</text>
+  <text x="170" y="179" text-anchor="middle" font-size="8.5" fill="#1D7A65">id · name · risk_score</text>
+  <text x="170" y="191" text-anchor="middle" font-size="8" fill="#3A9A80">fraud_history_count</text>
+
+  <!-- Institution node (top-right) -->
+  <ellipse cx="520" cy="120" rx="80" ry="36" fill="#EFF2FB" stroke="#4A60C0" stroke-width="1.5"/>
+  <text x="520" y="115" text-anchor="middle" font-size="10" font-weight="bold" fill="#1A2E80">:Institution</text>
+  <text x="520" y="129" text-anchor="middle" font-size="8.5" fill="#2E45A0">id · name · type</text>
+  <text x="520" y="141" text-anchor="middle" font-size="8" fill="#4A60C0">routing_number_hash</text>
+
+  <!-- Statement node (center-right) -->
+  <ellipse cx="520" cy="255" rx="80" ry="38" fill="#FEF0F0" stroke="#C0392B" stroke-width="1.5"/>
+  <text x="520" y="248" text-anchor="middle" font-size="10" font-weight="bold" fill="#7B1A11">:Statement</text>
+  <text x="520" y="262" text-anchor="middle" font-size="8.5" fill="#A52819">id · period · fraud_score</text>
+  <text x="520" y="274" text-anchor="middle" font-size="8" fill="#C0392B">fraud_flagged</text>
+
+  <!-- FraudPattern node (bottom-center) -->
+  <ellipse cx="350" cy="360" rx="80" ry="36" fill="#FFF8E8" stroke="#B8960A" stroke-width="1.5"/>
+  <text x="350" y="355" text-anchor="middle" font-size="10" font-weight="bold" fill="#6B5500">:FraudPattern</text>
+  <text x="350" y="369" text-anchor="middle" font-size="8.5" fill="#8A7000">id · pattern_name · type</text>
+  <text x="350" y="381" text-anchor="middle" font-size="8" fill="#B8960A">frequency · embedding</text>
+
+  <!-- Transaction node (bottom-left) -->
+  <ellipse cx="130" cy="330" rx="68" ry="34" fill="#F3EEF9" stroke="#7A52B5" stroke-width="1.5"/>
+  <text x="130" y="325" text-anchor="middle" font-size="10" font-weight="bold" fill="#4A2880">:Transaction</text>
+  <text x="130" y="339" text-anchor="middle" font-size="8.5" fill="#6040A0">id · date · amount</text>
+  <text x="130" y="351" text-anchor="middle" font-size="8" fill="#7A52B5">description</text>
+
+  <!-- Relationships -->
+  <!-- Customer -[FILED]-> Statement -->
+  <path d="M220 185 Q370 210 438 247" fill="none" stroke="#777" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="330" y="208" text-anchor="middle" font-size="8.5" fill="#555" transform="rotate(-8,330,208)">FILED</text>
+
+  <!-- Customer -[HAS_ACCOUNT]-> Institution -->
+  <path d="M215 148 Q370 80 440 112" fill="none" stroke="#777" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="330" y="94" text-anchor="middle" font-size="8.5" fill="#555" transform="rotate(-15,330,94)">HAS_ACCOUNT</text>
+
+  <!-- Statement -[ISSUED_BY]-> Institution -->
+  <path d="M520 217 L520 158" fill="none" stroke="#777" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="534" y="188" text-anchor="start" font-size="8.5" fill="#555">ISSUED_BY</text>
+
+  <!-- Customer -[MATCHES_PATTERN]-> FraudPattern -->
+  <path d="M175 208 Q220 300 268 348" fill="none" stroke="#C0392B" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arr2)"/>
+  <text x="200" y="296" text-anchor="middle" font-size="8" fill="#C0392B" transform="rotate(60,200,296)">MATCHES</text>
+  <text x="207" y="308" text-anchor="middle" font-size="8" fill="#C0392B" transform="rotate(60,207,308)">_PATTERN</text>
+
+  <!-- Statement -[DETECTED_IN]-> FraudPattern -->
+  <path d="M460 278 Q410 325 432 348" fill="none" stroke="#C0392B" stroke-width="1.2" stroke-dasharray="5,3" marker-end="url(#arr2)"/>
+  <text x="432" y="308" text-anchor="middle" font-size="8.5" fill="#C0392B">DETECTED_IN</text>
+
+  <!-- Statement -[CONTAINS]-> Transaction -->
+  <path d="M450 268 Q290 305 198 320" fill="none" stroke="#777" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="318" y="282" text-anchor="middle" font-size="8.5" fill="#555">CONTAINS</text>
+
+  <!-- Customer -[LINKED_TO]-> Customer (self-loop / fraud ring) -->
+  <path d="M100 170 Q60 140 80 170 Q95 195 115 185" fill="none" stroke="#C0392B" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+  <text x="38" y="163" text-anchor="middle" font-size="7.5" fill="#C0392B">LINKED_TO</text>
+  <text x="38" y="174" text-anchor="middle" font-size="7.5" fill="#C0392B">(fraud ring)</text>
+
+  <!-- Legend -->
+  <rect x="20" y="390" width="660" height="40" rx="5" fill="#FAFAFA" stroke="#CCC" stroke-width="0.5"/>
+  <text x="350" y="404" text-anchor="middle" font-size="9" font-weight="bold" fill="#444">Legend</text>
+  <ellipse cx="48" cy="418" rx="12" ry="7" fill="#E6F3F0" stroke="#27927A" stroke-width="0.8"/>
+  <text x="66" y="422" font-size="8.5" fill="#333">Node type</text>
+  <line x1="135" y1="418" x2="155" y2="418" stroke="#777" stroke-width="1.2" marker-end="url(#arr)"/>
+  <text x="162" y="422" font-size="8.5" fill="#333">Structural edge</text>
+  <line x1="285" y1="418" x2="305" y2="418" stroke="#C0392B" stroke-width="1.2" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+  <text x="312" y="422" font-size="8.5" fill="#333">Fraud detection edge</text>
+  <line x1="455" y1="418" x2="475" y2="418" stroke="#C0392B" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#arr2)"/>
+  <text x="482" y="422" font-size="8.5" fill="#333">Self-referential (fraud ring)</text>
+</svg>
