@@ -299,9 +299,3 @@ If you use FraudRAG in research, please cite:
   year={2025}
 }
 ```
-
----
-
-## License
-
-MIT License — see [LICENSE](LICENSE)
