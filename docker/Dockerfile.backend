@@ -1,10 +1,11 @@
 # FraudRAG API Backend
-# Lean image for the FastAPI service (no Java/Spark — use Dockerfile.backend-spark for batch)
+# Build context: repo root (.)
+# Dockerfile: docker/Dockerfile.backend
 FROM python:3.12.3-slim
 
 WORKDIR /app
 
-# System deps: OCR + PostgreSQL client libs + build tools for C extensions
+# System deps: OCR + PostgreSQL client + C build tools
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tesseract-ocr \
     tesseract-ocr-eng \
@@ -15,12 +16,14 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Python dependencies (no PySpark/Spark in this image)
-COPY requirements.txt .
-RUN pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir -r requirements.txt
+# ── Copy requirements from backend/ subdirectory (build context = repo root) ──
+COPY backend/requirements.txt ./requirements.txt
 
-COPY . ./backend/
+RUN pip install --no-cache-dir --upgrade pip \
+ && pip install --no-cache-dir -r requirements.txt
+
+# ── Copy application code ──
+COPY backend/ ./backend/
 
 ENV PYTHONPATH=/app
 ENV PYTHONDONTWRITEBYTECODE=1
