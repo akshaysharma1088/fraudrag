@@ -301,7 +301,3 @@ If you use FraudRAG in research, please cite:
 ```
 
 ---
-
-## License
-
-MIT License — see [LICENSE](LICENSE)
