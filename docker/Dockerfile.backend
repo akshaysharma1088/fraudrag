@@ -1,28 +1,40 @@
 # FraudRAG API Backend
-# Build context: repo root (.)
-# Dockerfile: docker/Dockerfile.backend
+# Build context: repo root (.)  |  Dockerfile: docker/Dockerfile.backend
 FROM python:3.12.3-slim
 
 WORKDIR /app
 
-# System deps: OCR + PostgreSQL client + C build tools
+# ── System dependencies ──────────────────────────────────────────────────────
+# - tesseract: OCR for scanned PDFs
+# - poppler-utils: PDF rendering (pdf2image)
+# - libgl1: OpenCV dependency (via chromadb/onnx)
+# - libgomp1: OpenMP — required by onnxruntime (chromadb dep)
+# - libpq-dev + gcc: psycopg2-binary native build
+# - libssl-dev: asyncpg TLS support
+# - libffi-dev: cryptography package
+# - curl: healthcheck
 RUN apt-get update && apt-get install -y --no-install-recommends \
     tesseract-ocr \
     tesseract-ocr-eng \
     poppler-utils \
     libgl1 \
+    libgomp1 \
     libpq-dev \
+    libssl-dev \
+    libffi-dev \
     gcc \
+    g++ \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# ── Copy requirements from backend/ subdirectory (build context = repo root) ──
+# ── Python dependencies ──────────────────────────────────────────────────────
+# Copy from backend/ — build context is repo root
 COPY backend/requirements.txt ./requirements.txt
 
-RUN pip install --no-cache-dir --upgrade pip \
- && pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir -r requirements.txt --timeout 120
 
-# ── Copy application code ──
+# ── Application code ─────────────────────────────────────────────────────────
 COPY backend/ ./backend/
 
 ENV PYTHONPATH=/app
