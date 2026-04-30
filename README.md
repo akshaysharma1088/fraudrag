@@ -307,12 +307,6 @@ The manuscript, figures, and benchmark generation scripts are available in the [
 
 ---
 
-## License
-
-MIT License — see [LICENSE](LICENSE)
-
----
-
 ## Author
 
 **Akshay Sharma** · IEEE Senior Member · IET Member
