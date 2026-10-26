@@ -1,75 +1,58 @@
-# Publication venues — formal fit/gate assessment (2026-10-26)
+# FraudRAG publication venue assessment — **NON-IEEE Access**
+**Updated October 26, 2026 — author instruction: do not submit FraudRAG to IEEE Access.**
 
-**Do not submit before the scientific and human-author gates pass.**
-This document evaluates **fit**, not probability of acceptance or claims
-that any journal would accept a paper with only controlled synthetic data.
+**Scientific status: NOT APPROVED FOR JOURNAL SUBMISSION.** A journal match does not replace independent evidence, original contribution, complete citation audit, author signoff, and truthful disclosure of substantial AI assistance. Existing experiments concern synthetic bank-document text and an unrelated real SEC issuer-year accounting fraud dataset. These are NOT a verified real bank-statement fraud detector.
 
-## Track A — Peer-reviewed empirical research article: IEEE Access
+## Recommended non-IEEE Access research journals
 
-Official author requirements:
-https://ieeeaccess.ieee.org/authors/preparing-your-article/
-https://ieeeaccess.ieee.org/authors/submission-guidelines/
+**1. Springer Nature — SN Computer Science (first choice for an evidence-grounded software/methodology article)**  
+Official scope: https://link.springer.com/journal/42979/aims-and-scope  
+Publisher accepts original research, relevant hardware/software architectures, document and handwriting processing, information retrieval, AI, computer forensics and software engineering. Hybrid journal; peer reviewed, with at least two reviews for original articles. A candidate paper on source-grounded financial-document consistency, abstention and the limits of LLM versus deterministic reconciliation could fit **only if the novelty and experimental contribution survive independent technical review**. No acceptance prediction.
 
-- IEEE Access expects original, technically correct work that advances
-  knowledge. Experiments must be described in sufficient detail, conclusions
-  supported by data, relevant literature cited, and author originality/ethics
-  complied with. Its template is required: double-column single-spaced with
-  matching Word/LaTeX and PDF at submission.
-- Since the current complete synthetic bank-ledger comparator is equal to
-  or better than all GPT methods, **a superiority/novel fraud detector
-  research article is NOT substantiated**. Peer reviewers would likely
-  challenge generalization from 28 fictional account documents or only five
-  externally sourced fictional PDFs, and may find method novelty insufficient.
-- The current Word draft is a review document in single-column format.
-  It is **not formatted as an IEEE Access final upload file**, and
-  IEEE-required AI-generated text acknowledgments/citations need final
-  author review. Format to the official template only after evidence gates pass.
-- Candidate alternative question, if future data validates it:
-  *time-valid provenance and selective abstention under incomplete bank
-  evidence*, compared with equally informed deterministic verification.
-  No result currently establishes such a new advantage.
+**2. Springer Nature — Discover Artificial Intelligence (alternative for an AI-method/evidence-retrieval study)**  
+Official scope: https://link.springer.com/journal/44163/aims-and-scope  
+Open access, broad scope encompassing AI methods, knowledge representation, data analytics, NLP, explainability and economic/business applications. Manuscripts should demonstrate value/effectiveness. The current narrow synthetic study is not automatically enough.
 
-## Track B — Research software article: Journal of Open Source Software (JOSS)
+**3. MDPI — Machine Learning and Knowledge Extraction (alternative for retrieval, uncertainty, graph methods)**  
+Official scope: https://www.mdpi.com/journal/make/about  
+Original research in knowledge representation, retrieval, network/graph ML, NLP, uncertainty and privacy. Journal prioritizes detailed reproducible experiments and indexes in Scopus/ESCI; published first-decision statistics are **not guarantees of acceptance**. Publisher venue, indexing, publication charges and perceived EB-1A evidentiary value should be checked before submission.
 
-Official publisher requirements:
-https://joss.readthedocs.io/en/latest/submitting.html
+**4. MDPI — Big Data and Cognitive Computing (alternative for reproducible architecture/retrieval evaluation)**  
+Official scope: https://www.mdpi.com/journal/bdcc/about  
+Includes AI, cloud/data systems, information integrity, data mining, finance, algorithms and architecture; also Scopus/ESCI. The work must provide a specific validated contribution beyond assembling existing components.
 
-- JOSS peer reviews software and papers, not new experimental results.
-  Requires open-source research code, strong documentation and tests, an
-  original meaningful research software contribution, and a **public
-  development history longer than six months** with active development
-  spanning that period. Current research work concentrated in late October
-  2026; no assumption of six-month qualifying history is made.
-- Research software must be feature-complete and useful to others.
-  External adoption/research use, sustained open development, issues,
-  release history, license, contribution guide and independent local
-  install/testing are relevant. Current work cannot be automatically
-  marked compliant.
-- JOSS specifically permits AI-assisted coding and paper help only with
-  full disclosure including model/tool versions, scope and *confirmed*
-  independent human review. Author must not make that certification before
-  inspecting this work.
-- Thus JOSS is an **optional longer-term software-publication path**, not
-  a guaranteed shortcut to an EB-1A publication.
+**5. Springer Nature — Applied Intelligence (stretch option; only after substantially stronger findings)**  
+Official scope: https://link.springer.com/journal/10489/aims-and-scope  
+Emphasizes **new original innovative** intelligent systems research for complex real-life problems, rather than existing methods merely applied to different data. Current perfect complete-ledger comparator and small synthetic study make novelty difficult to defend. Do not target without a verified original method/effect.
 
-## Track C — Public, non-peer-reviewed technical report or preprint
+## Separate research software route — JOSS
 
-- The current evidence-grounded manuscript can be shared **as a research
-  working report** after author source/citation/licensing/IP review, clearly
-  stating all synthetic and negative results.
-- A preprint or code repository alone does not establish peer-reviewed
-  scholarly authorship or a major-significance contribution. Never
-  describe an upload as journal acceptance.
+Journal of Open Source Software: https://joss.readthedocs.io/en/latest/submitting.html
 
-## Decision
+This is not an empirical paper shortcut. Must demonstrate a completed, original, useful research software package, credible public development history, real documentation and tests, and strong author review/AI-assistance disclosure. Check public development-history eligibility before treating it as a viable near-term option.
 
-No venue is currently marked **READY TO SUBMIT**. First obtain the
-author's own scientific review, corrected bibliography, confirmed
-data rights, and a contribution that an external methodological reviewer
-finds clearly distinct and reproducible. If independent real-bank fraud
-validation is unavailable, consider research on *verification methodology*
-or research software, with task-specific truthful claims, not unsupported
-bank-fraud AUC estimates.
+## Ethical, data and paper-fit gates (all unresolved)
 
-Author must approve actual final target and verify publication/AI
-disclosure/copyright policies as of the filing date.
+- No current real independently adjudicated bank-statement forgery data, legitimate bank-side original reference process or institution-held test set; check `research/EXTERNAL_DATA_ACCESS_AND_RIGHTS.md`.
+- Complete synthetic source ledgers are artificial reference oracles. Exact deterministic matching equals or beats GPT/Graph-RAG. Do **not** claim predictive superiority.
+- Current v3 PDF cases are **controlled text edits to five external publisher-synthetic originals**, not image forgery, OCR field extraction validation or actual bank misconduct.
+- Check copyright, noncommercial dataset rights, conflicts, data-protection requirements, human AI-code/text review and every bibliography claim.
+- Author approves title, framing, journal requirements, AI disclosure and final text. Do not simultaneously submit the same article to multiple journals.
+- The presence of three ongoing IEEE Access manuscript reviews is **not itself proof of a conflict of interest prohibiting author submissions**, but the author has explicitly excluded IEEE Access; respect that preference.
+
+## Recommendation
+
+**Primary non-IEEE Access journal: SN Computer Science**, followed by
+**Discover Artificial Intelligence** if the manuscript is positioned as a
+rigorously evaluated AI evidence-verification methodology. Consider MAKE
+or BDCC only after evaluating venue fit, editorial policies, and
+reproducibility expectations. Applied Intelligence is a higher-novelty
+stretch venue.
+
+**All remain publication targets, not cleared submissions.** The next
+scientific milestone is obtaining independent non-oracle evidence and a
+clear original contribution, or explicitly writing the paper as a limited
+comparative research methodology/negative-results study with full
+disclosures and acceptance uncertainty.
+
+**IEEE Access excluded at author's request.**
