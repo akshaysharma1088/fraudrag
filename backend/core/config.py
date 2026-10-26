@@ -30,6 +30,9 @@ class Settings(BaseSettings):
     EAC_PLAID_ENVIRONMENT: str = "sandbox"
     EAC_PLAID_CLIENT_ID: Optional[str] = None
     EAC_PLAID_SECRET: Optional[str] = None
+    EAC_PLAID_LINK_ENABLED: bool = False
+    EAC_PLAID_VAULT_PATH: Optional[str] = None
+    EAC_PLAID_VAULT_KEY_B64: Optional[str] = None
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
