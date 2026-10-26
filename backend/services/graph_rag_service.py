@@ -198,7 +198,7 @@ class GraphRAGService:
                     "deterministic_validation": deterministic_validation or {}}, indent=2),
             )
         else:
-            raw_result = self._rule_based_fallback(statement_text, warehouse_reference)
+            raise RuntimeError("LLM unavailable; no validated fraud decision was produced")
         # Fail closed: an unavailable/broken model is NOT a low-risk verdict.
         if raw_result.get("analysis_unavailable"):
             logger.error("Fraud analysis unavailable; manual review required",
