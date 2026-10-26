@@ -15,6 +15,15 @@ class Settings(BaseSettings):
     APP_VERSION: str = "1.0.0"
     DEBUG: bool = False
     EAC_DEMO_ENABLED: bool = False  # Opt-in, synthetic-only, never real bank attestation
+    # Optional partner onboarding for SERVER-ONLY signed issuer adapter.
+    # Disabled unless explicitly configured by authorized operator; no live API route.
+    EAC_PARTNER_ENABLED: bool = False
+    EAC_PARTNER_ENDPOINT: Optional[str] = None
+    EAC_PARTNER_HOST: Optional[str] = None
+    EAC_PARTNER_ISSUER_ID: Optional[str] = None
+    EAC_PARTNER_KEY_ID: Optional[str] = None
+    EAC_PARTNER_PUBLIC_KEY_B64: Optional[str] = None
+    EAC_PARTNER_ACCESS_TOKEN: Optional[str] = None
     HOST: str = "0.0.0.0"
     PORT: int = 8000
     ALLOWED_ORIGINS: List[str] = ["http://localhost:3000", "http://localhost:5173"]
