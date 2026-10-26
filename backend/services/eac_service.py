@@ -10,7 +10,7 @@ from functools import lru_cache
 from hashlib import sha256
 from typing import Protocol
 
-from benchmark.provenance_certificate_v4 import (
+from backend.services.eac_certificate import (
     Claim, Reference, verify, reference_admissible, CONFLICT,
 )
 
@@ -94,7 +94,7 @@ class SandboxProvider:
 
 
 def _coverage(references: tuple[Reference, ...]) -> int:
-    from benchmark.provenance_certificate_v4 import timestamp
+    from backend.services.eac_certificate import timestamp
     at, cutoff = timestamp(EFFECTIVE_AT), timestamp(CUTOFF)
     mask = 0
     for j, key in enumerate(CLAIM_KEYS):
