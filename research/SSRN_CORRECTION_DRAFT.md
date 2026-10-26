@@ -89,6 +89,10 @@ predictive superiority. We disclose unresolved validity limitations
 and retain the underlying experiments and provenance records for
 inspection.*
 
+## October 26, 2026 follow-on evidence clarification (not yet SSRN-submitted)
+
+The V4 source-acquisition follow-on evaluated four **deterministic** source selection policies on invented financial reference conditions. It did not test real banking APIs, and its artificial source-cost savings do not establish a superior fraud detector. The V5 TAT-QA development-context stress test checked **329 supplied human-gold answer candidates across 187 financial-report text/table contexts**, using artificially deleted, replayed, late or conflicting source conditions. This work is a deterministic evidence-admissibility intervention study, not autonomous answer generation, bank document forgery detection or a new source-authentication system. The verifiable archive is [GitHub Actions 40410841687](https://github.com/akshaysharma1088/fraudrag/actions/runs/40410841687). These follow-on experiments need not all be included in a correction of the original SSRN manuscript and should not be used to imply that SSRN already contains their results.
+
 ## Supplementary PDF revision notes (include in PDF, not necessarily public abstract)
 
 1. Supersede the unexplained `$5.38 trillion` fraud losses reference
