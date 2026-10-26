@@ -1,0 +1,48 @@
+name: FraudRAG EAC packaged-service and Compose smoke checks
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'backend/services/eac_service.py'
+      - 'backend/services/eac_certificate.py'
+      - 'backend/api/routes/eac.py'
+      - 'backend/core/config.py'
+      - 'backend/main.py'
+      - 'frontend/src/pages/EvidenceAcquisition.jsx'
+      - 'frontend/src/main.jsx'
+      - 'docker-compose.yml'
+      - 'tests/test_eac_service.py'
+      - 'tests/test_eac_api.py'
+      - '.github/workflows/eac-sandbox.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  backend-container-copy-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run EAC model-independent sandbox tests
+        run: python -m pip install 'pytest>=8,<10' && python -m pytest tests/test_eac_service.py -q
+      - name: Verify backend package runs WITHOUT benchmark folder (as in published Docker image)
+        run: |
+          mkdir -p /tmp/fraudrag-eac-package
+          cp -a backend /tmp/fraudrag-eac-package/backend
+          cd /tmp/fraudrag-eac-package
+          python - <<'PY'
+          from backend.services.eac_service import run_sandbox
+          assert run_sandbox(scenario="consistent")["certificate"]["document_status"]=="MATCH_SUPPORTED"
+          assert run_sandbox(scenario="future")["completed_field_coverage"] is False
+          assert run_sandbox(scenario="conflicting")["certificate"]["document_status"]=="EVIDENCE_CONFLICT"
+          print("PASS: standalone packaged backend runs all EAC scenarios")
+          PY
+      - name: Validate Docker Compose configuration before any deployment
+        run: docker compose config --quiet
+      - name: Confirm default-off EAC sandbox
+        run: |
+          grep -F 'EAC_DEMO_ENABLED: bool = False' backend/core/config.py
+          grep -F 'EAC_DEMO_ENABLED=${EAC_DEMO_ENABLED:-false}' docker-compose.yml
