@@ -19,7 +19,7 @@ def test_literal_guard_and_unicode():
     assert matches("Costs: $1,234   million.", "$1,234 million")
     assert not matches("$1,234 million", "$1,234 million [fabricated-extra]")
     assert not matches("20192", "2019")
-    assert normalize("  NET\\n  Income  ") == "net income"
+    assert normalize("  NET\n  Income  ") == "net income"
 
 def test_all_conditions_and_baselines():
     case = {
