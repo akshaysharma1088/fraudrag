@@ -15,6 +15,10 @@ def small():
 def test_disjoint_training_and_sealed_test_names():
     train,test=small()
     assert not {c.case_id for c in train}&{c.case_id for c in test}
+    assert not {c.group for c in train}&{c.group for c in test}
+    assert not {c.origin[0] for c in train}&{c.origin[0] for c in test}
+    assert len({c.group for c in train})==180
+    assert len({c.group for c in test})==180
     assert len(train)==180 and len(test)==180
 
 def test_planner_cannot_observe_heldout_availability_before_call():
