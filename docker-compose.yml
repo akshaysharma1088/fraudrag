@@ -4,8 +4,8 @@ services:
   # ── Backend API ─────────────────────────────────────────
   api:
     build:
-      context: ./backend
-      dockerfile: ../docker/Dockerfile.backend
+      context: .
+      dockerfile: docker/Dockerfile.backend
     container_name: fraudrag-api
     ports:
       - "8000:8000"
@@ -22,6 +22,7 @@ services:
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
       - LLM_PROVIDER=${LLM_PROVIDER:-openai}
+      - EAC_DEMO_ENABLED=${EAC_DEMO_ENABLED:-false}
     volumes:
       - ./data:/app/data
       - ./backend:/app/backend
