@@ -99,7 +99,7 @@ def authoritative_comparison(row):
     p = parse_statement(row["statement_text"])
     if p is None:
         return {"prediction":None,"basis":"parser_failed"}
-    ref=row["graph_reference"]
+    ref=row.get("graph_reference") or json.loads(row["graph_reference_json"])
     ref_tx={t["id"]:(Decimal(t["amount"]),t["direction"],t["date"])
             for t in ref["reference_transactions"]}
     mismatch = (
