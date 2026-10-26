@@ -25,6 +25,48 @@ The user already has a cited SSRN paper; maintain that posting and citation hist
 
 The application never presents its in-memory demonstration source attestations as cryptographically signed bank records. The live Plaid and custom issuer adapters are separate integration paths with different trust semantics.
 
+## October 2026 verified activation path (new US Plaid teams)
+
+Official Plaid documentation checked October 26, 2026:
+
+- **Sign up:** https://dashboard.plaid.com/signup . Choose developer/business use
+  consistent with your actual research/project purpose and verify the email.
+- **FREE Sandbox first:** https://plaid.com/docs/sandbox/ . Sandbox uses mock
+  institutions and statements, offers unlimited test Items, and supplies test
+  client credentials in the Dashboard. Explore statements using Sandbox
+  Studio before attempting a real bank connection.
+- **NEW Trial plan:** For US/Canada Plaid teams first registered **on or after
+  April 15, 2026**, Plaid documents an auto-approved-for-most-developers
+  **free Trial plan** with up to **10 real Production Items**, **including
+  Statements**. The dashboard application is
+  https://dashboard.plaid.com/trial-plan .
+  Source: https://support.plaid.com/hc/en-us/articles/16110110883479-How-are-Sandbox-Production-Trial-plan-and-Limited-Production-different .
+  **Check your actual dashboard plan and entitlement**, especially if
+  the team predates April 15, 2026. New Trial status is not assumed.
+- **Billing distinction:** Standard Statements usage is per-Item flexible
+  fee, triggered on creation of a `public_token` even if you never
+  download a statement; `/statements/refresh` has a separate charge.
+  Plaid says eligible NEW Trial plans are free within their Trial
+  allowance, but verify the Dashboard's exact eligibility, terms and
+  remaining quota before any production Item creation. Source:
+  https://plaid.com/docs/account/billing/ .
+- **Coverage caveat:** Plaid currently says Statements serves approximately
+  40% of US depository accounts, with institution-specific limitations.
+  Check actual institution availability via their Coverage Explorer;
+  failure to receive a statement does not imply a fraudulent statement.
+  Source: https://plaid.com/docs/statements/ .
+- **No direct Plaid connector is available in this ChatGPT session**, and
+  ChatGPT cannot authenticate to your Plaid Dashboard on your behalf;
+  never copy Plaid secrets or bank-account credentials into chat. After
+  owner sign-up, provision secrets in a secure operator-controlled
+  environment and run the existing offline tests first.
+- **No production live-bank route currently exists in FraudRAG.** A real
+  approved OIDC/session identity provider and KMS-backed vault (the
+  current SQLite vault is staging-only), cybersecurity and consent/legal
+  review are prerequisites before a real end-user account connection.
+  Work mode's cloud browser may help with account setup with a user
+  present, but account creation and consent require that user's action.
+
 ## 2. Official Plaid setup (requires owner action)
 
 1. Create/sign in to a **Plaid Dashboard** team and request **Statements** product eligibility. The feature is US-only and is supported by only a subset of checking/savings institutions. https://plaid.com/docs/statements/
