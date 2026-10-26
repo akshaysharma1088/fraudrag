@@ -1,0 +1,73 @@
+# One-time scientific evidence archive: existing completed GPT inference only.
+# This workflow makes ZERO GPT API calls and uses no OpenAI secret.
+name: FraudRAG-v2 completed GPT artifact integrity archive
+on:
+  push:
+    branches:
+      - research/reproducibility-hardening-2026-10
+    paths:
+      - .github/workflows/archive-gpt-v2-once.yml
+permissions:
+  contents: write
+  actions: read
+jobs:
+  archive-independent-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Download original completed-run artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: fraudrag-v2-gpt-experimental-records
+          run-id: 40363144409
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/gpt_archive
+      - name: Verify full original sample coverage and mode count
+        run: |
+          python - <<'PY'
+          import csv, pathlib
+          d=pathlib.Path("artifacts/gpt_archive")
+          with (d/"gpt_predictions.csv").open(newline="") as f:
+              rows=list(csv.DictReader(f))
+          pairs={(r["case_id"],r["mode"]) for r in rows}
+          assert len(rows)==112 and len(pairs)==112, (len(rows),len(pairs))
+          assert len({r["case_id"] for r in rows})==28
+          print("Verified 112 unique case-mode predictions over 28 fixed cases")
+          PY
+      - name: Recompute metrics and paired bootstrap uncertainty independently
+        run: python benchmark/audit_gpt_v2.py --folder artifacts/gpt_archive
+      - name: Check source outputs against independent result schema
+        run: |
+          python - <<'PY'
+          import json, pathlib
+          d=pathlib.Path("artifacts/gpt_archive")
+          main=json.loads((d/"gpt_metrics.json").read_text())
+          check=json.loads((d/"independent_post_run_audit.json").read_text())
+          assert main["actual_completed_calls"]==112
+          assert check["data_cases"]==28
+          for m in ("gpt_only","vector_only","graph_only","hybrid"):
+              for field in ("tp","tn","fp","fn","abstain"):
+                  assert main["results"][m][field]==check["mode_scores"][m][field],(m,field)
+          print("PASSED: all independent confusion counts match original logged results")
+          PY
+      - name: Store verified experiment inputs and outputs in research branch
+        run: |
+          mkdir -p research/verified_runs/fraudrag_v2_20261026
+          cp artifacts/gpt_archive/{manifest.json,cases.csv,held_out_cases.csv,baseline_results.json,gpt_protocol.json,gpt_metrics.json,gpt_predictions.csv,independent_post_run_audit.json} research/verified_runs/fraudrag_v2_20261026/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/verified_runs/fraudrag_v2_20261026
+          git commit -m "Archive complete 112 GPT predictions, synthetic source dataset and independent audit"
+          git pull --rebase origin research/reproducibility-hardening-2026-10
+          git push origin HEAD:research/reproducibility-hardening-2026-10
+      - name: Upload separately audited archive
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v2-independently-audited-archive
+          path: artifacts/gpt_archive/
+          if-no-files-found: warn
+          retention-days: 90
