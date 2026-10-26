@@ -1,0 +1,44 @@
+# One-time GPT pilot authorized after user configured OPENAI_API_KEY.
+# Trigger path only matches the creation/update of THIS workflow, not other pushes.
+name: FraudRAG GPT paid pilot (one-time, 24 claims)
+on:
+  push:
+    branches:
+      - research/reproducibility-hardening-2026-10
+    paths:
+      - .github/workflows/research-gpt-paid-once.yml
+permissions:
+  contents: read
+concurrency:
+  group: fraudrag-gpt-paid-once-2026-10-26
+  cancel-in-progress: false
+jobs:
+  paired-gpt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install evaluation dependencies
+        run: python -m pip install 'scikit-learn>=1.4,<2'
+      - name: Verify experiment scripts compile
+        run: python -m py_compile experiments/finfact_study.py experiments/llm_local_finfact.py experiments/gpt_finfact_study.py
+      - name: Run explicitly approved 24-claim GPT pilot with estimated $2 cap
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python experiments/gpt_finfact_study.py --execute \
+            --model gpt-6.1-sol \
+            --limit 24 --seed 2026 --max-estimated-usd 2
+      - name: Retain predictions, model metadata, costs and metrics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: gpt-61-sol-24-claim-real-inference
+          path: artifacts/finfact_gpt/
+          if-no-files-found: warn
+          retention-days: 90
