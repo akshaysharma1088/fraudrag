@@ -1,0 +1,30 @@
+name: FraudRAG V4 independent paired sensitivity analysis
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'benchmark/v4_paired_sensitivity.py'
+      - 'tests/test_v4_paired_sensitivity.py'
+      - '.github/workflows/v4-paired-sensitivity.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  analyze-frozen-archive:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Unit test independent paired calculations
+        run: python -m pip install 'pytest>=8,<10' && python -m pytest tests/test_v4_paired_sensitivity.py -q
+      - name: Audit the frozen raw prediction pairs
+        run: python benchmark/v4_paired_sensitivity.py
+      - name: Preserve exploratory secondary results
+        uses: actions/upload-artifact@v4
+        with:
+          name: v4-independent-paired-sensitivity
+          path: artifacts/v4_secondary_analysis.json
+          retention-days: 90
