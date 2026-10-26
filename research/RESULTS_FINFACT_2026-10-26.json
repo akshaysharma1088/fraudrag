@@ -1,0 +1,77 @@
+{
+  "dataset": {
+    "source": "https://raw.githubusercontent.com/IIT-DM/Fin-Fact/b30387813734d4b461e6fcdd576feb819cc0bcbd/finfact.json",
+    "sha256": "5e36d32a0e0149f5d86b1f81ab6fd85144136cb7975374364060f8fcf43629fd",
+    "n": 3369,
+    "labels": {
+      "false": 1492,
+      "neutral": 602,
+      "true": 1275
+    }
+  },
+  "split": "grouped source-URL 75/25, seed 42",
+  "train_n": 2502,
+  "test_n": 867,
+  "scope": "financial fact-checking claims, NOT bank-statement fraud",
+  "is_fraudrag_manuscript_result": false,
+  "baselines": {
+    "majority": {
+      "n": 867,
+      "accuracy": 0.44521337946943484,
+      "macro_f1": 0.20537376961957968,
+      "weighted_f1": 0.2743054500801307,
+      "confusion_labels": [
+        "false",
+        "neutral",
+        "true"
+      ],
+      "confusion_matrix": [
+        [
+          386,
+          0,
+          0
+        ],
+        [
+          150,
+          0,
+          0
+        ],
+        [
+          331,
+          0,
+          0
+        ]
+      ]
+    },
+    "tfidf_logreg_claim_only": {
+      "n": 867,
+      "accuracy": 0.5824682814302191,
+      "macro_f1": 0.506693966664075,
+      "weighted_f1": 0.575542429292405,
+      "confusion_labels": [
+        "false",
+        "neutral",
+        "true"
+      ],
+      "confusion_matrix": [
+        [
+          254,
+          58,
+          74
+        ],
+        [
+          65,
+          30,
+          55
+        ],
+        [
+          76,
+          34,
+          221
+        ]
+      ]
+    }
+  },
+  "run_url": "https://github.com/akshaysharma1088/fraudrag/actions/runs/40355375818",
+  "result_scope": "financial claim verification only; not Graph-RAG"
+}
