@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1250 330" role="img" aria-labelledby="archTitle archDesc">
+<title id="archTitle">Conditional evidence verification workflow</title>
+<desc id="archDesc">Input claim leads to source planning, independently sourced references, evidence admissibility checks, deterministic comparison and four conditional outcomes.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10Z" fill="#2e729f"/></marker></defs>
+<rect width="1250" height="330" rx="20" fill="#f8fbff"/>
+<text x="32" y="31" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="21" fill="#152840">CONDITIONAL VERIFICATION — NOT ISSUER AUTHENTICATION</text>
+<g font-family="Arial,Helvetica,sans-serif">
+<g fill="#ffffff" stroke="#6e92b2" stroke-width="2">
+<rect x="30" y="77" width="170" height="155" rx="12"/><rect x="235" y="77" width="170" height="155" rx="12"/><rect x="440" y="77" width="170" height="155" rx="12"/><rect x="645" y="77" width="170" height="155" rx="12"/><rect x="850" y="77" width="170" height="155" rx="12"/><rect x="1055" y="77" width="170" height="155" rx="12"/>
+</g>
+<g stroke="#2e729f" stroke-width="3" fill="none" marker-end="url(#arrow)">
+<path d="M204 156H230"/><path d="M409 156H435"/><path d="M614 156H640"/><path d="M819 156H845"/><path d="M1024 156H1050"/>
+</g>
+<g fill="#0f3558" font-size="19" font-weight="700" text-anchor="middle">
+<text x="115" y="119">Submitted claim</text>
+<text x="320" y="119">Source planning</text>
+<text x="525" y="113">Independent</text><text x="525" y="136">references</text>
+<text x="730" y="119">Evidence contract</text>
+<text x="935" y="119">Verifier</text>
+<text x="1140" y="119">Decision state</text>
+</g>
+<g fill="#567087" font-size="15" text-anchor="middle">
+<text x="115" y="158">Extracted field</text><text x="115" y="179">Untrusted input</text>
+<text x="320" y="158">Optional evidence</text><text x="320" y="179">acquisition</text>
+<text x="525" y="166">Trust externally</text><text x="525" y="187">assumed / checked</text>
+<text x="730" y="158">Provenance • time</text><text x="730" y="179">Completeness • conflict</text>
+<text x="935" y="158">Equal-information</text><text x="935" y="179">deterministic checks</text>
+<text x="1140" y="158">Support • difference</text><text x="1140" y="179">Conflict • defer</text>
+</g></g>
+<rect x="30" y="257" width="1190" height="47" rx="12" fill="#eaf2f9"/>
+<text x="625" y="285" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#244965" text-anchor="middle">Optional GPT assistance may interpret or explain a claim; it does not replace independent evidence or establish authenticity.</text>
+</svg>
