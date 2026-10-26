@@ -1,5 +1,29 @@
 # GPT experiment setup and outstanding research work
 
+## First real GPT inference result: 2026-10-26
+
+GitHub Actions run: https://github.com/akshaysharma1088/fraudrag/actions/runs/40359651993
+Machine-readable results: [RESULTS_GPT_2026-10-26.json](RESULTS_GPT_2026-10-26.json)
+
+**Observed**: GPT-6.1 Sol returned a valid classification for all 24 fixed
+Fin-Fact held-out claims; accuracy 0.0833, macro-F1 0.0722, estimated standard
+API token cost $0.01024. Paired TF-IDF accuracy 0.5417, macro-F1 0.4029.
+GPT predicted the neutral/insufficient-evidence class on 23 of 24 cases.
+
+**Interpretation**: The prompt explicitly instructed the LLM to avoid
+unsupported veracity judgments, but supplied *no* corroborating evidence.
+The pilot tests claim-only label assignment, not verified financial reasoning.
+Do not interpret this small result as a reliable measure of GPT's capability
+or of FraudRAG. Next scientific work should provide independently collected,
+temporally valid evidence without leaking fact-checker labels/justifications,
+and evaluate a document-fraud task separately.
+
+**Safety**: The one-time paid workflow trigger was removed after success.
+Only the explicitly manual workflow may call paid inference in subsequent runs.
+
+---
+
+
 ## Preferred LLM
 - **Primary:** `gpt-6.1-sol` via OpenAI Responses API.
 - **Cost comparator:** `gpt-6-luna`.
