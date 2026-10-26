@@ -1,0 +1,153 @@
+{
+  "source": "https://raw.githubusercontent.com/JarFraud/FraudDetection/2d10bc6c7ce18f5dea051a90d823546907abaa84/data_FraudDetection_JAR2020.csv",
+  "sha256": "ed4cefd9db2a23d0a13911d9f482fc755d3dcf6c9be0bc051af95ddcae5b286f",
+  "total_labeled_rows": 146045,
+  "task": "firm-year accounting misstatement detection, NOT submitted bank-document forgery",
+  "real_sec_enforcement_linked_outcomes": true,
+  "not_fraudrag_v2_labels": true,
+  "publication": "Bao et al., Journal of Accounting Research (2020), DOI 10.1111/1475-679X.12292",
+  "source_redistribution": "Raw downloaded CSV is not committed or redistributed; license not independently established",
+  "temporal": {
+    "split": "time-ordered: 1991-2004 / 2005-2008 / 2009-2014",
+    "train": {
+      "n": 89730,
+      "positive": 718
+    },
+    "validation": {
+      "n": 23251,
+      "positive": 134
+    },
+    "test": {
+      "n": 33064,
+      "n_positive": 112,
+      "prevalence": 0.003387369949189451,
+      "average_precision": 0.006139601047524768,
+      "roc_auc": 0.6501326063018069,
+      "precision": 0.006134969325153374,
+      "recall": 0.30357142857142855,
+      "f1": 0.012026883622214362,
+      "balanced_accuracy": 0.5682096035792321,
+      "confusion_matrix_0_1": [
+        [
+          27444,
+          5508
+        ],
+        [
+          78,
+          34
+        ]
+      ],
+      "decision_threshold": 0.6
+    },
+    "majority_all_negative_accuracy": 0.9966126300508106,
+    "random_prevalence_expected_average_precision": 0.003387369949189451,
+    "model": "median-imputed scaled class-balanced logistic regression",
+    "features": [
+      "act",
+      "ap",
+      "at",
+      "ceq",
+      "che",
+      "cogs",
+      "csho",
+      "dlc",
+      "dltis",
+      "dltt",
+      "dp",
+      "ib",
+      "invt",
+      "ivao",
+      "ivst",
+      "lct",
+      "lt",
+      "ni",
+      "ppegt",
+      "pstk",
+      "re",
+      "rect",
+      "sale",
+      "sstk",
+      "txp",
+      "txt",
+      "xint",
+      "prcc_f"
+    ],
+    "label_source": "published SEC-AAER-derived misstate"
+  },
+  "entity_disjoint": {
+    "split": "company-isolated, random group holdout seed 42",
+    "train": {
+      "n": 93915,
+      "positive": 681
+    },
+    "validation": {
+      "n": 23551,
+      "positive": 129
+    },
+    "test": {
+      "n": 28579,
+      "n_positive": 154,
+      "prevalence": 0.005388572028412471,
+      "average_precision": 0.01351929784389943,
+      "roc_auc": 0.6530189950770425,
+      "precision": 0.016409266409266408,
+      "recall": 0.11038961038961038,
+      "f1": 0.02857142857142857,
+      "balanced_accuracy": 0.5372704428377252,
+      "confusion_matrix_0_1": [
+        [
+          27406,
+          1019
+        ],
+        [
+          137,
+          17
+        ]
+      ],
+      "decision_threshold": 0.7
+    },
+    "majority_all_negative_accuracy": 0.9946114279715875,
+    "random_prevalence_expected_average_precision": 0.005388572028412471,
+    "model": "median-imputed scaled class-balanced logistic regression",
+    "features": [
+      "act",
+      "ap",
+      "at",
+      "ceq",
+      "che",
+      "cogs",
+      "csho",
+      "dlc",
+      "dltis",
+      "dltt",
+      "dp",
+      "ib",
+      "invt",
+      "ivao",
+      "ivst",
+      "lct",
+      "lt",
+      "ni",
+      "ppegt",
+      "pstk",
+      "re",
+      "rect",
+      "sale",
+      "sstk",
+      "txp",
+      "txt",
+      "xint",
+      "prcc_f"
+    ],
+    "label_source": "published SEC-AAER-derived misstate"
+  },
+  "limitations": [
+    "enforcement-based labels may miss uninvestigated cases",
+    "financial features obtained from Compustat derived processed data",
+    "not a statement forgery task; no text/images/Neo4j/Chroma/GPT evaluated",
+    "temporal evaluation may retain firms across years; entity-disjoint may use later years in training",
+    "model metrics are not evidence about FraudRAG document consistency detector"
+  ],
+  "observed_workflow_run": "https://github.com/akshaysharma1088/fraudrag/actions/runs/40366949592",
+  "research_scope": "AAER firm-year real labeled accounting misstatements only, not bank document forgery"
+}
