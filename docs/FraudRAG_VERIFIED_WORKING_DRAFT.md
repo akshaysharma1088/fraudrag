@@ -3,7 +3,7 @@
 **Research working draft — NOT APPROVED FOR JOURNAL SUBMISSION**  
 **Author:** Akshay Sharma  
 **Date:** October 26, 2026  
-**Evidence policy:** Every numerical result here is derived from a recorded workflow. Model-assisted results remain pending until actual execution and source validation.
+**Evidence policy:** Every numerical result here is derived from a recorded workflow. Numbers are reported only for completed and audited runs. External validity and manuscript submission clearance remain pending.
 
 ## Abstract
 
@@ -18,6 +18,10 @@ The specific research question is whether the same GPT model, given different ve
 ## 2. Existing Literature and Positioning
 
 Barry et al. (2025), *GraphRAG: Leveraging Graph-Based Efficiency to Minimize Hallucinations in LLM-Driven RAG for Finance Data*, describe graph and hybrid retrieval for financial and regulatory document reasoning (ACL Anthology: https://aclanthology.org/2025.genaik-1.6/). Li et al. (2025), *FinGEAR: Financial Mapping-Guided Enhanced Answer Retrieval*, develop structured retrieval for financial reports (https://aclanthology.org/2025.findings-emnlp.382/). Ma (2026), *Detection of false financial statements in enterprises based on dual-layer knowledge graph and graph-driven approach*, studies knowledge-graph-based false statement detection (https://doi.org/10.1007/s44163-026-00977-y). Related work on supply-chain knowledge graphs and financial fraud appeared in 2025 (https://doi.org/10.3390/jtaer20010026).
+
+
+
+Additional verified contextual prior work includes Yu et al. (2026), *Improving Financial Statement Fraud Detection: A Large Language Model Processing Approach*, *ACM Transactions on Internet Technology*, DOI https://doi.org/10.1145/3796514 ; Yue et al. (2026), *FraudDebate-Agent*, *Mathematics*, DOI https://doi.org/10.3390/math14152695 ; and Dai et al. (2026), *FSFDLLM*, *Intelligent Computing*, DOI https://doi.org/10.34133/icomputing.0274 . These studies address issuer-level statements and narrative accounting fraud; they do not establish consumer bank-statement forgery detection, but preclude novelty claims founded merely on financial fraud plus LLM interpretation.
 
 These established precedents preclude broad claims that combining graph retrieval and financial fraud detection is unprecedented. The present manuscript proposes a **time-valid, evidence-cited operational consistency-checking evaluation protocol**. Its originality, superiority and generalization remain hypotheses, not established contributions.
 
@@ -104,6 +108,22 @@ It is **not** a measured Chroma-backed GPT result.
 produced and extracted 28 fictional vector-text PDFs while validating expected
 structured fields. Scanned PDFs, image forgeries, OCR mistakes and real bank
 templates were not tested.
+
+## 5A. Multi-Seed Synthetic Robustness Evaluation
+
+A separate run generated 4,900 text-native cases for 700 fictional customer groups and evaluated three customer-disjoint test splits with 175 held-out cases in each (25 per case category; split seeds 57, 61, and 83). The generator, raw prediction log, versioned evaluation procedure and results are recorded in `benchmark/robustness_multiseed_v2.py` and `research/RESULTS_MULTISEED_SYNTHETIC_2026-10-26.json`; actual execution: https://github.com/akshaysharma1088/fraudrag/actions/runs/40366478963 .
+
+Across the three synthetic splits, arithmetic/date rules attained a mean F1 of **0.5714**. Complete synthetic bank-ledger comparison attained mean F1 **1.0000**, as expected because the constructed reference is a complete reconciliation oracle. When access was limited to two out of four bank ledger transactions, the deterministic comparator's mean F1 fell to **0.4350** and it abstained on **379 of the 525** evaluated cases. With only bank/account identity, mean F1 was **0.2500**, with **450 of 525 abstentions**. With no bank-side record, the checker abstained on all **525** cases. These measures intentionally penalize abstention as an unsuccessful classification; abstention itself does **not** imply that the document is fraudulent or legitimate.
+
+The three splits share the same underlying 700 fictional customers and generator templates. Consequently, the outcomes are not independent real-world replications. Nor do the enlarged synthetic experiments validate GPT or production document parsing. The major observed limitation is that complete independent ground truth in the graph makes reconciliation easy; realistic missing-record distributions still need evaluation.
+
+## 5B. Independent SEC Enforcement-Linked Fraud Study — Different Task
+
+To examine whether a real, highly imbalanced fraud-label dataset changes the research outlook, we evaluated the published Bao et al. (2020) processed firm-year accounting panel (https://doi.org/10.1111/1475-679X.12292), using 146,045 SEC enforcement-linked labeled observations and 28 documented raw accounting variables. Data were downloaded from a pinned GitHub revision and hashed; the original data were not redistributed. Observed experiment: https://github.com/akshaysharma1088/fraudrag/actions/runs/40366949592 . Machine-readable audit: `research/RESULTS_REAL_AAER_2026-10-26.json`.
+
+A median-imputed, standardized, class-balanced logistic-regression baseline achieved average precision (PR-AUC) **0.00614** and ROC-AUC **0.6501** on a time-ordered 2009–2014 test set of 33,064 firm-years containing only 112 labeled positives (0.339%). Under company-isolated evaluation, PR-AUC was **0.01352** and ROC-AUC **0.6530** on 28,579 held-out firm-years with 154 labeled positives (0.539%). Threshold selection occurred on separate validation partitions. Such low positive prevalence makes precision-recall evaluation indispensable; neither a high majority-class accuracy nor these baselines demonstrates competent detection in deployment.
+
+**Crucial task separation:** These real observations concern public-company *accounting misstatements* linked to enforcement actions, not forged consumer bank statements. The experiment used neither GPT nor Neo4j nor ChromaDB. Its low baseline scores **cannot** be presented as a benchmark result for FraudRAG or as evidence that the prototype detects real forged financial documents.
 
 ## 6. Limitations, Ethics and Threats to Validity
 
