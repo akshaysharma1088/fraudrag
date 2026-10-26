@@ -32,7 +32,7 @@ SEED = 20261026
 
 
 def git_blob_hash(raw: bytes) -> str:
-    return hashlib.sha1(b"blob " + str(len(raw)).encode() + b"\\0" + raw).hexdigest()
+    return hashlib.sha1(b"blob " + str(len(raw)).encode() + bytes([0]) + raw).hexdigest()
 
 
 def load_external_data(cache: Path, *, allow_network: bool = True):
