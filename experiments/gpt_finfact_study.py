@@ -18,9 +18,11 @@ from finfact_study import load, split, metrics, evaluate_baselines
 from llm_local_finfact import select_fixed_sample, SYSTEM
 
 PRICES_USD_PER_MILLION = {
-    # Standard short-context prices, Oct 26 2026. Confirm before paid experiments.
-    "gpt-6.1-sol": {"input": 1.0, "output": 5.0},
-    "gpt-6-luna": {"input": 0.05, "output": 0.25},
+    # Public standard input/output list rates in USD per million tokens on 2026-10-26.
+    # Verify current pricing and account access immediately before paid experiments.
+    # Does not include any separate processing or tool charges.
+    "gpt-6.1-sol": {"input": 12.0, "output": 60.0},
+    "gpt-6-luna": {"input": 0.20, "output": 1.0},
 }
 MODEL_IDS = tuple(PRICES_USD_PER_MILLION)
 LABELS = ("true", "false", "neutral")
