@@ -133,13 +133,17 @@ class PlaidConsentWorkflow:
         Retain encrypted token only while remote removal is pending so that
         a controlled server revocation worker can retry without client data.
         """
-        self.vault.revoke(principal,item_id=item_id)
+        changes=self.vault.revoke(principal,item_id=item_id)
+        if changes == 0:
+            # Fail closed if this principal never had the Item; still allow
+            # a retry for an already locally revoked Item awaiting cleanup.
+            self.vault.pending_remote_removal(principal,item_id=item_id)
         try:
             token=self.vault.pending_remote_removal(principal,item_id=item_id)
             self.link.remove_item(token)
             cleared=self.vault.confirm_remote_removal(principal,item_id=item_id)
             return {"local_access_revoked":True,"remote_item_removed":True,
-                    "encrypted_token_copies_wiped":cleared}
+                    "encrypted_token_records_cleared":cleared}
         except EvidenceRejected:
             # A real revocation queue/alert should retry; never reauthorize.
             return {"local_access_revoked":True,"remote_item_removed":False,
