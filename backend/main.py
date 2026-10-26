@@ -127,6 +127,10 @@ Gold Layer    →  Fraud signals, graph embeddings, risk scores
     if settings.EAC_PLAID_ENABLED and not testing:
         from backend.services.plaid_partner_bootstrap import build_plaid_statements_provider
         app.state.eac_plaid_provider = build_plaid_statements_provider(settings)
+    app.state.eac_plaid_consent_workflow = None
+    if settings.EAC_PLAID_LINK_ENABLED and not testing:
+        from backend.services.plaid_consent_bootstrap import build_plaid_consent_workflow
+        app.state.eac_plaid_consent_workflow = build_plaid_consent_workflow(settings)
 
     # Routers
     app.include_router(health.router, prefix="/api/v1", tags=["Health"])
