@@ -102,6 +102,7 @@ class ConsentVault:
         conn = sqlite3.connect(self.path, timeout=4)
         try:
             conn.execute("PRAGMA busy_timeout=4000")
+            conn.execute("BEGIN IMMEDIATE")
             yield conn
             conn.commit()
         except BaseException:
@@ -164,7 +165,9 @@ class ConsentVault:
             ).fetchone()
             if not row or row[0]!=principal.tenant_id or row[1]!=principal.subject_id or row[2]<=time.time():
                 raise EvidenceRejected("Link completion not authorized or expired")
-            conn.execute("DELETE FROM sessions WHERE state_hash=?",(state_hash,))
+            deleted=conn.execute("DELETE FROM sessions WHERE state_hash=?",(state_hash,))
+            if deleted.rowcount != 1:
+                raise EvidenceRejected("Link session already used")
             self._audit(conn,"LINK_SESSION_CONSUMED",principal.tenant_id+":"+principal.subject_id,state_hash)
 
     def grant_account(self, principal:AuthenticatedPrincipal, *, item_id:str,
