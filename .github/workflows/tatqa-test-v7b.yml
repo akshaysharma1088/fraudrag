@@ -1,0 +1,48 @@
+name: V7B completed heldout public financial test QA
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/tatqa_test_v7b.py'
+      - '.github/workflows/tatqa-test-v7b.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  corrected-fully-paired-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preflight pinned external data and 128 reserved calls
+        run: python experiments/tatqa_test_v7b.py --budget-usd 2 --out artifacts/tatqa_test_v7b
+      - name: Execute paired complete external QA evaluation (uniform 650-token cap)
+        run: python experiments/tatqa_test_v7b.py --execute --budget-usd 2 --out artifacts/tatqa_test_v7b
+      - name: Strict result completeness and pairing checks
+        run: |
+          python - <<'PY'
+          import csv,json
+          from pathlib import Path
+          d=Path('artifacts/tatqa_test_v7b')
+          s=json.loads((d/'metrics.json').read_text())
+          assert s['status']=='completed', 'Incomplete run is not accepted as evidence'
+          rows=list(csv.DictReader((d/'predictions.csv').open()))
+          assert len(rows)==128
+          pairs={(x['case_id'],x['mode']) for x in rows}
+          assert len(pairs)==128
+          assert len({x['source_group'] for x in rows})==64
+          assert all(not x['error'] for x in rows)
+          assert s['gold_in_inputs'] is False
+          print('COMPLETE: 128 non-error responses / 64 distinct source contexts')
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fraudrag-v7b-external-qa-full-repeat
+          path: artifacts/tatqa_test_v7b/
+          retention-days: 90
