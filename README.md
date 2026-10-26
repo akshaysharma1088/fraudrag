@@ -30,12 +30,18 @@ incomplete references, source conflicts and future-dated records.
   running Compose. Open `http://localhost:3000/evidence` after starting
   the stack, or use `POST /api/v1/eac/demo/run`.
 
-**Not yet integrated:** authorized real bank sources, verified issuer
-cryptographic signatures, customer consent/identity, production persistence
-or live source pricing. Fictional source attestation flags cannot establish
-document authenticity or adjudicate fraud. The SSRN-cited original FraudRAG
-project is preserved, and `FraudRAG-EAC` is a provisional feature name,
-not a renamed publication.
+**Optional genuine-source adapter code is now implemented, OFF by default:** (1)
+[Plaid Statements](docs/EAC_ISSUER_PROVIDER_INTEGRATIONS.md) for retrieving a
+bank-provided original PDF and checking Plaid's SHA-256 response integrity,
+and (2) a proposed **custom Ed25519-signed issuer-field receipt format**
+with server-pinned issuer trust roots and scope validation. **No live bank,
+Plaid Item, user-consented account, approved partner signing key or external
+financial document has actually been connected.** Plaid's content checksum is
+NOT a bank cryptographic signature; custom signed receipts are NOT a
+standard supported bank protocol unless a partner agrees to implement it.
+There is deliberately no public API to query live bank sources before
+customer authentication and consent vaults exist. Historical verified
+synthetic results and the SSRN-cited FraudRAG project are preserved.
 
 ## Research result provenance — October 26, 2026
 
