@@ -1,0 +1,31 @@
+name: FraudRAG V6 zero-source GPT abstention study
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/tatqa_no_source_v6.py'
+      - '.github/workflows/tatqa-no-source-v6.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  source-free-paired-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preview, checksum and safe call reservation
+        run: python experiments/tatqa_no_source_v6.py --budget-usd 1.5
+      - name: Evaluate paired model policies with no source records
+        run: python experiments/tatqa_no_source_v6.py --execute --budget-usd 1.5
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: tatqa-v6-no-source-gpt-independent-control
+          path: artifacts/tatqa_no_source_v6/
+          retention-days: 90
