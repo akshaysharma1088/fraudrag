@@ -6,6 +6,7 @@ on:
       - 'backend/services/eac_service.py'
       - 'backend/services/signed_issuer_evidence.py'
       - 'backend/services/authorized_issuer_transport.py'
+      - 'backend/services/issuer_partner_bootstrap.py'
       - 'backend/services/eac_certificate.py'
       - 'backend/api/routes/eac.py'
       - 'backend/core/config.py'
@@ -15,6 +16,7 @@ on:
       - 'docker-compose.yml'
       - 'tests/test_eac_service.py'
       - 'tests/test_signed_issuer_evidence.py'
+      - 'tests/test_issuer_partner_bootstrap.py'
       - 'tests/test_eac_api.py'
       - '.github/workflows/eac-sandbox.yml'
   workflow_dispatch:
@@ -34,7 +36,7 @@ jobs:
       - name: Offline signed issuer identity, consent and transport tests
         run: |
           python -m pip install 'cryptography==43.0.1' 'httpx==0.27.2'
-          python -m pytest tests/test_signed_issuer_evidence.py -q
+          python -m pytest tests/test_signed_issuer_evidence.py tests/test_issuer_partner_bootstrap.py -q
       - name: Verify backend package runs WITHOUT benchmark folder (as in published Docker image)
         run: |
           mkdir -p /tmp/fraudrag-eac-package
@@ -42,9 +44,12 @@ jobs:
           cd /tmp/fraudrag-eac-package
           python - <<'PY'
           from backend.services.eac_service import run_sandbox
+          from backend.services.issuer_partner_bootstrap import build_partner_adapter
           assert run_sandbox(scenario="consistent")["certificate"]["document_status"]=="MATCH_SUPPORTED"
           assert run_sandbox(scenario="future")["completed_field_coverage"] is False
           assert run_sandbox(scenario="conflicting")["certificate"]["document_status"]=="EVIDENCE_CONFLICT"
+          from types import SimpleNamespace
+          assert build_partner_adapter(SimpleNamespace(EAC_PARTNER_ENABLED=False)) is None
           print("PASS: standalone packaged backend runs all EAC scenarios")
           PY
       - name: Validate Docker Compose configuration before any deployment
@@ -52,4 +57,5 @@ jobs:
       - name: Confirm default-off EAC sandbox
         run: |
           grep -F 'EAC_DEMO_ENABLED: bool = False' backend/core/config.py
+          grep -F 'EAC_PARTNER_ENABLED: bool = False' backend/core/config.py
           grep -F 'EAC_DEMO_ENABLED=${EAC_DEMO_ENABLED:-false}' docker-compose.yml
