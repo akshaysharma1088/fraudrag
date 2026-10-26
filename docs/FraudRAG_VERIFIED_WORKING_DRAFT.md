@@ -67,7 +67,24 @@ This is a **descriptive result on a very small, deliberately balanced-by-categor
 
 **GPT results:** [BLOCKED — DO NOT SUBMIT] To be inserted only after the paired inference completes, archived raw predictions are audited and all comparison conditions are verified.
 
-**Neo4j integration results:** [BLOCKED — DO NOT SUBMIT] Requires an actually successful containerized integration execution.
+**Neo4j temporal integration, observed separately:** A GitHub Actions job
+(https://github.com/akshaysharma1088/fraudrag/actions/runs/40363346100)
+executed actual Neo4j 5.20 queries against twelve synthetic customer references.
+Tests retrieved correctly dated snapshots and withheld seeded future evidence.
+This shows that temporal querying works in the isolated test; it **does not**
+mean the GPT ablation itself retrieved evidence through Neo4j.
+
+**Chroma historical retrieval, observed separately:** A GitHub Actions job
+(https://github.com/akshaysharma1088/fraudrag/actions/runs/40363998267)
+completed real Chroma collection insert/retrieval using deterministic hashed
+text features on synthetic *historical* records, filtering future-dated matches.
+It is **not** a measured Chroma-backed GPT result.
+
+**Digital-PDF extraction, observed separately:** A GitHub Actions job
+(https://github.com/akshaysharma1088/fraudrag/actions/runs/40364130518)
+produced and extracted 28 fictional vector-text PDFs while validating expected
+structured fields. Scanned PDFs, image forgeries, OCR mistakes and real bank
+templates were not tested.
 
 ## 6. Limitations, Ethics and Threats to Validity
 
