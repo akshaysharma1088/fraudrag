@@ -41,6 +41,12 @@ A *second* 112-call GPT study built prompts using **actual Neo4j as-of-time quer
 
 Five publicly released **fictional synthetic bank-statement PDFs** from the Bankstatemently Open Benchmark were pinned to upstream Git commit `2d8d31d68dcedbf9028b87f6c7df286f53a6c7de`. Their real PDF SHA-256 hashes matched publisher records; all **17 pages** yielded selectable extracted text. Twenty experimental cases comprised five originals, five harmless spacing edits, and ten controlled monetary edits to **extracted text only**. A complete original-text reference matched all edits (an explicit source oracle); the normalized 30-token partial reference and no-reference variants abstained on all cases. **Not a fraud dataset or a forged PDF image benchmark.** [Executed verification](https://github.com/akshaysharma1088/fraudrag/actions/runs/40371198225) · [Hashed v3 result](research/RESULTS_V3_EXTERNAL_PDF_2026-10-26.json) · [Source methodology](research/BENCHMARK_V3_PROTOCOL.md)
 
+### Independently audited GPT follow-up on the same v3 synthetic PDFs
+
+A separate actual GPT-6.1 Sol experiment scored the same 20 controlled extracted-text cases under three evidence conditions (**60 completed calls**). With no original text or only a 30-token excerpt, GPT abstained on **all 20** in each condition. Given the **complete original extracted text**, it distinguished all ten scripted monetary edits from ten unchanged/benign cases. This is an **exact-source textual comparison oracle**, not a tested bank fraud detector. All evidence-ID citations passed source validation. Estimated token cost was **$0.349444**.
+
+[Executed GPT study](https://github.com/akshaysharma1088/fraudrag/actions/runs/40372143670) · [Independent audit](https://github.com/akshaysharma1088/fraudrag/actions/runs/40372704350) · [Permanent record](research/verified_runs/fraudrag_v3_external_20261026/).
+
 ## Larger synthetic evaluation
 
 `benchmark/robustness_multiseed_v2.py` generated **4,900 fictional cases from 700 fictional customers**, then executed **three held-out customer-disjoint splits of 175 examples each**. As designed, complete authoritative-ledger reconciliation scored F1 1.000 in all three; arithmetic/date rules scored F1 0.571 in all three. When the ledger is incomplete, the checker abstains frequently instead of assuming authenticity. **These are not real-world external replications.**
