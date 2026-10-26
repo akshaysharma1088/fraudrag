@@ -1,0 +1,24 @@
+name: FraudRAG V4 source-conditional certificate invariant tests
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'benchmark/provenance_certificate_v4.py'
+      - 'tests/test_provenance_certificate_v4.py'
+      - '.github/workflows/provenance-certificate-v4.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract-verification:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run evidence safety invariants, synthetic only
+        run: python -m pip install 'pytest>=8,<10' && python -m pytest tests/test_provenance_certificate_v4.py -q
+      - name: Scope disclosure
+        run: echo "Passed model-independent conditional reference comparison tests. NOT issuer authentication, NOT new fraud detection validation, NOT a novelty claim." >> "$GITHUB_STEP_SUMMARY"
