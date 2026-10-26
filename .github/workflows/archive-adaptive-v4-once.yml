@@ -1,0 +1,54 @@
+# One-time archive of completed no-LLM simulated source acquisition experiment.
+# Source experiment: https://github.com/akshaysharma1088/fraudrag/actions/runs/40395485609
+name: FraudRAG V4 adaptive acquisition audit archive (one-time)
+on:
+  push:
+    branches: [research/reproducibility-hardening-2026-10]
+    paths: [.github/workflows/archive-adaptive-v4-once.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  freeze-v4-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download validated source run outcome fixture and every policy decision
+        uses: actions/download-artifact@v4
+        with:
+          name: fraudrag-v4-deterministic-adaptive-planners-20261026
+          run-id: 40395485609
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/v4_freeze
+      - name: Independently recompute all source outcomes, case groups, budgets and replay statuses
+        run: python benchmark/audit_adaptive_v4.py --folder artifacts/v4_freeze
+      - name: Require 100% paired-case coverage and source hash attestation
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path("artifacts/v4_freeze/independent_audit.json").read_text())
+          assert d["split_and_replay"]["test"]["audited_prediction_rows"] == 8640
+          assert d["split_and_replay"]["shift"]["audited_prediction_rows"] == 4320
+          assert d["split_and_replay"]["test"]["unique_case_groups"] == 720
+          assert d["split_and_replay"]["shift"]["unique_case_groups"] == 360
+          assert d["algorithm_novelty_validated"] is False
+          print("PASS: audited sealed simulation and all matched-budget baseline comparisons")
+          PY
+      - name: Keep permanent public synthetic-only case tables, query traces and independent audit
+        run: |
+          mkdir -p research/verified_runs/fraudrag_v4_adaptive_20261026
+          cp artifacts/v4_freeze/{synthetic_cases.csv,learned_action_priors.json,test_predictions.csv,shift_predictions.csv,protocol_and_results.json,independent_audit.json} research/verified_runs/fraudrag_v4_adaptive_20261026/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/verified_runs/fraudrag_v4_adaptive_20261026
+          git commit -m "Archive V4 matched-budget adaptive study and independent source-response replay"
+          git pull --rebase origin research/reproducibility-hardening-2026-10
+          git push origin HEAD:research/reproducibility-hardening-2026-10
+      - name: Save independent audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v4-audited-source-acquisition
+          path: artifacts/v4_freeze
+          retention-days: 90
