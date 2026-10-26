@@ -15,7 +15,7 @@
 
 ## Overview
 
-FraudRAG is a production-grade system that detects forged or manipulated financial statements by combining three innovations:
+FraudRAG is an experimental software prototype for analyzing potentially manipulated financial statements. It explores three architectural components; their novelty and effectiveness require independent validation:
 
 - **Knowledge Graph RAG** — Neo4j stores customer entity history, institution relationships, and known fraud patterns. At inference time, a multi-hop graph traversal retrieves rich contextual signals injected into the LLM prompt alongside ChromaDB vector-similarity results from historical statements.
 - **Medallion Architecture** — Documents flow through Bronze (OCR + hashing) → Silver (NER + balance validation) → Gold (Graph-RAG scoring) with explicit data quality contracts at each layer boundary.
@@ -87,7 +87,7 @@ FraudRAG is a production-grade system that detects forged or manipulated financi
 
 ## Results (historical manuscript claims; **not independently verified**)
 
-The values below are reported in the manuscript, not re-created by the available public scripts. Do not cite these as independently reproducible findings until experiment artifacts are archived.
+The values below are reported in the manuscript, not re-created by the available public scripts. Do not cite these as independently reproducible findings until experiment artifacts are archived. The new `benchmark/` scripts measure ONLY a synthetic arithmetic rule, not the full Graph-RAG system.
 
 | Method | AUC | Precision | Recall | F1 | Latency |
 |--------|-----|-----------|--------|-----|---------|
