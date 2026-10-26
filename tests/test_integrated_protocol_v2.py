@@ -10,6 +10,10 @@ from fraudrag_v2_integrated import run, get_sources, seed_stores, MODES
 from fraudrag_v2 import generate
 
 def test_real_database_retrieval_and_dry_run(tmp_path,monkeypatch):
+    # Ordinary backend CI lacks Chroma, while dedicated integration CI installs it.
+    # Skip only the unprovisioned CI job; never replace real DB checks with mocks.
+    import pytest
+    pytest.importorskip('chromadb')
     monkeypatch.delenv("OPENAI_API_KEY",raising=False)
     rows=generate(120,20261026)
     for row in rows:
