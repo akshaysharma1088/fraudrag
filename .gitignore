@@ -39,3 +39,7 @@ postgres-data/
 # OS
 .DS_Store
 Thumbs.db
+
+# V3 licensed third-party source PDFs and intermediate research outputs (never commit)
+data/external_v3/
+artifacts/benchmark_v3/
