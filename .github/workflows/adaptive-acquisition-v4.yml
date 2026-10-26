@@ -1,0 +1,32 @@
+name: FraudRAG V4 fair adaptive evidence acquisition vs deterministic planners
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'benchmark/adaptive_acquisition_v4.py'
+      - 'tests/test_adaptive_acquisition_v4.py'
+      - '.github/workflows/adaptive-acquisition-v4.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  matched-information-policy-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Safety and fairness unit tests (no paid calls)
+        run: python -m pip install 'pytest>=8,<10' && python -m pytest tests/test_adaptive_acquisition_v4.py -q
+      - name: Run held-out and shifted fictional customer policy comparison
+        run: python benchmark/adaptive_acquisition_v4.py
+      - name: Store complete preregistered protocol, all predictions and synthetic outcome summary
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v4-deterministic-adaptive-planners-20261026
+          path: artifacts/adaptive_v4/
+          if-no-files-found: warn
+          retention-days: 90
