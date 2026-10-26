@@ -155,6 +155,21 @@ The experiment was executed at https://github.com/akshaysharma1088/fraudrag/acti
 
 **Inference boundary:** these results verify ingestion and controlled text-edit comparison on only five externally sourced fictional PDFs. They do not validate scanned image forgery, independently annotated genuine bank fraud, transaction-level parsing accuracy, novel Graph-RAG advantages or cross-institution generalization. GPT results from a later v3 study may be cited only after their separate raw inference records have passed independent auditing.
 
+### Actual GPT comparison using the external synthetic-PDF layouts
+
+The preregistered **60-call GPT-6.1 Sol** experiment finished successfully (https://github.com/akshaysharma1088/fraudrag/actions/runs/40372143670). All **60** case/condition outputs were permanently archived and their metrics independently recomputed (https://github.com/akshaysharma1088/fraudrag/actions/runs/40372704350; `research/verified_runs/fraudrag_v3_external_20261026/`).
+
+| GPT reference context | Controlled edits identified | Unchanged/benign cases correctly left unflagged | Abstentions | F1 (abstentions treated as failures) |
+| --- | ---: | ---: | ---: | ---: |
+| Submitted extracted text only, without an original | 0 / 10 | 0 / 10 | 20 / 20 | 0.000 |
+| Submitted text plus normalized first 30 original tokens | 0 / 10 | 0 / 10 | 20 / 20 | 0.000 |
+| Submitted text plus the **exact complete original PDF-extracted text** | 10 / 10 | 10 / 10 | 0 / 20 | 1.000 |
+
+The answer `uncertain` is not a false accusation or authentication: it is an abstention. It is **counted as a classification failure** in the summary numbers above. No GPT response cited a nonexistent source ID. Recorded token usage implies approximately **$0.349444** in estimated API charges; recorded API-call p50 durations were **2.512**, **2.745** and **2.524 seconds**, respectively; no complete PDF parsing or bank-system p95 performance is inferred.
+
+The exact-original source is an artificial oracle and makes the task largely a textual diff problem. All original PDFs were synthetic, all interventions were scripted text changes, and multiple cases came from each of only **five** original PDF templates. This result supports only transparent source availability and abstention testing; **it cannot demonstrate real financial fraud detection, image forgery identification, independent forensic verification, superior Graph-RAG performance or statistical generalization**.
+
+
 ## 6. Limitations, Ethics and Threats to Validity
 
 All data are fictional; no private bank statements or customer records are used. The examples have text-native, regularized formatting and no OCR corruption, image-level tampering, financial institution branding, third-party adjudication, or real-world fraud labels. Every manipulation is produced from a small, known transformation family. Customer-disjoint splits reduce direct identity leakage but do not make institution or generator distributions independent. The authoritative ledger is more complete than most externally accessible financial records. Thus perfect synthetic matching is not evidence of deployable accuracy.
