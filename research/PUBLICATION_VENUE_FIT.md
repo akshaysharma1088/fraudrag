@@ -1,3 +1,22 @@
+# DECISION UPDATE — IEEE alternatives to IEEE Access (October 26, 2026)
+
+**Decision:** Prioritize **IEEE Open Journal of the Computer Society (OJ-CS)** as the **first IEEE option after the manuscript clears scientific and human review**. Keep **Springer Applied Intelligence** as the more established **SCIE-indexed fallback**. User excludes IEEE Access.
+
+## Verified priorities
+
+- **IEEE OJ-CS** — IEEE Computer Society peer-reviewed broad computing journal; 2025 Clarivate JIF **6.0** (2024 JIF **8.2**), 2025 Scopus CiteScore **9.4**, **Scopus Q1**, **Web of Science ESCI (not SCIE)**. IEEE Computer Society reports expedited peer review and a **10-week publication target for most accepted manuscripts**; critically, **no formal revision option** on the expedited schedule. Fully open access, IEEE 2026 standard APC around **US$2,160**, subject to journal fee and membership/institutional discounts. Official policies: https://www.computer.org/publications/peer-review-schedules ; https://open.ieee.org/publishing-options/topical-journals/ ; https://open.ieee.org/for-authors/article-processing-charges/ . Journal indexing and historical JIF detail: https://www.akaturk.com/journals/21101132925?lang=en and https://journalindexes.com/ieee-open-journal-of-the-computer-society-26441268/ . **2025 JIF 6.0 and 2024 JIF 8.2 should not be confused.**
+- **IEEE Transactions on Knowledge and Data Engineering (TKDE)** — esteemed, high-selectivity **SCIE** venue for original advances in data/knowledge engineering (knowledge representation, graphs, real-time data management). Scope: https://www.computer.org/digital-library/journals/tk/cfp-ieee-transactions-on-knowledge-data-engineering . Not a fast/easy fallback; current synthetic FraudRAG results do not support a demonstrated original methodological advance.
+- **IEEE Transactions on Artificial Intelligence (TAI)** — established technical focus on theory/methods/reasoning/NLP with applied AI papers; significant novelty evidence necessary. Official call: https://cis.ieee.org/images/files/Publications/TAI/Call_for_Papers.pdf .
+- **IEEE Transactions on Big Data (TBD)** — only a real fit if FraudRAG substantiates *genuine scale* or novel data infrastructure; no claim of petabyte throughput or novel performance has been verified. Scope https://www.computer.org/digital-library/journals/bd/cfp-ieee-transactions-on-big-data/ .
+
+**Why IEEE OJ-CS comes first:** combines IEEE brand, strong JIF/CiteScore, top-quartile indexing and one of the fastest official IEEE Computer Society review protocols. **Risk:** no revisions allowed in expedited process; a premature manuscript can simply be rejected. Publication in 10 weeks is a *target for accepted papers*, not a predicted decision or admission.
+
+**If SCIE indexing is a hard constraint:** Springer **Applied Intelligence** (2025 JIF 3.5, SCIE, publisher-reported 45-day median first decision) should remain preferred over IEEE OJ-CS's **ESCI**. Scopus Q1 does not turn ESCI into SCIE.
+
+**Research gate:** Verified FraudRAG results are almost wholly synthetic; the same complete bank-ledger deterministic matching performs as well as GPT-assisted graph retrieval. No genuinely bank-issued externally adjudicated forgery labels, established original AI superiority, or author scientific/AI-use disclosure approval are present. **Do not submit to OJ-CS, Applied Intelligence or any other journal until evidence claims and author approval are cleared.** Reviewing three IEEE Access papers does not itself prohibit an author submission to another IEEE journal, but this project should not be submitted to IEEE Access.
+
+---
+
 # Reputation-first journal strategy — October 26, 2026
 
 **Author preference:** Established, credible and recognized peer-reviewed venues, reasonable turnaround, **not IEEE Access**. Quality and original scientific evidence take priority over a very fast first decision.
