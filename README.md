@@ -88,6 +88,14 @@ the preprint must be accurately revised and prior overlap disclosed to any
 journal. [Revision plan](research/SSRN_CORRECTION_DRAFT.md).
 
 
+### V4 Evidence Acquisition Controller — audited simulated adaptive-vs-deterministic study
+
+The exploratory **FraudRAG-EAC** research module compares **four deterministic retrieval policies**, including a prior-aware cost/coverage greedy baseline and classical finite-horizon dynamic programming, under exactly the same fictional source outcomes, learned priors and budgets. It used **1,080 calibration**, **720 held-out**, and **360 synthetic shifted** case groups. Independent post-run audit reproduced all **12,960 policy/budget paths** and source costs.
+
+At the **4-unit fictional access budget**, DP obtained complete field-coverage certificates for **509/720 (70.69%)** test statements at mean synthetic cost **2.593**, versus prior-aware greedy **495/720 (68.75%)** at **2.794** units. Paired coverage difference **+1.94 percentage points, 95% bootstrap interval [−0.14,+4.03]**, not conclusive. Under source availability shift, DP coverage **35.00%** versus greedy **35.56%**. The costs are made-up simulator units, and the source issuer is **not externally authenticated**. **The DP itself is deterministic standard optimization, not established research novelty, and this experiment contains no GPT/GraphRAG or actual financial-fraud test.**
+
+[Actual V4 workflow](https://github.com/akshaysharma1088/fraudrag/actions/runs/40395485609) · [Permanent reproducible source/decision audit](research/verified_runs/fraudrag_v4_adaptive_20261026/) · [Detailed findings and limitations](research/ADAPTIVE_V4_PRELIMINARY_FINDINGS.md).
+
 ## Reproduce the **synthetic** baselines
 
 Python 3.11+:
