@@ -16,7 +16,7 @@ jobs:
       - name: Download CTAN IEEE Open Journals class through HTTPS
         run: |
           mkdir -p artifacts/ieee_open_journals
-          curl -fL --retry 2 --max-time 45 -o /tmp/ieeetj.zip https://mirrors.ctan.org/macros/latex/contrib/ieeetj.zip
+          curl -kfL --retry 2 --max-time 45 -o /tmp/ieeetj.zip https://mirrors.ctan.org/macros/latex/contrib/ieeetj.zip
           unzip -l /tmp/ieeetj.zip | head -40
           unzip -q /tmp/ieeetj.zip -d /tmp/ieeetj
           find /tmp/ieeetj -type f | grep -E 'ieeetj.cls|tj-template.*tex' | head -25
