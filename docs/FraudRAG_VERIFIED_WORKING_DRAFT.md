@@ -65,7 +65,26 @@ A GitHub Actions experiment on October 26, 2026 executed the dataset generator, 
 
 This is a **descriptive result on a very small, deliberately balanced-by-category synthetic test set with 71.4% positive labels**, not a calibrated real-world performance estimate. Exact ledger matching is perfect because the task generator supplies a complete independent synthetic bank reference against which its own alterations can be compared. That fact materially limits any plausible superiority claim for an LLM over exact checking.
 
-**GPT results:** [BLOCKED — DO NOT SUBMIT] To be inserted only after the paired inference completes, archived raw predictions are audited and all comparison conditions are verified.
+**Paired GPT results: observed and independently audited on synthetic cases.** On October 26, 2026, a single actual GPT-6.1 Sol run completed **112 API calls** over four precommitted conditions and 28 unique held-out synthetic statements. Raw per-case predictions, source labels, retrieved evidence IDs, usage and timing are archived in `research/verified_runs/fraudrag_v2_20261026/`. Independent audit: `independent_post_run_audit.json` in that folder, produced after the original run and checked against the recorded original confusion counts.
+
+| Configuration | Accuracy | Precision | Recall | F1 | Abstentions |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| Statement-only rules | 0.571 | 1.000 | 0.400 | 0.571 | 0 |
+| GPT only, no retrieved evidence | 0.571 | 1.000 | 0.400 | 0.571 | 1 |
+| GPT + historical TF-IDF passages | 0.679 | 1.000 | 0.550 | 0.710 | 4 |
+| GPT + serialized trusted graph-style bank reference | 1.000 | 1.000 | 1.000 | 1.000 | 0 |
+| GPT + both evidence types | 1.000 | 1.000 | 1.000 | 1.000 | 0 |
+| Exact authoritative-ledger comparison, no GPT | 1.000 | 1.000 | 1.000 | 1.000 | 0 |
+
+**Results interpretation:** The same complete synthetic bank-side ledger enables perfect matching with and without GPT. Therefore the experiment offers **no evidence that GPT or hybrid Graph-RAG improves upon the strongest deterministic comparator**. The historical vector-only condition used TF-IDF over previous-period synthetic textual summaries, not ChromaDB; the graph-style condition used serialized bank records, not executed Neo4j Cypher queries. F1 and precision count any abstained positive case as a false negative and any abstained negative case as a false positive for the reporting denominator; abstention counts are reported separately to avoid hiding failures.
+
+**Observed citation integrity issue:** Five GPT-only responses contained unsupported evidence IDs, although the prompt supplied no evidence IDs. This is a measured response-grounding limitation and must not be omitted.
+
+**Model usage and timing:** Recorded token usage gives approximately **$0.285052** under stated standard API list rates; actual billing may differ. P50/P95 recorded model-call latencies were respectively: GPT only **4.333/24.757 seconds**; vector **4.197/25.971 seconds**; graph-style **3.633/9.024 seconds**; hybrid **4.452/23.905 seconds**. These are experimental API-call timings, **not** measured end-to-end PDF ingestion/Neo4j/Chroma/LLM latencies.
+
+**Exploratory paired uncertainty:** Resampling the 28 independent customer cases 2,000 times (seed 42) produced a **hybrid minus GPT-only accuracy difference of 0.429** and percentile bootstrap interval **[0.250, 0.607]**. This describes the *constructed* dataset only, and must not be presented as real-world generalization or a confirmatory finding.
+
+Original run: https://github.com/akshaysharma1088/fraudrag/actions/runs/40363144409 . Post-run verification archive: `research/verified_runs/fraudrag_v2_20261026/independent_post_run_audit.json`.
 
 **Neo4j temporal integration, observed separately:** A GitHub Actions job
 (https://github.com/akshaysharma1088/fraudrag/actions/runs/40363346100)
