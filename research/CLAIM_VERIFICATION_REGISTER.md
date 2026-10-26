@@ -186,3 +186,9 @@ minus document-only accuracy difference 0.4286, percentile interval
 **Article readiness unchanged: NOT CLEARED.** The verified paper should
 report real matched controls and all negative results, and cannot
 claim superiority or significant fraud detection in production.
+
+## G09 — Third-party synthetic PDF v3 study: VERIFIED WITH LIMITS
+
+GitHub Actions https://github.com/akshaysharma1088/fraudrag/actions/runs/40371198225 successfully checked five released Bankstatemently **fictional** PDF SHA-256 records and text-extracted all 17 pages. A reproducible 20-case benchmark used ten extracted-text monetary edits and ten unchanged/harmless-space controls. Complete extracted originals gave oracle matching, and short/no reference yielded 20 abstentions. These are *text modifications*, not forged PDF images, real bank misconduct labels, or a non-oracle fraud classifier.
+
+The previous first-250-character partial reference run https://github.com/akshaysharma1088/fraudrag/actions/runs/40370987339 yielded false positive whitespace differences and is **superseded** by the corrected first-30-normalized-token method. Full hash and outcome provenance in `research/RESULTS_V3_EXTERNAL_PDF_2026-10-26.json`. No GPT v3 results are approved until actual execution and independent audit.
