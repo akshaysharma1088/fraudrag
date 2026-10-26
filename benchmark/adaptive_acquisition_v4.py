@@ -331,6 +331,26 @@ def main():
     assert not ({x.case_id for x in test}&{x.case_id for x in shift})
     assert not ({x.group for x in test}&{x.group for x in shift})
     priors=estimate_probs(train)
+    # Source masks and fictional issuer values are retained only in the
+    # audit fixture; policy callbacks never receive unseen case outcomes.
+    truth=[]
+    for split,cases in (("train",train),("test",test),("shift",shift)):
+        for case in cases:
+            truth.append({
+                "split":split,"case_id":case.case_id,"group_id":case.group,
+                "profile":case.profile,
+                "source_masks":json.dumps(case.source_masks),
+                "original_issuer_values":json.dumps(case.origin),
+                "submitted_values":json.dumps(case.submitted),
+                "controlled_edit":int(case.origin!=case.submitted),
+            })
+    with (output/"synthetic_cases.csv").open("w",newline="",encoding="utf8") as f:
+        writer=csv.DictWriter(f,fieldnames=list(truth[0]))
+        writer.writeheader();writer.writerows(truth)
+    (output/"learned_action_priors.json").write_text(
+        json.dumps(priors,indent=2,sort_keys=True)+"\n")
+    case_digest=hashlib.sha256((output/"synthetic_cases.csv").read_bytes()).hexdigest()
+    prior_digest=hashlib.sha256((output/"learned_action_priors.json").read_bytes()).hexdigest()
     records={}
     full_results={}
     for name,cases in (("test",test),("shift",shift)):
@@ -355,6 +375,8 @@ def main():
         "source_document_forgeries":0,"real_bank_customers":0,
         "train_seed":TRAIN_SEED,"test_seed":TEST_SEED,"shift_seed":SHIFT_SEED,
         "profiles":PROFILES,"train_cases":len(train),"heldout_cases":len(test),"shift_cases":len(shift),
+        "synthetic_cases_csv_sha256":case_digest,
+        "learned_action_priors_sha256":prior_digest,
         "budget_units":[x/10 for x in BASE_BUDGETS],
         "actions":ACTIONS,
         "controller":{"utility":"1 if complete coverage, 0 if defer, minus 0.035 times synthetic source access cost",
