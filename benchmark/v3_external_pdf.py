@@ -151,15 +151,13 @@ def classify(submitted: str, original: str | None, mode: str):
         raise ValueError("Expected verified extracted original")
     if mode == "full_original":
         return int(normalize(submitted) != normalize(original))
-    if mode == "first_250_chars":
-        # Partial reference cannot establish authenticity, only a mismatch in
-        # a known shared prefix can prove the submitted text differs.
-        a, b = normalize(submitted), normalize(original)
-        p = normalize(original[:250])
-        # Normalize each side *after truncating same number of original chars*;
-        # if edit is outside known prefix, we MUST abstain.
-        known = normalize(submitted[:250])
-        return 1 if known != p else None
+    if mode == "first_30_tokens":
+        # Compare lexical units, not character offsets. Harmless spacing changes
+        # must never shift the truncation boundary and cause a false alarm.
+        # A match on an incomplete reference is ALWAYS inconclusive.
+        source_prefix = normalize(original).split()[:30]
+        submitted_prefix = normalize(submitted).split()[:30]
+        return 1 if submitted_prefix != source_prefix else None
     raise ValueError(mode)
 
 
@@ -228,7 +226,7 @@ def main():
         # Source coverage is scientifically material; don't call partial
         # success a validated five-PDF benchmark.
         raise ValueError(f"Only {len(full_rows)}/5 sources had selectable text")
-    for mode in ("full_original", "first_250_chars", "no_source"):
+    for mode in ("full_original", "first_30_tokens", "no_source"):
         for row in variant_rows:
             pred = classify(row["text"], originals[row["source_id"]], mode)
             predictions.append({
@@ -251,7 +249,7 @@ def main():
             mode: rates(variant_rows, [
                 classify(row["text"], originals[row["source_id"]], mode)
                 for row in variant_rows
-            ]) for mode in ("full_original", "first_250_chars", "no_source")
+            ]) for mode in ("full_original", "first_30_tokens", "no_source")
         },
         "exclusions": exclusions,
         "limitations": [
