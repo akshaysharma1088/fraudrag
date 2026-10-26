@@ -62,7 +62,7 @@ def matches(text: str, candidate: str) -> bool:
     corpus, value = normalize(text), normalize(candidate)
     if not value:
         return False
-    return re.search(r"(?<!\\w)" + re.escape(value) + r"(?!\\w)", corpus) is not None
+    return re.search(r"(?<!\w)" + re.escape(value) + r"(?!\w)", corpus) is not None
 
 
 def build_cases(data):
