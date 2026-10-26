@@ -143,7 +143,7 @@ The independently recomputed exploratory paired difference between integrated an
 
 API call p50/p95 durations, in seconds, were: document-only **4.189 / 14.951**, Chroma-only **5.039 / 25.589**, Neo4j-only **3.934 / 15.755**, integrated **3.462 / 6.122**. These are model-call timings, not whole-system PDF/OCR/retrieval throughput. Total recorded token usage corresponded to approximately **$0.283302** in estimated API token charges under the recorded standard rates; final billing could differ. The experiment makes no production-scale or bank-fraud accuracy claim.
 
-**Primary limitations:** All graph records and their authoritative same-period ledger contents were generated programmatically as a near-perfect oracle; only 28 synthetic submissions were scored. The graph inference traversed bank/account ledger relationships; no fraud-ring labels or k-hop superiority hypothesis was tested. The vector embeddings were simple deterministic hash features, not semantic embedding model output. Thus this is a transparent *software-integration feasibility and comparison study*, not a demonstrated novel state-of-the-art fraud detector.
+**Primary limitations:** All graph records and their authoritative same-period ledger contents were generated programmatically as a near-perfect oracle; only 28 synthetic submissions were scored. The graph inference traversed bank/account ledger relationships; no fraud-ring labels or k-hop superiority hypothesis was tested. The vector embeddings were simple deterministic hash features, not semantic embedding model output. Thus this is a transparent *software-integration feasibility and comparison study*, not evidence of a superior real-world financial-fraud detector.
 
 ## 6. Limitations, Ethics and Threats to Validity
 
