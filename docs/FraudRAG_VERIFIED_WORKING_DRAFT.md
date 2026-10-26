@@ -29,7 +29,7 @@ These established precedents preclude broad claims that combining graph retrieva
 
 ### 3.1 FraudRAG prototype
 
-The open-source repository https://github.com/akshaysharma1088/fraudrag contains a Python FastAPI prototype, a Bronze/Silver/Gold normalization pipeline, Neo4j graph helpers, ChromaDB retrieval support, and an LLM analysis service. Software implementation is not a clinical or forensic performance validation. The original paper described Claude 3.5 and Anthropic embeddings, which are not the verified model configurations for the current GPT study; those historical descriptions are excluded from this research report.
+The open-source repository https://github.com/akshaysharma1088/fraudrag contains a Python FastAPI prototype, a Bronze/Silver/Gold normalization pipeline, Neo4j graph helpers, ChromaDB retrieval support, and an LLM analysis service. Software implementation is not a clinical or forensic performance validation. The model and embedding descriptions in the original unverified draft do not match all of the actual implementations. This study instead specifies the exact model and embedding implementation used by each executed experiment.
 
 ### 3.2 FraudRAG-v2 replacement corpus
 
