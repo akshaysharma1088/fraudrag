@@ -209,3 +209,37 @@ Any new IEEE manuscript must explicitly disclose that prior public preprint, des
 **WP6 — IEEE package:** only after external/novelty gates pass, author-approved IEEE Open Journals 12-page max two-column editable source, final PDF, separate figures, clear AI-use disclosures and reproducibility links.
 
 **Working decision:** The strongest path is a source-conditional method with machine-checkable reasons for abstention and **fair falsification by deterministic alternatives**. This could support a reputable article if meaningful new results emerge. It does **not** currently make the manuscript submission-ready.
+
+
+## Execution update — V4 simulated adaptive acquisition actually run
+
+The simulation and its **independent replay** now completed successfully.
+Evidence: https://github.com/akshaysharma1088/fraudrag/actions/runs/40395485609 ;
+per-case and metadata archive `research/verified_runs/fraudrag_v4_adaptive_20261026/` ;
+detailed report `research/ADAPTIVE_V4_PRELIMINARY_FINDINGS.md`.
+
+At budget **4 fictional price units**, finite-horizon deterministic DP
+obtained full-source verification coverage **509/720 (70.69%)**
+at average query cost **2.593**, versus **prior-aware deterministic
+greedy** **495/720 (68.75%)**, cost **2.794**. Difference
+in coverage **+1.94 percentage points** with paired 95% bootstrap
+interval **[−0.14,+4.03]**, which includes zero. The mean cost
+difference **−0.2011 fictional units** has 95% paired interval
+**[−0.2294,−0.1731]**; this is not a real dollar saving.
+Under the explicitly simulated source-availability shift, adaptive
+coverage **35.00%** was fractionally BELOW greedy coverage **35.56%**,
+with greater uncertainty and significantly worse absolute completion
+than under ordinary simulation. **This directly falsifies an
+unqualified stronger-acquisition-always-improves-coverage claim.**
+
+The DP policy is itself deterministic and an established optimizer.
+The experiment shows a cost/coverage trade-off in deliberately
+fictional source outcomes, **not a new intelligent fraud-detection
+method**. Claims of source signature authentication, bank-side
+original authority, institution transfer, fraud-label validity,
+actual Neo4j/Chroma/GPT or deployment efficiency remain untested.
+Do not use the green workflow badge as paper novelty approval.
+
+**Provisional component name** `FraudRAG-EAC` preserves the
+already-cited original FraudRAG brand and SSRN DOI, without
+claiming a trademark or separate reviewed publication.
