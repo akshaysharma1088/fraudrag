@@ -60,7 +60,9 @@ def assess(data: dict, root: Path, check_bytes: bool=True, promotion: bool=False
         issues.append(problem("unsupported_task",str(data["task"])))
     rights=data["rights"]
     for k in REQUIRED_RIGHTS:
-        if not rights.get(k):
+        # A legitimate explicit "no redistribution" permission is False,
+        # not an absent right or reason to block local licensed research.
+        if k not in rights or rights[k] is None or rights[k]=="":
             issues.append(problem("missing_rights",k))
     if rights.get("permitted_research_use") not in ("noncommercial","commercial","both"):
         issues.append(problem("rights_scope_not_defined","Explicit legal scope required"))
@@ -156,6 +158,8 @@ def main():
     p.add_argument("--metadata-only",action="store_true",help="Offline audit without reading dataset bytes; never counts as full source verification")
     args=p.parse_args()
     dataset=json.loads(args.manifest.read_text(encoding="utf8"))
+    if args.metadata_only and args.promotion:
+        raise SystemExit("Promotion requires verified file bytes; --metadata-only forbidden")
     result=assess(dataset,args.root or args.manifest.parent,
                   check_bytes=not args.metadata_only,promotion=args.promotion)
     result["file_bytes_verified"]=not args.metadata_only
