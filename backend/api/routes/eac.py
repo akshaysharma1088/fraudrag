@@ -6,7 +6,7 @@ bank records or assert issuer authority. No data persistence or API charges.
 from typing import Literal
 
 from fastapi import APIRouter, HTTPException, Request
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 
 from backend.services.eac_service import SCENARIOS, run_sandbox
 
@@ -14,6 +14,8 @@ router = APIRouter()
 
 
 class DemoRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     scenario: Literal["consistent", "altered", "partial", "conflicting", "future"] = "consistent"
     policy: Literal["adaptive_dp", "greedy", "fixed"] = "adaptive_dp"
     budget_units: float = Field(default=4.0, ge=1, le=8, multiple_of=0.1)
