@@ -123,6 +123,10 @@ Gold Layer    →  Fraud signals, graph embeddings, risk scores
     if settings.EAC_PARTNER_ENABLED and not testing:
         from backend.services.issuer_partner_bootstrap import build_partner_adapter
         app.state.eac_partner_adapter = build_partner_adapter(settings)
+    app.state.eac_plaid_provider = None
+    if settings.EAC_PLAID_ENABLED and not testing:
+        from backend.services.plaid_partner_bootstrap import build_plaid_statements_provider
+        app.state.eac_plaid_provider = build_plaid_statements_provider(settings)
 
     # Routers
     app.include_router(health.router, prefix="/api/v1", tags=["Health"])
