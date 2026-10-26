@@ -107,6 +107,42 @@ class PlaidStatementsProvider:
                 client.close()
         return bytes(data),response_headers
 
+    def discover_account_ids(self, item:PlaidAuthorizedItem)->list[str]:
+        """Look up only account identifiers after Plaid Link consent.
+
+        The Item token must come from Plaid's validated public-token exchange.
+        A caller must NOT expose this to a browser until user authentication
+        and Item ownership are established in a trusted backend.
+        """
+        data,headers=self._call("/statements/list",item)
+        if "application/json" not in headers.get("content-type","").lower():
+            raise EvidenceRejected("Plaid statement list expected JSON")
+        try:
+            obj=json.loads(data)
+        except (UnicodeDecodeError,ValueError) as exc:
+            raise EvidenceRejected("Invalid Plaid statement list") from exc
+        if not isinstance(obj,dict) or obj.get("item_id")!=item.item_id:
+            raise EvidenceRejected("Plaid Item identifier mismatch")
+        accounts=obj.get("accounts")
+        if not isinstance(accounts,list) or not 1<=len(accounts)<=100:
+            raise EvidenceRejected("No statement-eligible accounts for authorized Item")
+        result=[]
+        for account in accounts:
+            if not isinstance(account,dict):
+                raise EvidenceRejected("Invalid linked account structure")
+            account_id=account.get("account_id")
+            if not isinstance(account_id,str) or not ID_RE.fullmatch(account_id):
+                raise EvidenceRejected("Unexpected account identifier")
+            # A new account with no statements should not be presented
+            # as eligible for document comparison.
+            if account.get("statements"):
+                result.append(account_id)
+        if len(result)!=len(set(result)):
+            raise EvidenceRejected("Duplicate account ID from Plaid")
+        if not result:
+            raise EvidenceRejected("No account with Statements in this Item")
+        return sorted(result)
+
     def list_statements(self, item:PlaidAuthorizedItem)->list[dict]:
         data,headers=self._call("/statements/list",item)
         if "application/json" not in headers.get("content-type","").lower():
