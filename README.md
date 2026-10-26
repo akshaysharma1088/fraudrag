@@ -31,7 +31,13 @@ The new `FraudRAG-v2` dataset consists of **840 synthetic cases generated from 1
 
 Evidence: [Original 112-call experiment](https://github.com/akshaysharma1088/fraudrag/actions/runs/40363144409) and [per-case permanent verified archive](research/verified_runs/fraudrag_v2_20261026/independent_post_run_audit.json). **Five GPT-only outputs contained unsupported source citations** and are retained as observed errors.
 
-### Larger synthetic evaluation
+#### Actually integrated database-backed GPT (same 28 synthetic cases)
+
+A *second* 112-call GPT study built prompts using **actual Neo4j as-of-time queries and ChromaDB indexed-history retrieval**, rather than serialized research fixture paths. All cases and predictions were independently audited and archived. The F1 results were: GPT document-only **0.571**, Chroma-only **0.563** (8 abstentions), Neo4j-only **1.000**, and combined **1.000**. A deterministic exact comparison to the same authoritative bank ledger again scored **1.000**. Two unsupported GPT-only evidence citations were recorded. Model token-cost estimate was **$0.283302**.
+
+**The integrated retrieval adds no measured predictive advantage over exact non-LLM ledger matching in the controlled synthetic set.** The graph has a full synthetic ledger oracle; these are not customer bank records, realistic fraud prevalence or new adjudications. See [the executed real-database run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40366638447), [per-case archive](research/verified_runs/fraudrag_v2_integrated_20261026/) and [research manuscript](docs/FraudRAG_VERIFIED_WORKING_DRAFT.md).
+
+## Larger synthetic evaluation
 
 `benchmark/robustness_multiseed_v2.py` generated **4,900 fictional cases from 700 fictional customers**, then executed **three held-out customer-disjoint splits of 175 examples each**. As designed, complete authoritative-ledger reconciliation scored F1 1.000 in all three; arithmetic/date rules scored F1 0.571 in all three. When the ledger is incomplete, the checker abstains frequently instead of assuming authenticity. **These are not real-world external replications.**
 
@@ -50,7 +56,7 @@ Evidence: [Executed AAER evaluation](https://github.com/akshaysharma1088/fraudra
 | Neo4j 5 temporal query | 12 fictional bank-ledger snapshots; future facts excluded | [Completed integration run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40363346100) |
 | Chroma vector database | 16 historical synthetic accounts, 40 source/time-filtered searches using **local 256-dimensional hashing**, not OpenAI embeddings | [Completed integration run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40363998267) |
 | Digital PDF parsing | 28 generated **text-native fictional PDFs** rendered and extracted; no scanned/real-bank accuracy inference | [Completed PDF experiment](https://github.com/akshaysharma1088/fraudrag/actions/runs/40364130518) |
-| Actual Neo4j + Chroma + GPT protocol | Fixed four-condition experiment, actual retrieval paths; measure only after execution and independent audit | [Integrated protocol dry run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40366292505) |
+| Actual Neo4j + Chroma + GPT | Four-mode, 112 actual calls and full provenance audit on 28 synthetic statements; Neo4j-only/hybrid both match the perfect deterministic ledger oracle | [Execution](https://github.com/akshaysharma1088/fraudrag/actions/runs/40366638447) · [Independently audited records](research/verified_runs/fraudrag_v2_integrated_20261026/integrated_independent_audit.json) |
 
 ## Reproduce the **synthetic** baselines
 
