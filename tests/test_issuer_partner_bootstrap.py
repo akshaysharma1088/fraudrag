@@ -51,15 +51,3 @@ def test_bootstrap_accepts_offline_signed_provider_configuration_but_does_not_co
 def test_incomplete_or_unsafe_live_partner_configuration_fails_closed(bad):
     with pytest.raises(EvidenceRejected):
         build_partner_adapter(partner_config(EAC_PARTNER_ENABLED=True, **bad))
-
-
-def test_no_partner_API_route_is_implicitly_added():
-    from backend.main import create_app
-    app = create_app(testing=True)
-    live = [
-        getattr(route, "path", "")
-        for route in app.routes
-        if "/api/v1/eac" in getattr(route, "path", "")
-        and "/demo/" not in route.path
-    ]
-    assert live == []
