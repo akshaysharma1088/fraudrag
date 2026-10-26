@@ -54,14 +54,14 @@ BUNDLE_BACKUP=(.83,.85,.77,.81,.95,.80)
 @dataclass(frozen=True)
 class Case:
     case_id: str
-    group: int
+    group: str
     profile: int
     origin: tuple[str,str,str]
     submitted: tuple[str,str,str]
     source_masks: tuple[int,...]
 
 def _create_case(profile: int, idx: int, rng: random.Random, *, shifted: bool=False, split="test")->Case:
-    original=(f"ACC-{profile}-{idx:05d}",f"{100+idx%59}.00",f"TX-{idx:05d}:25.00")
+    original=(f"ACC-{split}-{profile}-{idx:05d}",f"{100+idx%59}.00",f"TX-{split}-{profile}-{idx:05d}:25.00")
     altered=rng.random()<0.25
     submitted=list(original)
     if altered:
@@ -87,7 +87,7 @@ def _create_case(profile: int, idx: int, rng: random.Random, *, shifted: bool=Fa
             else:
                 mask=0
         masks.append(mask)
-    return Case(f"{split}-{profile:02d}-{idx:05d}",idx,profile,original,tuple(submitted),tuple(masks))
+    return Case(f"{split}-{profile:02d}-{idx:05d}",f"{split}-{profile:02d}-{idx:05d}",profile,original,tuple(submitted),tuple(masks))
 
 def generate(n_per_profile: int, seed:int, *, shifted=False, split="test")->list[Case]:
     rng=random.Random(seed)
@@ -325,8 +325,11 @@ def main():
     test=generate(args.test_per_profile,TEST_SEED,split="test")
     shift=generate(args.shift_per_profile,SHIFT_SEED,shifted=True,split="shift")
     assert not ({x.case_id for x in train}&{x.case_id for x in test})
+    assert not ({x.group for x in train}&{x.group for x in test})
     assert not ({x.case_id for x in train}&{x.case_id for x in shift})
+    assert not ({x.group for x in train}&{x.group for x in shift})
     assert not ({x.case_id for x in test}&{x.case_id for x in shift})
+    assert not ({x.group for x in test}&{x.group for x in shift})
     priors=estimate_probs(train)
     records={}
     full_results={}
