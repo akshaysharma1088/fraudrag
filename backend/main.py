@@ -117,6 +117,12 @@ Gold Layer    →  Fraud signals, graph embeddings, risk scores
 
     # Research sandbox is disabled unless explicitly enabled (tests may opt in).
     app.state.eac_demo_enabled = testing or settings.EAC_DEMO_ENABLED
+    # Server-only. No public API allows caller-provided bank URLs, source keys,
+    # account permissions, consent IDs, or live issuer query execution.
+    app.state.eac_partner_adapter = None
+    if settings.EAC_PARTNER_ENABLED and not testing:
+        from backend.services.issuer_partner_bootstrap import build_partner_adapter
+        app.state.eac_partner_adapter = build_partner_adapter(settings)
 
     # Routers
     app.include_router(health.router, prefix="/api/v1", tags=["Health"])
