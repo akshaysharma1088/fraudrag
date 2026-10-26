@@ -88,3 +88,37 @@ auditable decision coverage/cost or reduce unsafe claims over strong
 deterministic verifiers provided with **the same source information**?
 This is **not yet a validated advantage or established priority**.
 See `research/OJCS_RESEARCH_PIVOT_V4_BLUEPRINT_2026-10-26.md`.
+
+
+## Adaptive evidence acquisition novelty check (October 26, 2026)
+
+The V4 benchmark is a bounded, **deterministic** source-query optimization
+simulation, not a first-known technique. Relevant external evidence:
+
+- Wu, Yang, Ben-Porat & Ziser (2026), *When Knowledge Is Not Free:
+  Cost-Aware Evidence Selection in Retrieval-Augmented Generation*,
+  arXiv https://arxiv.org/abs/2606.02245 : studies budgeted access
+  to priced evidence, static routing and adaptive source requests.
+  **Direct novelty challenge** to any generic "first cost-aware RAG" claim.
+- Mokhtari & Davoodi (2026), *ROSE-RAG: Robust Sequential Evidence
+  Acquisition for Agentic Retrieval-augmented Generation under
+  Source-model Ambiguity*, SSRN https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7172681 :
+  source reliability, acquisition cost, posterior ambiguity and
+  sequential query/stop/abstain have already been proposed.
+- Li & Oliva (2025), *Towards Cost Sensitive Decision Making*,
+  AISTATS, PMLR https://proceedings.mlr.press/v258/li25h.html :
+  active evidence/feature acquisition framed as decision-making
+  under observation cost (reinforcement-learning model).
+- New methods need to specify what is genuinely distinct: verified
+  issuer-source contract, field-specific temporal/completeness
+  assumptions, contradiction-safe certificates, *and* a result that
+  cannot be achieved by a comparably informed deterministic controller.
+  The V4 pilot does **not** establish that added novelty.
+
+Actual benchmark evidence is in
+`research/verified_runs/fraudrag_v4_adaptive_20261026/`;
+all simulated source costs, outcome distribution priors and DP policy
+are reproducible. At a 4-unit budget, 509/720 vs 495/720 complete
+records for adaptive DP vs prior-aware greedy; 95% interval for the
+coverage difference **includes zero**. This is not validation of
+fraud detection, novel planning or production economic value.
