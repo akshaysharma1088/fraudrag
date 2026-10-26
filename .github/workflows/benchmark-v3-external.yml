@@ -1,0 +1,34 @@
+name: FraudRAG-v3 third-party PDF hash and controlled-edit validation
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'benchmark/v3_external_pdf.py'
+      - 'tests/test_v3_external_pdf.py'
+      - '.github/workflows/benchmark-v3-external.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  external-pdf-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF extraction and tests
+        run: python -m pip install 'pdfplumber>=0.11,<1' 'pytest>=8,<10'
+      - name: Verify controlled edit logic offline
+        run: python -m pytest tests/test_v3_external_pdf.py -q
+      - name: Download five pinned licensed synthetic PDFs and verify their SHA256
+        run: python benchmark/v3_external_pdf.py
+      - name: Export source-hashed report and per-case control predictions, not third-party PDFs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v3-pinned-third-party-pdf-verification
+          path: artifacts/benchmark_v3/
+          if-no-files-found: warn
+          retention-days: 90
