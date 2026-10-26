@@ -1,0 +1,19 @@
+name: Current manuscript verified-claim screening
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'docs/FraudRAG_VERIFIED_WORKING_DRAFT.md'
+      - 'research/check_current_manuscript.py'
+      - '.github/workflows/current-manuscript-safety.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-current-paper:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fail on known unsupported legacy results and false publication claims
+        run: python research/check_current_manuscript.py docs/FraudRAG_VERIFIED_WORKING_DRAFT.md
