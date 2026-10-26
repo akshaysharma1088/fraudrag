@@ -24,7 +24,7 @@ Machine-readable record: [RESULTS_V3_EXTERNAL_PDF_2026-10-26.json](RESULTS_V3_EX
 
 **A scientifically important bug was detected and corrected:** the initial partial-reference prototype compared the first 250 *characters* of original and submitted text, which turned harmless changes in whitespace lengths into apparent content mismatches. That earlier run has been preserved (https://github.com/akshaysharma1088/fraudrag/actions/runs/40370987339) and explicitly marked **superseded**. The corrected method compares the first 30 **normalized tokens**, with regression tests. All final numerical statements above use the corrected successful run.
 
-## LLM study protocol (when executed)
+## LLM study protocol (executed and independently audited)
 
 `experiments/v3_pdf_gpt.py` precommits 60 GPT-6.1 Sol trials: 20 fixed cases in three conditions: submitted text alone, first 30 original source words, and exact original extracted text. The last one intentionally presents an **oracle**, not a separate trusted bank institution ledger. Outputs include edited/unchanged/uncertain, evidence source IDs, token usage, latency and response errors, all in a cost-capped workflow. Every actual result must be independently audited and labeled *text-edit recognition*; no model success here demonstrates forged PDF imaging, company misstatement detection, or consumer bank-document fraud detection.
 
@@ -40,3 +40,7 @@ Machine-readable record: [RESULTS_V3_EXTERNAL_PDF_2026-10-26.json](RESULTS_V3_EX
 8. Verify complete prior art and article references; report externally validated results without inferring that synthetic text edits are real financial misconduct.
 
 **Editorial gate remains blocked until these scientific requirements are met.**
+
+## Verified GPT results
+
+[Executed GPT run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40372143670) completed 60 fixed, paired calls; [independent audit](https://github.com/akshaysharma1088/fraudrag/actions/runs/40372704350) verified all 60 and all source IDs. No-original and 30-token excerpt arms abstained on all 20 cases each. Exact complete-source arm recognized 10/10 controlled edits and 10/10 untouched/spacing-only cases, with no abstentions. The source was an artificial same-PDF oracle, **not** a bank ledger or a fraud adjudication. Estimated API token cost $0.349444. See `research/verified_runs/fraudrag_v3_external_20261026/` for per-case evidence.
