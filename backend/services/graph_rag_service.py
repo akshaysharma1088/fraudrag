@@ -167,6 +167,7 @@ class GraphRAGService:
         statement_text: str,
         warehouse_reference: Optional[str] = None,
         customer_profile: Optional[Dict[str, Any]] = None,
+        deterministic_validation: Optional[Dict[str, Any]] = None,
     ) -> FraudAnalysis:
         """
         Main entry point: run full Graph-RAG fraud analysis pipeline.
@@ -193,10 +194,16 @@ class GraphRAGService:
                 graph_context=graph_context,
                 vector_context=vector_context,
                 warehouse_reference=warehouse_reference or "Not available",
-                customer_profile=json.dumps(customer_profile or {}, indent=2),
+                customer_profile=json.dumps({"profile": customer_profile or {},
+                    "deterministic_validation": deterministic_validation or {}}, indent=2),
             )
         else:
             raw_result = self._rule_based_fallback(statement_text, warehouse_reference)
+        # Fail closed: an unavailable/broken model is NOT a low-risk verdict.
+        if raw_result.get("analysis_unavailable"):
+            logger.error("Fraud analysis unavailable; manual review required",
+                         statement_id=statement_id)
+            raise RuntimeError("Fraud analysis unavailable; manual review required")
 
         # Step 4: Build FraudAnalysis aggregate
         analysis = self._build_analysis(
@@ -390,11 +397,6 @@ class GraphRAGService:
 
     def _default_analysis_result(self) -> Dict[str, Any]:
         return {
-            "fraud_score": 0.0,
-            "confidence": 0.0,
-            "risk_level": "minimal",
-            "warehouse_match_score": None,
-            "indicators": [],
-            "discrepancies": [],
-            "reasoning": "Analysis failed – manual review required",
+            "analysis_unavailable": True,
+            "reasoning": "Analysis failed; manual review required",
         }
