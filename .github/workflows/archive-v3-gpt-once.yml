@@ -1,0 +1,55 @@
+# One-time archive of completed GPT run 40372143670.
+# NO OpenAI API secrets; zero model requests; includes source attribution only.
+name: FraudRAG-v3 independent GPT audit and permanent archive
+on:
+  push:
+    branches: [research/reproducibility-hardening-2026-10]
+    paths: [.github/workflows/archive-v3-gpt-once.yml]
+permissions:
+  contents: write
+  actions: read
+jobs:
+  post-run-v3:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Fetch original completed 60-call data artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: fraudrag-v3-external-pdf-text-edit-gpt-60-results
+          run-id: 40372143670
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          path: artifacts/v3_audit
+      - name: Independently recompute all condition metrics and evidence ID integrity
+        run: python benchmark/audit_v3_gpt.py --folder artifacts/v3_audit
+      - name: Require all 60 pairs, no invented source IDs, unchanged external source hashes
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          p=pathlib.Path('artifacts/v3_audit')
+          audit=json.loads((p/'independent_audit.json').read_text())
+          assert audit['all_precommitted_pairs_present']
+          assert audit['actual_model_calls']==60
+          assert not audit['missing_pairs']
+          assert audit['unsupported_citation_count']==0
+          for mode in ('document_only','partial_source','complete_source'):
+              assert audit['independent_mode_scores'][mode]['completed_calls']==20
+          print('PASS all 60 cases and 3 reference modes independently reproduced')
+          PY
+      - name: Permanently archive only controlled comparisons (never downloaded PDFs)
+        run: |
+          mkdir -p research/verified_runs/fraudrag_v3_external_20261026
+          cp artifacts/v3_audit/{protocol.json,predictions.csv,metrics.json,independent_audit.json} research/verified_runs/fraudrag_v3_external_20261026/
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add research/verified_runs/fraudrag_v3_external_20261026
+          git commit -m "Archive third-party synthetic PDF V3 GPT paired evidence and independent audit"
+          git pull --rebase origin research/reproducibility-hardening-2026-10
+          git push origin HEAD:research/reproducibility-hardening-2026-10
+      - name: Save separately recomputed artifact for verification
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v3-independent-gpt-audit
+          path: artifacts/v3_audit/
+          retention-days: 90
