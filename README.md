@@ -10,6 +10,40 @@ FraudRAG explores whether a financial statement's arithmetic and contents can be
 1. **Application prototype:** `backend/`, frontend, Bronze/Silver/Gold pipeline, Neo4j graph utilities, Chroma support and risk-scoring services. Existence of code does **not** demonstrate field accuracy.
 2. **Controlled research studies:** `benchmark/`, `experiments/`, `tests/` and `research/`. These include measured experiments with *fictional* statements and a **separate** publicly released SEC enforcement-linked accounting misstatement baseline.
 
+## Secure Plaid Statements lifecycle (implemented, offline-tested)
+
+FraudRAG-EAC now includes the entire **server-only software path** for a
+consented original-statement comparison: explicitly approved Plaid Statements
+Link initiation, one-time public-token exchange, an encrypted AES-256-GCM
+tenant/user/Item/account consent vault, account ownership verification,
+bounded original PDF retrieval with Plaid response checksum validation,
+bytes-equal/different results and immediate local consent revocation with
+explicit upstream `/item/remove` plus recoverable cleanup retries. The
+custom signed-issuer evidence alternative remains independent.
+
+**No real bank account or provider is connected**. Plaid Link creation can
+be billable at Item creation; we have not created any Plaid Item or charged
+any fee. The code has **no publicly callable authenticated real-bank route**
+because the existing app lacks production-grade identity/session verification,
+a managed per-user consent vault/KMS, and approved operator credentials.
+The existing frontend EAC page remains a controlled **fictional sandbox**.
+Setting feature flags alone does not initialize Link or authorize any user.
+
+- [Full production-activation runbook and external owner checklist](docs/EAC_PRODUCTION_ACTIVATION_RUNBOOK.md)
+- [Plaid Statements and custom signed issuer provider security design](docs/EAC_ISSUER_PROVIDER_INTEGRATIONS.md)
+- Offline code: `backend/services/plaid_link_client.py`,
+  `backend/services/eac_consent_vault.py`,
+  `backend/services/plaid_consent_workflow.py`,
+  `backend/services/plaid_consent_bootstrap.py`
+- Integration tests: `tests/test_plaid_full_http_workflow.py`,
+  `tests/test_plaid_link_client.py`,
+  `tests/test_eac_consent_vault.py`,
+  `tests/test_plaid_consent_workflow.py`
+
+All current synthetic research findings and the cited SSRN FraudRAG DOI
+remain unchanged. This integration alone does **not** make the IEEE OJ-CS
+manuscript scientifically submission-ready.
+
 ## NEW: Evidence Acquisition Controller (FraudRAG-EAC)
 
 **Implemented in the research branch:** a gated, interactive, **fictional-only**
