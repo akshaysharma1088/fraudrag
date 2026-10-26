@@ -198,3 +198,24 @@ The previous first-250-character partial reference run https://github.com/akshay
 60/60 GPT-6.1 Sol calls executed at https://github.com/akshaysharma1088/fraudrag/actions/runs/40372143670 . Independent case IDs, provenance, source claims and scoring recomputed successfully at https://github.com/akshaysharma1088/fraudrag/actions/runs/40372704350 . Full predictions and protocol at `research/verified_runs/fraudrag_v3_external_20261026/`. Five third-party **synthetic** original PDFs each contribute four related derived text cases (20 total). GPT without an original and with only 30 original tokens abstained on all 20; GPT supplied **the complete original extracted text** classified all 20 scripted edits/unchanged controls correctly. Token estimate $0.349444, unsupported citations zero.
 
 **This is an artificial exact-original textual oracle** with no independently adjudicated real fraud, no falsified PDF images, no broad institution split and no separate bank ledger. It cannot establish publication-ready novelty or real-world financial fraud accuracy.
+
+## G11 — V4 deterministic adaptive source acquisition (LIMITED VERIFIED)
+
+Reproducible **synthetic**, no-LLM, cost-only active-source study
+with 1,080 calibration, 720 ordinary held-out and 360 simulated shift
+case groups. Four deterministic policies, the SAME simulated
+action costs, priors, source masks and evidence checker. Independent
+audit verifies 12,960 traces across 3 budget settings.
+Source https://github.com/akshaysharma1088/fraudrag/actions/runs/40395485609 ;
+per-case archive `research/verified_runs/fraudrag_v4_adaptive_20261026/`.
+
+At budget 4 invented cost units: dynamic programming 509/720 (70.69%)
+complete source certificates at mean 2.593 cost, prior-informed greedy
+495/720 (68.75%) at 2.794 cost. Paired coverage difference 1.94 points,
+95% interval [−0.14,+4.03] points INCLUDES ZERO. Shift DP 35.00%
+versus greedy 35.56%. **No proven coverage superiority**, no
+actual bank documents, no LLM/GraphRAG in this experiment, no original
+algorithm claim; finite-horizon DP is itself deterministic. The
+original SSRN FraudRAG preprint is separately cited once on SSRN,
+and its earlier unsupported claims require transparent correction
+rather than erasing the cited bibliographic identity.
