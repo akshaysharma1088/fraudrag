@@ -1,0 +1,73 @@
+{
+  "scope": "controlled synthetic edits to machine-readable financial statements ONLY",
+  "real_bank_fraud_evidence": false,
+  "not_original_fraudrag_2400": true,
+  "benchmark": {
+    "title": "FraudRAG-v2 synthetic statement inconsistency feasibility benchmark",
+    "not_original_fraudrag_2400": true,
+    "not_real_statement_fraud": true,
+    "seed": 20261026,
+    "customer_count": 120,
+    "total_cases": 840,
+    "type_counts": {
+      "legitimate": 120,
+      "hard_negative": 120,
+      "balance": 120,
+      "amount": 120,
+      "date": 120,
+      "entity": 120,
+      "fabricated": 120
+    },
+    "csv_sha256": "1ab25182cd7607f4090dc87695e1f668940a74b1d67fd620f418278f018878b7",
+    "reference_timing": "recorded strictly before statement submission",
+    "leakage_control": "split by customer group; never index held-out customer statements",
+    "synthetic_oracle_warning": "Graph reference includes authoritative same-period bank ledger; graph-assisted comparisons may be artificially easier than real-world fraud investigation.",
+    "missing_dimensions": [
+      "scans",
+      "OCR errors",
+      "real formatting",
+      "real fraud adjudications",
+      "unknown-bank ledger gaps",
+      "financial institution diversity"
+    ]
+  },
+  "split_seed": 57,
+  "n_train": 595,
+  "n_held_out_evaluated": 28,
+  "n_distinct_evaluation_customers": 28,
+  "rules": {
+    "name": "rules_only",
+    "n": 28,
+    "tp": 8,
+    "tn": 8,
+    "fp": 0,
+    "fn": 12,
+    "abstain": 0,
+    "accuracy": 0.5714285714285714,
+    "precision": 1.0,
+    "recall": 0.4,
+    "f1": 0.5714285714285715,
+    "fraud_prevalence": 0.7142857142857143
+  },
+  "reference_matching": {
+    "name": "exact_authoritative_matching",
+    "n": 28,
+    "tp": 20,
+    "tn": 8,
+    "fp": 0,
+    "fn": 0,
+    "abstain": 0,
+    "accuracy": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "f1": 1.0,
+    "fraud_prevalence": 0.7142857142857143
+  },
+  "limitations": [
+    "synthetic banks, customers, records, manipulations",
+    "authoritative ledger is an unusually strong oracle",
+    "text-native documents without OCR, layout or signatures",
+    "customer-grouped split but small test subset",
+    "known edit labels are not investigator-adjudicated fraud"
+  ]
+}

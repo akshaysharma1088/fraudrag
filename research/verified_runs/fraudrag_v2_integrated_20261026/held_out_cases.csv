@@ -1,0 +1,341 @@
+case_id,customer_group,submission_date,tamper_type,fraud_label,statement_text,historical_vector_corpus_text,graph_reference_json,format_style,reference_recorded_before_submission,ground_truth_rule,graph_reference
+S00004-5,C00004,2026-02-20,entity,1,"ACCOUNT STATEMENT
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00004
+Account: 80000004
+Period: 2026-01-21 to 2026-02-19
+Opening balance: 12057.87
+Transactions:
+2026-01-23 | T00004-0 | CREDIT | 870.61 | Insurance
+2026-01-29 | T00004-1 | DEBIT | 771.68 | Transit
+2026-02-04 | T00004-2 | DEBIT | 208.52 | Medical
+2026-02-10 | T00004-3 | DEBIT | 911.81 | Refund
+Closing balance: 11036.47","Previous-period bank record, customer Fictional Customer 00004, account 10000004, institution Northfield Credit Union. Verified relationship existed by 2026-02-18. This is not the submitted current-period statement.","{""account"": ""10000004"", ""customer"": ""Fictional Customer 00004"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-02-18"", ""reference_closing_balance"": ""11036.47"", ""reference_transactions"": [{""amount"": ""870.61"", ""date"": ""2026-01-23"", ""direction"": ""credit"", ""id"": ""T00004-0""}, {""amount"": ""771.68"", ""date"": ""2026-01-29"", ""direction"": ""debit"", ""id"": ""T00004-1""}, {""amount"": ""208.52"", ""date"": ""2026-02-04"", ""direction"": ""debit"", ""id"": ""T00004-2""}, {""amount"": ""911.81"", ""date"": ""2026-02-10"", ""direction"": ""debit"", ""id"": ""T00004-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00004/2026-02-18""}",classic,True,controlled synthetic edit,"{'account': '10000004', 'customer': 'Fictional Customer 00004', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-02-18', 'reference_closing_balance': '11036.47', 'reference_transactions': [{'amount': '870.61', 'date': '2026-01-23', 'direction': 'credit', 'id': 'T00004-0'}, {'amount': '771.68', 'date': '2026-01-29', 'direction': 'debit', 'id': 'T00004-1'}, {'amount': '208.52', 'date': '2026-02-04', 'direction': 'debit', 'id': 'T00004-2'}, {'amount': '911.81', 'date': '2026-02-10', 'direction': 'debit', 'id': 'T00004-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00004/2026-02-18'}"
+S00006-3,C00006,2026-02-22,amount,1,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00006
+Account: 10000006
+Period: 2026-01-23 to 2026-02-21
+Opening balance: 6204.15
+Transactions:
+2026-01-25 | T00006-0 | CREDIT | 861.27 | Medical
+2026-01-31 | T00006-1 | DEBIT | 433.12 | Refund
+2026-02-06 | T00006-2 | DEBIT | 612.00 | Rent
+2026-02-12 | T00006-3 | DEBIT | 1272.90 | Payroll
+Closing balance: 4747.40","Previous-period bank record, customer Fictional Customer 00006, account 10000006, institution Cedar Valley Bank. Verified relationship existed by 2026-02-20. This is not the submitted current-period statement.","{""account"": ""10000006"", ""customer"": ""Fictional Customer 00006"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-02-20"", ""reference_closing_balance"": ""4447.40"", ""reference_transactions"": [{""amount"": ""561.27"", ""date"": ""2026-01-25"", ""direction"": ""credit"", ""id"": ""T00006-0""}, {""amount"": ""433.12"", ""date"": ""2026-01-31"", ""direction"": ""debit"", ""id"": ""T00006-1""}, {""amount"": ""612.00"", ""date"": ""2026-02-06"", ""direction"": ""debit"", ""id"": ""T00006-2""}, {""amount"": ""1272.90"", ""date"": ""2026-02-12"", ""direction"": ""debit"", ""id"": ""T00006-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00006/2026-02-20""}",classic,True,controlled synthetic edit,"{'account': '10000006', 'customer': 'Fictional Customer 00006', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-02-20', 'reference_closing_balance': '4447.40', 'reference_transactions': [{'amount': '561.27', 'date': '2026-01-25', 'direction': 'credit', 'id': 'T00006-0'}, {'amount': '433.12', 'date': '2026-01-31', 'direction': 'debit', 'id': 'T00006-1'}, {'amount': '612.00', 'date': '2026-02-06', 'direction': 'debit', 'id': 'T00006-2'}, {'amount': '1272.90', 'date': '2026-02-12', 'direction': 'debit', 'id': 'T00006-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00006/2026-02-20'}"
+S00007-4,C00007,2026-02-23,date,1,"ACCOUNT STATEMENT
+Institution: Fairview Savings
+Customer: Fictional Customer 00007
+Account: 10000007
+Period: 2026-01-24 to 2026-02-22
+Opening balance: 11916.01
+Transactions:
+2026-01-26 | T00007-0 | CREDIT | 1055.45 | Refund
+2026-02-01 | T00007-1 | DEBIT | 318.77 | Rent
+2026-03-01 | T00007-2 | DEBIT | 1059.73 | Payroll
+2026-02-13 | T00007-3 | DEBIT | 836.88 | Groceries
+Closing balance: 10756.08","Previous-period bank record, customer Fictional Customer 00007, account 10000007, institution Fairview Savings. Verified relationship existed by 2026-02-21. This is not the submitted current-period statement.","{""account"": ""10000007"", ""customer"": ""Fictional Customer 00007"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-02-21"", ""reference_closing_balance"": ""10756.08"", ""reference_transactions"": [{""amount"": ""1055.45"", ""date"": ""2026-01-26"", ""direction"": ""credit"", ""id"": ""T00007-0""}, {""amount"": ""318.77"", ""date"": ""2026-02-01"", ""direction"": ""debit"", ""id"": ""T00007-1""}, {""amount"": ""1059.73"", ""date"": ""2026-02-07"", ""direction"": ""debit"", ""id"": ""T00007-2""}, {""amount"": ""836.88"", ""date"": ""2026-02-13"", ""direction"": ""debit"", ""id"": ""T00007-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00007/2026-02-21""}",tabular,True,controlled synthetic edit,"{'account': '10000007', 'customer': 'Fictional Customer 00007', 'institution': 'Fairview Savings', 'recorded_at': '2026-02-21', 'reference_closing_balance': '10756.08', 'reference_transactions': [{'amount': '1055.45', 'date': '2026-01-26', 'direction': 'credit', 'id': 'T00007-0'}, {'amount': '318.77', 'date': '2026-02-01', 'direction': 'debit', 'id': 'T00007-1'}, {'amount': '1059.73', 'date': '2026-02-07', 'direction': 'debit', 'id': 'T00007-2'}, {'amount': '836.88', 'date': '2026-02-13', 'direction': 'debit', 'id': 'T00007-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00007/2026-02-21'}"
+S00008-4,C00008,2026-02-24,date,1,"ACCOUNT STATEMENT
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00008
+Account: 10000008
+Period: 2026-01-25 to 2026-02-23
+Opening balance: 4443.97
+Transactions:
+2026-01-27 | T00008-0 | CREDIT | 1211.49 | Rent
+2026-02-02 | T00008-1 | DEBIT | 359.48 | Payroll
+2026-03-02 | T00008-2 | DEBIT | 1049.82 | Groceries
+2026-02-14 | T00008-3 | DEBIT | 455.75 | Utilities
+Closing balance: 3790.41","Previous-period bank record, customer Fictional Customer 00008, account 10000008, institution Northfield Credit Union. Verified relationship existed by 2026-02-22. This is not the submitted current-period statement.","{""account"": ""10000008"", ""customer"": ""Fictional Customer 00008"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-02-22"", ""reference_closing_balance"": ""3790.41"", ""reference_transactions"": [{""amount"": ""1211.49"", ""date"": ""2026-01-27"", ""direction"": ""credit"", ""id"": ""T00008-0""}, {""amount"": ""359.48"", ""date"": ""2026-02-02"", ""direction"": ""debit"", ""id"": ""T00008-1""}, {""amount"": ""1049.82"", ""date"": ""2026-02-08"", ""direction"": ""debit"", ""id"": ""T00008-2""}, {""amount"": ""455.75"", ""date"": ""2026-02-14"", ""direction"": ""debit"", ""id"": ""T00008-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00008/2026-02-22""}",classic,True,controlled synthetic edit,"{'account': '10000008', 'customer': 'Fictional Customer 00008', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-02-22', 'reference_closing_balance': '3790.41', 'reference_transactions': [{'amount': '1211.49', 'date': '2026-01-27', 'direction': 'credit', 'id': 'T00008-0'}, {'amount': '359.48', 'date': '2026-02-02', 'direction': 'debit', 'id': 'T00008-1'}, {'amount': '1049.82', 'date': '2026-02-08', 'direction': 'debit', 'id': 'T00008-2'}, {'amount': '455.75', 'date': '2026-02-14', 'direction': 'debit', 'id': 'T00008-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00008/2026-02-22'}"
+S00009-3,C00009,2026-02-25,amount,1,"ACCOUNT STATEMENT
+Institution: Harbor Community Bank
+Customer: Fictional Customer 00009
+Account: 10000009
+Period: 2026-01-26 to 2026-02-24
+Opening balance: 15686.82
+Transactions:
+2026-01-28 | T00009-0 | CREDIT | 289.81 | Payroll
+2026-02-03 | T00009-1 | DEBIT | 957.21 | Groceries
+2026-02-09 | T00009-2 | DEBIT | 274.71 | Utilities
+2026-02-15 | T00009-3 | DEBIT | 986.77 | Insurance
+Closing balance: 13757.94","Previous-period bank record, customer Fictional Customer 00009, account 10000009, institution Harbor Community Bank. Verified relationship existed by 2026-02-23. This is not the submitted current-period statement.","{""account"": ""10000009"", ""customer"": ""Fictional Customer 00009"", ""institution"": ""Harbor Community Bank"", ""recorded_at"": ""2026-02-23"", ""reference_closing_balance"": ""14057.94"", ""reference_transactions"": [{""amount"": ""289.81"", ""date"": ""2026-01-28"", ""direction"": ""credit"", ""id"": ""T00009-0""}, {""amount"": ""957.21"", ""date"": ""2026-02-03"", ""direction"": ""debit"", ""id"": ""T00009-1""}, {""amount"": ""274.71"", ""date"": ""2026-02-09"", ""direction"": ""debit"", ""id"": ""T00009-2""}, {""amount"": ""686.77"", ""date"": ""2026-02-15"", ""direction"": ""debit"", ""id"": ""T00009-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00009/2026-02-23""}",classic,True,controlled synthetic edit,"{'account': '10000009', 'customer': 'Fictional Customer 00009', 'institution': 'Harbor Community Bank', 'recorded_at': '2026-02-23', 'reference_closing_balance': '14057.94', 'reference_transactions': [{'amount': '289.81', 'date': '2026-01-28', 'direction': 'credit', 'id': 'T00009-0'}, {'amount': '957.21', 'date': '2026-02-03', 'direction': 'debit', 'id': 'T00009-1'}, {'amount': '274.71', 'date': '2026-02-09', 'direction': 'debit', 'id': 'T00009-2'}, {'amount': '686.77', 'date': '2026-02-15', 'direction': 'debit', 'id': 'T00009-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00009/2026-02-23'}"
+S00011-5,C00011,2026-02-27,entity,1,"Account activity
+Institution: Fairview Savings
+Customer: Fictional Customer 00011
+Account: 80000011
+Period: 2026-01-28 to 2026-02-26
+Opening balance: 4698.58
+Transactions:
+2026-01-30 | T00011-0 | CREDIT | 725.08 | Utilities
+2026-02-05 | T00011-1 | DEBIT | 152.15 | Insurance
+2026-02-11 | T00011-2 | DEBIT | 56.04 | Transit
+2026-02-17 | T00011-3 | DEBIT | 1340.90 | Medical
+Closing balance: 3874.57","Previous-period bank record, customer Fictional Customer 00011, account 10000011, institution Fairview Savings. Verified relationship existed by 2026-02-25. This is not the submitted current-period statement.","{""account"": ""10000011"", ""customer"": ""Fictional Customer 00011"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-02-25"", ""reference_closing_balance"": ""3874.57"", ""reference_transactions"": [{""amount"": ""725.08"", ""date"": ""2026-01-30"", ""direction"": ""credit"", ""id"": ""T00011-0""}, {""amount"": ""152.15"", ""date"": ""2026-02-05"", ""direction"": ""debit"", ""id"": ""T00011-1""}, {""amount"": ""56.04"", ""date"": ""2026-02-11"", ""direction"": ""debit"", ""id"": ""T00011-2""}, {""amount"": ""1340.90"", ""date"": ""2026-02-17"", ""direction"": ""debit"", ""id"": ""T00011-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00011/2026-02-25""}",compact,True,controlled synthetic edit,"{'account': '10000011', 'customer': 'Fictional Customer 00011', 'institution': 'Fairview Savings', 'recorded_at': '2026-02-25', 'reference_closing_balance': '3874.57', 'reference_transactions': [{'amount': '725.08', 'date': '2026-01-30', 'direction': 'credit', 'id': 'T00011-0'}, {'amount': '152.15', 'date': '2026-02-05', 'direction': 'debit', 'id': 'T00011-1'}, {'amount': '56.04', 'date': '2026-02-11', 'direction': 'debit', 'id': 'T00011-2'}, {'amount': '1340.90', 'date': '2026-02-17', 'direction': 'debit', 'id': 'T00011-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00011/2026-02-25'}"
+S00012-2,C00012,2026-02-28,balance,1,"ACCOUNT STATEMENT
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00012
+Account: 10000012
+Period: 2026-01-29 to 2026-02-27
+Opening balance: 19063.20
+Transactions:
+2026-01-31 | T00012-0 | CREDIT | 509.28 | Insurance
+2026-02-06 | T00012-1 | DEBIT | 1198.20 | Transit
+2026-02-12 | T00012-2 | DEBIT | 948.87 | Medical
+2026-02-18 | T00012-3 | DEBIT | 1049.90 | Refund
+Closing balance: 16548.60","Previous-period bank record, customer Fictional Customer 00012, account 10000012, institution Northfield Credit Union. Verified relationship existed by 2026-02-26. This is not the submitted current-period statement.","{""account"": ""10000012"", ""customer"": ""Fictional Customer 00012"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-02-26"", ""reference_closing_balance"": ""16375.51"", ""reference_transactions"": [{""amount"": ""509.28"", ""date"": ""2026-01-31"", ""direction"": ""credit"", ""id"": ""T00012-0""}, {""amount"": ""1198.20"", ""date"": ""2026-02-06"", ""direction"": ""debit"", ""id"": ""T00012-1""}, {""amount"": ""948.87"", ""date"": ""2026-02-12"", ""direction"": ""debit"", ""id"": ""T00012-2""}, {""amount"": ""1049.90"", ""date"": ""2026-02-18"", ""direction"": ""debit"", ""id"": ""T00012-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00012/2026-02-26""}",tabular,True,controlled synthetic edit,"{'account': '10000012', 'customer': 'Fictional Customer 00012', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-02-26', 'reference_closing_balance': '16375.51', 'reference_transactions': [{'amount': '509.28', 'date': '2026-01-31', 'direction': 'credit', 'id': 'T00012-0'}, {'amount': '1198.20', 'date': '2026-02-06', 'direction': 'debit', 'id': 'T00012-1'}, {'amount': '948.87', 'date': '2026-02-12', 'direction': 'debit', 'id': 'T00012-2'}, {'amount': '1049.90', 'date': '2026-02-18', 'direction': 'debit', 'id': 'T00012-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00012/2026-02-26'}"
+S00014-1,C00014,2026-03-02,hard_negative,0,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00014
+Account: 10000014
+Period: 2026-01-31 to 2026-03-01
+Opening balance: 17461.20
+Transactions:
+2026-02-02 | T00014-0 | CREDIT | 816.82 | Annual adjustment (verified)
+2026-02-08 | T00014-1 | DEBIT | 1027.90 | Refund
+2026-02-14 | T00014-2 | DEBIT | 1207.54 | Rent
+2026-02-20 | T00014-3 | DEBIT | 1151.29 | Payroll
+Closing balance: 14891.29","Previous-period bank record, customer Fictional Customer 00014, account 10000014, institution Cedar Valley Bank. Verified relationship existed by 2026-02-28. This is not the submitted current-period statement.","{""account"": ""10000014"", ""customer"": ""Fictional Customer 00014"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-02-28"", ""reference_closing_balance"": ""14891.29"", ""reference_transactions"": [{""amount"": ""816.82"", ""date"": ""2026-02-02"", ""direction"": ""credit"", ""id"": ""T00014-0""}, {""amount"": ""1027.90"", ""date"": ""2026-02-08"", ""direction"": ""debit"", ""id"": ""T00014-1""}, {""amount"": ""1207.54"", ""date"": ""2026-02-14"", ""direction"": ""debit"", ""id"": ""T00014-2""}, {""amount"": ""1151.29"", ""date"": ""2026-02-20"", ""direction"": ""debit"", ""id"": ""T00014-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00014/2026-02-28""}",classic,True,synthetic unchanged,"{'account': '10000014', 'customer': 'Fictional Customer 00014', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-02-28', 'reference_closing_balance': '14891.29', 'reference_transactions': [{'amount': '816.82', 'date': '2026-02-02', 'direction': 'credit', 'id': 'T00014-0'}, {'amount': '1027.90', 'date': '2026-02-08', 'direction': 'debit', 'id': 'T00014-1'}, {'amount': '1207.54', 'date': '2026-02-14', 'direction': 'debit', 'id': 'T00014-2'}, {'amount': '1151.29', 'date': '2026-02-20', 'direction': 'debit', 'id': 'T00014-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00014/2026-02-28'}"
+S00015-0,C00015,2026-03-03,legitimate,0,"ACCOUNT STATEMENT
+Institution: Fairview Savings
+Customer: Fictional Customer 00015
+Account: 10000015
+Period: 2026-02-01 to 2026-03-02
+Opening balance: 18862.58
+Transactions:
+2026-02-03 | T00015-0 | CREDIT | 231.03 | Refund
+2026-02-09 | T00015-1 | DEBIT | 373.74 | Rent
+2026-02-15 | T00015-2 | DEBIT | 858.83 | Payroll
+2026-02-21 | T00015-3 | DEBIT | 898.58 | Groceries
+Closing balance: 16962.46","Previous-period bank record, customer Fictional Customer 00015, account 10000015, institution Fairview Savings. Verified relationship existed by 2026-03-01. This is not the submitted current-period statement.","{""account"": ""10000015"", ""customer"": ""Fictional Customer 00015"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-03-01"", ""reference_closing_balance"": ""16962.46"", ""reference_transactions"": [{""amount"": ""231.03"", ""date"": ""2026-02-03"", ""direction"": ""credit"", ""id"": ""T00015-0""}, {""amount"": ""373.74"", ""date"": ""2026-02-09"", ""direction"": ""debit"", ""id"": ""T00015-1""}, {""amount"": ""858.83"", ""date"": ""2026-02-15"", ""direction"": ""debit"", ""id"": ""T00015-2""}, {""amount"": ""898.58"", ""date"": ""2026-02-21"", ""direction"": ""debit"", ""id"": ""T00015-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00015/2026-03-01""}",classic,True,synthetic unchanged,"{'account': '10000015', 'customer': 'Fictional Customer 00015', 'institution': 'Fairview Savings', 'recorded_at': '2026-03-01', 'reference_closing_balance': '16962.46', 'reference_transactions': [{'amount': '231.03', 'date': '2026-02-03', 'direction': 'credit', 'id': 'T00015-0'}, {'amount': '373.74', 'date': '2026-02-09', 'direction': 'debit', 'id': 'T00015-1'}, {'amount': '858.83', 'date': '2026-02-15', 'direction': 'debit', 'id': 'T00015-2'}, {'amount': '898.58', 'date': '2026-02-21', 'direction': 'debit', 'id': 'T00015-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00015/2026-03-01'}"
+S00020-6,C00020,2026-03-08,fabricated,1,"ACCOUNT STATEMENT
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00020
+Account: 10000020
+Period: 2026-02-06 to 2026-03-07
+Opening balance: 14269.11
+Transactions:
+2026-02-08 | T00020-0 | CREDIT | 1120.98 | Insurance
+2026-02-14 | T00020-1 | DEBIT | 395.48 | Transit
+2026-02-20 | T00020-2 | DEBIT | 1221.53 | Medical
+2026-02-26 | T00020-3 | DEBIT | 689.80 | Refund
+2026-03-06 | F00020 | DEBIT | 120.00 | Synthetic adjustment
+Closing balance: 12963.28","Previous-period bank record, customer Fictional Customer 00020, account 10000020, institution Northfield Credit Union. Verified relationship existed by 2026-03-06. This is not the submitted current-period statement.","{""account"": ""10000020"", ""customer"": ""Fictional Customer 00020"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-03-06"", ""reference_closing_balance"": ""13083.28"", ""reference_transactions"": [{""amount"": ""1120.98"", ""date"": ""2026-02-08"", ""direction"": ""credit"", ""id"": ""T00020-0""}, {""amount"": ""395.48"", ""date"": ""2026-02-14"", ""direction"": ""debit"", ""id"": ""T00020-1""}, {""amount"": ""1221.53"", ""date"": ""2026-02-20"", ""direction"": ""debit"", ""id"": ""T00020-2""}, {""amount"": ""689.80"", ""date"": ""2026-02-26"", ""direction"": ""debit"", ""id"": ""T00020-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00020/2026-03-06""}",tabular,True,controlled synthetic edit,"{'account': '10000020', 'customer': 'Fictional Customer 00020', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-03-06', 'reference_closing_balance': '13083.28', 'reference_transactions': [{'amount': '1120.98', 'date': '2026-02-08', 'direction': 'credit', 'id': 'T00020-0'}, {'amount': '395.48', 'date': '2026-02-14', 'direction': 'debit', 'id': 'T00020-1'}, {'amount': '1221.53', 'date': '2026-02-20', 'direction': 'debit', 'id': 'T00020-2'}, {'amount': '689.80', 'date': '2026-02-26', 'direction': 'debit', 'id': 'T00020-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00020/2026-03-06'}"
+S00026-0,C00026,2026-03-14,legitimate,0,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00026
+Account: 10000026
+Period: 2026-02-12 to 2026-03-13
+Opening balance: 19496.15
+Transactions:
+2026-02-14 | T00026-0 | CREDIT | 678.89 | Groceries
+2026-02-20 | T00026-1 | DEBIT | 594.15 | Utilities
+2026-02-26 | T00026-2 | DEBIT | 139.00 | Insurance
+2026-03-04 | T00026-3 | DEBIT | 197.00 | Transit
+Closing balance: 19244.89","Previous-period bank record, customer Fictional Customer 00026, account 10000026, institution Cedar Valley Bank. Verified relationship existed by 2026-03-12. This is not the submitted current-period statement.","{""account"": ""10000026"", ""customer"": ""Fictional Customer 00026"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-03-12"", ""reference_closing_balance"": ""19244.89"", ""reference_transactions"": [{""amount"": ""678.89"", ""date"": ""2026-02-14"", ""direction"": ""credit"", ""id"": ""T00026-0""}, {""amount"": ""594.15"", ""date"": ""2026-02-20"", ""direction"": ""debit"", ""id"": ""T00026-1""}, {""amount"": ""139.00"", ""date"": ""2026-02-26"", ""direction"": ""debit"", ""id"": ""T00026-2""}, {""amount"": ""197.00"", ""date"": ""2026-03-04"", ""direction"": ""debit"", ""id"": ""T00026-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00026/2026-03-12""}",tabular,True,synthetic unchanged,"{'account': '10000026', 'customer': 'Fictional Customer 00026', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-03-12', 'reference_closing_balance': '19244.89', 'reference_transactions': [{'amount': '678.89', 'date': '2026-02-14', 'direction': 'credit', 'id': 'T00026-0'}, {'amount': '594.15', 'date': '2026-02-20', 'direction': 'debit', 'id': 'T00026-1'}, {'amount': '139.00', 'date': '2026-02-26', 'direction': 'debit', 'id': 'T00026-2'}, {'amount': '197.00', 'date': '2026-03-04', 'direction': 'debit', 'id': 'T00026-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00026/2026-03-12'}"
+S00031-3,C00031,2026-03-19,amount,1,"Account activity
+Institution: Fairview Savings
+Customer: Fictional Customer 00031
+Account: 10000031
+Period: 2026-02-17 to 2026-03-18
+Opening balance: 6125.82
+Transactions:
+2026-02-19 | T00031-0 | CREDIT | 927.66 | Refund
+2026-02-25 | T00031-1 | DEBIT | 722.02 | Rent
+2026-03-03 | T00031-2 | DEBIT | 1691.54 | Payroll
+2026-03-09 | T00031-3 | DEBIT | 1256.40 | Groceries
+Closing balance: 3383.52","Previous-period bank record, customer Fictional Customer 00031, account 10000031, institution Fairview Savings. Verified relationship existed by 2026-03-17. This is not the submitted current-period statement.","{""account"": ""10000031"", ""customer"": ""Fictional Customer 00031"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-03-17"", ""reference_closing_balance"": ""3683.52"", ""reference_transactions"": [{""amount"": ""927.66"", ""date"": ""2026-02-19"", ""direction"": ""credit"", ""id"": ""T00031-0""}, {""amount"": ""722.02"", ""date"": ""2026-02-25"", ""direction"": ""debit"", ""id"": ""T00031-1""}, {""amount"": ""1391.54"", ""date"": ""2026-03-03"", ""direction"": ""debit"", ""id"": ""T00031-2""}, {""amount"": ""1256.40"", ""date"": ""2026-03-09"", ""direction"": ""debit"", ""id"": ""T00031-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00031/2026-03-17""}",compact,True,controlled synthetic edit,"{'account': '10000031', 'customer': 'Fictional Customer 00031', 'institution': 'Fairview Savings', 'recorded_at': '2026-03-17', 'reference_closing_balance': '3683.52', 'reference_transactions': [{'amount': '927.66', 'date': '2026-02-19', 'direction': 'credit', 'id': 'T00031-0'}, {'amount': '722.02', 'date': '2026-02-25', 'direction': 'debit', 'id': 'T00031-1'}, {'amount': '1391.54', 'date': '2026-03-03', 'direction': 'debit', 'id': 'T00031-2'}, {'amount': '1256.40', 'date': '2026-03-09', 'direction': 'debit', 'id': 'T00031-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00031/2026-03-17'}"
+S00034-2,C00034,2026-03-22,balance,1,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00034
+Account: 10000034
+Period: 2026-02-20 to 2026-03-21
+Opening balance: 6950.91
+Transactions:
+2026-02-22 | T00034-0 | CREDIT | 1187.46 | Groceries
+2026-02-28 | T00034-1 | DEBIT | 651.78 | Utilities
+2026-03-06 | T00034-2 | DEBIT | 536.11 | Insurance
+2026-03-12 | T00034-3 | DEBIT | 716.47 | Transit
+Closing balance: 5872.66","Previous-period bank record, customer Fictional Customer 00034, account 10000034, institution Cedar Valley Bank. Verified relationship existed by 2026-03-20. This is not the submitted current-period statement.","{""account"": ""10000034"", ""customer"": ""Fictional Customer 00034"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-03-20"", ""reference_closing_balance"": ""6234.01"", ""reference_transactions"": [{""amount"": ""1187.46"", ""date"": ""2026-02-22"", ""direction"": ""credit"", ""id"": ""T00034-0""}, {""amount"": ""651.78"", ""date"": ""2026-02-28"", ""direction"": ""debit"", ""id"": ""T00034-1""}, {""amount"": ""536.11"", ""date"": ""2026-03-06"", ""direction"": ""debit"", ""id"": ""T00034-2""}, {""amount"": ""716.47"", ""date"": ""2026-03-12"", ""direction"": ""debit"", ""id"": ""T00034-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00034/2026-03-20""}",classic,True,controlled synthetic edit,"{'account': '10000034', 'customer': 'Fictional Customer 00034', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-03-20', 'reference_closing_balance': '6234.01', 'reference_transactions': [{'amount': '1187.46', 'date': '2026-02-22', 'direction': 'credit', 'id': 'T00034-0'}, {'amount': '651.78', 'date': '2026-02-28', 'direction': 'debit', 'id': 'T00034-1'}, {'amount': '536.11', 'date': '2026-03-06', 'direction': 'debit', 'id': 'T00034-2'}, {'amount': '716.47', 'date': '2026-03-12', 'direction': 'debit', 'id': 'T00034-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00034/2026-03-20'}"
+S00042-0,C00042,2026-03-30,legitimate,0,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00042
+Account: 10000042
+Period: 2026-02-28 to 2026-03-29
+Opening balance: 14791.67
+Transactions:
+2026-03-02 | T00042-0 | CREDIT | 215.10 | Groceries
+2026-03-08 | T00042-1 | DEBIT | 777.61 | Utilities
+2026-03-14 | T00042-2 | DEBIT | 851.45 | Insurance
+2026-03-20 | T00042-3 | DEBIT | 902.24 | Transit
+Closing balance: 12475.47","Previous-period bank record, customer Fictional Customer 00042, account 10000042, institution Cedar Valley Bank. Verified relationship existed by 2026-03-28. This is not the submitted current-period statement.","{""account"": ""10000042"", ""customer"": ""Fictional Customer 00042"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-03-28"", ""reference_closing_balance"": ""12475.47"", ""reference_transactions"": [{""amount"": ""215.10"", ""date"": ""2026-03-02"", ""direction"": ""credit"", ""id"": ""T00042-0""}, {""amount"": ""777.61"", ""date"": ""2026-03-08"", ""direction"": ""debit"", ""id"": ""T00042-1""}, {""amount"": ""851.45"", ""date"": ""2026-03-14"", ""direction"": ""debit"", ""id"": ""T00042-2""}, {""amount"": ""902.24"", ""date"": ""2026-03-20"", ""direction"": ""debit"", ""id"": ""T00042-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00042/2026-03-28""}",classic,True,synthetic unchanged,"{'account': '10000042', 'customer': 'Fictional Customer 00042', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-03-28', 'reference_closing_balance': '12475.47', 'reference_transactions': [{'amount': '215.10', 'date': '2026-03-02', 'direction': 'credit', 'id': 'T00042-0'}, {'amount': '777.61', 'date': '2026-03-08', 'direction': 'debit', 'id': 'T00042-1'}, {'amount': '851.45', 'date': '2026-03-14', 'direction': 'debit', 'id': 'T00042-2'}, {'amount': '902.24', 'date': '2026-03-20', 'direction': 'debit', 'id': 'T00042-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00042/2026-03-28'}"
+S00043-3,C00043,2026-03-31,amount,1,"Account activity
+Institution: Fairview Savings
+Customer: Fictional Customer 00043
+Account: 10000043
+Period: 2026-03-01 to 2026-03-30
+Opening balance: 13829.35
+Transactions:
+2026-03-03 | T00043-0 | CREDIT | 744.18 | Utilities
+2026-03-09 | T00043-1 | DEBIT | 434.97 | Insurance
+2026-03-15 | T00043-2 | DEBIT | 422.19 | Transit
+2026-03-21 | T00043-3 | DEBIT | 1151.26 | Medical
+Closing balance: 12565.11","Previous-period bank record, customer Fictional Customer 00043, account 10000043, institution Fairview Savings. Verified relationship existed by 2026-03-29. This is not the submitted current-period statement.","{""account"": ""10000043"", ""customer"": ""Fictional Customer 00043"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-03-29"", ""reference_closing_balance"": ""12265.11"", ""reference_transactions"": [{""amount"": ""444.18"", ""date"": ""2026-03-03"", ""direction"": ""credit"", ""id"": ""T00043-0""}, {""amount"": ""434.97"", ""date"": ""2026-03-09"", ""direction"": ""debit"", ""id"": ""T00043-1""}, {""amount"": ""422.19"", ""date"": ""2026-03-15"", ""direction"": ""debit"", ""id"": ""T00043-2""}, {""amount"": ""1151.26"", ""date"": ""2026-03-21"", ""direction"": ""debit"", ""id"": ""T00043-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00043/2026-03-29""}",compact,True,controlled synthetic edit,"{'account': '10000043', 'customer': 'Fictional Customer 00043', 'institution': 'Fairview Savings', 'recorded_at': '2026-03-29', 'reference_closing_balance': '12265.11', 'reference_transactions': [{'amount': '444.18', 'date': '2026-03-03', 'direction': 'credit', 'id': 'T00043-0'}, {'amount': '434.97', 'date': '2026-03-09', 'direction': 'debit', 'id': 'T00043-1'}, {'amount': '422.19', 'date': '2026-03-15', 'direction': 'debit', 'id': 'T00043-2'}, {'amount': '1151.26', 'date': '2026-03-21', 'direction': 'debit', 'id': 'T00043-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00043/2026-03-29'}"
+S00051-2,C00051,2026-04-08,balance,1,"ACCOUNT STATEMENT
+Institution: Fairview Savings
+Customer: Fictional Customer 00051
+Account: 10000051
+Period: 2026-03-09 to 2026-04-07
+Opening balance: 11788.08
+Transactions:
+2026-03-11 | T00051-0 | CREDIT | 489.24 | Utilities
+2026-03-17 | T00051-1 | DEBIT | 1053.67 | Insurance
+2026-03-23 | T00051-2 | DEBIT | 1364.73 | Transit
+2026-03-29 | T00051-3 | DEBIT | 1005.16 | Medical
+Closing balance: 8616.76","Previous-period bank record, customer Fictional Customer 00051, account 10000051, institution Fairview Savings. Verified relationship existed by 2026-04-06. This is not the submitted current-period statement.","{""account"": ""10000051"", ""customer"": ""Fictional Customer 00051"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-04-06"", ""reference_closing_balance"": ""8853.76"", ""reference_transactions"": [{""amount"": ""489.24"", ""date"": ""2026-03-11"", ""direction"": ""credit"", ""id"": ""T00051-0""}, {""amount"": ""1053.67"", ""date"": ""2026-03-17"", ""direction"": ""debit"", ""id"": ""T00051-1""}, {""amount"": ""1364.73"", ""date"": ""2026-03-23"", ""direction"": ""debit"", ""id"": ""T00051-2""}, {""amount"": ""1005.16"", ""date"": ""2026-03-29"", ""direction"": ""debit"", ""id"": ""T00051-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00051/2026-04-06""}",tabular,True,controlled synthetic edit,"{'account': '10000051', 'customer': 'Fictional Customer 00051', 'institution': 'Fairview Savings', 'recorded_at': '2026-04-06', 'reference_closing_balance': '8853.76', 'reference_transactions': [{'amount': '489.24', 'date': '2026-03-11', 'direction': 'credit', 'id': 'T00051-0'}, {'amount': '1053.67', 'date': '2026-03-17', 'direction': 'debit', 'id': 'T00051-1'}, {'amount': '1364.73', 'date': '2026-03-23', 'direction': 'debit', 'id': 'T00051-2'}, {'amount': '1005.16', 'date': '2026-03-29', 'direction': 'debit', 'id': 'T00051-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00051/2026-04-06'}"
+S00052-2,C00052,2026-04-09,balance,1,"ACCOUNT STATEMENT
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00052
+Account: 10000052
+Period: 2026-03-10 to 2026-04-08
+Opening balance: 7530.88
+Transactions:
+2026-03-12 | T00052-0 | CREDIT | 1227.61 | Insurance
+2026-03-18 | T00052-1 | DEBIT | 749.62 | Transit
+2026-03-24 | T00052-2 | DEBIT | 128.53 | Medical
+2026-03-30 | T00052-3 | DEBIT | 570.97 | Refund
+Closing balance: 6847.73","Previous-period bank record, customer Fictional Customer 00052, account 10000052, institution Northfield Credit Union. Verified relationship existed by 2026-04-07. This is not the submitted current-period statement.","{""account"": ""10000052"", ""customer"": ""Fictional Customer 00052"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-04-07"", ""reference_closing_balance"": ""7309.37"", ""reference_transactions"": [{""amount"": ""1227.61"", ""date"": ""2026-03-12"", ""direction"": ""credit"", ""id"": ""T00052-0""}, {""amount"": ""749.62"", ""date"": ""2026-03-18"", ""direction"": ""debit"", ""id"": ""T00052-1""}, {""amount"": ""128.53"", ""date"": ""2026-03-24"", ""direction"": ""debit"", ""id"": ""T00052-2""}, {""amount"": ""570.97"", ""date"": ""2026-03-30"", ""direction"": ""debit"", ""id"": ""T00052-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00052/2026-04-07""}",classic,True,controlled synthetic edit,"{'account': '10000052', 'customer': 'Fictional Customer 00052', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-04-07', 'reference_closing_balance': '7309.37', 'reference_transactions': [{'amount': '1227.61', 'date': '2026-03-12', 'direction': 'credit', 'id': 'T00052-0'}, {'amount': '749.62', 'date': '2026-03-18', 'direction': 'debit', 'id': 'T00052-1'}, {'amount': '128.53', 'date': '2026-03-24', 'direction': 'debit', 'id': 'T00052-2'}, {'amount': '570.97', 'date': '2026-03-30', 'direction': 'debit', 'id': 'T00052-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00052/2026-04-07'}"
+S00056-1,C00056,2026-04-13,hard_negative,0,"ACCOUNT STATEMENT
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00056
+Account: 10000056
+Period: 2026-03-14 to 2026-04-12
+Opening balance: 8065.29
+Transactions:
+2026-03-16 | T00056-0 | CREDIT | 980.11 | Annual adjustment (verified)
+2026-03-22 | T00056-1 | DEBIT | 835.61 | Payroll
+2026-03-28 | T00056-2 | DEBIT | 265.47 | Groceries
+2026-04-03 | T00056-3 | DEBIT | 856.42 | Utilities
+Closing balance: 7087.90","Previous-period bank record, customer Fictional Customer 00056, account 10000056, institution Northfield Credit Union. Verified relationship existed by 2026-04-11. This is not the submitted current-period statement.","{""account"": ""10000056"", ""customer"": ""Fictional Customer 00056"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-04-11"", ""reference_closing_balance"": ""7087.90"", ""reference_transactions"": [{""amount"": ""980.11"", ""date"": ""2026-03-16"", ""direction"": ""credit"", ""id"": ""T00056-0""}, {""amount"": ""835.61"", ""date"": ""2026-03-22"", ""direction"": ""debit"", ""id"": ""T00056-1""}, {""amount"": ""265.47"", ""date"": ""2026-03-28"", ""direction"": ""debit"", ""id"": ""T00056-2""}, {""amount"": ""856.42"", ""date"": ""2026-04-03"", ""direction"": ""debit"", ""id"": ""T00056-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00056/2026-04-11""}",classic,True,synthetic unchanged,"{'account': '10000056', 'customer': 'Fictional Customer 00056', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-04-11', 'reference_closing_balance': '7087.90', 'reference_transactions': [{'amount': '980.11', 'date': '2026-03-16', 'direction': 'credit', 'id': 'T00056-0'}, {'amount': '835.61', 'date': '2026-03-22', 'direction': 'debit', 'id': 'T00056-1'}, {'amount': '265.47', 'date': '2026-03-28', 'direction': 'debit', 'id': 'T00056-2'}, {'amount': '856.42', 'date': '2026-04-03', 'direction': 'debit', 'id': 'T00056-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00056/2026-04-11'}"
+S00058-5,C00058,2026-04-15,entity,1,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00058
+Account: 80000058
+Period: 2026-03-16 to 2026-04-14
+Opening balance: 4805.60
+Transactions:
+2026-03-18 | T00058-0 | CREDIT | 1043.65 | Groceries
+2026-03-24 | T00058-1 | DEBIT | 910.31 | Utilities
+2026-03-30 | T00058-2 | DEBIT | 1071.35 | Insurance
+2026-04-05 | T00058-3 | DEBIT | 59.31 | Transit
+Closing balance: 3808.28","Previous-period bank record, customer Fictional Customer 00058, account 10000058, institution Cedar Valley Bank. Verified relationship existed by 2026-04-13. This is not the submitted current-period statement.","{""account"": ""10000058"", ""customer"": ""Fictional Customer 00058"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-04-13"", ""reference_closing_balance"": ""3808.28"", ""reference_transactions"": [{""amount"": ""1043.65"", ""date"": ""2026-03-18"", ""direction"": ""credit"", ""id"": ""T00058-0""}, {""amount"": ""910.31"", ""date"": ""2026-03-24"", ""direction"": ""debit"", ""id"": ""T00058-1""}, {""amount"": ""1071.35"", ""date"": ""2026-03-30"", ""direction"": ""debit"", ""id"": ""T00058-2""}, {""amount"": ""59.31"", ""date"": ""2026-04-05"", ""direction"": ""debit"", ""id"": ""T00058-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00058/2026-04-13""}",classic,True,controlled synthetic edit,"{'account': '10000058', 'customer': 'Fictional Customer 00058', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-04-13', 'reference_closing_balance': '3808.28', 'reference_transactions': [{'amount': '1043.65', 'date': '2026-03-18', 'direction': 'credit', 'id': 'T00058-0'}, {'amount': '910.31', 'date': '2026-03-24', 'direction': 'debit', 'id': 'T00058-1'}, {'amount': '1071.35', 'date': '2026-03-30', 'direction': 'debit', 'id': 'T00058-2'}, {'amount': '59.31', 'date': '2026-04-05', 'direction': 'debit', 'id': 'T00058-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00058/2026-04-13'}"
+S00064-6,C00064,2026-04-21,fabricated,1,"Account activity
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00064
+Account: 10000064
+Period: 2026-03-22 to 2026-04-20
+Opening balance: 16175.48
+Transactions:
+2026-03-24 | T00064-0 | CREDIT | 512.14 | Rent
+2026-03-30 | T00064-1 | DEBIT | 1289.46 | Payroll
+2026-04-05 | T00064-2 | DEBIT | 946.77 | Groceries
+2026-04-11 | T00064-3 | DEBIT | 711.82 | Utilities
+2026-04-19 | F00064 | DEBIT | 120.00 | Synthetic adjustment
+Closing balance: 13619.57","Previous-period bank record, customer Fictional Customer 00064, account 10000064, institution Northfield Credit Union. Verified relationship existed by 2026-04-19. This is not the submitted current-period statement.","{""account"": ""10000064"", ""customer"": ""Fictional Customer 00064"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-04-19"", ""reference_closing_balance"": ""13739.57"", ""reference_transactions"": [{""amount"": ""512.14"", ""date"": ""2026-03-24"", ""direction"": ""credit"", ""id"": ""T00064-0""}, {""amount"": ""1289.46"", ""date"": ""2026-03-30"", ""direction"": ""debit"", ""id"": ""T00064-1""}, {""amount"": ""946.77"", ""date"": ""2026-04-05"", ""direction"": ""debit"", ""id"": ""T00064-2""}, {""amount"": ""711.82"", ""date"": ""2026-04-11"", ""direction"": ""debit"", ""id"": ""T00064-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00064/2026-04-19""}",compact,True,controlled synthetic edit,"{'account': '10000064', 'customer': 'Fictional Customer 00064', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-04-19', 'reference_closing_balance': '13739.57', 'reference_transactions': [{'amount': '512.14', 'date': '2026-03-24', 'direction': 'credit', 'id': 'T00064-0'}, {'amount': '1289.46', 'date': '2026-03-30', 'direction': 'debit', 'id': 'T00064-1'}, {'amount': '946.77', 'date': '2026-04-05', 'direction': 'debit', 'id': 'T00064-2'}, {'amount': '711.82', 'date': '2026-04-11', 'direction': 'debit', 'id': 'T00064-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00064/2026-04-19'}"
+S00086-1,C00086,2026-05-13,hard_negative,0,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00086
+Account: 10000086
+Period: 2026-04-13 to 2026-05-12
+Opening balance: 18555.75
+Transactions:
+2026-04-15 | T00086-0 | CREDIT | 1157.60 | Annual adjustment (verified)
+2026-04-21 | T00086-1 | DEBIT | 1271.50 | Refund
+2026-04-27 | T00086-2 | DEBIT | 735.99 | Rent
+2026-05-03 | T00086-3 | DEBIT | 240.59 | Payroll
+Closing balance: 17465.27","Previous-period bank record, customer Fictional Customer 00086, account 10000086, institution Cedar Valley Bank. Verified relationship existed by 2026-05-11. This is not the submitted current-period statement.","{""account"": ""10000086"", ""customer"": ""Fictional Customer 00086"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-05-11"", ""reference_closing_balance"": ""17465.27"", ""reference_transactions"": [{""amount"": ""1157.60"", ""date"": ""2026-04-15"", ""direction"": ""credit"", ""id"": ""T00086-0""}, {""amount"": ""1271.50"", ""date"": ""2026-04-21"", ""direction"": ""debit"", ""id"": ""T00086-1""}, {""amount"": ""735.99"", ""date"": ""2026-04-27"", ""direction"": ""debit"", ""id"": ""T00086-2""}, {""amount"": ""240.59"", ""date"": ""2026-05-03"", ""direction"": ""debit"", ""id"": ""T00086-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00086/2026-05-11""}",classic,True,synthetic unchanged,"{'account': '10000086', 'customer': 'Fictional Customer 00086', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-05-11', 'reference_closing_balance': '17465.27', 'reference_transactions': [{'amount': '1157.60', 'date': '2026-04-15', 'direction': 'credit', 'id': 'T00086-0'}, {'amount': '1271.50', 'date': '2026-04-21', 'direction': 'debit', 'id': 'T00086-1'}, {'amount': '735.99', 'date': '2026-04-27', 'direction': 'debit', 'id': 'T00086-2'}, {'amount': '240.59', 'date': '2026-05-03', 'direction': 'debit', 'id': 'T00086-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00086/2026-05-11'}"
+S00089-6,C00089,2026-05-16,fabricated,1,"ACCOUNT STATEMENT
+Institution: Harbor Community Bank
+Customer: Fictional Customer 00089
+Account: 10000089
+Period: 2026-04-16 to 2026-05-15
+Opening balance: 15540.95
+Transactions:
+2026-04-18 | T00089-0 | CREDIT | 262.97 | Payroll
+2026-04-24 | T00089-1 | DEBIT | 529.27 | Groceries
+2026-04-30 | T00089-2 | DEBIT | 1145.37 | Utilities
+2026-05-06 | T00089-3 | DEBIT | 924.00 | Insurance
+2026-05-14 | F00089 | DEBIT | 120.00 | Synthetic adjustment
+Closing balance: 13085.28","Previous-period bank record, customer Fictional Customer 00089, account 10000089, institution Harbor Community Bank. Verified relationship existed by 2026-05-14. This is not the submitted current-period statement.","{""account"": ""10000089"", ""customer"": ""Fictional Customer 00089"", ""institution"": ""Harbor Community Bank"", ""recorded_at"": ""2026-05-14"", ""reference_closing_balance"": ""13205.28"", ""reference_transactions"": [{""amount"": ""262.97"", ""date"": ""2026-04-18"", ""direction"": ""credit"", ""id"": ""T00089-0""}, {""amount"": ""529.27"", ""date"": ""2026-04-24"", ""direction"": ""debit"", ""id"": ""T00089-1""}, {""amount"": ""1145.37"", ""date"": ""2026-04-30"", ""direction"": ""debit"", ""id"": ""T00089-2""}, {""amount"": ""924.00"", ""date"": ""2026-05-06"", ""direction"": ""debit"", ""id"": ""T00089-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00089/2026-05-14""}",tabular,True,controlled synthetic edit,"{'account': '10000089', 'customer': 'Fictional Customer 00089', 'institution': 'Harbor Community Bank', 'recorded_at': '2026-05-14', 'reference_closing_balance': '13205.28', 'reference_transactions': [{'amount': '262.97', 'date': '2026-04-18', 'direction': 'credit', 'id': 'T00089-0'}, {'amount': '529.27', 'date': '2026-04-24', 'direction': 'debit', 'id': 'T00089-1'}, {'amount': '1145.37', 'date': '2026-04-30', 'direction': 'debit', 'id': 'T00089-2'}, {'amount': '924.00', 'date': '2026-05-06', 'direction': 'debit', 'id': 'T00089-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00089/2026-05-14'}"
+S00090-5,C00090,2026-05-17,entity,1,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00090
+Account: 80000090
+Period: 2026-04-17 to 2026-05-16
+Opening balance: 18118.85
+Transactions:
+2026-04-19 | T00090-0 | CREDIT | 938.83 | Groceries
+2026-04-25 | T00090-1 | DEBIT | 651.12 | Utilities
+2026-05-01 | T00090-2 | DEBIT | 1372.07 | Insurance
+2026-05-07 | T00090-3 | DEBIT | 265.82 | Transit
+Closing balance: 16768.67","Previous-period bank record, customer Fictional Customer 00090, account 10000090, institution Cedar Valley Bank. Verified relationship existed by 2026-05-15. This is not the submitted current-period statement.","{""account"": ""10000090"", ""customer"": ""Fictional Customer 00090"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-05-15"", ""reference_closing_balance"": ""16768.67"", ""reference_transactions"": [{""amount"": ""938.83"", ""date"": ""2026-04-19"", ""direction"": ""credit"", ""id"": ""T00090-0""}, {""amount"": ""651.12"", ""date"": ""2026-04-25"", ""direction"": ""debit"", ""id"": ""T00090-1""}, {""amount"": ""1372.07"", ""date"": ""2026-05-01"", ""direction"": ""debit"", ""id"": ""T00090-2""}, {""amount"": ""265.82"", ""date"": ""2026-05-07"", ""direction"": ""debit"", ""id"": ""T00090-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00090/2026-05-15""}",tabular,True,controlled synthetic edit,"{'account': '10000090', 'customer': 'Fictional Customer 00090', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-05-15', 'reference_closing_balance': '16768.67', 'reference_transactions': [{'amount': '938.83', 'date': '2026-04-19', 'direction': 'credit', 'id': 'T00090-0'}, {'amount': '651.12', 'date': '2026-04-25', 'direction': 'debit', 'id': 'T00090-1'}, {'amount': '1372.07', 'date': '2026-05-01', 'direction': 'debit', 'id': 'T00090-2'}, {'amount': '265.82', 'date': '2026-05-07', 'direction': 'debit', 'id': 'T00090-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00090/2026-05-15'}"
+S00095-6,C00095,2026-05-22,fabricated,1,"ACCOUNT STATEMENT
+Institution: Fairview Savings
+Customer: Fictional Customer 00095
+Account: 10000095
+Period: 2026-04-22 to 2026-05-21
+Opening balance: 11011.32
+Transactions:
+2026-04-24 | T00095-0 | CREDIT | 1094.55 | Refund
+2026-04-30 | T00095-1 | DEBIT | 760.05 | Rent
+2026-05-06 | T00095-2 | DEBIT | 323.94 | Payroll
+2026-05-12 | T00095-3 | DEBIT | 28.76 | Groceries
+2026-05-20 | F00095 | DEBIT | 120.00 | Synthetic adjustment
+Closing balance: 10873.12","Previous-period bank record, customer Fictional Customer 00095, account 10000095, institution Fairview Savings. Verified relationship existed by 2026-05-20. This is not the submitted current-period statement.","{""account"": ""10000095"", ""customer"": ""Fictional Customer 00095"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-05-20"", ""reference_closing_balance"": ""10993.12"", ""reference_transactions"": [{""amount"": ""1094.55"", ""date"": ""2026-04-24"", ""direction"": ""credit"", ""id"": ""T00095-0""}, {""amount"": ""760.05"", ""date"": ""2026-04-30"", ""direction"": ""debit"", ""id"": ""T00095-1""}, {""amount"": ""323.94"", ""date"": ""2026-05-06"", ""direction"": ""debit"", ""id"": ""T00095-2""}, {""amount"": ""28.76"", ""date"": ""2026-05-12"", ""direction"": ""debit"", ""id"": ""T00095-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00095/2026-05-20""}",tabular,True,controlled synthetic edit,"{'account': '10000095', 'customer': 'Fictional Customer 00095', 'institution': 'Fairview Savings', 'recorded_at': '2026-05-20', 'reference_closing_balance': '10993.12', 'reference_transactions': [{'amount': '1094.55', 'date': '2026-04-24', 'direction': 'credit', 'id': 'T00095-0'}, {'amount': '760.05', 'date': '2026-04-30', 'direction': 'debit', 'id': 'T00095-1'}, {'amount': '323.94', 'date': '2026-05-06', 'direction': 'debit', 'id': 'T00095-2'}, {'amount': '28.76', 'date': '2026-05-12', 'direction': 'debit', 'id': 'T00095-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00095/2026-05-20'}"
+S00097-4,C00097,2026-05-24,date,1,"ACCOUNT STATEMENT
+Institution: Harbor Community Bank
+Customer: Fictional Customer 00097
+Account: 10000097
+Period: 2026-04-24 to 2026-05-23
+Opening balance: 6391.05
+Transactions:
+2026-04-26 | T00097-0 | CREDIT | 1275.34 | Payroll
+2026-05-02 | T00097-1 | DEBIT | 117.81 | Groceries
+2026-05-30 | T00097-2 | DEBIT | 928.31 | Utilities
+2026-05-14 | T00097-3 | DEBIT | 346.17 | Insurance
+Closing balance: 6274.10","Previous-period bank record, customer Fictional Customer 00097, account 10000097, institution Harbor Community Bank. Verified relationship existed by 2026-05-22. This is not the submitted current-period statement.","{""account"": ""10000097"", ""customer"": ""Fictional Customer 00097"", ""institution"": ""Harbor Community Bank"", ""recorded_at"": ""2026-05-22"", ""reference_closing_balance"": ""6274.10"", ""reference_transactions"": [{""amount"": ""1275.34"", ""date"": ""2026-04-26"", ""direction"": ""credit"", ""id"": ""T00097-0""}, {""amount"": ""117.81"", ""date"": ""2026-05-02"", ""direction"": ""debit"", ""id"": ""T00097-1""}, {""amount"": ""928.31"", ""date"": ""2026-05-08"", ""direction"": ""debit"", ""id"": ""T00097-2""}, {""amount"": ""346.17"", ""date"": ""2026-05-14"", ""direction"": ""debit"", ""id"": ""T00097-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00097/2026-05-22""}",tabular,True,controlled synthetic edit,"{'account': '10000097', 'customer': 'Fictional Customer 00097', 'institution': 'Harbor Community Bank', 'recorded_at': '2026-05-22', 'reference_closing_balance': '6274.10', 'reference_transactions': [{'amount': '1275.34', 'date': '2026-04-26', 'direction': 'credit', 'id': 'T00097-0'}, {'amount': '117.81', 'date': '2026-05-02', 'direction': 'debit', 'id': 'T00097-1'}, {'amount': '928.31', 'date': '2026-05-08', 'direction': 'debit', 'id': 'T00097-2'}, {'amount': '346.17', 'date': '2026-05-14', 'direction': 'debit', 'id': 'T00097-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00097/2026-05-22'}"
+S00100-0,C00100,2026-05-27,legitimate,0,"Account activity
+Institution: Northfield Credit Union
+Customer: Fictional Customer 00100
+Account: 10000100
+Period: 2026-04-27 to 2026-05-26
+Opening balance: 4520.49
+Transactions:
+2026-04-29 | T00100-0 | CREDIT | 943.38 | Insurance
+2026-05-05 | T00100-1 | DEBIT | 237.64 | Transit
+2026-05-11 | T00100-2 | DEBIT | 1272.08 | Medical
+2026-05-17 | T00100-3 | DEBIT | 1084.90 | Refund
+Closing balance: 2869.25","Previous-period bank record, customer Fictional Customer 00100, account 10000100, institution Northfield Credit Union. Verified relationship existed by 2026-05-25. This is not the submitted current-period statement.","{""account"": ""10000100"", ""customer"": ""Fictional Customer 00100"", ""institution"": ""Northfield Credit Union"", ""recorded_at"": ""2026-05-25"", ""reference_closing_balance"": ""2869.25"", ""reference_transactions"": [{""amount"": ""943.38"", ""date"": ""2026-04-29"", ""direction"": ""credit"", ""id"": ""T00100-0""}, {""amount"": ""237.64"", ""date"": ""2026-05-05"", ""direction"": ""debit"", ""id"": ""T00100-1""}, {""amount"": ""1272.08"", ""date"": ""2026-05-11"", ""direction"": ""debit"", ""id"": ""T00100-2""}, {""amount"": ""1084.90"", ""date"": ""2026-05-17"", ""direction"": ""debit"", ""id"": ""T00100-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00100/2026-05-25""}",compact,True,synthetic unchanged,"{'account': '10000100', 'customer': 'Fictional Customer 00100', 'institution': 'Northfield Credit Union', 'recorded_at': '2026-05-25', 'reference_closing_balance': '2869.25', 'reference_transactions': [{'amount': '943.38', 'date': '2026-04-29', 'direction': 'credit', 'id': 'T00100-0'}, {'amount': '237.64', 'date': '2026-05-05', 'direction': 'debit', 'id': 'T00100-1'}, {'amount': '1272.08', 'date': '2026-05-11', 'direction': 'debit', 'id': 'T00100-2'}, {'amount': '1084.90', 'date': '2026-05-17', 'direction': 'debit', 'id': 'T00100-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00100/2026-05-25'}"
+S00110-4,C00110,2026-06-06,date,1,"ACCOUNT STATEMENT
+Institution: Cedar Valley Bank
+Customer: Fictional Customer 00110
+Account: 10000110
+Period: 2026-05-07 to 2026-06-05
+Opening balance: 6946.57
+Transactions:
+2026-05-09 | T00110-0 | CREDIT | 510.23 | Medical
+2026-05-15 | T00110-1 | DEBIT | 1292.53 | Refund
+2026-06-12 | T00110-2 | DEBIT | 811.88 | Rent
+2026-05-27 | T00110-3 | DEBIT | 477.02 | Payroll
+Closing balance: 4875.37","Previous-period bank record, customer Fictional Customer 00110, account 10000110, institution Cedar Valley Bank. Verified relationship existed by 2026-06-04. This is not the submitted current-period statement.","{""account"": ""10000110"", ""customer"": ""Fictional Customer 00110"", ""institution"": ""Cedar Valley Bank"", ""recorded_at"": ""2026-06-04"", ""reference_closing_balance"": ""4875.37"", ""reference_transactions"": [{""amount"": ""510.23"", ""date"": ""2026-05-09"", ""direction"": ""credit"", ""id"": ""T00110-0""}, {""amount"": ""1292.53"", ""date"": ""2026-05-15"", ""direction"": ""debit"", ""id"": ""T00110-1""}, {""amount"": ""811.88"", ""date"": ""2026-05-21"", ""direction"": ""debit"", ""id"": ""T00110-2""}, {""amount"": ""477.02"", ""date"": ""2026-05-27"", ""direction"": ""debit"", ""id"": ""T00110-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00110/2026-06-04""}",classic,True,controlled synthetic edit,"{'account': '10000110', 'customer': 'Fictional Customer 00110', 'institution': 'Cedar Valley Bank', 'recorded_at': '2026-06-04', 'reference_closing_balance': '4875.37', 'reference_transactions': [{'amount': '510.23', 'date': '2026-05-09', 'direction': 'credit', 'id': 'T00110-0'}, {'amount': '1292.53', 'date': '2026-05-15', 'direction': 'debit', 'id': 'T00110-1'}, {'amount': '811.88', 'date': '2026-05-21', 'direction': 'debit', 'id': 'T00110-2'}, {'amount': '477.02', 'date': '2026-05-27', 'direction': 'debit', 'id': 'T00110-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00110/2026-06-04'}"
+S00119-1,C00119,2026-06-15,hard_negative,0,"ACCOUNT STATEMENT
+Institution: Fairview Savings
+Customer: Fictional Customer 00119
+Account: 10000119
+Period: 2026-05-16 to 2026-06-14
+Opening balance: 8043.47
+Transactions:
+2026-05-18 | T00119-0 | CREDIT | 820.55 | Annual adjustment (verified)
+2026-05-24 | T00119-1 | DEBIT | 211.75 | Rent
+2026-05-30 | T00119-2 | DEBIT | 981.32 | Payroll
+2026-06-05 | T00119-3 | DEBIT | 28.59 | Groceries
+Closing balance: 7642.36","Previous-period bank record, customer Fictional Customer 00119, account 10000119, institution Fairview Savings. Verified relationship existed by 2026-06-13. This is not the submitted current-period statement.","{""account"": ""10000119"", ""customer"": ""Fictional Customer 00119"", ""institution"": ""Fairview Savings"", ""recorded_at"": ""2026-06-13"", ""reference_closing_balance"": ""7642.36"", ""reference_transactions"": [{""amount"": ""820.55"", ""date"": ""2026-05-18"", ""direction"": ""credit"", ""id"": ""T00119-0""}, {""amount"": ""211.75"", ""date"": ""2026-05-24"", ""direction"": ""debit"", ""id"": ""T00119-1""}, {""amount"": ""981.32"", ""date"": ""2026-05-30"", ""direction"": ""debit"", ""id"": ""T00119-2""}, {""amount"": ""28.59"", ""date"": ""2026-06-05"", ""direction"": ""debit"", ""id"": ""T00119-3""}], ""relationship"": ""ACCOUNT_OWNED_BY_CUSTOMER"", ""source"": ""bank-ledger://C00119/2026-06-13""}",classic,True,synthetic unchanged,"{'account': '10000119', 'customer': 'Fictional Customer 00119', 'institution': 'Fairview Savings', 'recorded_at': '2026-06-13', 'reference_closing_balance': '7642.36', 'reference_transactions': [{'amount': '820.55', 'date': '2026-05-18', 'direction': 'credit', 'id': 'T00119-0'}, {'amount': '211.75', 'date': '2026-05-24', 'direction': 'debit', 'id': 'T00119-1'}, {'amount': '981.32', 'date': '2026-05-30', 'direction': 'debit', 'id': 'T00119-2'}, {'amount': '28.59', 'date': '2026-06-05', 'direction': 'debit', 'id': 'T00119-3'}], 'relationship': 'ACCOUNT_OWNED_BY_CUSTOMER', 'source': 'bank-ledger://C00119/2026-06-13'}"
