@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard'
 import Upload from './pages/Upload'
 import Analysis from './pages/Analysis'
 import GraphView from './pages/GraphView'
+import EvidenceAcquisition from './pages/EvidenceAcquisition'
 import './index.css'
 
 function Layout({ children }) {
@@ -28,6 +29,10 @@ function Layout({ children }) {
           <NavLink to="/graph" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
             <span className="nav-icon">⬡</span>
             <span>Knowledge Graph</span>
+          </NavLink>
+          <NavLink to="/evidence" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+            <span className="nav-icon">◇</span>
+            <span>Evidence Acquisition</span>
           </NavLink>
         </nav>
         <div className="sidebar-footer">
@@ -63,6 +68,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           <Route path="/upload" element={<Upload />} />
           <Route path="/analysis/:id" element={<Analysis />} />
           <Route path="/graph" element={<GraphView />} />
+          <Route path="/evidence" element={<EvidenceAcquisition />} />
         </Routes>
       </Layout>
     </BrowserRouter>
