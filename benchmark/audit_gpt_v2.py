@@ -30,8 +30,8 @@ def verify(cases,predictions):
         raise ValueError("Duplicate model predictions for case/mode")
     if any(m not in MODES or i not in cases_by_id for i,m in keylist):
         raise ValueError("Prediction not in the fixed evaluation protocol")
-    if any(not bool(r["all_citations_known"].lower()=="true") for r in predictions):
-        raise ValueError("Model cited source IDs absent from supplied context")
+    # Unsupported citations are a MEASURED MODEL ERROR, not grounds to
+    # discard a completed experiment or selectively omit cases.
     return cases_by_id
 
 def outcome(y,p):
@@ -117,9 +117,15 @@ def run(folder):
                 "correct":sum(int(outcome(r["fraud_label"],pred.get((r["case_id"],mode),{}).get("predicted")))
                               for r in subset)
             }
+    unsupported_citations=[
+        {"case_id":r["case_id"],"mode":r["mode"],"claimed_ids":r["evidence_ids"]}
+        for r in preds if r["all_citations_known"].lower()!="true"
+    ]
     report={"source":"executed real GPT calls on entirely synthetic documents",
             "not_legacy_fraudrag_2400":True,
             "all_cases_same_across_modes":True,
+            "unsupported_citation_count":len(unsupported_citations),
+            "unsupported_citation_examples":unsupported_citations,
             "data_cases":len(cases),
             "mode_scores":stats,"per_type":per_type,
             "paired_uncertainty":paired_bootstrap(by,preds),
