@@ -1,0 +1,103 @@
+{
+  "audit": "independent post-run V4 simulated source acquisition",
+  "source_sha256": "7d7948a7ce15f898ae2dbaa11e74d735908ca3539333d854fc245979a151a16a",
+  "prior_sha256": "cef95a6f329ac24d382a0d2d273a618561364a7d7fd44dc345927f19dd1343e6",
+  "all_planners_deterministic": true,
+  "fairness": "same simulated availability outcomes, learned priors, budgets and exact record-consistency checker for all policies",
+  "split_and_replay": {
+    "test": {
+      "audited_prediction_rows": 8640,
+      "unique_case_groups": 720,
+      "all_policy_pairs_present": true,
+      "queried_masks_and_costs_reproduced": true,
+      "no_exceedance_or_premature_certificates": true,
+      "recomputed_metrics_at_budget_4": {
+        "4.0:fixed_order": {
+          "n": 720,
+          "completed_certificates": 382,
+          "certificate_coverage": 0.5305555555555556,
+          "mean_source_access_cost_synthetic_units": 2.751389,
+          "total_spent_synthetic_units": 1981.0,
+          "cost_per_completed_case_synthetic_units": 5.185864,
+          "abstentions": 338
+        },
+        "4.0:naive_greedy": {
+          "n": 720,
+          "completed_certificates": 382,
+          "certificate_coverage": 0.5305555555555556,
+          "mean_source_access_cost_synthetic_units": 2.751389,
+          "total_spent_synthetic_units": 1981.0,
+          "cost_per_completed_case_synthetic_units": 5.185864,
+          "abstentions": 338
+        },
+        "4.0:prior_greedy": {
+          "n": 720,
+          "completed_certificates": 495,
+          "certificate_coverage": 0.6875,
+          "mean_source_access_cost_synthetic_units": 2.793889,
+          "total_spent_synthetic_units": 2011.6,
+          "cost_per_completed_case_synthetic_units": 4.063838,
+          "abstentions": 225
+        },
+        "4.0:adaptive_dp": {
+          "n": 720,
+          "completed_certificates": 509,
+          "certificate_coverage": 0.7069444444444445,
+          "mean_source_access_cost_synthetic_units": 2.592778,
+          "total_spent_synthetic_units": 1866.8,
+          "cost_per_completed_case_synthetic_units": 3.667583,
+          "abstentions": 211
+        }
+      }
+    },
+    "shift": {
+      "audited_prediction_rows": 4320,
+      "unique_case_groups": 360,
+      "all_policy_pairs_present": true,
+      "queried_masks_and_costs_reproduced": true,
+      "no_exceedance_or_premature_certificates": true,
+      "recomputed_metrics_at_budget_4": {
+        "4.0:fixed_order": {
+          "n": 360,
+          "completed_certificates": 68,
+          "certificate_coverage": 0.18888888888888888,
+          "mean_source_access_cost_synthetic_units": 3.033333,
+          "total_spent_synthetic_units": 1092.0,
+          "cost_per_completed_case_synthetic_units": 16.058824,
+          "abstentions": 292
+        },
+        "4.0:naive_greedy": {
+          "n": 360,
+          "completed_certificates": 68,
+          "certificate_coverage": 0.18888888888888888,
+          "mean_source_access_cost_synthetic_units": 3.033333,
+          "total_spent_synthetic_units": 1092.0,
+          "cost_per_completed_case_synthetic_units": 16.058824,
+          "abstentions": 292
+        },
+        "4.0:prior_greedy": {
+          "n": 360,
+          "completed_certificates": 128,
+          "certificate_coverage": 0.35555555555555557,
+          "mean_source_access_cost_synthetic_units": 3.005556,
+          "total_spent_synthetic_units": 1082.0,
+          "cost_per_completed_case_synthetic_units": 8.453125,
+          "abstentions": 232
+        },
+        "4.0:adaptive_dp": {
+          "n": 360,
+          "completed_certificates": 126,
+          "certificate_coverage": 0.35,
+          "mean_source_access_cost_synthetic_units": 2.513333,
+          "total_spent_synthetic_units": 904.8,
+          "cost_per_completed_case_synthetic_units": 7.180952,
+          "abstentions": 234
+        }
+      }
+    }
+  },
+  "genuine_financial_fraud_labels": 0,
+  "actual_bank_issuer_data": 0,
+  "algorithm_novelty_validated": false,
+  "journal_ready": false
+}
