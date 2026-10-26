@@ -13,7 +13,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.middleware.gzip import GZipMiddleware
 from prometheus_client import Counter, Histogram, make_asgi_app
 
-from backend.api.routes import fraud, graph, health, statements, customers
+from backend.api.routes import fraud, graph, health, statements, customers, eac
 from backend.core.config import get_settings
 from backend.core.database import init_db
 from backend.graph.neo4j_client import Neo4jClient
@@ -115,12 +115,16 @@ Gold Layer    →  Fraud signals, graph embeddings, risk scores
         ).inc()
         return response
 
+    # Research sandbox is disabled unless explicitly enabled (tests may opt in).
+    app.state.eac_demo_enabled = testing or settings.EAC_DEMO_ENABLED
+
     # Routers
     app.include_router(health.router, prefix="/api/v1", tags=["Health"])
     app.include_router(statements.router, prefix="/api/v1/statements", tags=["Statements"])
     app.include_router(fraud.router, prefix="/api/v1/fraud", tags=["Fraud Detection"])
     app.include_router(graph.router, prefix="/api/v1/graph", tags=["Knowledge Graph"])
     app.include_router(customers.router, prefix="/api/v1/customers", tags=["Customers"])
+    app.include_router(eac.router, prefix="/api/v1/eac", tags=["EAC Synthetic Research Sandbox"])
 
     # Prometheus metrics endpoint
     metrics_app = make_asgi_app()
