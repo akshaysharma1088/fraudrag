@@ -4,8 +4,9 @@ Controlled edits are performed ONLY on extracted TEXT, not PDFs/images.
 NOT a real financial-fraud benchmark, no transaction ground-truth labels.
 Dry by default. The full original PDF text is an intentional oracle.
 """
-import argparse, csv, hashlib, json, os, time, urllib.error, urllib.request
+import argparse, csv, hashlib, json, os, sys, time, urllib.error, urllib.request
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "benchmark"))
 from v3_external_pdf import EXPECTED_SHA256, verified_source, extract_pdf, create_variants, normalize
 from fraudrag_v2_integrated import MODEL, INPUT_PRICE_PER_M, OUTPUT_PRICE_PER_M
 
