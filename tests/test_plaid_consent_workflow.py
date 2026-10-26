@@ -159,7 +159,7 @@ def test_revocation_removes_local_and_remote_access(rig):
     revoked=flow.revoke(principal=p,item_id="item-test-1")
     assert revoked["local_access_revoked"] is True
     assert revoked["remote_item_removed"] is True
-    assert revoked["encrypted_token_copies_wiped"]==1
+    assert revoked["encrypted_token_records_cleared"]==1
     assert link.calls[-1][0]=="remove"
     with pytest.raises(EvidenceRejected):
         flow.compare(principal=p,item_id="item-test-1",account_id="account-1",
