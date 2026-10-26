@@ -66,3 +66,43 @@ Conclusions and abstract must not contain stronger claims than results support.
 unsafe phrases and is an extra *negative* check. Passing it is **not** evidence
 of correctness, completeness, novelty, or publication readiness. The historical
 draft DOCX files in `docs/` remain archival/unapproved.
+
+
+## FraudRAG-v2 replacement study — new verified evidence (October 26, 2026)
+
+**G01 — Synthetic corpus and deterministic baselines: V2 observed, synthetic only.**
+Run https://github.com/akshaysharma1088/fraudrag/actions/runs/40362679991 .
+Generator `benchmark/fraudrag_v2.py`, scorer `benchmark/evaluate_v2.py`.
+120 fictional customers, 840 machine-readable statement scenarios, dataset SHA-256
+`1ab25182cd7607f4090dc87695e1f668940a74b1d67fd620f418278f018878b7`.
+Twenty-eight test cases belong to twenty-eight independent customers.
+Statement-only arithmetic/date rules: TP8, TN8, FP0, FN12, precision1.000,
+recall0.400, F1 0.5714. Exact matching of complete authoritative bank-side
+synthetic ledger: TP20, TN8, FP0, FN0, F1 1.000.
+**Critical**: The ledger is an unusually strong constructed oracle;
+perfect results are by experimental design and cannot establish real-world
+fraud performance.
+
+**G02 — Neo4j temporal graph retrieval: V2 integration observed.**
+Run https://github.com/akshaysharma1088/fraudrag/actions/runs/40363346100 .
+Containerized Neo4j 5.20 driver queries retrieved 12 synthetic source-provenance
+snapshots, verified all prior-to-submission records and excluded a seeded
+future-dated record. Not yet evidence of accuracy benefit or Neo4j-backed
+GPT inference.
+
+**G03 — GPT document pilot: pending independent result audit.**
+Experiment runner `experiments/fraudrag_v2_gpt.py` precommits 28 cases,
+four GPT conditions, a complete deterministic-ledger comparator, and a $2
+budget reservation cap. Until artifact audit completes, **no GPT performance
+values may be quoted** in a manuscript.
+
+**G04 — Financial Graph-RAG novelty: unverified, explicitly constrained.**
+Prior art verified in `research/LITERATURE_NOVELTY_AUDIT.md`, including
+Barry et al. (2025) financial GraphRAG and Ma (2026) false financial
+statement knowledge graphs. 'First application' and superiority claims
+are blocked.
+
+**G05 — Revised manuscript: research draft only.**
+`docs/FraudRAG_VERIFIED_WORKING_DRAFT.md` is a provisional, disclosure-heavy
+working manuscript, not a journal-ready article. All historical DOCX metrics
+remain blocked; they must not be restored without experiments.
