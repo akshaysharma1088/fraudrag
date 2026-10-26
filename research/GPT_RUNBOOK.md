@@ -3,8 +3,10 @@
 ## Preferred LLM
 - **Primary:** `gpt-6.1-sol` via OpenAI Responses API.
 - **Cost comparator:** `gpt-6-luna`.
-- OpenAI's API pricing may change; the runner records model, tokens and a
-  documented **estimate** of costs, which may differ from final billing.
+- The script's standard list-price assumptions (checked October 26, 2026) are
+  $12/M input and $60/M output tokens for GPT-6.1 Sol, and $0.20/M input
+  and $1/M output tokens for GPT-6 Luna. These can change. The runner records
+  model, tokens and a documented **estimate**, not a guaranteed final bill.
 - Actual model availability depends on API account access, which cannot be
   established by the connected GitHub repository alone.
 
