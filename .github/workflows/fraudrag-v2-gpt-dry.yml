@@ -1,0 +1,34 @@
+name: FraudRAG-v2 GPT protocol dry-run
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/fraudrag_v2_gpt.py'
+      - 'tests/test_gpt_v2_protocol.py'
+      - '.github/workflows/fraudrag-v2-gpt-dry.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify-protocol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'pytest>=8,<10' 'scikit-learn>=1.4,<2'
+      - name: Compile research scripts
+        run: python -m py_compile experiments/fraudrag_v2_gpt.py benchmark/evaluate_v2.py benchmark/fraudrag_v2.py
+      - name: Run protocol, provenance and leakage checks
+        run: python -m pytest tests/test_fraudrag_v2.py tests/test_gpt_v2_protocol.py -q
+      - name: Preview 28-case, 4-model-mode GPT research pilot with no paid API calls
+        run: python experiments/fraudrag_v2_gpt.py --n-per-type 4 --budget 2
+      - name: Upload pre-registered protocol manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v2-precommitted-gpt-protocol
+          path: artifacts/fraudrag_v2_gpt/gpt_protocol.json
+          retention-days: 90
