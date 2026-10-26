@@ -3,6 +3,31 @@
 **Public preprint:** https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6714178
 **First posted:** 2026-05-05 · **Revised:** 2026-05-07
 
+## Existing citation — preserve SSRN bibliographic identity
+
+As of October 26, 2026, the public SSRN listing shows **one citing paper**:
+*A Hybrid Neuro-Symbolic Framework for Corporate Fraud Detection Using Large
+Language Models, Graph Neural Networks, and Automata-Based Reasoning*
+(authors Ankita N. Patil, Mritunjay K. Ranjan, Tushar Thorat, Vaidik Gharat
+and Samruddhi Sonawane, *Cureus Journal of Computer Science*, 2026).
+Source: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6714178 .
+
+**Recommendation changes because the paper is already cited:**
+- Do **not** delete the SSRN entry, reassign its DOI or erase its cited
+  bibliographic history in an attempt to improve a new journal submission.
+- Preserve original authorship, SSRN identifier **6714178** and DOI
+  **10.2139/ssrn.6714178**; use a dated transparent revision/erratum
+  explaining which old claims were not reproducible. The existing citation
+  does NOT validate the unverified old performance claims.
+- Treat the new evidence-acquisition study as a **distinct follow-on
+  contribution**, provisionally "FraudRAG-EAC" (Evidence Acquisition
+  Controller), and explicitly reference and differentiate it from the
+  cited SSRN project. Do not represent it as an independent publication
+  until accepted.
+- Revision handling and whether the citation/indexing remains intact must
+  be confirmed with SSRN; no access to the user's SSRN account or permission
+  to change its public entry has been granted.
+
 ## Why urgent
 
 The publicly indexed older FraudRAG abstract contains claims that later
