@@ -177,7 +177,7 @@ def verify(
         "field_results":outcome,
         "unresolved_fields":sorted(k for k,v in outcome.items() if v["status"] not in (MATCH,DIFFERENCE)),
         "basis_sha256":envelope_hash,
-        "as_of_cutoff":at.isoformat() if False else cutoff.isoformat(),
+        "as_of_cutoff":cutoff.isoformat(),
         "preconditions":{
             "source_issuer_attestation_supplied_not_verified_by_code":True,
             "source_digest_format_checked_not_matched_to_external_bytes":True,
