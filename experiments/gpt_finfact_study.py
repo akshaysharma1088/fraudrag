@@ -21,12 +21,12 @@ PRICES_USD_PER_MILLION = {
     # Public standard input/output list rates in USD per million tokens on 2026-10-26.
     # Verify current pricing and account access immediately before paid experiments.
     # Does not include any separate processing or tool charges.
-    "gpt-6.1-sol": {"input": 12.0, "output": 60.0},
-    "gpt-6-luna": {"input": 0.20, "output": 1.0},
+    "gpt-6.1-sol": {"input": 2.0, "output": 10.0},
+    "gpt-6-luna": {"input": 0.10, "output": 0.50},
 }
 MODEL_IDS = tuple(PRICES_USD_PER_MILLION)
 LABELS = ("true", "false", "neutral")
-MAX_OUTPUT_TOKENS = 256
+MAX_OUTPUT_TOKENS = 512
 PROMPT_SUFFIX = "\nAnswer with one of the three labels in the JSON schema."
 SCHEMA = {
     "type": "object",
@@ -66,6 +66,7 @@ def price_usd(model, input_tokens, output_tokens):
 def make_payload(model, claim):
     return {
         "model": model,
+        "reasoning": {"effort": "low"},
         "store": False,
         "max_output_tokens": MAX_OUTPUT_TOKENS,
         "instructions": SYSTEM,
