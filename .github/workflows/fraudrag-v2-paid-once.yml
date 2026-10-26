@@ -1,0 +1,42 @@
+# One-time authorized synthetic-document GPT evaluation.
+# Runs only when this workflow file itself is created on the research branch.
+name: FraudRAG-v2 four-mode GPT pilot (one-time)
+on:
+  push:
+    branches:
+      - research/reproducibility-hardening-2026-10
+    paths:
+      - .github/workflows/fraudrag-v2-paid-once.yml
+permissions:
+  contents: read
+concurrency:
+  group: fraudrag-v2-one-time-paid-2026-10-26
+  cancel-in-progress: false
+jobs:
+  paid-28-case-study:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PYTHONUNBUFFERED: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'scikit-learn>=1.4,<2' 'pytest>=8,<10'
+      - name: Verify scientific protocol first
+        run: python -m pytest tests/test_fraudrag_v2.py tests/test_gpt_v2_protocol.py -q
+      - name: Run 112 scheduled GPT comparisons with $2 reservation limit
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python experiments/fraudrag_v2_gpt.py --execute --n-per-type 4 --budget 2
+      - name: Retain complete protocol, dataset, predictions, and observed costs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v2-gpt-experimental-records
+          path: artifacts/fraudrag_v2_gpt/
+          if-no-files-found: warn
+          retention-days: 90
