@@ -1,298 +1,91 @@
-# ⧫ FraudRAG
+# FraudRAG — Evidence-Grounded Financial Statement Consistency Research
 
-**Knowledge Graph-Augmented Retrieval for Real-Time Financial Statement Fraud Detection**
+[![CI](https://github.com/akshaysharma1088/fraudrag/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/akshaysharma1088/fraudrag/actions)
+[MIT license](LICENSE) · [Research paper **WORKING DRAFT**](docs/FraudRAG_VERIFIED_WORKING_DRAFT.md) · [Scientific verification register](research/CLAIM_VERIFICATION_REGISTER.md) · [Publication-readiness checklist](research/PUBLICATION_READINESS_CHECKLIST.md)
 
-[![CI/CD](https://github.com/akshaysharma1088/fraudrag/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/akshaysharma1088/fraudrag/actions)
-[![Python 3.12](https://img.shields.io/badge/python-3.12.3-blue.svg)](https://python.org)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Neo4j 5.25](https://img.shields.io/badge/Neo4j-5.25-green.svg)](https://neo4j.com)
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.115-teal.svg)](https://fastapi.tiangolo.com)
-[![Claude 3.5](https://img.shields.io/badge/LLM-Claude%203.5%20Sonnet-orange.svg)](https://anthropic.com)
-[Research reproducibility status](docs/RESEARCH_REPRODUCIBILITY.md)
-[![Docker](https://img.shields.io/badge/Docker-ghcr.io%2Fakshaysharma1088-blue.svg)](https://github.com/akshaysharma1088/fraudrag/pkgs/container/fraudrag-api)
+**Status: Experimental research prototype. No validated production financial-fraud system or accepted peer-reviewed FraudRAG journal article is claimed.**
 
----
+FraudRAG explores whether a financial statement's arithmetic and contents can be checked against **independently held, dated evidence** using deterministic rules, bank-ledger reconciliation, graph retrieval, historical-text retrieval and GPT. The repository contains two distinct implementations:
 
-## Overview
+1. **Application prototype:** `backend/`, frontend, Bronze/Silver/Gold pipeline, Neo4j graph utilities, Chroma support and risk-scoring services. Existence of code does **not** demonstrate field accuracy.
+2. **Controlled research studies:** `benchmark/`, `experiments/`, `tests/` and `research/`. These include measured experiments with *fictional* statements and a **separate** publicly released SEC enforcement-linked accounting misstatement baseline.
 
-FraudRAG is an experimental software prototype for analyzing potentially manipulated financial statements. It explores three architectural components; their novelty and effectiveness require independent validation:
+## Research result provenance — October 26, 2026
 
-- **Knowledge Graph RAG** — Neo4j stores customer entity history, institution relationships, and known fraud patterns. At inference time, a multi-hop graph traversal retrieves rich contextual signals injected into the LLM prompt alongside ChromaDB vector-similarity results from historical statements.
-- **Medallion Architecture** — Documents flow through Bronze (OCR + hashing) → Silver (NER + balance validation) → Gold (Graph-RAG scoring) with explicit data quality contracts at each layer boundary.
-- **Domain-Driven Design** — Four bounded contexts: `StatementContext`, `FraudContext`, `GraphContext`, `CustomerContext`. Aggregates, value objects, and domain events follow DDD tactical patterns.
+The **original historical FraudRAG-2400 dataset and raw predictions are unavailable**. Historical performance claims (including AUC 0.943/F1 0.883, petabyte scale, specific latency and multi-hop retrieval gains) are **not validated** and must **not** be copied into journal submissions. Historical draft figures and DOCX files remain archival material only.
 
-> **Research status (October 2026):** The manuscript is being revised after an editorial rejection at IET Software. Historical benchmark metrics shown below are reported but not independently reproducible from this repository yet. See [the research reproducibility checklist](docs/RESEARCH_REPRODUCIBILITY.md).
+### Verified synthetic document consistency study (28 cases)
 
----
+The new `FraudRAG-v2` dataset consists of **840 synthetic cases generated from 120 fictional customer groups**, with a 28-case customer-disjoint exploratory test set. A real GPT-6.1 Sol run produced 112 API responses over four conditions (same case IDs in each). All outputs were archived and independently recomputed.
 
-## Architecture
+| Configuration | Accuracy | F1 | Abstentions |
+|---|---:|---:|---:|
+| Basic arithmetic/date rules, no GPT | 0.571 | 0.571 | 0 |
+| GPT without retrieved external evidence | 0.571 | 0.571 | 1 |
+| GPT + prior-period TF-IDF text | 0.679 | 0.710 | 4 |
+| GPT + serialized authoritative bank ledger | 1.000 | 1.000 | 0 |
+| GPT + both serialized bank ledger and prior text | 1.000 | 1.000 | 0 |
+| **Exact deterministic comparison to the same bank ledger; NO GPT** | **1.000** | **1.000** | **0** |
 
-```
-┌─────────────────────────────────────────────────────────────────────┐
-│                         FraudRAG System                              │
-│                                                                      │
-│  ┌──────────┐    ┌──────────────────────────────────────────────┐   │
-│  │ React UI │───▶│              FastAPI Backend                  │   │
-│  └──────────┘    │                                              │   │
-│                  │  ┌───────────────────────────────────────┐   │   │
-│                  │  │         Medallion Pipeline             │   │   │
-│                  │  │  [BRONZE]  OCR + Hash + Provenance     │   │   │
-│                  │  │     ▼                                  │   │   │
-│                  │  │  [SILVER]  NER + Balance Validation    │   │   │
-│                  │  │     ▼                                  │   │   │
-│                  │  │  [GOLD]    Graph-RAG + LLM Scoring     │   │   │
-│                  │  └───────────────┬───────────────────────┘   │   │
-│                  │                  │                            │   │
-│                  │  ┌───────────────▼───────────────────────┐   │   │
-│                  │  │         Graph-RAG Service              │   │   │
-│                  │  │  1. Neo4j k-hop traversal (k=2)        │   │   │
-│                  │  │  2. ChromaDB ANN retrieval (top-k=4)   │   │   │
-│                  │  │  3. Prompt augmentation                 │   │   │
-│                  │  │  4. Claude 3.5 Sonnet inference         │   │   │
-│                  │  └───────────────────────────────────────┘   │   │
-│                  └──────────────────────────────────────────────┘   │
-│                                                                      │
-│  ┌──────────┐  ┌──────────┐  ┌────────────┐  ┌─────┐  ┌────────┐  │
-│  │ Neo4j    │  │ChromaDB  │  │PostgreSQL  │  │Redis│  │AWS S3  │  │
-│  │Knowledge │  │Vector    │  │Metadata    │  │Cache│  │Delta   │  │
-│  │Graph     │  │Store     │  │+ Audit     │  │     │  │Lake    │  │
-│  └──────────┘  └──────────┘  └────────────┘  └─────┘  └────────┘  │
-└─────────────────────────────────────────────────────────────────────┘
-```
+**These scores describe a small synthetic reconciliation task with an almost complete bank-side oracle and 71.4% artificially manipulated examples.** The complete ledger makes exact matching trivial. The study does **not** demonstrate that GPT beats deterministic ledger comparison or detects real bank-statement forgery. The serialized-ledger GPT run **did not make live Neo4j or Chroma retrieval queries**; those services have separate integration tests, plus the follow-on actual integrated study in `experiments/fraudrag_v2_integrated.py`.
 
-### Medallion Architecture
+Evidence: [Original 112-call experiment](https://github.com/akshaysharma1088/fraudrag/actions/runs/40363144409) and [per-case permanent verified archive](research/verified_runs/fraudrag_v2_20261026/independent_post_run_audit.json). **Five GPT-only outputs contained unsupported source citations** and are retained as observed errors.
 
-| Layer | Responsibility | Key Operation |
-|-------|---------------|---------------|
-| **Bronze** | Raw ingestion: OCR, SHA-256 hash, provenance | Tamper-evident fingerprinting |
-| **Silver** | NER extraction, balance arithmetic validation | `open + Σcredits − Σdebits = close ± $0.50` |
-| **Gold** | ML features, Graph-RAG scoring, analyst review | AUC=0.943, F1=0.883 |
+### Larger synthetic evaluation
 
-### Knowledge Graph Schema
+`benchmark/robustness_multiseed_v2.py` generated **4,900 fictional cases from 700 fictional customers**, then executed **three held-out customer-disjoint splits of 175 examples each**. As designed, complete authoritative-ledger reconciliation scored F1 1.000 in all three; arithmetic/date rules scored F1 0.571 in all three. When the ledger is incomplete, the checker abstains frequently instead of assuming authenticity. **These are not real-world external replications.**
 
-```cypher
-(:Customer {id, name, risk_score, fraud_history_count})
-(:Institution {id, name, routing_number_hash, institution_type})
-(:Statement {id, period, fraud_flagged, fraud_score})
-(:FraudPattern {id, pattern_name, pattern_type, frequency})
+Evidence: [Executed three-seed workflow](https://github.com/akshaysharma1088/fraudrag/actions/runs/40366478963), [machine-readable aggregate](research/RESULTS_MULTISEED_SYNTHETIC_2026-10-26.json).
 
-(Customer)-[:FILED]->(Statement)
-(Statement)-[:ISSUED_BY]->(Institution)
-(Customer)-[:HAS_ACCOUNT]->(Institution)
-(Customer)-[:MATCHES_PATTERN]->(FraudPattern)
-(Customer)-[:LINKED_TO]->(Customer)   // Fraud ring detection
-```
+### Separate real accounting-fraud task — do not conflate with forgery
 
----
+A reproducible, non-GPT logistic-regression benchmark uses **146,045 published firm-year records**, with AAER-linked accounting misstatement labels from Bao et al. (2020). The temporal test produced **PR-AUC 0.00614**, and company-isolated test **PR-AUC 0.01352**, at extremely low positive prevalence. It is a distinct **issuer accounting fraud** task, **not** financial document tampering; no bank-document, GPT or Graph-RAG accuracy conclusion follows.
 
-## Results (historical manuscript claims; **not independently verified**)
+Evidence: [Executed AAER evaluation](https://github.com/akshaysharma1088/fraudrag/actions/runs/40366949592), [source-hashed metrics](research/RESULTS_REAL_AAER_2026-10-26.json). Raw third-party data are downloaded at runtime and **not committed or redistributed**.
 
-The values below are reported in the manuscript, not re-created by the available public scripts. Do not cite these as independently reproducible findings until experiment artifacts are archived. The new `benchmark/` scripts measure ONLY a synthetic arithmetic rule, not the full Graph-RAG system.
+## Verified component integration tests
 
-| Method | AUC | Precision | Recall | F1 | Latency |
-|--------|-----|-----------|--------|-----|---------|
-| Rule-Based | 0.741 | 0.683 | 0.712 | 0.697 | < 10 ms |
-| LLM-Only | 0.819 | 0.771 | 0.748 | 0.759 | 1.8 s |
-| RAG-Only | 0.877 | 0.831 | 0.804 | 0.817 | 2.1 s |
-| Graph-Only | 0.893 | 0.847 | 0.831 | 0.839 | 2.3 s |
-| **FraudRAG (ours)** | **0.943** | **0.891** | **0.876** | **0.883** | **2.8 s** |
+| Component | Actual tested observation | Evidence |
+|---|---|---|
+| Neo4j 5 temporal query | 12 fictional bank-ledger snapshots; future facts excluded | [Completed integration run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40363346100) |
+| Chroma vector database | 16 historical synthetic accounts, 40 source/time-filtered searches using **local 256-dimensional hashing**, not OpenAI embeddings | [Completed integration run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40363998267) |
+| Digital PDF parsing | 28 generated **text-native fictional PDFs** rendered and extracted; no scanned/real-bank accuracy inference | [Completed PDF experiment](https://github.com/akshaysharma1088/fraudrag/actions/runs/40364130518) |
+| Actual Neo4j + Chroma + GPT protocol | Fixed four-condition experiment, actual retrieval paths; measure only after execution and independent audit | [Integrated protocol dry run](https://github.com/akshaysharma1088/fraudrag/actions/runs/40366292505) |
 
-*Benchmark: FraudRAG-2400 synthetic dataset · LLM: Claude 3.5 Sonnet · k-hop=2, top-k=4*
+## Reproduce the **synthetic** baselines
 
----
-
-## Project Structure
-
-```
-fraudrag/
-├── backend/
-│   ├── api/routes/          # FastAPI routers (statements, fraud, graph, customers)
-│   ├── core/                # Config, database initialization
-│   ├── models/domain.py     # DDD aggregates & value objects
-│   ├── services/
-│   │   └── graph_rag_service.py   # Core Graph-RAG orchestration
-│   ├── pipelines/
-│   │   └── medallion.py     # Bronze / Silver / Gold pipeline
-│   ├── graph/
-│   │   └── neo4j_client.py  # Knowledge graph operations
-│   ├── requirements.txt     # Production dependencies
-│   └── requirements-ci.txt  # CI/testing dependencies (no Spark/heavy ML)
-├── frontend/
-│   └── src/
-│       ├── pages/           # Dashboard, Upload, Analysis, GraphView
-│       └── index.css        # Design system (dark forensic theme)
-├── tests/
-│   ├── test_pipeline.py     # Medallion + API tests (23 tests)
-│   └── conftest.py          # Pytest configuration
-├── docker/
-│   ├── Dockerfile.backend   # API container (python:3.12.3-slim)
-│   ├── Dockerfile.frontend  # UI container (nginx)
-│   └── Dockerfile.backend-spark  # Batch pipeline (with Java/PySpark)
-├── docs/                    # IEEE TKDE manuscript & figures
-├── scripts/                 # Paper generation, figure generation
-├── docker-compose.yml       # Full stack: API + UI + Neo4j + PostgreSQL + Redis
-└── .github/workflows/
-    └── ci-cd.yml            # Test → Security Scan → Docker Build → Deploy
-```
-
----
-
-## Quick Start
-
-### Docker Compose (Recommended)
+Python 3.11+:
 
 ```bash
-# 1. Clone
-git clone https://github.com/akshaysharma1088/fraudrag.git
-cd fraudrag
-
-# 2. Configure
-cp .env.example .env
-# Edit .env — add ANTHROPIC_API_KEY or OPENAI_API_KEY
-
-# 3. Launch
-docker compose up -d
-
-# 4. Seed demo knowledge graph
-curl -X POST http://localhost:8000/api/v1/graph/seed
-
-# 5. Open UI
-open http://localhost:3000
+python -m pip install pytest scikit-learn
+python benchmark/evaluate_v2.py
+python -m pytest tests/test_fraudrag_v2.py -q
+python benchmark/robustness_multiseed_v2.py
+python benchmark/incomplete_evidence_v2.py
 ```
 
-| Service | URL |
-|---------|-----|
-| React UI | http://localhost:3000 |
-| FastAPI Docs | http://localhost:8000/docs |
-| Neo4j Browser | http://localhost:7474 |
-| Prometheus | http://localhost:9090 |
-| Grafana | http://localhost:3001 |
+`benchmark/fraudrag_v2.py` uses explicit seeds and yields SHA-256-manifested CSVs. **These are fictional records**; no actual bank customer or private account is used. Dataset labels arise from controlled edits, not adjudicated fraud investigations.
 
-### Local Development
+For live Neo4j/Chroma tests, use dedicated CI workflows with isolated Neo4j 5 and in-memory Chroma installations. For an authorized GPT account, `experiments/fraudrag_v2_integrated.py` supports a dry run without an API key; `--execute` explicitly initiates paid requests and must be cost-limited and accompanied by a configured `OPENAI_API_KEY` secret. **Never add credentials to GitHub files, chat messages or published datasets.**
 
-```bash
-# Backend
-cd fraudrag
-python -m venv .venv && source .venv/bin/activate
-pip install -r backend/requirements-ci.txt
-uvicorn backend.main:app --reload --port 8000
+## Application source and boundaries
 
-# Frontend (new terminal)
-cd frontend
-npm install
-npm run dev   # → http://localhost:3000
-```
+- `backend/api/` — REST routes for statements, customers, graph and analyses.
+- `backend/pipelines/medallion.py` — Bronze source handling, Silver extraction and conditional arithmetic checks, Gold features.
+- `backend/graph/neo4j_client.py` — application graph functionality, distinct from the independently tested `benchmark/neo4j_snapshot.py`.
+- `backend/services/graph_rag_service.py` — prototype LLM scoring, distinct from the research model runner and its measured source list.
+- `benchmark/chroma_historical_v2.py` — independently tested historical retrieval with source/time constraints; 256d deterministic hash features are **not** OpenAI embeddings.
+- `research/CLAIM_VERIFICATION_REGISTER.md` — science-claim and citation clearance register.
+- `docs/FraudRAG_VERIFIED_WORKING_DRAFT.md` — conservative research manuscript under development.
 
----
+The old diagrams and manuscripts are **not evidence that all depicted infrastructure works end-to-end**. This repository is not cleared for automated credit, banking, or fraud enforcement decisions. Human expert review, independent data rights, privacy controls, missing-reference handling, fairness evaluation, security and external adjudicated testing would be required before discussing deployment.
 
-## API Reference
+## Originality and publication status
 
-### Upload a Statement for Fraud Analysis
+Published Graph-RAG, knowledge-graph financial analysis and LLM-based accounting-fraud research precedes this work. **No “first”, “novel”, “state of the art”, or real-world superiority claim is established**. See the [primary-source prior-work review](research/LITERATURE_NOVELTY_AUDIT.md).
 
-```bash
-curl -X POST http://localhost:8000/api/v1/statements/upload \
-  -F "file=@bank_statement.pdf" \
-  -F "customer_id=cust-001" \
-  -F "statement_type=bank"
-```
-
-```json
-{
-  "statement_id": "3f8a2b1c-...",
-  "customer_id": "cust-001",
-  "status": "gold_complete",
-  "quality_score": 0.85,
-  "message": "Statement processed. Fraud analysis complete."
-}
-```
-
-### Get Fraud Analysis
-
-```bash
-curl http://localhost:8000/api/v1/fraud/analysis/3f8a2b1c-...
-```
-
-### Query Knowledge Graph
-
-```bash
-# 2-hop customer neighborhood
-curl http://localhost:8000/api/v1/graph/customer/cust-001
-
-# Fraud ring detection
-curl http://localhost:8000/api/v1/graph/customer/cust-001/rings
-```
-
-Full API docs: **http://localhost:8000/docs**
-
----
-
-## Running Tests
-
-```bash
-pytest tests/ -v --cov=backend
-# 23 tests, ~4.5s
-```
-
----
-
-## Configuration
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `LLM_PROVIDER` | `openai` | `openai` or `anthropic` |
-| `ANTHROPIC_API_KEY` | — | Required for Claude 3.5 Sonnet |
-| `OPENAI_API_KEY` | — | Required for GPT-4o |
-| `NEO4J_URI` | `bolt://localhost:7687` | Neo4j connection |
-| `FRAUD_SCORE_HIGH_RISK` | `0.75` | HIGH risk threshold |
-| `CHROMA_PERSIST_DIR` | `./data/chroma` | Vector store path |
-
----
-
-## Fraud Detection Capabilities
-
-| Indicator | Detection Method |
-|-----------|-----------------|
-| Balance arithmetic manipulation | Silver layer accounting identity check |
-| Amount digit substitution (1200→12000) | Claude 3.5 Sonnet + pattern matching |
-| Date forgery / future dates | NER + date range validation |
-| Entity name mismatch | NER entity alignment |
-| Metadata tampering | SHA-256 hash comparison |
-| Known fraud pattern match | Neo4j vector similarity |
-| Fraud ring membership | Neo4j multi-hop traversal |
-| Semantic deviation from institution templates | ChromaDB cosine similarity |
-
----
-
-## Tech Stack
-
-| Component | Technology |
-|-----------|-----------|
-| API | FastAPI 0.115, Python 3.12 |
-| LLM | Claude 3.5 Sonnet (Anthropic) |
-| LLM Orchestration | LangChain 0.2 |
-| Knowledge Graph | Neo4j 5.25 |
-| Vector Store | ChromaDB 0.5 |
-| Embeddings | text-embedding-3-large |
-| OCR | Tesseract 5 + pdfplumber |
-| Batch Processing | PySpark 3.5 + AWS EMR |
-| Frontend | React 18 + Vite |
-| Monitoring | Prometheus + Grafana |
-| CI/CD | GitHub Actions |
-
----
-
-## Manuscript and research artifacts
-
-This repository contains draft manuscripts and figures, not a peer-reviewed journal publication.
-See [research reproducibility and submission checklist](docs/RESEARCH_REPRODUCIBILITY.md).
-A journal citation and DOI will be added only after publication; draft manuscript citations
-must be labeled as unpublished manuscripts or preprints as appropriate.
-
----
+The research draft is not approved for submission until: complete source-by-source bibliography validation, independent real document ground truth, realistic missing-ledger evaluation, bigger leakage-controlled GPT studies, reproducible end-to-end model comparisons, and review of the final authored manuscript. All prior unverified numbers remain excluded from the current results tables.
 
 ## Author
 
-**Akshay Sharma** · IEEE Senior Member · IET Member
-- LinkedIn: [linkedin.com/in/akshay-sharma-1088](https://linkedin.com/in/akshay-sharma-1088)
-- Medium: [medium.com/@akshay.sharma1088](https://medium.com/@akshay.sharma1088)
-- IEEE: [akshay.sharma1088@ieee.org](mailto:akshay.sharma1088@ieee.org)
+Akshay Sharma, IEEE Senior Member — see current manuscript for author-approved affiliations and corresponding author information.
