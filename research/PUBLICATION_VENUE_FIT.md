@@ -1,3 +1,24 @@
+# Reputation-first journal strategy — October 26, 2026
+
+**Author preference:** Established, credible and recognized peer-reviewed venues, reasonable turnaround, **not IEEE Access**. Quality and original scientific evidence take priority over a very fast first decision.
+
+| Rank | Venue | Publishing/indexing credibility | Speed (not acceptance guarantee) | FraudRAG fit |
+|---|---|---|---|---|
+| 1 | [Applied Intelligence](https://link.springer.com/journal/10489) (Springer Nature) | Established SCIE/Scopus journal; 2025 JIF 3.5 | Publisher median 45 days to first decision | Best overall balance for AI evidence-verification methodology **after independent scientific strengthening** |
+| 2 | [Expert Systems with Applications](https://www.sciencedirect.com/journal/expert-systems-with-applications) (Elsevier) | Established Q1/SCIE AI journal | Indicative third-party 62 days decision after review; 147 days submission-to-acceptance | Strong reputation, high novelty bar; current near-oracle synthetic paper not competitive as a novel superior detector |
+| 3 | [Engineering Applications of Artificial Intelligence](https://www.sciencedirect.com/journal/engineering-applications-of-artificial-intelligence) (Elsevier) | Established Q1/SCIE journal | Indicative third-party 27 days to first decision; 207 days submission-to-acceptance | Requires real engineering benefit, strong non-oracle evaluation and novelty |
+| 4 | [Discover Artificial Intelligence](https://link.springer.com/journal/44163) (Springer Nature) | Reputable publisher; Scopus, Ei Compendex, DOAJ, 2025 CiteScore 6.2; younger journal than above | Publisher median 16 days to first decision | Speed-oriented backup, not equivalent to long-established SCIE journals |
+
+Springer primary sources: https://link.springer.com/journal/10489 and https://link.springer.com/journal/44163 .
+Third-party (not publisher-certified) Elsevier timeline sources: https://www.peeref.com/journals/2799/expert-systems-with-applications and https://www.peeref.com/journals/2513/engineering-applications-of-artificial-intelligence .
+Confirm official Elsevier Insights before preparing submission. Initial first decisions include desk rejection and say nothing about ultimate acceptance.
+
+**Priority decision:** Applied Intelligence first when the author values BOTH recognition and reasonably responsive editorial handling; ESWA is the stretch option. MDPI Computers/MAKE remain legitimate possibilities but are not reputation-first targets.
+
+**Scientific gate unchanged:** the current ledger-complete synthetic baseline equals the GPT/Neo4j/Chroma score; only five external original PDFs (themselves synthetic) were tested for scripted text edits, not adjudicated financial misconduct. Journal reputation does not make these data real. The research manuscript and AI-assisted generation must undergo human review; no claims of novelty or real fraud performance are cleared.
+
+---
+
 # FraudRAG publication venue assessment — FAST DECISION, NON-IEEE ACCESS
 **Updated October 26, 2026 — author's priority: shortest credible editorial turnaround.**
 **IEEE Access excluded at author's request.**
