@@ -1,0 +1,281 @@
+{
+  "task": "synthetic document manipulation, not real bank fraud",
+  "generator_seed": 20261026,
+  "n_generated_cases": 4900,
+  "n_fictional_customers": 700,
+  "holdout_per_type": 25,
+  "test_count_per_seed": 175,
+  "split_seeds": [
+    57,
+    61,
+    83
+  ],
+  "independent_real_labels": false,
+  "repeated_customers_across_seeds_possible": true,
+  "per_seed_results": [
+    {
+      "split_seed": 57,
+      "test_n": 175,
+      "train_n": 3675,
+      "customer_disjoint": true,
+      "scores": {
+        "rules": {
+          "name": "rules",
+          "n": 175,
+          "tp": 50,
+          "tn": 50,
+          "fp": 0,
+          "fn": 75,
+          "abstain": 0,
+          "accuracy": 0.5714285714285714,
+          "precision": 1,
+          "recall": 0.4,
+          "f1": 0.5714285714285715,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "complete_ledger": {
+          "name": "complete_ledger",
+          "n": 175,
+          "tp": 125,
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "abstain": 0,
+          "accuracy": 1,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "identity_only": {
+          "name": "identity_only",
+          "n": 175,
+          "tp": 25,
+          "tn": 0,
+          "fp": 50,
+          "fn": 100,
+          "abstain": 150,
+          "accuracy": 0.14285714285714285,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "partial_ledger": {
+          "name": "partial_ledger",
+          "n": 175,
+          "tp": 50,
+          "tn": 0,
+          "fp": 50,
+          "fn": 75,
+          "abstain": 125,
+          "accuracy": 0.2857142857142857,
+          "precision": 0.5,
+          "recall": 0.4,
+          "f1": 0.4444444444444445,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "no_reference": {
+          "name": "no_reference",
+          "n": 175,
+          "tp": 0,
+          "tn": 0,
+          "fp": 50,
+          "fn": 125,
+          "abstain": 175,
+          "accuracy": 0,
+          "precision": 0,
+          "recall": 0,
+          "f1": 0,
+          "fraud_prevalence": 0.7142857142857143
+        }
+      }
+    },
+    {
+      "split_seed": 61,
+      "test_n": 175,
+      "train_n": 3675,
+      "customer_disjoint": true,
+      "scores": {
+        "rules": {
+          "name": "rules",
+          "n": 175,
+          "tp": 50,
+          "tn": 50,
+          "fp": 0,
+          "fn": 75,
+          "abstain": 0,
+          "accuracy": 0.5714285714285714,
+          "precision": 1,
+          "recall": 0.4,
+          "f1": 0.5714285714285715,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "complete_ledger": {
+          "name": "complete_ledger",
+          "n": 175,
+          "tp": 125,
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "abstain": 0,
+          "accuracy": 1,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "identity_only": {
+          "name": "identity_only",
+          "n": 175,
+          "tp": 25,
+          "tn": 0,
+          "fp": 50,
+          "fn": 100,
+          "abstain": 150,
+          "accuracy": 0.14285714285714285,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "partial_ledger": {
+          "name": "partial_ledger",
+          "n": 175,
+          "tp": 51,
+          "tn": 0,
+          "fp": 50,
+          "fn": 74,
+          "abstain": 124,
+          "accuracy": 0.2914285714285714,
+          "precision": 0.504950495049505,
+          "recall": 0.408,
+          "f1": 0.4513274336283186,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "no_reference": {
+          "name": "no_reference",
+          "n": 175,
+          "tp": 0,
+          "tn": 0,
+          "fp": 50,
+          "fn": 125,
+          "abstain": 175,
+          "accuracy": 0,
+          "precision": 0,
+          "recall": 0,
+          "f1": 0,
+          "fraud_prevalence": 0.7142857142857143
+        }
+      }
+    },
+    {
+      "split_seed": 83,
+      "test_n": 175,
+      "train_n": 3675,
+      "customer_disjoint": true,
+      "scores": {
+        "rules": {
+          "name": "rules",
+          "n": 175,
+          "tp": 50,
+          "tn": 50,
+          "fp": 0,
+          "fn": 75,
+          "abstain": 0,
+          "accuracy": 0.5714285714285714,
+          "precision": 1,
+          "recall": 0.4,
+          "f1": 0.5714285714285715,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "complete_ledger": {
+          "name": "complete_ledger",
+          "n": 175,
+          "tp": 125,
+          "tn": 50,
+          "fp": 0,
+          "fn": 0,
+          "abstain": 0,
+          "accuracy": 1,
+          "precision": 1,
+          "recall": 1,
+          "f1": 1,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "identity_only": {
+          "name": "identity_only",
+          "n": 175,
+          "tp": 25,
+          "tn": 0,
+          "fp": 50,
+          "fn": 100,
+          "abstain": 150,
+          "accuracy": 0.14285714285714285,
+          "precision": 0.3333333333333333,
+          "recall": 0.2,
+          "f1": 0.25,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "partial_ledger": {
+          "name": "partial_ledger",
+          "n": 175,
+          "tp": 45,
+          "tn": 0,
+          "fp": 50,
+          "fn": 80,
+          "abstain": 130,
+          "accuracy": 0.2571428571428571,
+          "precision": 0.47368421052631576,
+          "recall": 0.36,
+          "f1": 0.40909090909090906,
+          "fraud_prevalence": 0.7142857142857143
+        },
+        "no_reference": {
+          "name": "no_reference",
+          "n": 175,
+          "tp": 0,
+          "tn": 0,
+          "fp": 50,
+          "fn": 125,
+          "abstain": 175,
+          "accuracy": 0,
+          "precision": 0,
+          "recall": 0,
+          "f1": 0,
+          "fraud_prevalence": 0.7142857142857143
+        }
+      }
+    }
+  ],
+  "aggregate_descriptive": {
+    "rules": {
+      "accuracy_mean_across_seeds": 0.5714285714285714,
+      "f1_mean_across_seeds": 0.5714285714285715,
+      "abstentions_total": 0
+    },
+    "complete_ledger": {
+      "accuracy_mean_across_seeds": 1,
+      "f1_mean_across_seeds": 1,
+      "abstentions_total": 0
+    },
+    "identity_only": {
+      "accuracy_mean_across_seeds": 0.14285714285714285,
+      "f1_mean_across_seeds": 0.25,
+      "abstentions_total": 450
+    },
+    "partial_ledger": {
+      "accuracy_mean_across_seeds": 0.27809523809523806,
+      "f1_mean_across_seeds": 0.4349542623878907,
+      "abstentions_total": 379
+    },
+    "no_reference": {
+      "accuracy_mean_across_seeds": 0,
+      "f1_mean_across_seeds": 0,
+      "abstentions_total": 525
+    }
+  },
+  "note": "Synthetic generator designs an exact complete ledger. Performance is not representative of real fraud or incomplete institution records.",
+  "predictions_sha256": "216b3a14d8975043c32be36950667f983afbf1281f4ed8ca4a1ab9069b2ce8cb",
+  "workflow_url": "https://github.com/akshaysharma1088/fraudrag/actions/runs/40366478963"
+}

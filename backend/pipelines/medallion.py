@@ -198,6 +198,7 @@ class SilverPipeline:
             "transactions": transactions,
             "balance_check": balance_check,
             "quality_score": quality_score,
+            "ocr_confidence": bronze_record.get("ocr_confidence"),
             "statement_type": bronze_record.get("statement_type"),
             "layer": "silver",
             "status": "silver_complete",
@@ -308,8 +309,14 @@ class SilverPipeline:
             result["confidence"] = 0.0
             return result
 
-        total_credits = sum(t["amount"] for t in transactions if t.get("amount", 0) > 0)
-        total_debits = sum(abs(t["amount"]) for t in transactions if t.get("amount", 0) < 0)
+        # Transaction parser currently extracts unsigned amounts. Do not infer that
+        # every positive amount is a credit. Only validate when directions are known.
+        if not transactions or any(t.get("transaction_type") not in ("debit", "credit") for t in transactions):
+            return {"is_valid": None, "discrepancy": None, "confidence": 0.0,
+                    "reason": "Transaction direction is unknown; balance not verified"}
+
+        total_credits = sum(abs(t["amount"]) for t in transactions if t["transaction_type"] == "credit")
+        total_debits = sum(abs(t["amount"]) for t in transactions if t["transaction_type"] == "debit")
 
         computed_closing = opening + total_credits - total_debits
         discrepancy = abs(computed_closing - closing)
@@ -349,8 +356,10 @@ class SilverPipeline:
         score += weights["has_account_number"] if entities.get("account_number_masked") else 0
         score += weights["has_institution"] if entities.get("institution_name") else 0
         score += weights["has_period"] if entities.get("period_start") else 0
-        score += weights["has_balances"] if (entities.get("opening_balance") and entities.get("closing_balance")) else 0
+        score += weights["has_balances"] if (entities.get("opening_balance") is not None and entities.get("closing_balance") is not None) else 0
         score += weights["has_transactions"] if len(transactions) > 0 else 0
+        balance_check = self._validate_balances(entities, transactions)
+        score += weights["balance_valid"] if balance_check.get("is_valid") is True else 0
         score += weights["high_ocr_confidence"] if (bronze_record.get("ocr_confidence") or 0) > 0.8 else 0
         return round(min(score, 1.0), 3)
 
@@ -427,7 +436,7 @@ class GoldPipeline:
             "has_institution_name": bool(entities.get("institution_name")),
             "has_account_number": bool(entities.get("account_number_masked")),
             "quality_score": silver.get("quality_score", 0),
-            "ocr_confidence": None,  # Passed from bronze if needed
+            "ocr_confidence": silver.get("ocr_confidence"),
         }
 
     @staticmethod

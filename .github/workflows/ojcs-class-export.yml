@@ -1,0 +1,31 @@
+name: Export IEEE Open Journals LaTeX class for manuscript production
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - '.github/workflows/ojcs-class-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  export-open-journal-class:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download pinned IEEE Open Journals class from public template mirror
+        run: |
+          mkdir -p artifacts/ojcs_class
+          curl -fL --retry 2 --max-time 45 -o artifacts/ojcs_class/ieeetj.cls 'https://raw.githubusercontent.com/keitaay/latex-ieee-oj/d1dac9ce394190891686dd1d5937d9b4179ec236/ieeetj.cls'
+          test "$(wc -c < artifacts/ojcs_class/ieeetj.cls)" -gt 200000
+          grep -q 'ProvidesClass' artifacts/ojcs_class/ieeetj.cls
+          curl -fL --retry 2 --max-time 30 -o artifacts/ojcs_class/SOURCE_LICENSE 'https://raw.githubusercontent.com/keitaay/latex-ieee-oj/d1dac9ce394190891686dd1d5937d9b4179ec236/LICENSE'
+          sha256sum artifacts/ojcs_class/* > artifacts/ojcs_class/SHA256SUMS.txt
+          echo 'Publisher IEEE Open Journals class as mirrored in public template repo. Verify latest official version with IEEE Template Selector before journal submission.' > artifacts/ojcs_class/README.txt
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ojcs-verified-pinned-ieeetj-class
+          path: artifacts/ojcs_class/
+          if-no-files-found: warn
+          retention-days: 90

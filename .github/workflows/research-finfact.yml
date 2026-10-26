@@ -1,0 +1,31 @@
+name: Research Fin-Fact external-data baseline
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/finfact_study.py'
+      - '.github/workflows/research-finfact.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  claim-baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install dependencies
+        run: python -m pip install 'scikit-learn>=1.4,<2'
+      - name: Evaluate public Fin-Fact claim dataset
+        run: python experiments/finfact_study.py --mode baseline
+      - name: Upload recorded metrics and predictions
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: finfact-claim-only-pilot
+          path: artifacts/finfact/
+          if-no-files-found: warn
+          retention-days: 90

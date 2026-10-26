@@ -1,0 +1,121 @@
+{
+  "name": "FraudRAG Benchmark v3 third-party synthetic-PDF robustness pilot",
+  "source_upstream_commit": "2d8d31d68dcedbf9028b87f6c7df286f53a6c7de",
+  "license_at_source": "MIT; retain upstream attribution",
+  "source_pdf_count": 5,
+  "source_pdf_metadata": [
+    {
+      "source_id": "bsb-001",
+      "source_pdf_sha256": "d3d5071b90a33272f31bab5c5660d78b2ae29d2c6e1720477f5e8b167f73e843",
+      "source_url": "https://raw.githubusercontent.com/bankstatemently/bank-statement-parsing-benchmark/2d8d31d68dcedbf9028b87f6c7df286f53a6c7de/datasets/basic/bsb-001/bsb-001-statement.pdf",
+      "extracted_text_sha256": "fbf327b7674bf71d0b2e35d01e00d276663089aed6c866603e77c4b6294d37af",
+      "page_count": 3,
+      "selectable_text_pages": 3,
+      "extracted_characters": 5066,
+      "recognized_amount_tokens": 32,
+      "all_source_pdfs_are_publisher_synthetic": true
+    },
+    {
+      "source_id": "bsb-002",
+      "source_pdf_sha256": "3700a073ac1262173cbabbd5667cd3a59e04cf0b14e3a865ae25ce21089ab97d",
+      "source_url": "https://raw.githubusercontent.com/bankstatemently/bank-statement-parsing-benchmark/2d8d31d68dcedbf9028b87f6c7df286f53a6c7de/datasets/basic/bsb-002/bsb-002-statement.pdf",
+      "extracted_text_sha256": "6fc80c8cb8d233d1a22808528a52f9622bb401003fff4b25034617a9b91348ca",
+      "page_count": 4,
+      "selectable_text_pages": 4,
+      "extracted_characters": 9517,
+      "recognized_amount_tokens": 50,
+      "all_source_pdfs_are_publisher_synthetic": true
+    },
+    {
+      "source_id": "bsb-003",
+      "source_pdf_sha256": "4945bcda107e6d7845850e728b90c4dba1cb11de5a13356b0794df349e5527c2",
+      "source_url": "https://raw.githubusercontent.com/bankstatemently/bank-statement-parsing-benchmark/2d8d31d68dcedbf9028b87f6c7df286f53a6c7de/datasets/basic/bsb-003/bsb-003-statement.pdf",
+      "extracted_text_sha256": "b667af876bfed0ec28792fd5dedaa977b02dccaacf20d01858689ebb262cef31",
+      "page_count": 3,
+      "selectable_text_pages": 3,
+      "extracted_characters": 2859,
+      "recognized_amount_tokens": 49,
+      "all_source_pdfs_are_publisher_synthetic": true
+    },
+    {
+      "source_id": "bsb-004",
+      "source_pdf_sha256": "67a5b862696fc06e675db53867be6fcc71a4ecc13998193e8b45e2cd63371051",
+      "source_url": "https://raw.githubusercontent.com/bankstatemently/bank-statement-parsing-benchmark/2d8d31d68dcedbf9028b87f6c7df286f53a6c7de/datasets/basic/bsb-004/bsb-004-statement.pdf",
+      "extracted_text_sha256": "5af9a20d51dd613948a26ae8186d80ef7217fc6b2b4063278d6c757b93d2d8cd",
+      "page_count": 5,
+      "selectable_text_pages": 5,
+      "extracted_characters": 5561,
+      "recognized_amount_tokens": 63,
+      "all_source_pdfs_are_publisher_synthetic": true
+    },
+    {
+      "source_id": "bsb-005",
+      "source_pdf_sha256": "a5cc2a7d210bc657c55b44ac159c5d10b2d71553f3646ce17a64051f918fd960",
+      "source_url": "https://raw.githubusercontent.com/bankstatemently/bank-statement-parsing-benchmark/2d8d31d68dcedbf9028b87f6c7df286f53a6c7de/datasets/basic/bsb-005/bsb-005-statement.pdf",
+      "extracted_text_sha256": "7c6f2bbc795f9e9d8d656970263ac1c6ae14f6dc1f493e5a6a20c6b38051acb6",
+      "page_count": 2,
+      "selectable_text_pages": 2,
+      "extracted_characters": 2346,
+      "recognized_amount_tokens": 55,
+      "all_source_pdfs_are_publisher_synthetic": true
+    }
+  ],
+  "derived_case_count": 20,
+  "derived_cases_are_text_edits_not_forged_pdf_images": true,
+  "adjudicated_real_fraud_documents": 0,
+  "publisher_transaction_level_ground_truth_public": false,
+  "source_group_count": 5,
+  "independent_real_fraud_test_split": false,
+  "baseline_results": {
+    "full_original": {
+      "n": 20,
+      "tp": 10,
+      "tn": 10,
+      "fp": 0,
+      "fn": 0,
+      "abstentions": 0,
+      "accuracy_with_abstentions_as_errors": 1,
+      "precision": 1,
+      "recall": 1,
+      "f1": 1
+    },
+    "first_30_tokens": {
+      "n": 20,
+      "tp": 0,
+      "tn": 0,
+      "fp": 10,
+      "fn": 10,
+      "abstentions": 20,
+      "accuracy_with_abstentions_as_errors": 0,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0
+    },
+    "no_source": {
+      "n": 20,
+      "tp": 0,
+      "tn": 0,
+      "fp": 10,
+      "fn": 10,
+      "abstentions": 20,
+      "accuracy_with_abstentions_as_errors": 0,
+      "precision": 0,
+      "recall": 0,
+      "f1": 0
+    }
+  },
+  "exclusions": [],
+  "limitations": [
+    "All source PDFs themselves are synthetic third-party creations",
+    "Only five document origins; all derived cases share their sources",
+    "The full-original comparator has an exact source text oracle by construction",
+    "The test does not establish transaction extraction accuracy without withheld answers",
+    "Controlled text edits are not altered/forged PDF image pixels",
+    "No independently adjudicated real financial fraud labels",
+    "No GPT or Graph-RAG advantage measured in this source validation"
+  ],
+  "verified_execution": "https://github.com/akshaysharma1088/fraudrag/actions/runs/40371198225",
+  "provenance_notice": "Source PDFs and transaction answer keys not repackaged. PDF source design is synthetic; edited samples are text-level controls only. No real fraud labels.",
+  "superseded_run": "https://github.com/akshaysharma1088/fraudrag/actions/runs/40370987339",
+  "supersession_explanation": "Earlier partial-reference trial sliced by raw character position and falsely marked whitespace normalization changes; fixed by lexically normalized first-30-token comparison."
+}

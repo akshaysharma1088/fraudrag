@@ -1,0 +1,54 @@
+name: FraudRAG V5 pinned external financial QA evidence stress
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'benchmark/tatqa_evidence_v5.py'
+      - 'tests/test_tatqa_evidence_v5.py'
+      - '.github/workflows/tatqa-evidence-v5.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  tatqa-external-source-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check pinned public benchmark scripts offline (no paid API)
+        run: |
+          python -m pip install 'pytest>=8,<10'
+          python -m pytest tests/test_tatqa_evidence_v5.py tests/test_v4_paired_sensitivity.py -q
+      - name: Retrieve SHA-verified public TAT-QA dev and evaluate
+        run: python benchmark/tatqa_evidence_v5.py
+      - name: Independent structural audit and required conditions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("artifacts/tatqa_v5/metrics.json").read_text())
+          assert x["eligible_gold_span_questions"] >= 50
+          assert x["unique_context_groups"] >= 25
+          assert x["benchmark_uses_gold_candidate"] is True
+          assert not x["independently_adjudicated_bank_fraud"]
+          assert not x["LLM_evaluated_in_this_study"]
+          for cond in ("intact","removed_witness","untrusted_replay","late_record","constructed_conflict","wrong_candidate"):
+              for method in x["methods"]:
+                  assert x["results"][f"{cond}:{method}"]["cases"] == x["eligible_gold_span_questions"]
+          assert x["results"]["intact:conflict_aware"]["error_rate"] == 0
+          assert x["results"]["untrusted_replay:conflict_aware"]["error_rate"] == 0
+          assert x["results"]["late_record:conflict_aware"]["error_rate"] == 0
+          assert x["results"]["constructed_conflict:conflict_aware"]["error_rate"] == 0
+          print("Pinned benchmark structural checks passed.")
+          PY
+      - name: Archive raw paired decisions and source checksum
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v5-pinned-tatqa-financial-source-evidence-report
+          path: artifacts/tatqa_v5/
+          if-no-files-found: warn
+          retention-days: 90

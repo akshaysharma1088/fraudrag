@@ -1,0 +1,102 @@
+{
+  "source": "Independent audit of actual executed Neo4j+Chroma+GPT research pilot",
+  "study_is_synthetic_only": true,
+  "n_unique_customers": 28,
+  "planned_pair_count": 112,
+  "observed_pair_count": 112,
+  "missing_pairs": [],
+  "total_reported_tokens": 83567,
+  "unsupported_evidence_citation_count": 2,
+  "unsupported_citation_details": [
+    {
+      "case": "S00007-4",
+      "mode": "document_only",
+      "unsupported_ids": [
+        "T00007-2"
+      ]
+    },
+    {
+      "case": "S00012-2",
+      "mode": "document_only",
+      "unsupported_ids": [
+        "T00012-0",
+        "T00012-1",
+        "T00012-2",
+        "T00012-3"
+      ]
+    }
+  ],
+  "per_condition": {
+    "document_only": {
+      "n": 28,
+      "tp": 8,
+      "tn": 8,
+      "fp": 0,
+      "fn": 12,
+      "abstain": 0,
+      "accuracy": 0.5714285714285714,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714285715,
+      "p50_api_seconds": 4.189,
+      "p95_api_seconds": 14.951
+    },
+    "chroma_only": {
+      "n": 28,
+      "tp": 9,
+      "tn": 5,
+      "fp": 3,
+      "fn": 11,
+      "abstain": 8,
+      "accuracy": 0.5,
+      "precision": 0.75,
+      "recall": 0.45,
+      "f1": 0.5625000000000001,
+      "p50_api_seconds": 5.039,
+      "p95_api_seconds": 25.589
+    },
+    "neo4j_only": {
+      "n": 28,
+      "tp": 20,
+      "tn": 8,
+      "fp": 0,
+      "fn": 0,
+      "abstain": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "p50_api_seconds": 3.934,
+      "p95_api_seconds": 15.755
+    },
+    "integrated": {
+      "n": 28,
+      "tp": 20,
+      "tn": 8,
+      "fp": 0,
+      "fn": 0,
+      "abstain": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "p50_api_seconds": 3.462,
+      "p95_api_seconds": 6.122
+    }
+  },
+  "paired_bootstrap": {
+    "comparison": "integrated minus document_only",
+    "metric": "paired case accuracy",
+    "observed_difference": 0.42857142857142855,
+    "exploratory_percentile_95_interval": [
+      0.25,
+      0.6071428571428571
+    ],
+    "replicates": 2000,
+    "seed": 1047,
+    "not_population_validity": true
+  },
+  "real_world_fraud_validity": false,
+  "retrieval_note": "Provenance compared against source IDs returned by real Neo4j and ChromaDB queries. Their source records are still synthetically generated.",
+  "no_performance_superiority_over_full_ledger_claim": true
+}

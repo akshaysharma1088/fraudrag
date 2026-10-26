@@ -1,0 +1,24 @@
+name: Manuscript scientific-claims preflight
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'research/check_manuscript.py'
+      - 'docs/**'
+      - '.github/workflows/manuscript-preflight.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  known-claims-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Scan existing draft DOCX files for known unsupported claims
+        run: |
+          python research/check_manuscript.py docs/FraudRAG_IEEE_Paper.docx docs/FraudRAG_IEEE_Paper_With_Figures.docx
+      - name: Explain unresolved blockers
+        if: failure()
+        run: |
+          echo "Manuscript submission intentionally BLOCKED until empirical and citation verification." >> "$GITHUB_STEP_SUMMARY"
+          echo "See research/CLAIM_VERIFICATION_REGISTER.md." >> "$GITHUB_STEP_SUMMARY"

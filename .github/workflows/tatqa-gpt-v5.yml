@@ -1,0 +1,33 @@
+name: FraudRAG V5 real GPT external financial QA bounded pilot
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/tatqa_gpt_v5.py'
+      - '.github/workflows/tatqa-gpt-v5.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  bounded-real-model-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify syntax and dataset checksum, preview all capped calls
+        run: python experiments/tatqa_gpt_v5.py --budget-usd 1.5
+      - name: Execute 96 paired live GPT calls if account key exists
+        run: python experiments/tatqa_gpt_v5.py --execute --budget-usd 1.5
+      - name: Preserve every model answer, citations, latency and token usage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tatqa-gpt-v5-public-dev-paired-pilot
+          path: artifacts/tatqa_gpt_v5/
+          if-no-files-found: warn
+          retention-days: 90

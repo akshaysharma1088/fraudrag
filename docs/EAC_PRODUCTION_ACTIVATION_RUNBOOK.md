@@ -1,0 +1,128 @@
+# FraudRAG-EAC — production activation and evidence-collection runbook
+**Status:** implementation and offline integration tests prepared; **NO LIVE BANK AUTHORIZATION OR DEPLOYMENT**. Updated 2026-10-26.
+
+## Executive boundary
+
+FraudRAG-EAC has three implemented layers: (1) deterministic, bitemporal record-consistency certificates; (2) consent-gated, encrypted Plaid Statements Item lifecycle and PDF byte-level comparison; (3) optional custom pinned-key Ed25519 issuer-field evidence verification.
+
+**None of these establishes a journal-grade independent real-world forgery benchmark.** Do not claim the product can detect forged bank statements at a reported accuracy, that Plaid checksums equal issuer signatures, or that a signature establishes financial facts as genuine.
+
+The user already has a cited SSRN paper; maintain that posting and citation history and provide a transparent factual revision. No SSRN submission or journal manuscript upload was executed.
+
+## 1. Implementation inventory
+
+| Boundary | Files | Status |
+|---|---|---|
+| Synthetic interactive EAC tab | `frontend/src/pages/EvidenceAcquisition.jsx`, `backend/api/routes/eac.py` | Implemented; fictional-only and disabled by default |
+| Deterministic statement evidence contracts | `backend/services/eac_certificate.py`, `backend/services/eac_service.py` | Implemented; conditional on trust assumptions |
+| Signed issuer evidence | `backend/services/signed_issuer_evidence.py`, `backend/services/authorized_issuer_transport.py` | Implemented custom contract; **no issuer supports it yet** |
+| Plaid Statements original-PDF retrieval | `backend/services/plaid_statements_provider.py` | Implemented and HTTP-mock tested; no real Plaid credentials/Item |
+| Plaid Link lifecycle | `backend/services/plaid_link_client.py` | Link token, one-use public-token exchange, explicit Item removal; off by default |
+| Encrypted tenant-scoped consent and authorization | `backend/services/eac_consent_vault.py` | AES-256-GCM encrypted, single-host SQLite staging vault, one-time state, local revoke & pending remote cleanup |
+| Full orchestration | `backend/services/plaid_consent_workflow.py` | Link creation → exchange → consented account discovery → vault grant → checksum match → revoke with cleanup retry |
+| Operator-composed optional workflow | `backend/services/plaid_consent_bootstrap.py` | **No public live-bank endpoint** |
+| Independent test coverage | `tests/test_plaid_full_http_workflow.py`, `tests/test_plaid_consent_workflow.py`, `tests/test_eac_consent_vault.py`, plus signed-issuer/transport tests | Complete HTTP mock source and failure cases; not a bank-operated Sandbox confirmation |
+
+The application never presents its in-memory demonstration source attestations as cryptographically signed bank records. The live Plaid and custom issuer adapters are separate integration paths with different trust semantics.
+
+## October 2026 verified activation path (new US Plaid teams)
+
+Official Plaid documentation checked October 26, 2026:
+
+- **Sign up:** https://dashboard.plaid.com/signup . Choose developer/business use
+  consistent with your actual research/project purpose and verify the email.
+- **FREE Sandbox first:** https://plaid.com/docs/sandbox/ . Sandbox uses mock
+  institutions and statements, offers unlimited test Items, and supplies test
+  client credentials in the Dashboard. Explore statements using Sandbox
+  Studio before attempting a real bank connection.
+- **NEW Trial plan:** For US/Canada Plaid teams first registered **on or after
+  April 15, 2026**, Plaid documents an auto-approved-for-most-developers
+  **free Trial plan** with up to **10 real Production Items**, **including
+  Statements**. The dashboard application is
+  https://dashboard.plaid.com/trial-plan .
+  Source: https://support.plaid.com/hc/en-us/articles/16110110883479-How-are-Sandbox-Production-Trial-plan-and-Limited-Production-different .
+  **Check your actual dashboard plan and entitlement**, especially if
+  the team predates April 15, 2026. New Trial status is not assumed.
+- **Billing distinction:** Standard Statements usage is per-Item flexible
+  fee, triggered on creation of a `public_token` even if you never
+  download a statement; `/statements/refresh` has a separate charge.
+  Plaid says eligible NEW Trial plans are free within their Trial
+  allowance, but verify the Dashboard's exact eligibility, terms and
+  remaining quota before any production Item creation. Source:
+  https://plaid.com/docs/account/billing/ .
+- **Coverage caveat:** Plaid currently says Statements serves approximately
+  40% of US depository accounts, with institution-specific limitations.
+  Check actual institution availability via their Coverage Explorer;
+  failure to receive a statement does not imply a fraudulent statement.
+  Source: https://plaid.com/docs/statements/ .
+- **No direct Plaid connector is available in this ChatGPT session**, and
+  ChatGPT cannot authenticate to your Plaid Dashboard on your behalf;
+  never copy Plaid secrets or bank-account credentials into chat. After
+  owner sign-up, provision secrets in a secure operator-controlled
+  environment and run the existing offline tests first.
+- **No production live-bank route currently exists in FraudRAG.** A real
+  approved OIDC/session identity provider and KMS-backed vault (the
+  current SQLite vault is staging-only), cybersecurity and consent/legal
+  review are prerequisites before a real end-user account connection.
+  Work mode's cloud browser may help with account setup with a user
+  present, but account creation and consent require that user's action.
+
+## 2. Official Plaid setup (requires owner action)
+
+1. Create/sign in to a **Plaid Dashboard** team and request **Statements** product eligibility. The feature is US-only and is supported by only a subset of checking/savings institutions. https://plaid.com/docs/statements/
+2. Review **Statements billing** before connecting any actual user. Plaid says creating an Item may incur a per-Item fee **even if no statement is subsequently downloaded**. `/statements/refresh` incurs additional fees. No pricing is hardcoded, no Item is created by this repository on its own. https://plaid.com/docs/account/billing/
+3. Obtain server-side Plaid Client ID and `secret` through Plaid Dashboard. **Do not commit them, paste them into GitHub, send them in this chat, or put them in browser JavaScript.** Use a secrets manager.
+4. Set up a real identity provider / application session verification. An authenticated principal must be securely mapped to one tenant and user; user IDs in request JSON are not security credentials.
+5. Adopt a compliant consent/data-retention policy; conduct privacy/security and financial-data use reviews. Build a managed encrypted token store (KMS-encrypted Postgres recommended) and keep user account access tokens out of frontends, logs and error traces.
+6. In a private **staging** environment, configure `EAC_PLAID_ENABLED=true`, `EAC_PLAID_LINK_ENABLED=true`, `EAC_PLAID_ENVIRONMENT=sandbox`, client credentials, `EAC_PLAID_VAULT_PATH`, and a 32-byte secret AES key as standard base64 in `EAC_PLAID_VAULT_KEY_B64`. **These flags do not expose a web route** or automatically call Plaid. The operator must supply an authenticated, permission-checked application handler and approved frontend Link completion before any real Item may be created.
+7. The **per-user** Plaid token is generated by exchanging Link's one-use `public_token` on the server and stored encrypted after verifying the selected account belongs to the returned Item. `/statements/list` and `/statements/download` are the only statement endpoints allowed; no refresh. https://plaid.com/docs/api/products/statements/
+8. Confirm Plaid's exact `Plaid-Content-Hash` formatting against an authorized **Sandbox** response. Current code requires a 64-character hexadecimal SHA-256, an encoding assumption not explicitly promised by the cited public API docs. Fail closed rather than accepting unknown checksum syntax.
+9. Use an actual authorized bank-origin PDF and a controlled alternate copy for a *user-approved* comparison. Delete original PDF content from application memory/session after processing; store only minimal metadata/digests under an audited retention policy. This code intentionally does not persist PDFs.
+10. Before production, perform a threat-model review, penetration testing, consent revocation and deletion process verification, egress/DNS restriction, multi-user concurrency tests, KMS/backup key rotation, real-provider sandbox smoke test, institutional coverage tests and legal/contract approvals.
+
+**Authorization cannot be synthesized:** Plaid can provide access to a customer's own bank statements only after authorized Link consent; the user must consciously complete Link. No tool or code can replace that external act.
+
+## 3. Safe offline test suite (no Plaid access or charges)
+
+```bash
+python -m pytest \
+  tests/test_eac_consent_vault.py \
+  tests/test_plaid_link_client.py \
+  tests/test_plaid_consent_workflow.py \
+  tests/test_plaid_full_http_workflow.py \
+  tests/test_plaid_consent_bootstrap.py \
+  tests/test_plaid_statements_provider.py \
+  tests/test_signed_issuer_evidence.py -q
+```
+
+If a listed test does not exist in your checked-out commit, use `pytest tests/ -q` and inspect the exact checked-out branch. The GitHub Actions EAC dedicated smoke workflow runs all existing EAC provider and security suites.
+
+For the fake EAC UI, set **only** `EAC_DEMO_ENABLED=true` in controlled local development and open `http://localhost:3000/evidence`. This does not activate Plaid or bank account access.
+
+## 4. Additional security constraints and deliberate release blockers
+
+- **User authorization:** No production-grade login/OIDC session middleware presently protects a live Plaid route, so **no public Plaid Link, exchange, comparison, or revocation endpoint has been exposed**. The existing EAC UI is intentionally fictional-only. Do not route its unverified browser user to real statements.
+- **Token storage:** The single-host SQLite vault provides encrypted token storage and logic-level deletion, **not a certified secure erase of SQLite backups, WAL pages, filesystem snapshots or logs**. Production requires managed encrypted storage, KMS-backed key rotation and retention review.
+- **Billing:** Opening Plaid Link and completing account linking may incur charges. The internal workflow requires an explicit `user_approved_potential_charge=True`, but the future authenticated UI must capture consent and display actual plan charges accurately.
+- **Consent revocation:** Local permission revocation immediately blocks reads; the backend calls Plaid `/item/remove` to revoke remotely. If the HTTP deletion fails, an encrypted *revocation-only* token is retained for a controlled retry. Add a durable operations queue and alerting before production.
+- **Issuer evidence:** The custom Ed25519 protocol is only useful if a legitimate institution *agrees to sign matching records* and securely supplies a pinned public verification key. No such agreement has been obtained.
+- **Security checks:** Plaid endpoints are fixed to approved Plaid hosts; custom issuer endpoints require independent DNS/egress restrictions in addition to code host validation. Provider bytes are capped, redirects are rejected and source signatures/time metadata are fail-closed.
+- **Research/IEEE:** Five synthetic source PDFs and other fictional datasets remain separate from genuine bank-fraud adjudications. OJ-CS manuscript is **NOT CLEARED** for submission; no claims about guaranteed fraud detection, novelty, cost saving on real banks or generalized bank coverage.
+
+## 5. Actions only a human/operator can complete
+
+| Dependency | Responsible party | Can code substitute? |
+|---|---|---|
+| Authorized Plaid team and product entitlement | Project owner / Plaid | No |
+| Paid Statements pricing/Item creation consent | Project owner and end user | No |
+| OAuth/Link user approval and bank selection | Legitimate bank account owner | No |
+| Plaid client ID/secret and environment | Plaid account administrator | No |
+| Identity-provider integration, KMS and deployment credentials | Operator/security team | No |
+| Contract/legal basis for independent bank-fraud datasets | Data provider + author + compliance review | No |
+| Journal final authorship approval and correction of cited public SSRN claims | Author | No |
+
+## 6. Deployment decision
+
+**Research branch safe for review and isolated offline execution; NOT SAFE TO MERGE OR DEPLOY AS A BANK-DOCUMENT VERIFICATION PRODUCTION SYSTEM.** Preserve draft PR #1 and main branch; only explicitly controlled human-approved rollout after above access, security and tests. The intentionally failed legacy-manuscript-scientific-claims check remains a separate publication integrity blocker.
+
+Official documentation: [Plaid Statements](https://plaid.com/docs/statements/) · [Statements API](https://plaid.com/docs/api/products/statements/) · [Plaid Link](https://plaid.com/docs/link/) · [Item token exchange/revocation](https://plaid.com/docs/api/items/) · [Plaid billing](https://plaid.com/docs/account/billing/).

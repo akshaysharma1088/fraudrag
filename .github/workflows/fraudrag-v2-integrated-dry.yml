@@ -1,0 +1,46 @@
+name: FraudRAG-v2 integrated Neo4j Chroma GPT protocol verification
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/fraudrag_v2_integrated.py'
+      - 'tests/test_integrated_protocol_v2.py'
+      - '.github/workflows/fraudrag-v2-integrated-dry.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  integrated-dry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      neo4j:
+        image: neo4j:5.20-community
+        env:
+          NEO4J_AUTH: neo4j/testpassword
+        ports: ['7687:7687', '7474:7474']
+        options: >-
+          --health-cmd "wget -q --spider http://localhost:7474 || exit 1"
+          --health-interval 15s
+          --health-timeout 10s
+          --health-retries 15
+    env:
+      NEO4J_PASSWORD: testpassword
+      TOKENIZERS_PARALLELISM: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install integration dependencies
+        run: python -m pip install 'chromadb==1.5.5' 'scikit-learn>=1.4,<2' 'neo4j>=5.20,<6' 'pytest>=8,<10'
+      - name: Verify real database inputs and research study protocol without paid calls
+        run: python -m pytest tests/test_integrated_protocol_v2.py -q
+      - name: Reproduce dry protocol with no API key and no charges
+        run: python experiments/fraudrag_v2_integrated.py --budget 2.0
+      - name: Save precommitted protocol
+        uses: actions/upload-artifact@v4
+        with:
+          name: fraudrag-v2-integrated-retrieval-protocol
+          path: artifacts/fraudrag_v2_integrated/integrated_protocol.json
+          retention-days: 90

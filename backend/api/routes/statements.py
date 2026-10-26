@@ -101,6 +101,7 @@ async def upload_statement(
 
     fraud_analysis_dict = None
     fraud_result = None
+    analysis_error = None
 
     if rag_service and bronze_record.get("raw_text"):
         try:
@@ -110,12 +111,17 @@ async def upload_statement(
                 statement_text=bronze_record["raw_text"],
                 warehouse_reference=warehouse_text,
                 customer_profile={"customer_id": customer_id},
+                deterministic_validation=silver_record.get("balance_check"),
             )
             fraud_analysis_dict = fraud_result.dict()
         except Exception as e:
+            analysis_error = str(e)
             logger.error("Graph-RAG analysis failed", error=str(e))
 
     gold_record = await gold_pipeline.enrich(silver_record, fraud_analysis_dict)
+    if not fraud_analysis_dict:
+        gold_record["status"] = "manual_review_required"
+        gold_record["analysis_error"] = analysis_error or "Graph-RAG not available"
 
     # Store for retrieval
     statement_data = {
@@ -133,7 +139,8 @@ async def upload_statement(
         layer=gold_record["layer"],
         quality_score=silver_record.get("quality_score"),
         transaction_count=len(silver_record.get("transactions", [])),
-        message="Statement processed through Medallion pipeline. Fraud analysis complete.",
+        message=("Statement processed; fraud analysis unavailable, manual review required."
+                 if not fraud_analysis_dict else "Statement processed through Medallion pipeline; fraud analysis complete."),
     )
 
 

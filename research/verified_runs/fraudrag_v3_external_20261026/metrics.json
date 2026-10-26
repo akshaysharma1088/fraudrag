@@ -1,0 +1,69 @@
+{
+  "study": "controlled TEXT edits to five externally sourced synthetic PDF statements",
+  "source_pdf_hashes": {
+    "bsb-001": "d3d5071b90a33272f31bab5c5660d78b2ae29d2c6e1720477f5e8b167f73e843",
+    "bsb-002": "3700a073ac1262173cbabbd5667cd3a59e04cf0b14e3a865ae25ce21089ab97d",
+    "bsb-003": "4945bcda107e6d7845850e728b90c4dba1cb11de5a13356b0794df349e5527c2",
+    "bsb-004": "67a5b862696fc06e675db53867be6fcc71a4ecc13998193e8b45e2cd63371051",
+    "bsb-005": "a5cc2a7d210bc657c55b44ac159c5d10b2d71553f3646ce17a64051f918fd960"
+  },
+  "model": "gpt-6.1-sol",
+  "source_count": 5,
+  "case_count": 20,
+  "condition_count": 3,
+  "planned_calls": 60,
+  "modes": [
+    "document_only",
+    "partial_source",
+    "complete_source"
+  ],
+  "system_sha256": "9413f30d41a793bf61465336a3d2e4892739a5bf523a44f76fd19a63ccc3426c",
+  "estimated_reservation_usd": 0.768766,
+  "budget_usd": 2.0,
+  "independent_real_fraud_ground_truth": false,
+  "pdf_image_tampering_tested": false,
+  "complete_source_is_oracle": true,
+  "paid_run": true,
+  "actual_calls": 60,
+  "estimated_token_cost_usd": 0.349444,
+  "scores": {
+    "document_only": {
+      "n": 20,
+      "tp": 0,
+      "tn": 0,
+      "fp": 10,
+      "fn": 10,
+      "abstain": 20,
+      "accuracy_with_abstention_error": 0.0,
+      "f1": 0,
+      "completed_calls": 20,
+      "unsupported_citation_responses": 0
+    },
+    "partial_source": {
+      "n": 20,
+      "tp": 0,
+      "tn": 0,
+      "fp": 10,
+      "fn": 10,
+      "abstain": 20,
+      "accuracy_with_abstention_error": 0.0,
+      "f1": 0,
+      "completed_calls": 20,
+      "unsupported_citation_responses": 0
+    },
+    "complete_source": {
+      "n": 20,
+      "tp": 10,
+      "tn": 10,
+      "fp": 0,
+      "fn": 0,
+      "abstain": 0,
+      "accuracy_with_abstention_error": 1.0,
+      "f1": 1.0,
+      "completed_calls": 20,
+      "unsupported_citation_responses": 0
+    }
+  },
+  "publication_cleared": false,
+  "limitations": "Five synthetic third-party PDFs, 20 derivative text cases; source exact-match is an oracle, no real fraud claims."
+}

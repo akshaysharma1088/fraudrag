@@ -1,0 +1,29 @@
+{
+  "title": "FraudRAG-v2 synthetic statement inconsistency feasibility benchmark",
+  "not_original_fraudrag_2400": true,
+  "not_real_statement_fraud": true,
+  "seed": 20261026,
+  "customer_count": 120,
+  "total_cases": 840,
+  "type_counts": {
+    "legitimate": 120,
+    "hard_negative": 120,
+    "balance": 120,
+    "amount": 120,
+    "date": 120,
+    "entity": 120,
+    "fabricated": 120
+  },
+  "csv_sha256": "1ab25182cd7607f4090dc87695e1f668940a74b1d67fd620f418278f018878b7",
+  "reference_timing": "recorded strictly before statement submission",
+  "leakage_control": "split by customer group; never index held-out customer statements",
+  "synthetic_oracle_warning": "Graph reference includes authoritative same-period bank ledger; graph-assisted comparisons may be artificially easier than real-world fraud investigation.",
+  "missing_dimensions": [
+    "scans",
+    "OCR errors",
+    "real formatting",
+    "real fraud adjudications",
+    "unknown-bank ledger gaps",
+    "financial institution diversity"
+  ]
+}

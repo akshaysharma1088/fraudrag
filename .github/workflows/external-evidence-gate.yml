@@ -1,0 +1,29 @@
+name: FraudRAG external scientific evidence admission gate
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'benchmark/external_evidence_gate.py'
+      - 'tests/test_external_evidence_gate.py'
+      - '.github/workflows/external-evidence-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fail-closed-external-evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Prove that unlicensed, non-independent, leaky or hash-modified files cannot become research evidence
+        run: python -m pip install 'pytest>=8,<10' && python -m pytest tests/test_external_evidence_gate.py -q
+      - name: Confirm no approved real bank document manifest exists
+        run: |
+          if test -f research/REAL_BANK_FRAUD_APPROVED_MANIFEST.json; then
+            python benchmark/external_evidence_gate.py --manifest research/REAL_BANK_FRAUD_APPROVED_MANIFEST.json --promotion
+          else
+            echo "No approved genuine bank-document manifest. Journal bank fraud generalization remains BLOCKED."
+          fi
