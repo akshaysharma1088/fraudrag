@@ -217,6 +217,29 @@ class ConsentVault:
             self._audit(conn,"LOCAL_CONSENT_REVOKED",principal.tenant_id+":"+principal.subject_id,item_id)
             return cur.rowcount
 
+    def stage_remote_removal(self, principal:AuthenticatedPrincipal, *,
+                             item_id:str, access_token:str) -> None:
+        """Persist revoked-only Item token when completion cleanup fails.
+
+        It is NEVER accessible through the ordinary evidence-access path.
+        The caller must retry /item/remove, then clear it with
+        confirm_remote_removal. Reserved account ID has no actual bank scope.
+        """
+        require(principal,"plaid:connect")
+        account="__pending_cleanup__"
+        consent="__cleanup__"
+        ciphertext=self._seal(principal,item_id,account,consent,access_token)
+        with self._db() as conn:
+            conn.execute(
+                """INSERT OR IGNORE INTO items
+                    (tenant,subject,item,account,consent,sealed_token,revoked_at)
+                    VALUES(?,?,?,?,?,?,?)""",
+                (principal.tenant_id,principal.subject_id,item_id,
+                 account,consent,ciphertext,int(time.time())),
+            )
+            self._audit(conn,"REMOTE_CLEANUP_PENDING",
+                        principal.tenant_id+":"+principal.subject_id,item_id)
+
     def pending_remote_removal(self, principal:AuthenticatedPrincipal, *, item_id:str)->str:
         """Return token only to authenticated server-side revocation worker.
 
