@@ -108,13 +108,30 @@ class TestSilverPipeline:
             {"opening_balance": 1000.0, "closing_balance": 1200.0},
             [{"amount": 200.0}]
         )
-        assert result["is_valid"] is True
+        assert result["is_valid"] is None  # unsigned transactions must not be treated as credits
 
     def test_balance_invalid(self):
         from backend.pipelines.medallion import SilverPipeline
         result = SilverPipeline()._validate_balances(
             {"opening_balance": 1000.0, "closing_balance": 5000.0},
             [{"amount": 200.0}]
+        )
+        assert result["is_valid"] is None
+
+    def test_balance_directions_explicit(self):
+        from backend.pipelines.medallion import SilverPipeline
+        result = SilverPipeline()._validate_balances(
+            {"opening_balance": 1000.0, "closing_balance": 1200.0},
+            [{"amount": 400.0, "transaction_type": "credit"},
+             {"amount": 200.0, "transaction_type": "debit"}]
+        )
+        assert result["is_valid"] is True
+
+    def test_balance_directions_mismatch(self):
+        from backend.pipelines.medallion import SilverPipeline
+        result = SilverPipeline()._validate_balances(
+            {"opening_balance": 1000.0, "closing_balance": 5000.0},
+            [{"amount": 200.0, "transaction_type": "credit"}]
         )
         assert result["is_valid"] is False
 
@@ -129,7 +146,7 @@ class TestSilverPipeline:
             {"opening_balance": 1000.0, "closing_balance": 1200.30},
             [{"amount": 200.0}]
         )
-        assert result["is_valid"] is True
+        assert result["is_valid"] is None
 
     @pytest.mark.asyncio
     async def test_normalize_produces_silver_record(self, tmp_path):
