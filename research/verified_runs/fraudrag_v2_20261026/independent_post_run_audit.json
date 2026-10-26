@@ -1,0 +1,234 @@
+{
+  "source": "executed real GPT calls on entirely synthetic documents",
+  "not_legacy_fraudrag_2400": true,
+  "all_cases_same_across_modes": true,
+  "unsupported_citation_count": 5,
+  "unsupported_citation_examples": [
+    {
+      "case_id": "S00007-4",
+      "mode": "gpt_only",
+      "claimed_ids": "[\"T00007-2\"]"
+    },
+    {
+      "case_id": "S00031-3",
+      "mode": "gpt_only",
+      "claimed_ids": "[\"T00031-0\", \"T00031-1\", \"T00031-2\", \"T00031-3\"]"
+    },
+    {
+      "case_id": "S00095-6",
+      "mode": "gpt_only",
+      "claimed_ids": "[\"T00095-0\", \"T00095-1\", \"T00095-2\", \"T00095-3\", \"F00095\"]"
+    },
+    {
+      "case_id": "S00097-4",
+      "mode": "gpt_only",
+      "claimed_ids": "[\"T00097-2\"]"
+    },
+    {
+      "case_id": "S00110-4",
+      "mode": "gpt_only",
+      "claimed_ids": "[\"T00110-2\"]"
+    }
+  ],
+  "data_cases": 28,
+  "mode_scores": {
+    "gpt_only": {
+      "n": 28,
+      "tp": 8,
+      "fp": 0,
+      "tn": 8,
+      "fn": 12,
+      "abstain": 1,
+      "accuracy": 0.5714285714285714,
+      "precision": 1.0,
+      "recall": 0.4,
+      "f1": 0.5714285714285715,
+      "latency_p50_seconds": 4.333,
+      "latency_p95_seconds": 24.757
+    },
+    "vector_only": {
+      "n": 28,
+      "tp": 11,
+      "fp": 0,
+      "tn": 8,
+      "fn": 9,
+      "abstain": 4,
+      "accuracy": 0.6785714285714286,
+      "precision": 1.0,
+      "recall": 0.55,
+      "f1": 0.7096774193548387,
+      "latency_p50_seconds": 4.197,
+      "latency_p95_seconds": 25.971
+    },
+    "graph_only": {
+      "n": 28,
+      "tp": 20,
+      "fp": 0,
+      "tn": 8,
+      "fn": 0,
+      "abstain": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "latency_p50_seconds": 3.633,
+      "latency_p95_seconds": 9.024
+    },
+    "hybrid": {
+      "n": 28,
+      "tp": 20,
+      "fp": 0,
+      "tn": 8,
+      "fn": 0,
+      "abstain": 0,
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "latency_p50_seconds": 4.452,
+      "latency_p95_seconds": 23.905
+    }
+  },
+  "per_type": {
+    "gpt_only": {
+      "amount": {
+        "n": 4,
+        "correct": 0
+      },
+      "balance": {
+        "n": 4,
+        "correct": 4
+      },
+      "date": {
+        "n": 4,
+        "correct": 4
+      },
+      "entity": {
+        "n": 4,
+        "correct": 0
+      },
+      "fabricated": {
+        "n": 4,
+        "correct": 0
+      },
+      "hard_negative": {
+        "n": 4,
+        "correct": 4
+      },
+      "legitimate": {
+        "n": 4,
+        "correct": 4
+      }
+    },
+    "vector_only": {
+      "amount": {
+        "n": 4,
+        "correct": 0
+      },
+      "balance": {
+        "n": 4,
+        "correct": 4
+      },
+      "date": {
+        "n": 4,
+        "correct": 4
+      },
+      "entity": {
+        "n": 4,
+        "correct": 3
+      },
+      "fabricated": {
+        "n": 4,
+        "correct": 0
+      },
+      "hard_negative": {
+        "n": 4,
+        "correct": 4
+      },
+      "legitimate": {
+        "n": 4,
+        "correct": 4
+      }
+    },
+    "graph_only": {
+      "amount": {
+        "n": 4,
+        "correct": 4
+      },
+      "balance": {
+        "n": 4,
+        "correct": 4
+      },
+      "date": {
+        "n": 4,
+        "correct": 4
+      },
+      "entity": {
+        "n": 4,
+        "correct": 4
+      },
+      "fabricated": {
+        "n": 4,
+        "correct": 4
+      },
+      "hard_negative": {
+        "n": 4,
+        "correct": 4
+      },
+      "legitimate": {
+        "n": 4,
+        "correct": 4
+      }
+    },
+    "hybrid": {
+      "amount": {
+        "n": 4,
+        "correct": 4
+      },
+      "balance": {
+        "n": 4,
+        "correct": 4
+      },
+      "date": {
+        "n": 4,
+        "correct": 4
+      },
+      "entity": {
+        "n": 4,
+        "correct": 4
+      },
+      "fabricated": {
+        "n": 4,
+        "correct": 4
+      },
+      "hard_negative": {
+        "n": 4,
+        "correct": 4
+      },
+      "legitimate": {
+        "n": 4,
+        "correct": 4
+      }
+    }
+  },
+  "paired_uncertainty": {
+    "comparison": "hybrid vs gpt_only",
+    "metric": "paired proportion correctly classified including abstentions as errors",
+    "observed_difference": 0.42857142857142855,
+    "bootstrap_95_percentile_interval": [
+      0.25,
+      0.6071428571428571
+    ],
+    "repeats": 2000,
+    "seed": 42,
+    "exploratory_not_inferential_confirmation": true
+  },
+  "limitations": [
+    "n=28 is exploratory",
+    "full same-period ledger oracle",
+    "synthetic case prevalence 71.4%",
+    "no real document scans",
+    "graph reference serialized in prompt, not Neo4j inference",
+    "historical vector TF-IDF, not ChromaDB"
+  ]
+}
