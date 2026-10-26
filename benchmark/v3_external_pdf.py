@@ -139,7 +139,7 @@ def create_variants(source_id: str, extracted: str) -> tuple[list[dict], list[di
             "case_id": f"{source_id}:{label}",
             "source_id": source_id, "edit_type": label,
             "injected_change": 1, "text": altered,
-            "ground_truth_origin": "controlled perturbation to extracted PDF text; not adjudicated fraud"
+            "ground_truth_origin": "controlled perturbation to extracted PDF text; NOT a fraud label"
         })
     return variants, exclusions
 
