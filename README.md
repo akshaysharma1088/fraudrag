@@ -8,7 +8,7 @@
 [![Neo4j 5.25](https://img.shields.io/badge/Neo4j-5.25-green.svg)](https://neo4j.com)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.115-teal.svg)](https://fastapi.tiangolo.com)
 [![Claude 3.5](https://img.shields.io/badge/LLM-Claude%203.5%20Sonnet-orange.svg)](https://anthropic.com)
-[![IEEE TKDE](https://img.shields.io/badge/Paper-IEEE%20TKDE%20Submission-red.svg)](docs/)
+[Research reproducibility status](docs/RESEARCH_REPRODUCIBILITY.md)
 [![Docker](https://img.shields.io/badge/Docker-ghcr.io%2Fakshaysharma1088-blue.svg)](https://github.com/akshaysharma1088/fraudrag/pkgs/container/fraudrag-api)
 
 ---
@@ -21,7 +21,7 @@ FraudRAG is a production-grade system that detects forged or manipulated financi
 - **Medallion Architecture** — Documents flow through Bronze (OCR + hashing) → Silver (NER + balance validation) → Gold (Graph-RAG scoring) with explicit data quality contracts at each layer boundary.
 - **Domain-Driven Design** — Four bounded contexts: `StatementContext`, `FraudContext`, `GraphContext`, `CustomerContext`. Aggregates, value objects, and domain events follow DDD tactical patterns.
 
-> **IEEE TKDE Submission** — This system is the subject of an ongoing submission to IEEE Transactions on Knowledge and Data Engineering (IF=8.9).
+> **Research status (October 2026):** The manuscript is being revised after an editorial rejection at IET Software. Historical benchmark metrics shown below are reported but not independently reproducible from this repository yet. See [the research reproducibility checklist](docs/RESEARCH_REPRODUCIBILITY.md).
 
 ---
 
@@ -85,7 +85,9 @@ FraudRAG is a production-grade system that detects forged or manipulated financi
 
 ---
 
-## Results
+## Results (historical manuscript claims; **not independently verified**)
+
+The values below are reported in the manuscript, not re-created by the available public scripts. Do not cite these as independently reproducible findings until experiment artifacts are archived.
 
 | Method | AUC | Precision | Recall | F1 | Latency |
 |--------|-----|-----------|--------|-----|---------|
@@ -279,31 +281,12 @@ pytest tests/ -v --cov=backend
 
 ---
 
-## IEEE TKDE Publication
+## Manuscript and research artifacts
 
-This system is the subject of:
-
-> **FraudRAG: Knowledge Graph-Augmented Retrieval for Real-Time Financial Statement Fraud Detection Using a Domain-Driven Medallion Architecture**
-> Akshay Sharma, IEEE Senior Member, IET Member
-> *Submitted to IEEE Transactions on Knowledge and Data Engineering (IF=8.9), 2025*
-
-The manuscript, figures, and benchmark generation scripts are available in the [`docs/`](docs/) directory.
-
----
-
-## Citation
-
-```bibtex
-@article{fraudrag2025,
-  title={FraudRAG: Knowledge Graph-Augmented Retrieval for Real-Time
-         Financial Statement Fraud Detection Using a Domain-Driven
-         Medallion Architecture},
-  author={Sharma, Akshay},
-  journal={IEEE Transactions on Knowledge and Data Engineering},
-  year={2025},
-  publisher={IEEE}
-}
-```
+This repository contains draft manuscripts and figures, not a peer-reviewed journal publication.
+See [research reproducibility and submission checklist](docs/RESEARCH_REPRODUCIBILITY.md).
+A journal citation and DOI will be added only after publication; draft manuscript citations
+must be labeled as unpublished manuscripts or preprints as appropriate.
 
 ---
 
