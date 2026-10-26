@@ -1,0 +1,38 @@
+name: Export pinned public TAT-QA TEST source for independent V7B audit
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - '.github/workflows/tatqa-test-source-audit-export.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  pinned-published-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Verify public external test benchmark content hash
+        run: |
+          python - <<'PY'
+          import hashlib,urllib.request
+          from pathlib import Path
+          rev='870accc41953dcde885aabeb963d94aabdc0fbc3'
+          url='https://raw.githubusercontent.com/NExTplusplus/TAT-QA/'+rev+'/dataset_raw/tatqa_dataset_test_gold.json'
+          with urllib.request.urlopen(url,timeout=90) as f:raw=f.read()
+          git=hashlib.sha1(b'blob '+str(len(raw)).encode()+bytes([0])+raw).hexdigest()
+          assert git=='3d5d3b691af572646ba9b1ac4d8f78c5dca09732'
+          out=Path('artifacts/tatqa_test_audit_source')
+          out.mkdir(parents=True,exist_ok=True)
+          (out/'tatqa_dataset_test_gold.json').write_bytes(raw)
+          print('Verified source sha256:',hashlib.sha256(raw).hexdigest())
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tatqa-pinned-public-test-audit-source
+          path: artifacts/tatqa_test_audit_source/
+          retention-days: 10
