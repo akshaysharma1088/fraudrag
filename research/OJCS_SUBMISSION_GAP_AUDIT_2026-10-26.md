@@ -54,3 +54,24 @@ OJ-CS requires the **IEEE Open Journals Word or LaTeX template**, a maximum **12
 - https://github.com/akshaysharma1088/fraudrag/actions/runs/40375765482 (readiness gate correctly blocks)
 - https://github.com/akshaysharma1088/fraudrag/actions/runs/40372704350 (v3 GPT independent audit)
 - https://github.com/akshaysharma1088/fraudrag/actions/runs/40368862175 (integrated GPT independent audit)
+
+
+## 2026-10-26 research pivot
+
+A candidate design (NOT yet a proven contribution) and **16 passing non-LLM
+contract tests** now exist:
+- `research/OJCS_RESEARCH_PIVOT_V4_BLUEPRINT_2026-10-26.md`
+- `benchmark/provenance_certificate_v4.py`
+- `tests/test_provenance_certificate_v4.py`
+- execution https://github.com/akshaysharma1088/fraudrag/actions/runs/40393206867
+
+Formalized properties are conditional on externally supplied issuer trust
+attestation; there is no cryptographic issuer signature verification, independent
+source authenticity, new fraud test or LLM ablation result. **This new code
+does not change the failed scientific journal readiness decision.**
+
+The publicly accessible SSRN FraudRAG working preprint from May 2026 has
+historical unsupported "first" and bank fraud loss claims. Public source
+https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6714178 ; author must
+correct/revise its public text and disclose overlap to the journal:
+https://www.elsevier.support/ssrn/answer/how-do-i-revise-a-submission .
