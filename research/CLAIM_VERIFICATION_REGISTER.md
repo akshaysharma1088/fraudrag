@@ -106,3 +106,42 @@ are blocked.
 `docs/FraudRAG_VERIFIED_WORKING_DRAFT.md` is a provisional, disclosure-heavy
 working manuscript, not a journal-ready article. All historical DOCX metrics
 remain blocked; they must not be restored without experiments.
+
+
+## G06 — Paired GPT synthetic-statement experiment VERIFIED WITH LIMITS
+
+Actual 112-call GPT run: https://github.com/akshaysharma1088/fraudrag/actions/runs/40363144409
+
+Permanently archived original test corpus, 28 held-out case IDs, all 112 raw
+predictions, ledger evidence, prompt protocol, observed API token usage,
+and independently recomputed audit (including 2,000 customer-level paired
+bootstrap replicates):
+`research/verified_runs/fraudrag_v2_20261026/`.
+
+**V2 OBSERVED on synthetic case set only:** GPT-only F1=0.5714,
+vector/TFiDF F1=0.7097 (with 4 abstentions), serialized bank-ledger
+graph-style GPT F1=1.000, hybrid GPT F1=1.000, and exact
+**non-LLM** bank-ledger matching F1=1.000. All are n=28 with 71.4%
+tampered label prevalence. Six software/retrieval demonstrations should not
+be merged into claims that the *GPT experimental inference* ran Neo4j or Chroma;
+the actual GPT protocol uses graph-like JSON and TF-IDF text retrieval.
+
+**V2 OBSERVED limitation:** 5 GPT-only outputs cite nonexistent evidence IDs;
+do not suppress these. API token-cost estimate $0.285052. Paired accuracy
+improvement hybrid vs no-retrieval GPT 0.4286, bootstrap 95% percentile interval
+[0.25, 0.6071] **conditional on these 28 constructed customer cases**.
+
+**Publication interpretation:** GPT does **not** beat the equally informed
+deterministic authoritative-ledger comparator. No support for superior
+financial-fraud detection, real-world generalization, calibrated scores,
+first-of-kind novelty, or performance at petabyte scale.
+
+## G07 — Missing reference robustness VERIFIED WITH LIMITS
+
+Run https://github.com/akshaysharma1088/fraudrag/actions/runs/40365030542 .
+With exact same 28 synthetic cases, deterministic reference comparison
+was correct on 28/28 given the full ledger; on 9/28 with a partial ledger
+(19 abstentions); on 4/28 with account/institution identity only
+(24 abstentions); and on 0/28 when no bank-side evidence exists
+(28 abstentions). Those are **synthetic and highly simplified availability
+assumptions**, not observed real-world coverage or external validity.
