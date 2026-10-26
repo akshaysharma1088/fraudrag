@@ -145,3 +145,44 @@ was correct on 28/28 given the full ledger; on 9/28 with a partial ledger
 (24 abstentions); and on 0/28 when no bank-side evidence exists
 (28 abstentions). Those are **synthetic and highly simplified availability
 assumptions**, not observed real-world coverage or external validity.
+
+
+## G08 — Actual Neo4j + Chroma + GPT study: VERIFIED ON FICTIONAL CASES ONLY
+
+Original executed 112-call GPT job:
+https://github.com/akshaysharma1088/fraudrag/actions/runs/40366638447
+
+Independent source/provenance and metric re-computation:
+https://github.com/akshaysharma1088/fraudrag/actions/runs/40368862175
+
+Permanent source-dataset SHA256, raw test cases, 112 model predictions,
+retrieved IDs, run settings, token usage, and paired bootstrap findings:
+`research/verified_runs/fraudrag_v2_integrated_20261026/`.
+
+**Verified synthetic-only n=28:** actual Neo4j bank-ledger GPT F1=1.000,
+actual Neo4j+Chroma GPT F1=1.000, exact non-LLM matching the same bank
+reference F1=1.000. Actual Chroma-only GPT F1=0.5625, lower than GPT
+document-only F1=0.5714. Chroma-only had 8 abstentions. 2 document-only
+model responses asserted nonexistent evidence citations. All four mode
+predictions and their source records were audited.
+
+**Observed comparative limitation:** no added predictive value for the
+LLM or Chroma retrieval over simple complete-ledger reconciliation in
+the synthetic protocol. The artificially comprehensive synthetic reference
+is an oracle; this is not bank fraud adjudication or external generalization.
+
+The retrieval uses *actual database queries*, but knowledge graph content
+is a simple fictional bank-account/ledger snapshot, not trained ring
+reasoning. Chroma uses deterministic local 256d hashing, not OpenAI
+embedding vectors. The study includes no scanned/OCR tampering, real
+institution labeling, or validated k-hop risk propagation improvements.
+
+**Cost/time caveat:** API token-usage cost estimate $0.283302; p50/p95
+times include model API calls only, not end-to-end document ingestion.
+A 2,000-resample customer-paired exploratory bootstrap gives integrated
+minus document-only accuracy difference 0.4286, percentile interval
+[0.25, 0.6071] **within the constructed experimental population**.
+
+**Article readiness unchanged: NOT CLEARED.** The verified paper should
+report real matched controls and all negative results, and cannot
+claim superiority or significant fraud detection in production.
