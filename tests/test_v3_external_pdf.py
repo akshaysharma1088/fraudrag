@@ -34,10 +34,10 @@ def test_format_only_edit_is_not_a_positive():
 
 def test_partial_reference_never_certifies_legitimate():
     statement="Original row with value 111.00 and next item 900.00"
-    assert classify(statement,statement,"first_250_chars") is None
+    assert classify(statement,statement,"first_30_tokens") is None
     assert classify(statement,statement,"no_source") is None
     changed=statement.replace("111.00","211.00")
-    assert classify(changed,statement,"first_250_chars")==1
+    assert classify(changed,statement,"first_30_tokens")==1
 
 
 def test_abstentions_are_not_silently_scored_as_legitimate():
@@ -45,3 +45,10 @@ def test_abstentions_are_not_silently_scored_as_legitimate():
     o=rates(rows,[None,None])
     assert o["abstentions"]==2 and o["accuracy_with_abstentions_as_errors"]==0
     assert o["fp"]==1 and o["fn"]==1
+
+def test_partial_reference_ignores_long_benign_whitespace_shift():
+    source = " ".join(["header"] * 90) + " Balance 10.99"
+    noisy = source.replace(" ", "    ", 1)
+    assert classify(noisy, source, "first_30_tokens") is None
+    late_edit = source.replace("10.99", "10.98")
+    assert classify(late_edit, source, "first_30_tokens") is None
