@@ -1,0 +1,173 @@
+{
+  "dataset": {
+    "source": "https://raw.githubusercontent.com/IIT-DM/Fin-Fact/b30387813734d4b461e6fcdd576feb819cc0bcbd/finfact.json",
+    "sha256": "5e36d32a0e0149f5d86b1f81ab6fd85144136cb7975374364060f8fcf43629fd",
+    "n": 3369,
+    "labels": {
+      "false": 1492,
+      "neutral": 602,
+      "true": 1275
+    }
+  },
+  "experiment": "claim-only GPT study; NOT document fraud or FraudRAG-2400",
+  "model": "gpt-6.1-sol",
+  "seed": 2026,
+  "sample_indices": [
+    105,
+    121,
+    228,
+    245,
+    327,
+    430,
+    451,
+    502,
+    514,
+    524,
+    560,
+    569,
+    586,
+    600,
+    615,
+    636,
+    662,
+    748,
+    769,
+    786,
+    791,
+    795,
+    802,
+    862
+  ],
+  "sample_n": 24,
+  "budget_usd": 2,
+  "planned_conservative_cost_estimate_usd": 0.21888,
+  "unit_price_usd_per_million": {
+    "input": 2,
+    "output": 10
+  },
+  "prompt_sha256": "56994ebb8b06911780561cb3ed0d8b5a2cafb929f8cc648f938ca69db8737882",
+  "max_output_tokens": 512,
+  "paired_baselines": {
+    "majority": {
+      "n": 24,
+      "accuracy": 0.5833333333333334,
+      "macro_f1": 0.24561403508771928,
+      "weighted_f1": 0.4298245614035088,
+      "confusion_labels": [
+        "false",
+        "neutral",
+        "true"
+      ],
+      "confusion_matrix": [
+        [
+          14,
+          0,
+          0
+        ],
+        [
+          1,
+          0,
+          0
+        ],
+        [
+          9,
+          0,
+          0
+        ]
+      ]
+    },
+    "tfidf_logreg_claim_only": {
+      "n": 24,
+      "accuracy": 0.5416666666666666,
+      "macro_f1": 0.4028985507246377,
+      "weighted_f1": 0.5800724637681159,
+      "confusion_labels": [
+        "false",
+        "neutral",
+        "true"
+      ],
+      "confusion_matrix": [
+        [
+          7,
+          3,
+          4
+        ],
+        [
+          0,
+          0,
+          1
+        ],
+        [
+          2,
+          1,
+          6
+        ]
+      ]
+    }
+  },
+  "executed": true,
+  "attempted": 24,
+  "coverage": 1,
+  "actual_usage_estimated_cost_usd": 0.01024,
+  "billed_usage_note": "Computed using recorded API tokens at stated standard prices; final invoice may differ",
+  "metrics_including_abstentions_as_errors": {
+    "n": 24,
+    "accuracy": 0.08333333333333333,
+    "macro_f1": 0.07222222222222223,
+    "weighted_f1": 0.08125,
+    "confusion_labels": [
+      "false",
+      "neutral",
+      "true"
+    ],
+    "confusion_matrix": [
+      [
+        1,
+        13,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        9,
+        0
+      ]
+    ]
+  },
+  "metrics_conditional_on_valid": {
+    "n": 24,
+    "accuracy": 0.08333333333333333,
+    "macro_f1": 0.07222222222222223,
+    "weighted_f1": 0.08125,
+    "confusion_labels": [
+      "false",
+      "neutral",
+      "true"
+    ],
+    "confusion_matrix": [
+      [
+        1,
+        13,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        0,
+        9,
+        0
+      ]
+    ]
+  },
+  "original_fraudrag_auc_not_reproduced": true,
+  "github_run": "https://github.com/akshaysharma1088/fraudrag/actions/runs/40359651993",
+  "run_date_utc": "2026-10-26",
+  "model_inference_note": "Actual paid GPT calls, claims only; no source evidence or Graph-RAG context. Not document fraud accuracy."
+}
