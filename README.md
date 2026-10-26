@@ -10,6 +10,33 @@ FraudRAG explores whether a financial statement's arithmetic and contents can be
 1. **Application prototype:** `backend/`, frontend, Bronze/Silver/Gold pipeline, Neo4j graph utilities, Chroma support and risk-scoring services. Existence of code does **not** demonstrate field accuracy.
 2. **Controlled research studies:** `benchmark/`, `experiments/`, `tests/` and `research/`. These include measured experiments with *fictional* statements and a **separate** publicly released SEC enforcement-linked accounting misstatement baseline.
 
+## NEW: Evidence Acquisition Controller (FraudRAG-EAC)
+
+**Implemented in the research branch:** a gated, interactive, **fictional-only**
+evidence request and verification application, separate from the legacy
+fraud-scoring dashboard. The UI has an **Evidence Acquisition** tab,
+adaptive dynamic-programming source requests, prior-aware greedy/fixed
+baselines, deterministic source response traces and replayable field-level
+conditional certificates. It handles matching, deliberate controlled edits,
+incomplete references, source conflicts and future-dated records.
+
+- [Implementation and opt-in demo instructions](docs/FRAUDRAG_EAC_SANDBOX.md)
+- Backend: `backend/services/eac_service.py`,
+  `backend/services/eac_certificate.py`, `backend/api/routes/eac.py`
+- Frontend: `frontend/src/pages/EvidenceAcquisition.jsx`
+- Tests: `tests/test_eac_service.py`, `tests/test_eac_api.py`
+- Docker Compose: `EAC_DEMO_ENABLED=false` by default. For a
+  **controlled local demo only**, set `EAC_DEMO_ENABLED=true` before
+  running Compose. Open `http://localhost:3000/evidence` after starting
+  the stack, or use `POST /api/v1/eac/demo/run`.
+
+**Not yet integrated:** authorized real bank sources, verified issuer
+cryptographic signatures, customer consent/identity, production persistence
+or live source pricing. Fictional source attestation flags cannot establish
+document authenticity or adjudicate fraud. The SSRN-cited original FraudRAG
+project is preserved, and `FraudRAG-EAC` is a provisional feature name,
+not a renamed publication.
+
 ## Research result provenance — October 26, 2026
 
 The **original historical FraudRAG-2400 dataset and raw predictions are unavailable**. Historical performance claims (including AUC 0.943/F1 0.883, petabyte scale, specific latency and multi-hop retrieval gains) are **not validated** and must **not** be copied into journal submissions. Historical draft figures and DOCX files remain archival material only.
