@@ -181,3 +181,26 @@ def test_revocation_remote_fail_preserves_offline_retry_and_denies_local_reads(r
     link.fail_remote=False
     second=flow.revoke(principal=p,item_id="item-test-1")
     assert second["remote_item_removed"] is True
+
+
+def test_failed_onboarding_remote_cleanup_is_recoverable_without_bank_access(rig):
+    flow,p,link,provider=rig
+    link.fail_remote=True
+    session=flow.start(
+        principal=p,start_date="2026-01-01",end_date="2026-09-01",
+        user_approved_potential_charge=True,
+    )
+    with pytest.raises(EvidenceRejected,match="not available"):
+        flow.complete(
+            principal=p,one_time_completion_state=session["one_time_completion_state"],
+            public_token="public-sandbox-test", selected_account_id="outsider-account"
+        )
+    with pytest.raises(EvidenceRejected):
+        flow.compare(principal=p,item_id="item-test-1",account_id="account-1",
+                     statement_id="a",submitted_pdf=b"%PDF-1.4 x")
+    assert flow.vault.pending_remote_removal(p,item_id="item-test-1")=="access-sandbox-secret-token"
+    link.fail_remote=False
+    result=flow.retry_pending_removal(principal=p,item_id="item-test-1")
+    assert result["remote_item_removed"] is True
+    with pytest.raises(EvidenceRejected,match="No pending"):
+        flow.vault.pending_remote_removal(p,item_id="item-test-1")
