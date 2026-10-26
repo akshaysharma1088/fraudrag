@@ -1,0 +1,30 @@
+name: Obtain IEEE Open Journals article template for research draft
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - '.github/workflows/ieee-open-journals-template-fetch.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  obtain-author-class:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download CTAN IEEE Open Journals class through HTTPS
+        run: |
+          mkdir -p artifacts/ieee_open_journals
+          curl -fL --retry 2 --max-time 45 -o /tmp/ieeetj.zip https://mirrors.ctan.org/macros/latex/contrib/ieeetj.zip
+          unzip -l /tmp/ieeetj.zip | head -40
+          unzip -q /tmp/ieeetj.zip -d /tmp/ieeetj
+          find /tmp/ieeetj -type f | grep -E 'ieeetj.cls|tj-template.*tex' | head -25
+          cp "$(find /tmp/ieeetj -name 'ieeetj.cls' -type f | head -1)" artifacts/ieee_open_journals/ieeetj.cls
+          cp "$(find /tmp/ieeetj -name 'tj-template-s1.tex' -type f | head -1)" artifacts/ieee_open_journals/tj-template-s1.tex || true
+          sha256sum artifacts/ieee_open_journals/* > artifacts/ieee_open_journals/SHA256SUMS.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ieee-open-journals-source-template
+          path: artifacts/ieee_open_journals
+          retention-days: 7
