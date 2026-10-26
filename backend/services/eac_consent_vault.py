@@ -18,6 +18,7 @@ import secrets
 import sqlite3
 import time
 from dataclasses import dataclass
+from contextlib import contextmanager
 from pathlib import Path
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
@@ -65,6 +66,8 @@ class ConsentVault:
         self.key = master_key
         self.path = path
         if path != ":memory:":
+            if Path(path).is_symlink():
+                raise ValueError("Symlink vault path prohibited")
             target = Path(path).resolve()
             if target.exists() and target.is_symlink():
                 raise ValueError("Symlink vault path prohibited")
@@ -94,10 +97,18 @@ class ConsentVault:
                 );
             """)
 
+    @contextmanager
     def _db(self):
         conn = sqlite3.connect(self.path, timeout=4)
-        conn.execute("PRAGMA busy_timeout=4000")
-        return conn
+        try:
+            conn.execute("PRAGMA busy_timeout=4000")
+            yield conn
+            conn.commit()
+        except BaseException:
+            conn.rollback()
+            raise
+        finally:
+            conn.close()
 
     def _audit(self, conn, event: str, actor: str, obj: str):
         # HMAC pseudonyms prevent raw account identifiers in audit history,
@@ -196,14 +207,48 @@ class ConsentVault:
             return AuthorizedItem(item_id,account_id,row[0],token)
 
     def revoke(self, principal:AuthenticatedPrincipal, *, item_id:str) -> int:
-        """Local revoke is immediate. Separate Plaid Item/remove needed remotely."""
+        """Local access revoked immediately; encrypted remote-removal token retained."""
         require(principal,"plaid:revoke")
         with self._db() as conn:
             cur=conn.execute(
-                "UPDATE items SET revoked_at=?,sealed_token=x'' WHERE tenant=? AND subject=? AND item=? AND revoked_at IS NULL",
+                "UPDATE items SET revoked_at=? WHERE tenant=? AND subject=? AND item=? AND revoked_at IS NULL",
                 (int(time.time()),principal.tenant_id,principal.subject_id,item_id),
             )
             self._audit(conn,"LOCAL_CONSENT_REVOKED",principal.tenant_id+":"+principal.subject_id,item_id)
+            return cur.rowcount
+
+    def pending_remote_removal(self, principal:AuthenticatedPrincipal, *, item_id:str)->str:
+        """Return token only to authenticated server-side revocation worker.
+
+        No browser route should ever expose this value. A worker must then
+        call Plaid /item/remove and securely wipe the token after success.
+        """
+        require(principal,"plaid:revoke")
+        with self._db() as conn:
+            rows=conn.execute(
+                """SELECT account,consent,sealed_token FROM items
+                   WHERE tenant=? AND subject=? AND item=? AND revoked_at IS NOT NULL
+                   AND length(sealed_token)>0""",
+                (principal.tenant_id,principal.subject_id,item_id),
+            ).fetchall()
+            if not rows:
+                raise EvidenceRejected("No pending remote Item removal for principal")
+            values={self._open(principal,item_id,account,consent,blob)
+                    for account,consent,blob in rows}
+            if len(values)!=1:
+                raise EvidenceRejected("Multiple token versions require manual revocation review")
+            return values.pop()
+
+    def confirm_remote_removal(self, principal:AuthenticatedPrincipal, *, item_id:str)->int:
+        """Remove ciphertext only once upstream provider confirms Item deletion."""
+        require(principal,"plaid:revoke")
+        with self._db() as conn:
+            cur=conn.execute(
+                """UPDATE items SET sealed_token=x'' WHERE tenant=? AND subject=? AND item=?
+                   AND revoked_at IS NOT NULL AND length(sealed_token)>0""",
+                (principal.tenant_id,principal.subject_id,item_id),
+            )
+            self._audit(conn,"PLAID_ITEM_REMOVED",principal.tenant_id+":"+principal.subject_id,item_id)
             return cur.rowcount
 
     def prune(self, *, retention_days:int=30) -> int:
