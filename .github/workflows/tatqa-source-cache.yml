@@ -1,0 +1,31 @@
+name: FraudRAG pinned TAT-QA audit dataset cache
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - '.github/workflows/tatqa-source-cache.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  cache-verified-source:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Download pinned CC-BY TAT-QA development file with content verification
+        run: |
+          python - <<'PY'
+          from benchmark.tatqa_evidence_v5 import load_external_data
+          from pathlib import Path
+          data,digest=load_external_data(Path('artifacts/tatqa/tatqa_dataset_dev.json'))
+          print('Verified upstream TAT-QA context count:',len(data),'sha256:',digest)
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: tatqa-v5-pinned-dev-source-for-reanalysis
+          path: artifacts/tatqa/tatqa_dataset_dev.json
+          retention-days: 14
