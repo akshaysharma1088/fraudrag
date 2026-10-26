@@ -85,12 +85,14 @@ class PlaidConsentWorkflow:
                 consent_id=consent_id,access_token=token
             )
         except Exception:
-            # Cleanup best effort. A remote Item may already incur a charge.
-            # Never log the access token.
+            # Upstream public-token exchange may already have created a
+            # billable Item. Do not silently lose the only delete credential.
             try:
                 self.link.remove_item(token)
             except Exception:
-                pass
+                self.vault.stage_remote_removal(
+                    principal,item_id=item_id,access_token=token
+                )
             raise
         return {
             "item_id":item_id,
@@ -114,6 +116,15 @@ class PlaidConsentWorkflow:
         return self.statements.compare_with_original(
             item=item,statement_id=statement_id,uploaded_pdf=submitted_pdf
         )
+
+    def retry_pending_removal(self, *, principal:AuthenticatedPrincipal,
+                              item_id:str) -> dict:
+        """Operator/user-authorized retry; never a scheduled background promise."""
+        require(principal,"plaid:revoke")
+        token=self.vault.pending_remote_removal(principal,item_id=item_id)
+        self.link.remove_item(token)
+        wiped=self.vault.confirm_remote_removal(principal,item_id=item_id)
+        return {"remote_item_removed":True,"encrypted_token_records_cleared":wiped}
 
     def revoke(self, *, principal: AuthenticatedPrincipal,
                item_id: str) -> dict:
