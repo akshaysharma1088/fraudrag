@@ -1,0 +1,54 @@
+name: V7 external test-set financial QA heldout group comparison
+on:
+  push:
+    branches: ['research/**']
+    paths:
+      - 'experiments/tatqa_test_v7.py'
+      - 'tests/test_tatqa_test_v7.py'
+      - '.github/workflows/tatqa-test-v7.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  heldout-public-test-gpt:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Offline gold-leakage and paired-evaluation unit tests
+        run: python -m pip install 'pytest>=8,<10' && python -m pytest tests/test_tatqa_test_v7.py -q
+      - name: Verify public upstream test/dev hashes and reserve capped calls
+        run: python experiments/tatqa_test_v7.py --budget-usd 2
+      - name: Run paired actual-model comparison on public test groups
+        run: python experiments/tatqa_test_v7.py --budget-usd 2 --execute
+      - name: Validate frozen raw answer records and group-level isolation
+        run: |
+          python - <<'PY'
+          import json,csv
+          from pathlib import Path
+          p=Path('artifacts/tatqa_test_v7')
+          d=json.loads((p/'metrics.json').read_text())
+          assert d['gold_in_inputs'] is False
+          assert d['source_group_disjoint_from_development'] is True
+          if d['status']=='completed':
+              a=list(csv.DictReader((p/'predictions.csv').open()))
+              assert len(a)==128
+              ids={(x['case_id'],x['mode']) for x in a}
+              assert len(ids)==128
+              assert len(set(x['source_group'] for x in a))==64
+              assert all(not x['error'] for x in a)
+              print('Verified 64 paired, document-group-disjoint external test questions')
+          else:
+              print('Test experiment incomplete: do not report outcome claims:',d['status'])
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: fraudrag-v7-public-test-group-heldout-qa
+          path: artifacts/tatqa_test_v7/
+          retention-days: 90
