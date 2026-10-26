@@ -49,3 +49,42 @@ from the historical manuscript into a revised submission.
 12. USC AAER dataset (research project, not itself a peer-reviewed paper): https://sites.google.com/usc.edu/aaerdataset/home describes 4,278 enforcement releases and 1,816 firm misstatement events through 2021. AAER cases are accounting enforcement events, not authenticated document forgeries.
 
 **Novelty finding:** No claim of *first finance Graph-RAG*, *first graph-driven financial statement fraud detector*, *first evidence-grounded LLM financial fraud analysis*, or universal state-of-the-art outperformance passes the evidence gate. A potentially publishable contribution would instead address a narrower, validated problem: **time-consistent document-level evidence provenance under deliberately incomplete or conflicting authentic record availability**, while reporting abstention and comparison with deterministic reconciliation.
+
+
+## October 26, 2026 OJ-CS pivot: direct novelty hazards — PRIMARY SOURCES
+
+This additional selective survey still is **not systematic** and is NOT
+permission to claim algorithm priority. It narrows the candidate contribution
+to financial-field completeness, provenance, bitemporal issuer evidence,
+explicit conflict/missing evidence, and perhaps cost-aware request planning.
+
+- **Zhang & Wu (2026),** *Do LLMs Know When Evidence is Insufficient? An Evidence Sufficiency Benchmark for Answer-Abstention Calibration in Retrieval-Augmented Generation*, *Computers, Materials & Continua*, DOI https://doi.org/10.32604/cmc.2026.086343 . Published August 13, 2026. Five evidence regimes (full, partial, irrelevant, absent, conflicting) and LLM abstention **already exist**. Do not claim "our five-level evidence sufficiency" is new.
+- **Ge et al. (IJCAI 2025),** *Resolving Conflicting Evidence in Automated Fact-Checking*, DOI https://doi.org/10.24963/ijcai.2025/1073 . Conflicting retrieved evidence and credibility-aware fact checking are existing research.
+- **Han et al. (2025),** *RAG Meets Temporal Graphs*, arXiv https://arxiv.org/abs/2510.13590 . Time-aware GraphRAG is already explored (label preprint unless publication verified).
+- **Shukla & Joshi (ACSAC 2025 workshop),** *Proof-Carrying Answers: A Systematic Protocol for Verifiable Retrieval-Augmented Generation with Cryptographic Provenance*, DOI https://doi.org/10.1109/acsacw69556.2025.00050 . **Proof-carrying citations and integrity receipts are not novel per se**.
+- **Xie et al. (NAACL Findings 2025),** *FIRE: Fact-checking with Iterative Retrieval and Verification*, DOI https://doi.org/10.18653/v1/2025.findings-naacl.158 . Dynamic search/verification and token-cost reductions already studied.
+- **Selective Classification Under Distribution Shifts** (2024/2025), https://pmc.ncbi.nlm.nih.gov/articles/PMC12470254/ . Selective risk–coverage curves are established methods, not a proprietary proposal.
+- **CAP**, JMLR (2025), https://www.jmlr.org/papers/v26/24-0452.html . Adaptive selective conformal inference and coverage concerns are existing research.
+
+**Critical public prior version:**
+Author's public SSRN preprint *FraudRAG: Knowledge Graph-Augmented
+Retrieval for Real-Time Financial Statement Fraud Detection Using a
+Domain-Driven Medallion Architecture*, posted **May 5, 2026**, revised
+May 7, 2026, https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6714178 .
+Public abstract contains claims now contradicted or unverified by actual
+run provenance: financial institution losses "$5.38 trillion," first
+GraphRAG use, Claude 3.5 Sonnet inference path and fraud-ring novelty.
+IEEE requires disclosure of overlapping earlier electronic versions,
+and author should urgently correct the public abstract/PDF through SSRN
+My Papers → Revise, or seek SSRN support if restricted.
+Official SSRN instructions: https://www.elsevier.support/ssrn/answer/how-do-i-revise-a-submission .
+Official IEEE prior publication/overlap policy:
+https://journals.ieeeauthorcenter.ieee.org/become-an-ieee-journal-author/publishing-ethics/guidelines-and-policies/submission-and-peer-review-policies/ .
+
+**Recommended v4 research question**: Does a source-attestation-conditional
+financial-field verifier with explicit completeness, bitemporal cutoff,
+conflict witnesses and a minimum-evidence acquisition policy improve
+auditable decision coverage/cost or reduce unsafe claims over strong
+deterministic verifiers provided with **the same source information**?
+This is **not yet a validated advantage or established priority**.
+See `research/OJCS_RESEARCH_PIVOT_V4_BLUEPRINT_2026-10-26.md`.
