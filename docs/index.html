@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FraudRAG is a research prototype for evidence-grounded financial-document consistency checking, abstention and reproducible deterministic comparisons.">
+  <meta name="theme-color" content="#0b1528">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="FraudRAG — Verify the evidence, not just the document">
+  <meta property="og:description" content="Research-grade financial-document verification with explicit provenance requirements, conditional outcomes and independently archived limitations.">
+  <title>FraudRAG | Evidence-grounded financial-document verification</title>
+  <style>
+    :root{color-scheme:dark;--bg:#081222;--surface:#111f34;--surface2:#162941;--txt:#ecf5ff;--muted:#adbed4;--edge:#2e4864;--blue:#76ccff;--mint:#79dfc5;--amber:#f8c480;--white:#fff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--txt);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif}
+    a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}a:focus-visible,button:focus-visible{outline:3px solid var(--mint);outline-offset:5px}
+    .wrap{max-width:1120px;margin:auto;padding:0 26px}
+    header{position:sticky;top:0;z-index:10;background:rgba(8,18,34,.93);border-bottom:1px solid rgba(166,197,224,.14);backdrop-filter:blur(14px)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:70px}
+    .wordmark{font-weight:850;font-size:22px;letter-spacing:-.7px;color:#fff}.wordmark span{color:var(--blue)}
+    .links{display:flex;align-items:center;gap:23px;flex-wrap:wrap}.links a{color:var(--muted);font-weight:650;font-size:14px}.links .code{color:#eff9ff;border:1px solid var(--edge);padding:6px 13px;border-radius:9px}
+    .hero{padding:90px 0 78px;background:radial-gradient(ellipse at 76% 40%,#164268 0,transparent 43%),linear-gradient(160deg,#0b192e,#081222 75%);border-bottom:1px solid var(--edge)}
+    .tag{display:inline-flex;align-items:center;gap:8px;color:var(--mint);background:#173b43;border:1px solid #235d63;border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800;letter-spacing:.11em;text-transform:uppercase}
+    .tag::before{content:"";width:7px;height:7px;background:#71dfc2;border-radius:50%}
+    h1{max-width:870px;font-size:clamp(42px,6.6vw,78px);letter-spacing:-.06em;line-height:1.08;margin:23px 0 24px;font-weight:800}
+    h1 em{font-style:normal;color:var(--blue)}
+    .lede{max-width:735px;font-size:20px;line-height:1.65;color:var(--muted);margin:0 0 30px}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin:26px 0 24px}
+    .btn{display:inline-block;border-radius:10px;font-weight:750;padding:12px 18px;border:1px solid #71b8e5;background:var(--blue);color:#091e34}.btn:hover{background:#a0e0ff;color:#091e34;text-decoration:none}
+    .btn.secondary{background:transparent;color:#e4f2ff;border-color:#49637d}.btn.secondary:hover{background:#1c3550}
+    .note{border-left:3px solid var(--amber);padding:9px 0 9px 17px;color:#ccd7e6;font-size:14px;max-width:840px}
+    section{padding:76px 0;border-bottom:1px solid rgba(151,181,209,.13)}
+    .eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:800;color:#77c9eb;margin:0 0 8px}
+    h2{font-size:clamp(29px,4vw,42px);letter-spacing:-.035em;line-height:1.2;margin:0 0 14px}
+    h3{font-size:20px;line-height:1.32;margin:0 0 9px}
+    .sub{max-width:810px;color:var(--muted);margin:0 0 30px}
+    .grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+    .card{background:var(--surface);border:1px solid var(--edge);border-radius:16px;padding:25px 23px;min-height:184px}
+    .card p{color:var(--muted);font-size:14px;margin:0}
+    .dot{display:block;width:10px;height:10px;border-radius:50%;background:var(--mint);margin-bottom:18px}
+    .dot.amber{background:var(--amber)}.dot.blue{background:var(--blue)}.dot.slate{background:#aab4ff}
+    .arch{overflow-x:auto;padding:12px;border-radius:18px;background:#f8fbff;max-width:100%;border:1px solid #6f93b2}
+    .arch img{width:100%;min-width:760px;height:auto;display:block}
+    .caption{font-size:13px;color:var(--muted);margin:12px 0 0}
+    .metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:30px 0}
+    .stat{border:1px solid var(--edge);border-radius:15px;background:var(--surface2);padding:23px}
+    .stat strong{font-size:42px;letter-spacing:-.04em;display:block;color:var(--white);line-height:1.1}
+    .stat span{display:block;color:var(--muted);margin-top:9px;font-size:14px}
+    .scroll{overflow-x:auto;border:1px solid var(--edge);border-radius:13px}
+    table{width:100%;border-collapse:collapse;background:#0f1c30;min-width:730px}
+    th,td{padding:16px 18px;text-align:left;vertical-align:top;border-bottom:1px solid #2c425c}
+    th{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#9fc9e3;background:#192c44}td{font-size:14px;color:#d4e2f0}tr:last-child td{border-bottom:0}
+    code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:#9ee4fe}
+    pre{padding:24px;background:#060d19;border-radius:15px;overflow:auto;border:1px solid var(--edge);font-size:14px;line-height:1.9}
+    .cols{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:start}
+    .callout{background:#17293c;border:1px solid #325877;padding:25px;border-radius:16px;color:#cedfeb}
+    .callout b{color:#fff}
+    .quote{font-size:19px;font-weight:650;letter-spacing:-.02em;color:#e2f4ff}
+    footer{padding:48px 0;color:#9dafc3;font-size:13px}
+    footer .foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:850px){.grid{grid-template-columns:repeat(2,1fr)}.metrics{grid-template-columns:1fr 1fr}.cols{grid-template-columns:1fr}.links{gap:12px}.links a{font-size:13px}}
+    @media(max-width:550px){.wrap{padding:0 18px}.grid,.metrics{grid-template-columns:1fr}.nav{align-items:flex-start;padding:16px 0;flex-direction:column}.hero{padding:60px 0}.links{gap:14px}section{padding:54px 0}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="wordmark" href="#top" aria-label="FraudRAG home">Fraud<span>RAG</span></a>
+      <nav class="links" aria-label="Main navigation">
+        <a href="#approach">Approach</a><a href="#evidence">Evidence</a><a href="#start">Quick start</a><a href="#cite">Cite</a>
+        <a class="code" href="https://github.com/akshaysharma1088/fraudrag">GitHub source</a>
+      </nav>
+    </div>
+  </header>
+  <main id="top">
+    <div class="hero"><div class="wrap">
+      <span class="tag">Research prototype · source-aware decisions</span>
+      <h1>Verify the <em>evidence</em>, not just the document.</h1>
+      <p class="lede">A financial statement can be internally consistent yet inconsistent with an independent reference. FraudRAG explores when retrieved evidence supports a document claim, contradicts it, or requires the system to defer.</p>
+      <div class="cta">
+        <a class="btn" href="https://github.com/akshaysharma1088/fraudrag">Explore the repository</a>
+        <a class="btn secondary" href="https://doi.org/10.5281/zenodo.23679156">View supplied Zenodo DOI</a>
+        <a class="btn secondary" href="https://github.com/akshaysharma1088/fraudrag/blob/main/research/publication/README.md">Read the evidence</a>
+      </div>
+      <p class="note"><strong>Research scope:</strong> Not an authenticated bank-document forgery detector, fraud adjudicator, or production-certified service. Historical performance claims have been withdrawn pending independent reproducibility.</p>
+    </div></div>
+
+    <section id="approach"><div class="wrap">
+      <p class="eyebrow">01 · Conditional decisions</p>
+      <h2>Confidence should follow the sources.</h2>
+      <p class="sub">Claims are evaluated against separately sourced reference information using conservative provenance, temporal, completeness and conflict checks. Unknown or untrusted information should not be promoted into a verified fact.</p>
+      <div class="grid">
+        <article class="card"><i class="dot" aria-hidden="true"></i><h3>Supported</h3><p>The compared claim agrees with enough eligible, independent reference evidence.</p></article>
+        <article class="card"><i class="dot blue" aria-hidden="true"></i><h3>Different</h3><p>Qualified reference data demonstrates a field or value mismatch.</p></article>
+        <article class="card"><i class="dot amber" aria-hidden="true"></i><h3>Conflicting</h3><p>Admissible witnesses disagree; the system should surface the disagreement.</p></article>
+        <article class="card"><i class="dot slate" aria-hidden="true"></i><h3>Defer</h3><p>Available evidence is missing, incomplete, stale, or otherwise not sufficient.</p></article>
+      </div>
+    </div></section>
+
+    <section id="architecture"><div class="wrap">
+      <p class="eyebrow">02 · Architecture</p><h2>A simple verification boundary.</h2>
+      <p class="sub">A proposed research workflow, not an independently tested real-bank infrastructure diagram. Real-world issuer attestation and security must be established separately.</p>
+      <div class="arch"><img src="assets/verification-flow.svg" alt="Diagram: submitted claim, optional source planning, independent reference evidence, provenance/time/completeness checks, deterministic verifier, then support, difference, conflict or defer." loading="lazy"></div>
+      <p class="caption">Architecture: the language model may assist with extraction or explanation; deterministic comparison and evidence admissibility remain explicit.</p>
+    </div></section>
+
+    <section id="evidence"><div class="wrap">
+      <p class="eyebrow">03 · Audited studies</p><h2>Show the comparison, including negative results.</h2>
+      <p class="sub">All results below are specific to their study design. They do not constitute real-bank-fraud accuracy estimates. See linked runs and provenance for the full methodology.</p>
+      <div class="metrics">
+        <div class="stat"><strong>28</strong><span>Fictional held-out statement cases with an equal-information deterministic comparator</span></div>
+        <div class="stat"><strong>329</strong><span>Gold-supplied financial QA witness tests over 187 real report contexts</span></div>
+        <div class="stat"><strong>64 × 2</strong><span>Paired GPT answers on public TAT-QA test contexts, gold excluded from prompts</span></div>
+      </div>
+      <div class="scroll"><table>
+        <thead><tr><th>Study</th><th>Observed</th><th>Scientific boundary</th></tr></thead>
+        <tbody>
+        <tr><td><a href="https://github.com/akshaysharma1088/fraudrag/actions/runs/40368862175">V2 · Ledger match</a></td><td>GPT and same-information deterministic comparison both F1 = 1.000 on 28 synthetic cases.</td><td>No measured incremental fraud-classification advantage for GPT.</td></tr>
+        <tr><td><a href="https://github.com/akshaysharma1088/fraudrag/actions/runs/40410179908">V4 · Acquisition policy</a></td><td>At invented budget 4, DP 70.69% vs prior-aware greedy 68.75% coverage, 720 generated test cases.</td><td>Paired uncertainty crosses zero; costs are simulated and the optimizer is classical.</td></tr>
+        <tr><td><a href="https://github.com/akshaysharma1088/fraudrag/actions/runs/40410841687">V5 · Source interventions</a></td><td>329 human-gold spans across 187 TAT-QA financial-report contexts.</td><td>Gold answer supplied; constructed source interventions, not fraud adjudication.</td></tr>
+        <tr><td><a href="https://github.com/akshaysharma1088/fraudrag/actions/runs/40412854350">V6 · No source</a></td><td>Both GPT prompts abstained on all 24 supplied no-evidence questions.</td><td>No prompting advantage established in this condition.</td></tr>
+        <tr><td><a href="https://github.com/akshaysharma1088/fraudrag/actions/runs/40418080549">V7B · Public financial QA</a></td><td>Approximate token-overlap F1 0.518 vs 0.534 across 64 paired public test questions.</td><td>CI includes zero; citation IDs do not prove semantic source support.</td></tr>
+        </tbody>
+      </table></div>
+      <p class="caption">Methodological corrections and incomplete earlier runs remain documented in the <a href="https://github.com/akshaysharma1088/fraudrag/blob/main/research/publication/README.md">research evidence ledger</a>. The public financial QA datasets are not genuine/forged bank-statement labels.</p>
+    </div></section>
+
+    <section id="start"><div class="wrap">
+      <p class="eyebrow">04 · Explore</p><h2>Run the local research prototype.</h2>
+      <p class="sub">Use only fictional or properly authorized non-sensitive documents. This is not a privacy-reviewed hosted service.</p>
+      <div class="cols">
+        <div><pre><code>git clone https://github.com/akshaysharma1088/fraudrag.git
+cd fraudrag
+cp .env.example .env
+# Review local provider configuration before running.
+docker compose up -d</code></pre></div>
+        <div class="callout"><h3>How to reproduce the science</h3>
+          <p>Experimental V2–V7B scripts and raw archives are isolated on a separate research branch. Some jobs require paid APIs; do not run those workflows inadvertently.</p>
+          <p><a href="https://github.com/akshaysharma1088/fraudrag/tree/research/reproducibility-hardening-2026-10">Browse archived experiments</a></p>
+          <p><a href="https://github.com/akshaysharma1088/fraudrag/blob/main/research/publication/SUBMISSION_GATE.md">Review scientific submission gates</a></p>
+        </div>
+      </div>
+    </div></section>
+
+    <section id="cite"><div class="wrap">
+      <p class="eyebrow">05 · Citation & publication</p><h2>Preserve the research trail.</h2>
+      <div class="cols">
+        <div>
+          <p class="quote">“Evidence-grounded verification includes knowing when the available sources are insufficient.”</p>
+          <p>The project maintainer supplied the Zenodo DOI <a href="https://doi.org/10.5281/zenodo.23679156">10.5281/zenodo.23679156</a>. The record's live title, version and license were not independently confirmed while preparing this page. Verify those details before citing or releasing a new version.</p>
+          <p><a href="https://github.com/akshaysharma1088/fraudrag/blob/main/CITATION.cff">Repository citation metadata</a> · <a href="https://doi.org/10.2139/ssrn.6714178">Earlier SSRN preprint</a></p>
+        </div>
+        <div class="callout"><h3>Publication status</h3>
+          <p>The Open Journals-format research manuscript remains an <strong>author-review draft</strong>, not a submitted or accepted IEEE paper. Scientific novelty, independent validity, prior-paper overlap and ethics/IP signoffs remain open.</p>
+          <p><a href="https://github.com/akshaysharma1088/fraudrag/blob/main/research/publication/SUBMISSION_GATE.md">What remains before submission</a></p>
+        </div>
+      </div>
+    </div></section>
+  </main>
+  <footer><div class="wrap foot"><span><b>FraudRAG</b> · Research software and evidence documentation · Akshay Sharma</span><span><a href="https://github.com/akshaysharma1088/fraudrag">Source</a> · <a href="https://doi.org/10.5281/zenodo.23679156">Zenodo DOI</a> · <a href="https://doi.org/10.2139/ssrn.6714178">SSRN</a></span></div></footer>
+</body>
+</html>
