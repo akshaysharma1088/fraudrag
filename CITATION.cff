@@ -1,0 +1,23 @@
+cff-version: 1.2.0
+message: "If you use this research prototype, verify the linked Zenodo record metadata before citing; cite datasets and earlier preprints separately."
+type: software
+title: "FraudRAG: Evidence-Grounded Financial-Document Verification Research Prototype"
+authors:
+  - family-names: Sharma
+    given-names: Akshay
+repository-code: "https://github.com/akshaysharma1088/fraudrag"
+url: "https://github.com/akshaysharma1088/fraudrag"
+doi: "10.5281/zenodo.23679156"
+keywords:
+  - financial documents
+  - evidence sufficiency
+  - provenance
+  - abstention
+  - deterministic reconciliation
+  - retrieval-augmented generation
+abstract: >-
+  An experimental research prototype exploring financial-document consistency
+  and explicit reference-evidence sufficiency checks. Archived studies include
+  synthetic comparisons and financial-report question answering. The project
+  does not establish real-bank-fraud adjudication or superior classification
+  accuracy over equally informed deterministic checking.

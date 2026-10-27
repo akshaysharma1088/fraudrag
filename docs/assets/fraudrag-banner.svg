@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="320" viewBox="0 0 1200 320" role="img" aria-labelledby="title desc">
+<title id="title">FraudRAG — verify the evidence, not just the document</title>
+<desc id="desc">Dark blue banner with connected source and verification nodes surrounding a stylized evidence shield.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#0b1528"/><stop offset=".55" stop-color="#152a49"/><stop offset="1" stop-color="#0c1b34"/></linearGradient>
+  <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#66d3ff"/><stop offset="1" stop-color="#6394ff"/></linearGradient>
+  <radialGradient id="glow" cx="75%" cy="45%" r="60%"><stop stop-color="#3b8fd6" stop-opacity=".17"/><stop offset="1" stop-color="#1b3353" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1200" height="320" rx="24" fill="url(#bg)"/><rect width="1200" height="320" rx="24" fill="url(#glow)"/>
+<g fill="none" stroke="#5c82b0" stroke-opacity=".34" stroke-width="2">
+<path d="M822 50 900 98 1011 57 1106 131 1057 241 922 265 845 201 822 50Z"/>
+<path d="m900 98 22 167m-77-64 212 40m-46-184 46 184m-157-143 206 33"/>
+</g>
+<g fill="#81caf8" opacity=".84"><circle cx="822" cy="50" r="6"/><circle cx="900" cy="98" r="8"/><circle cx="1011" cy="57" r="7"/><circle cx="1106" cy="131" r="7"/><circle cx="1057" cy="241" r="8"/><circle cx="922" cy="265" r="7"/><circle cx="845" cy="201" r="6"/></g>
+<rect x="48" y="45" width="88" height="88" rx="25" fill="#172e52" stroke="#578ed1" stroke-width="2"/>
+<path d="M92 64 119 75v18c0 17-10 28-27 35-17-7-27-18-27-35V75Z" fill="none" stroke="url(#badge)" stroke-width="5" stroke-linejoin="round"/>
+<path d="m77 92 11 11 20-24" fill="none" stroke="#71e3c4" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="157" y="107" fill="#f1f7ff" font-family="Arial,Helvetica,sans-serif" font-size="64" font-weight="700" letter-spacing="-1.2">Fraud<tspan fill="#7bd4ff">RAG</tspan></text>
+<text x="50" y="179" fill="#c6d6eb" font-family="Arial,Helvetica,sans-serif" font-size="26">Evidence-grounded financial-document verification</text>
+<rect x="48" y="217" width="260" height="42" rx="21" fill="#263d60" stroke="#4b789f"/>
+<circle cx="70" cy="238" r="6" fill="#71e3c4"/>
+<text x="87" y="246" fill="#e8f4ff" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="600">Research prototype</text>
+<text x="335" y="245" fill="#9fb7d2" font-family="Arial,Helvetica,sans-serif" font-size="18">Independent evidence · explicit deferral · auditable limits</text>
+</svg>
