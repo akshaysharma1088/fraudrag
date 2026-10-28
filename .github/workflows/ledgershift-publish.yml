@@ -1,0 +1,32 @@
+name: LedgerShift publish results to branch
+on:
+  workflow_dispatch:
+    inputs:
+      run_id:
+        description: Run id of the LedgerShift benchmark run
+        required: true
+permissions:
+  contents: write
+  actions: read
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          name: ledgershift-results
+          path: out/results
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Commit results to ledgershift-results branch
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git checkout --orphan ledgershift-results
+          git rm -rfq . || true
+          mkdir -p ledgershift && mv out/results ledgershift/results
+          rm -rf out
+          git add ledgershift/results
+          git commit -qm "LedgerShift results from run ${{ inputs.run_id }}"
+          git push -f origin ledgershift-results
