@@ -36,6 +36,21 @@ LINK_INSTRUCTIONS = (
     "description (same_payee). Answer for every line, in JSON only."
 )
 
+PAYEE_GUIDE = (
+    " same_payee is about the business or person, not the exact text. Bank descriptors routinely abbreviate "
+    "names, drop words, add store numbers, cities, reference codes and processor prefixes, and the statement may "
+    "contain OCR errors. Treat these as the SAME payee, for example 'Lowe's' and 'LOWES #01234', 'Panera Bread' "
+    "and 'PANERA BREAD #601', 'Grubhub' and 'GRUBHUB*ORDER', 'AT&T' and 'ATT*BILL PAYMENT'. Answer false only "
+    "when the record clearly belongs to a different business or a different service, for example 'Lowe's' and "
+    "'MENARDS 3315', or 'Lyft' rides and 'LYFT *BIKES'."
+)
+PROMPT_VERSION = "v1"
+
+
+def link_instructions():
+    return LINK_INSTRUCTIONS + (PAYEE_GUIDE if PROMPT_VERSION == "v2" else "")
+
+
 LINK_SCHEMA = {"type": "object", "properties": {"links": {"type": "array", "items": {"type": "object", "properties": {
     "line_id": {"type": "string"}, "option": {"type": "string"}, "same_payee": {"type": "boolean"}},
     "required": ["line_id", "option", "same_payee"]}}}, "required": ["links"]}
@@ -80,7 +95,7 @@ def _safe_chat(*args):
 
 
 def link(model, inst, pending):
-    out = _safe_chat(model, LINK_INSTRUCTIONS, link_payload(inst, pending), LINK_SCHEMA)
+    out = _safe_chat(model, link_instructions(), link_payload(inst, pending), LINK_SCHEMA)
     try:
         parsed = json.loads(out["content"])
         answers = {x["line_id"]: {"option": x["option"], "same_payee": bool(x["same_payee"])} for x in parsed["links"]}
@@ -98,7 +113,8 @@ def only_payload(inst):
 def llm_only(model, inst):
     system = ("You verify a customer's submitted bank statement against the bank's reference evidence. "
               + POLICY + " Ledger descriptions are raw bank descriptors; statement text may contain OCR errors. "
-              "Return the overall state, the line ids that drive it, and a one-sentence reason, in JSON only.")
+              "Return the overall state, the line ids that drive it, and a one-sentence reason, in JSON only."
+              + (PAYEE_GUIDE.replace(" same_payee is", " Payee identity is") if PROMPT_VERSION == "v2" else ""))
     out = _safe_chat(model, system, only_payload(inst), ONLY_SCHEMA)
     try:
         parsed = json.loads(out["content"]); out["label"] = parsed["label"]; out["error"] = ""
