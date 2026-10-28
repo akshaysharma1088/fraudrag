@@ -132,7 +132,7 @@ def evaluate(split="test", prompt="v1"):
     rp = OUT / ("rules_predictions.json" if split == "test" else f"rules_predictions_{split}.json")
     rows = {r["instance_id"]: r for r in json.loads(rp.read_text())}
     d = OUT / llm_dir(split, prompt)
-    llm_files = sorted(d.glob("shard_*.json")) if d.exists() else []
+    llm_files = sorted(f for f in d.glob("shard_*.json") if not f.name.endswith(".partial.json")) if d.exists() else []
     usage = defaultdict(lambda: defaultdict(float))
     for f in llm_files:
         for rec in json.loads(f.read_text()):
