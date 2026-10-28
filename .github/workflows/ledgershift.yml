@@ -1,0 +1,81 @@
+name: LedgerShift benchmark (open-weights LLM, no paid API)
+on:
+  workflow_dispatch:
+    inputs:
+      model:
+        description: Ollama model tag
+        default: qwen2.5:7b
+      nshards:
+        description: Number of parallel shards (must match the matrix)
+        default: '20'
+permissions:
+  contents: read
+jobs:
+  llm:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    defaults:
+      run:
+        working-directory: ledgershift
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install and start Ollama
+        run: |
+          curl -fsSL https://ollama.com/install.sh | sh
+          (ollama serve > /tmp/ollama.log 2>&1 &)
+          sleep 5
+          ollama pull ${{ inputs.model }}
+      - name: Build benchmark (deterministic, hash-checked)
+        run: |
+          python -m ledgershift.run build
+          python - <<'PY'
+          import json; b=json.load(open('results/build.json')); e=json.load(open('expected_hashes.json'))
+          assert b['test_sha256']==e['test_sha256'] and b['dev_sha256']==e['dev_sha256'], 'benchmark changed'
+          print('hashes ok')
+          PY
+      - name: LLM calls for this shard
+        run: python -m ledgershift.run llm --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --model ${{ inputs.model }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: shard-${{ matrix.shard }}
+          path: ledgershift/results/llm/
+          retention-days: 90
+
+  evaluate:
+    needs: llm
+    if: always()
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ledgershift
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          path: ledgershift/results/llm
+          merge-multiple: true
+      - name: Deterministic verifiers and full evaluation
+        run: |
+          python -m pip install pytest
+          python -m pytest -q tests
+          python -m ledgershift.run build
+          python -m ledgershift.run rules
+          python -m ledgershift.run evaluate
+          ls results/llm | wc -l
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ledgershift-results
+          path: ledgershift/results/
+          retention-days: 90
