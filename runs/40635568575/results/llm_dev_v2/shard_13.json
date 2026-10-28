@@ -1,0 +1,612 @@
+[
+ {
+  "instance_id": "dev-clean-013",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 1712,
+   "output_tokens": 96,
+   "seconds": 191.86,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\"],\n  \"reason\": \"All statement lines are supported by matching reference records within the allowed date range.\"\n}"
+  },
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-clean-033",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2040,
+   "output_tokens": 107,
+   "seconds": 183.77,
+   "error": "",
+   "content": "{\"label\": \"SUPPORTED\", \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\", \"L14\"], \"reason\": \"All statement lines are supported by matching reference records within the allowed date range.\"}"
+  },
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-format-013",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 1784,
+   "output_tokens": 101,
+   "seconds": 157.98,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\"],\n  \"reason\": \"All statement lines are supported by corresponding reference records within the allowed date range and match the required criteria.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O2",
+     "same_payee": false
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "none",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1893,
+   "output_tokens": 119,
+   "seconds": 207.47,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O2\", \"same_payee\": false}, {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L11\", \"option\": \"none\", \"same_payee\": false}]}",
+   "pending_lines": 5,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-format-033",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 1800,
+   "output_tokens": 91,
+   "seconds": 189.21,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\"],\n  \"reason\": \"All statement lines are supported by matching reference records within the allowed date range.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3087,
+   "output_tokens": 144,
+   "seconds": 346.62,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 6,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-ocr-013",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DIFFERENT",
+   "prompt_tokens": 2074,
+   "output_tokens": 54,
+   "seconds": 203.76,
+   "error": "",
+   "content": "{\n  \"label\": \"DIFFERENT\",\n  \"line_ids\": [\"L01\", \"L06\"],\n  \"reason\": \"The statement line L01 has an incorrect description and amount, and L06 has an incorrect amount.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O4",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3540,
+   "output_tokens": 221,
+   "seconds": 430.93,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\n      \"line_id\": \"L03\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L05\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L06\",\n      \"option\": \"O4\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L07\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L08\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L11\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L12\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    }\n  ]\n}",
+   "pending_lines": 7,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L06": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 453,
+   "output_tokens": 29,
+   "seconds": 17.24,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": false}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-ocr-033",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DIFFERENT",
+   "prompt_tokens": 2161,
+   "output_tokens": 104,
+   "seconds": 230.54,
+   "error": "",
+   "content": "{\n  \"label\": \"DIFFERENT\",\n  \"line_ids\": [\"L14\"],\n  \"reason\": \"The Cash App transaction on 2026-07-25 has an amount of -$200.00 on the statement, but the evidence shows an amount of -$200.00 posted on 2026-07-27, which is 2 days after the line date, making it different according to the policy.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3564,
+   "output_tokens": 220,
+   "seconds": 408.87,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\n      \"line_id\": \"L01\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L03\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L05\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L06\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L08\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L10\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L12\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    }\n  ]\n}",
+   "pending_lines": 7,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 452,
+   "output_tokens": 29,
+   "seconds": 18.34,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-split-013",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DIFFERENT",
+   "prompt_tokens": 1843,
+   "output_tokens": 49,
+   "seconds": 178.33,
+   "error": "",
+   "content": "{\n  \"label\": \"DIFFERENT\",\n  \"line_ids\": [\"L08\", \"L09\"],\n  \"reason\": \"The Venmo transaction and the Southwest Airlines transaction have discrepancies in the amounts or descriptions.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L01": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L04": {
+     "option": "O4",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 2995,
+   "output_tokens": 143,
+   "seconds": 310.54,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L01\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L04\", \"option\": \"O4\", \"same_payee\": true}, {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 6,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "dev-split-033",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DIFFERENT",
+   "prompt_tokens": 2398,
+   "output_tokens": 125,
+   "seconds": 265.87,
+   "error": "",
+   "content": "{\n  \"label\": \"DIFFERENT\",\n  \"line_ids\": [\"L02\"],\n  \"reason\": \"The statement line for Chevron on 2026-07-03 has an amount of -$37.90, but the evidence shows two separate transactions on 2026-07-04 and 2026-07-06 with amounts of -$20.17 and -$17.73 respectively, totaling -$37.90, which is not supported by a single record matching the statement line.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "S0",
+     "same_payee": true
+    },
+    "L13": {
+     "option": "S0",
+     "same_payee": true
+    },
+    "L16": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 4384,
+   "output_tokens": 280,
+   "seconds": 576.31,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\n      \"line_id\": \"L01\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L03\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L06\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L07\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L08\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L11\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L12\",\n      \"option\": \"S0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L13\",\n      \"option\": \"S0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L16\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    }\n  ]\n}",
+   "pending_lines": 9,
+   "label": "SUPPORTED"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "dev-partial-013",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1666,
+   "output_tokens": 65,
+   "seconds": 169.49,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L11\"],\n  \"reason\": \"The statement extract is incomplete (coverage_complete is false), and there is no evidence for the CVSP Pharmacy transaction on 2026-05-31, making it unknown.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L10": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "none",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1106,
+   "output_tokens": 117,
+   "seconds": 130.12,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L10\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L11\", \"option\": \"none\", \"same_payee\": false}]}",
+   "pending_lines": 5,
+   "label": "DEFER"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "dev-partial-033",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1718,
+   "output_tokens": 46,
+   "seconds": 164.53,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L08\", \"L11\"],\n  \"reason\": \"The statement lines for Costco and Google One are unknown due to incomplete coverage.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O2",
+     "same_payee": false
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L12": {
+     "option": "none",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1892,
+   "output_tokens": 164,
+   "seconds": 195.36,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"O2\", \"same_payee\": false}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L12\", \"option\": \"none\", \"same_payee\": false}]}",
+   "pending_lines": 7,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "dev-conflict-013",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "RemoteDisconnected:Remote end closed connection without response",
+   "content": ""
+  },
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "URLError:<urlopen error [Errno 111] Connection refused>",
+   "content": "",
+   "pending_lines": 5,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "URLError:<urlopen error [Errno 111] Connection refused>",
+   "content": "",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "dev-conflict-033",
+  "model": "qwen2.5:14b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "URLError:<urlopen error [Errno 111] Connection refused>",
+   "content": ""
+  },
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "URLError:<urlopen error [Errno 111] Connection refused>",
+   "content": "",
+   "pending_lines": 6,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "URLError:<urlopen error [Errno 111] Connection refused>",
+   "content": "",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ }
+]
