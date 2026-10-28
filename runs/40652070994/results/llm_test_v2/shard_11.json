@@ -1,0 +1,1006 @@
+[
+ {
+  "instance_id": "test-clean-011",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2004,
+   "output_tokens": 104,
+   "seconds": 80.66,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\"],\n  \"reason\": \"All statement lines are supported by corresponding records within 3 days.\"\n}"
+  },
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-clean-031",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DIFFERENT",
+   "prompt_tokens": 1714,
+   "output_tokens": 93,
+   "seconds": 54.3,
+   "error": "",
+   "content": "{\n  \"label\": \"DIFFERENT\",\n  \"line_ids\": [\"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L10\"],\n  \"reason\": \"Records for CVS Pharmacy, Rent Payment, ATM Withdrawal, Walmart+, Amazon Prime, Cash App, and Comcast Xfinity do not match the statement lines.\"\n}"
+  },
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-clean-051",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2095,
+   "output_tokens": 39,
+   "seconds": 57.17,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [],\n  \"reason\": \"All statement lines are supported by corresponding records within 3 days of the line date.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 445,
+   "output_tokens": 30,
+   "seconds": 16.15,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 445,
+   "output_tokens": 30,
+   "seconds": 5.79,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-format-011",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1620,
+   "output_tokens": 45,
+   "seconds": 51.93,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L05\"],\n  \"reason\": \"Line L05 with 'Costco' description has no matching record within the statement period.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O1",
+     "same_payee": false
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1504,
+   "output_tokens": 108,
+   "seconds": 52.07,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L05\", \"option\": \"O1\", \"same_payee\": false},\n    {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false}\n  ]\n}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 457,
+   "output_tokens": 30,
+   "seconds": 8.74,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-format-031",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DIFFERENT",
+   "prompt_tokens": 1675,
+   "output_tokens": 67,
+   "seconds": 47.24,
+   "error": "",
+   "content": "{\n  \"label\": \"DIFFERENT\",\n  \"line_ids\": [\"L02\", \"L04\", \"L05\", \"L07\", \"L09\"],\n  \"reason\": \"Records for Duke Energy, Prime Video, Verizon Wireless, and Southwest Airlines are missing from the statement.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 805,
+   "output_tokens": 53,
+   "seconds": 23.24,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 2,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-format-051",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2008,
+   "output_tokens": 103,
+   "seconds": 66.47,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\"],\n  \"reason\": \"All statement lines are supported by corresponding records within 3 days of the line date.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "O5",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1928,
+   "output_tokens": 99,
+   "seconds": 64.34,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L12\", \"option\": \"O5\", \"same_payee\": false}]}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-ocr-011",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1618,
+   "output_tokens": 62,
+   "seconds": 44.9,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L03\", \"L08\"],\n  \"reason\": \"Line L03 (ATM Withdrawol) and line L08 (Home Depot) are unknown as no supporting records exist within the statement period.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1477,
+   "output_tokens": 108,
+   "seconds": 60.53,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 455,
+   "output_tokens": 30,
+   "seconds": 8.79,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-ocr-031",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 1639,
+   "output_tokens": 88,
+   "seconds": 49.41,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\"],\n  \"reason\": \"All statement lines are supported by corresponding reference records within the allowed date range and amount.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3621,
+   "output_tokens": 179,
+   "seconds": 151.15,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 7,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 453,
+   "output_tokens": 30,
+   "seconds": 8.94,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-ocr-051",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 2130,
+   "output_tokens": 82,
+   "seconds": 77.24,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L04\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\", \"L14\"],\n  \"reason\": \"Some lines have unknown payees or amounts that do not match any reference record.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L14": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 4320,
+   "output_tokens": 228,
+   "seconds": 202.43,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L14\", \"option\": \"O0\", \"same_payee\": false}\n  ]\n}",
+   "pending_lines": 9,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-split-011",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1620,
+   "output_tokens": 53,
+   "seconds": 42.46,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L05\", \"L07\"],\n  \"reason\": \"Line L05 and L07 are unknown as there are no records supporting them within the statement period.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1149,
+   "output_tokens": 101,
+   "seconds": 47.43,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\n      \"line_id\": \"L00\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L02\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L06\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    }\n  ]\n}",
+   "pending_lines": 3,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-split-031",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2398,
+   "output_tokens": 123,
+   "seconds": 85.52,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\", \"L14\", \"L15\", \"L16\"],\n  \"reason\": \"All statement lines are supported by corresponding records within 3 days of the line date.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L10": {
+     "option": "O5",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "S0",
+     "same_payee": true
+    },
+    "L15": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 4613,
+   "output_tokens": 228,
+   "seconds": 213.47,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L10\", \"option\": \"O5\", \"same_payee\": true},\n    {\"line_id\": \"L11\", \"option\": \"S0\", \"same_payee\": true},\n    {\"line_id\": \"L15\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 9,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 453,
+   "output_tokens": 30,
+   "seconds": 6.41,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-split-051",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2397,
+   "output_tokens": 122,
+   "seconds": 100.36,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\", \"L14\", \"L15\", \"L16\"],\n  \"reason\": \"All statement lines are supported by corresponding records within the allowed date range and amount.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "O3",
+     "same_payee": false
+    },
+    "L13": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 2819,
+   "output_tokens": 155,
+   "seconds": 116.74,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L12\", \"option\": \"O3\", \"same_payee\": false},\n    {\"line_id\": \"L13\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 6,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-partial-011",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1845,
+   "output_tokens": 84,
+   "seconds": 71.5,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\"],\n  \"reason\": \"The extract is incomplete, and there are lines without supporting evidence.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L13": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 2807,
+   "output_tokens": 203,
+   "seconds": 140.64,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L13\", \"option\": \"O0\", \"same_payee\": false}\n  ]\n}",
+   "pending_lines": 8,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "test-partial-031",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1682,
+   "output_tokens": 80,
+   "seconds": 66.7,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L00\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\"],\n  \"reason\": \"Some lines are unknown due to incomplete evidence.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3590,
+   "output_tokens": 203,
+   "seconds": 175.54,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 8,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "test-partial-051",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "DEFER",
+   "prompt_tokens": 1769,
+   "output_tokens": 74,
+   "seconds": 65.1,
+   "error": "",
+   "content": "{\n  \"label\": \"DEFER\",\n  \"line_ids\": [\"L02\", \"L05\", \"L06\", \"L07\", \"L09\", \"L10\", \"L11\", \"L12\"],\n  \"reason\": \"The evidence does not cover all lines, making the statement incomplete.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L02": {
+     "option": "O4",
+     "same_payee": false
+    },
+    "L05": {
+     "option": "O4",
+     "same_payee": false
+    },
+    "L06": {
+     "option": "O4",
+     "same_payee": false
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3202,
+   "output_tokens": 203,
+   "seconds": 156.97,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L02\", \"option\": \"O4\", \"same_payee\": false},\n    {\"line_id\": \"L05\", \"option\": \"O4\", \"same_payee\": false},\n    {\"line_id\": \"L06\", \"option\": \"O4\", \"same_payee\": false},\n    {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 8,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 772,
+   "output_tokens": 99,
+   "seconds": 29.4,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-conflict-011",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 1984,
+   "output_tokens": 106,
+   "seconds": 78.38,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\"],\n  \"reason\": \"All statement lines are supported by corresponding records within 3 days, with matching amounts and payees.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O1",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L10": {
+     "option": "O3",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 2325,
+   "output_tokens": 122,
+   "seconds": 87.01,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"O1\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L10\", \"option\": \"O3\", \"same_payee\": true}]}",
+   "pending_lines": 5,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 454,
+   "output_tokens": 30,
+   "seconds": 8.78,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "CONFLICTING"
+  }
+ },
+ {
+  "instance_id": "test-conflict-031",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "CONFLICTING",
+   "prompt_tokens": 1976,
+   "output_tokens": 65,
+   "seconds": 54.38,
+   "error": "",
+   "content": "{\n  \"label\": \"CONFLICTING\",\n  \"line_ids\": [\"L07\", \"L10\"],\n  \"reason\": \"Line L07 (Uber) has an alternate source with a different amount, and line L10 (Apple Store) has a different amount than the evidence.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L10": {
+     "option": "O3",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 2435,
+   "output_tokens": 131,
+   "seconds": 92.32,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false},\n    {\"line_id\": \"L10\", \"option\": \"O3\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 5,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 452,
+   "output_tokens": 30,
+   "seconds": 9.5,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-conflict-051",
+  "model": "qwen2.5:7b",
+  "llm_only": {
+   "label": "SUPPORTED",
+   "prompt_tokens": 2248,
+   "output_tokens": 109,
+   "seconds": 88.7,
+   "error": "",
+   "content": "{\n  \"label\": \"SUPPORTED\",\n  \"line_ids\": [\"L00\", \"L01\", \"L02\", \"L03\", \"L04\", \"L05\", \"L06\", \"L07\", \"L08\", \"L09\", \"L10\", \"L11\", \"L12\", \"L13\", \"L14\"],\n  \"reason\": \"All statement lines are supported by corresponding records within 3 days.\"\n}"
+  },
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L13": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L14": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3548,
+   "output_tokens": 180,
+   "seconds": 147.71,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L13\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L14\", \"option\": \"O0\", \"same_payee\": true}\n  ]\n}",
+   "pending_lines": 7,
+   "label": "DIFFERENT"
+  },
+  "escalation_residual": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ }
+]
