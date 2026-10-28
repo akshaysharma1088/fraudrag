@@ -14,6 +14,9 @@ on:
       prompt:
         description: Prompt version (v1 or v2)
         default: v1
+      shards:
+        description: JSON list of shards to run (to rerun failed ones)
+        default: '[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]'
 permissions:
   contents: read
 jobs:
@@ -23,7 +26,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        shard: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+        shard: ${{ fromJSON(inputs.shards) }}
     defaults:
       run:
         working-directory: ledgershift
@@ -35,7 +38,8 @@ jobs:
       - name: Install and start Ollama
         run: |
           curl -fsSL https://ollama.com/install.sh | sh
-          (ollama serve > /tmp/ollama.log 2>&1 &)
+          sudo systemctl stop ollama 2>/dev/null || true
+          (OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 ollama serve > /tmp/ollama.log 2>&1 &)
           sleep 5
           ollama pull ${{ inputs.model }}
       - name: Build benchmark (deterministic, hash-checked)

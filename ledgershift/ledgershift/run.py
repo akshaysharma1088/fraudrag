@@ -108,6 +108,8 @@ def llm(shard, nshards, model, split="test", prompt="v1"):
         out.append(rec)
         print(r["instance_id"], r["truth"]["label"], rec["llm_only"]["label"], rec["escalation"]["label"],
               rec["escalation_residual"]["label"], flush=True)
+        d = OUT / llm_dir(split, prompt); d.mkdir(parents=True, exist_ok=True)
+        (d / f"shard_{shard:02d}.partial.json").write_text(json.dumps(out, indent=1))   # survives a killed job
     d = OUT / llm_dir(split, prompt)
     d.mkdir(parents=True, exist_ok=True)
     (d / f"shard_{shard:02d}.json").write_text(json.dumps(out, indent=1))
