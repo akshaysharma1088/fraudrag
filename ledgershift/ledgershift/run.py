@@ -67,8 +67,8 @@ def build():
     print(json.dumps({k: info[k] for k in ("t_fuzzy", "t_alias", "n_test")}))
 
 
-def rules():
-    info = json.loads((OUT / "build.json").read_text()); test = read_jsonl(DATA / "test.jsonl")
+def rules(split="test"):
+    info = json.loads((OUT / "build.json").read_text()); test = read_jsonl(DATA / f"{split}.jsonl")
     rows = []
     for r in test:
         p, l, pend = escalation_request(r, HI)
@@ -77,7 +77,7 @@ def rules():
                      "exact": run_rules(r, "exact")["label"], "fuzzy": run_rules(r, "fuzzy", info["t_fuzzy"])["label"],
                      "alias": run_rules(r, "alias", info["t_alias"])["label"], "escalate_oracle": oracle,
                      "escalated_lines": len(pend), "total_lines": len(r["statement"]["lines"])})
-    (OUT / "rules_predictions.json").write_text(json.dumps(rows, indent=1))
+    (OUT / ("rules_predictions.json" if split == "test" else f"rules_predictions_{split}.json")).write_text(json.dumps(rows, indent=1))
     print("rules done", len(rows))
 
 
@@ -92,10 +92,11 @@ def _escalate(L, model, r, hi):
             "label": apply_escalation(r, p, l, pend, e["answers"])["label"]}
 
 
-def llm(shard, nshards, model):
+def llm(shard, nshards, model, split="test", prompt="v1"):
     from . import llm as L
+    L.PROMPT_VERSION = prompt
     info = json.loads((OUT / "build.json").read_text())
-    test = read_jsonl(DATA / "test.jsonl")
+    test = read_jsonl(DATA / f"{split}.jsonl")
     mine = [r for k, r in enumerate(test) if k % nshards == shard]
     out = []
     for r in mine:
@@ -107,8 +108,13 @@ def llm(shard, nshards, model):
         out.append(rec)
         print(r["instance_id"], r["truth"]["label"], rec["llm_only"]["label"], rec["escalation"]["label"],
               rec["escalation_residual"]["label"], flush=True)
-    (OUT / "llm").mkdir(parents=True, exist_ok=True)
-    (OUT / "llm" / f"shard_{shard:02d}.json").write_text(json.dumps(out, indent=1))
+    d = OUT / llm_dir(split, prompt)
+    d.mkdir(parents=True, exist_ok=True)
+    (d / f"shard_{shard:02d}.json").write_text(json.dumps(out, indent=1))
+
+
+def llm_dir(split, prompt):
+    return "llm" if (split, prompt) == ("test", "v1") else f"llm_{split}_{prompt}"
 
 
 def boot_ci(truth, a, b, reps=5000, seed=11):
@@ -120,9 +126,11 @@ def boot_ci(truth, a, b, reps=5000, seed=11):
     return [round(diffs[int(0.025 * reps)], 4), round(diffs[int(0.975 * reps)], 4)]
 
 
-def evaluate():
-    rows = {r["instance_id"]: r for r in json.loads((OUT / "rules_predictions.json").read_text())}
-    llm_files = sorted((OUT / "llm").glob("shard_*.json")) if (OUT / "llm").exists() else []
+def evaluate(split="test", prompt="v1"):
+    rp = OUT / ("rules_predictions.json" if split == "test" else f"rules_predictions_{split}.json")
+    rows = {r["instance_id"]: r for r in json.loads(rp.read_text())}
+    d = OUT / llm_dir(split, prompt)
+    llm_files = sorted(d.glob("shard_*.json")) if d.exists() else []
     usage = defaultdict(lambda: defaultdict(float))
     for f in llm_files:
         for rec in json.loads(f.read_text()):
@@ -151,7 +159,8 @@ def evaluate():
            "instances_with_escalation": sum(r["escalated_lines"] > 0 for r in rows),
            "llm_usage": {m: dict(v) for m, v in usage.items()},
            "confusion": {m: Counter(f"{r['truth']}->{r[m]}" for r in rows) for m in methods}}
-    (OUT / "results.json").write_text(json.dumps(res, indent=2))
+    name = "results.json" if (split, prompt) == ("test", "v1") else f"results_{split}_{prompt}.json"
+    (OUT / name).write_text(json.dumps(res, indent=2))
     for m in methods:
         print(f"{m:16s}", overall[m])
 
@@ -161,5 +170,14 @@ if __name__ == "__main__":
     ap.add_argument("step", choices=["build", "rules", "llm", "evaluate"])
     ap.add_argument("--shard", type=int, default=0); ap.add_argument("--nshards", type=int, default=1)
     ap.add_argument("--model", default="qwen2.5:7b")
+    ap.add_argument("--split", default="test", choices=["dev", "test"])
+    ap.add_argument("--prompt", default="v1", choices=["v1", "v2"])
     a = ap.parse_args()
-    {"build": build, "rules": rules, "evaluate": evaluate}.get(a.step, lambda: llm(a.shard, a.nshards, a.model))()
+    if a.step == "build":
+        build()
+    elif a.step == "rules":
+        rules(a.split)
+    elif a.step == "evaluate":
+        evaluate(a.split, a.prompt)
+    else:
+        llm(a.shard, a.nshards, a.model, a.split, a.prompt)
