@@ -5,6 +5,9 @@ on:
       run_id:
         description: Run id of the LedgerShift benchmark run
         required: true
+      shards:
+        description: also publish the raw per-shard outputs (true/false)
+        default: 'false'
 permissions:
   contents: write
   actions: read
@@ -17,6 +20,14 @@ jobs:
         with:
           name: ledgershift-results
           path: out/results
+          run-id: ${{ inputs.run_id }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: actions/download-artifact@v4
+        if: inputs.shards == 'true'
+        with:
+          pattern: shard-*
+          path: out/results/shards
+          merge-multiple: true
           run-id: ${{ inputs.run_id }}
           github-token: ${{ secrets.GITHUB_TOKEN }}
       - name: Commit results to ledgershift-results branch (one folder per run)
