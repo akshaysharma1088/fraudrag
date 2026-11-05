@@ -14,6 +14,8 @@ import urllib.request
 
 OLLAMA = "http://localhost:11434/api/chat"
 OPTIONS = {"temperature": 0, "seed": 7, "num_ctx": 8192}
+if os.environ.get("LLM_NUM_THREAD"):     # leave a core free so a hosted runner keeps its heartbeat
+    OPTIONS["num_thread"] = int(os.environ["LLM_NUM_THREAD"])
 
 POLICY = (
     "Decision policy. A statement line is supported when an admissible reference record (or two records "

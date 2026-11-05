@@ -47,7 +47,7 @@ jobs:
         run: |
           curl -fsSL https://ollama.com/install.sh | sh
           sudo systemctl stop ollama 2>/dev/null || true
-          (OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 ollama serve > /tmp/ollama.log 2>&1 &)
+          (OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 nice -n 15 ollama serve > /tmp/ollama.log 2>&1 &)
           sleep 5
           ollama pull ${{ inputs.model }}
       - name: Build benchmarks (deterministic, hash-checked)
@@ -66,12 +66,14 @@ jobs:
         env:
           LLM_API_BASE: ${{ vars.LLM_API_BASE || 'https://api.groq.com/openai/v1' }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_NUM_THREAD: '3'
         run: python -m ledgershift.run llm --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --model ${{ inputs.model }} --split ${{ inputs.split }} --prompt ${{ inputs.prompt }} --bench ${{ inputs.bench }}
       - name: LLM payee judgments for this shard
         if: inputs.task == 'pairs_llm'
         env:
           LLM_API_BASE: ${{ vars.LLM_API_BASE || 'https://api.groq.com/openai/v1' }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_NUM_THREAD: '3'
         run: |
           python -m ledgershift.scorers pairs
           python -m ledgershift.run pairs_llm --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --model ${{ inputs.model }}
