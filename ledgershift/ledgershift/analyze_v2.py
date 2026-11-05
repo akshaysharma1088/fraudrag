@@ -116,10 +116,24 @@ def statement_eval(bench, matchers, llm, escalation_dir=None):
     if bench == "v2":
         add("fuzzy_t0.25", [V.run_rules(r, "fuzzy", 0.25) for r in test])
     add("alias", [V.run_rules(r, "alias", info["t_alias"]) for r in test]); thresholds["alias"] = info["t_alias"]
-    for m, f in matchers.items():
-        V.EXTERNAL_SIM[m] = f
-        t, _ = tune(dev, m); thresholds[m] = t
-        add(m, [V.run_rules(r, m, t) for r in test])
+    pair_dev = read_jsonl(SOUT / "pairs_v2_dev.jsonl")
+    curves = {}
+    for m, f in list(matchers.items()) + [("fuzzy", V.sim)]:
+        if m != "fuzzy":
+            V.EXTERNAL_SIM[m] = f
+            t, _ = tune(dev, m); thresholds[m] = t
+            add(m, [V.run_rules(r, m, t) for r in test])
+        # the same matcher at the threshold that best separates dev payee pairs (it keeps using names)
+        tp = best_threshold(pair_dev, f); thresholds[f"{m}@pair"] = tp
+        add(f"{m}@pair", [V.run_rules(r, m, tp) for r in test])
+        # operating curve on test, for the figure only (no selection is made on it)
+        pts = []
+        for t in [round(0.05 * k, 2) for k in range(20)]:
+            res = [V.run_rules(r, m, t) for r in test]
+            mm = R.metrics(truth, [x["label"] for x in res]); lm = line_metrics(test, res)
+            pts.append({"t": t, "false_clearance": mm["false_clearance"], "false_alarm": mm["false_alarm"],
+                        "swap_detected": lm["swap_detected"], "genuine_flagged": lm["genuine_flagged"]})
+        curves[m] = pts
     for m, cache in (llm.items() if bench == "v2" else []):
         V.EXTERNAL_SIM[m] = lambda a, b, c=cache: 1.0 if a == b else (1.0 if c.get((a, b)) else 0.0)
         add(m, [V.run_rules(r, m, 0.5) for r in test]); thresholds[m] = 0.5
@@ -139,7 +153,7 @@ def statement_eval(bench, matchers, llm, escalation_dir=None):
                 p, l, pend = V.escalation_request(r, R.HI)
                 res.append(V.apply_escalation(r, p, l, pend, by_id[r["instance_id"]]["escalation"]["answers"]))
             add("escalate_llm", res)
-    for m in [k for k in list(preds) if k not in ("exact", "fuzzy", "fuzzy_t0.25", "escalate_oracle")]:
+    for m in [k for k in list(preds) if k not in ("exact", "fuzzy", "fuzzy_t0.25", "escalate_oracle", "fuzzy@pair")]:
         if m != "alias":
             preds[f"veto_{m}"] = veto(preds["fuzzy"], preds[m])
     overall = {m: R.metrics(truth, p) for m, p in preds.items()}
@@ -165,7 +179,7 @@ def statement_eval(bench, matchers, llm, escalation_dir=None):
     return {"bench": bench, "n_test": len(test), "label_counts": Counter(truth), "thresholds": thresholds,
             "overall": overall, "paired_accuracy_ci95_vs_fuzzy": cis, "breakeven_vs_fuzzy": breakeven,
             "payee_only_statements": len(payee_only), "cleared_payee_only": cleared_payee_only,
-            "accuracy_by_condition": by_cond}
+            "accuracy_by_condition": by_cond, "curves": curves}
 
 
 def load_llm_pairs(folder):
