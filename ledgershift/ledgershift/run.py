@@ -134,6 +134,7 @@ def llm(shard, nshards, model, split="test", prompt="v1"):
             rec["escalation_residual"] = _escalate(L, model, r, info["t_fuzzy"])  # escalate only what tuned rules leave open
         out.append(rec)
         print(r["instance_id"], r["truth"]["label"], rec["escalation"]["label"], flush=True)
+        print("REC " + json.dumps(rec), flush=True)                  # job logs survive a runner shutdown
         d = OUT / llm_dir(split, prompt); d.mkdir(parents=True, exist_ok=True)
         (d / f"shard_{shard:02d}.partial.json").write_text(json.dumps(out, indent=1))   # survives a killed job
     d = OUT / llm_dir(split, prompt)
