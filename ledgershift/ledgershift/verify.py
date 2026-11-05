@@ -60,8 +60,25 @@ for name, tmpl, _k, _f in MERCHANTS:
     ALIAS[norm(name)] = key
 
 
+EXTERNAL_SIM = {}     # mode name -> similarity function (embedding and fine-tuned matchers, see scorers.py)
+ALIAS_RE = None       # v2: {normalized payee name: [compiled template regexes]}; None keeps the v1 table
+
+
+def use_catalogue_v2():
+    """Switch the curated alias table to LedgerShift v2: a payee matches a record when the record's
+    descriptor fits one of that payee's templates exactly (a precise, hand-maintained table)."""
+    global ALIAS_RE
+    from .catalogue_v2 import MERCHANTS_V2
+    from .generator_v2 import template_regex
+    ALIAS_RE = {norm(n): [template_regex(t) for t in tmpls] for n, tmpls, _k, _f in MERCHANTS_V2}
+
+
 def alias_sim(line_desc, rec_desc):
     s = sim(line_desc, rec_desc)
+    if ALIAS_RE is not None:
+        if any(rx.match(rec_desc) for rx in ALIAS_RE.get(norm(line_desc), [])):
+            s = max(s, 1.0)
+        return s
     a = ALIAS.get(norm(line_desc))
     if a and norm(rec_desc).startswith(a):
         s = max(s, 1.0)
@@ -95,7 +112,7 @@ def deterministic_links(inst, mode, t=None, repair=True):
     rec_by = {r["record_id"]: r for r in recs}
     amt = {r["record_id"]: parse_amount(r["amount"], True) for r in recs}
     parsed = {ln["line_id"]: parse_amount(ln["amount"], repair) for ln in lines}
-    simf = alias_sim if mode == "alias" else sim
+    simf = EXTERNAL_SIM.get(mode) or (alias_sim if mode == "alias" else sim)
     edges = []
     for ln in lines:
         a = parsed[ln["line_id"]]

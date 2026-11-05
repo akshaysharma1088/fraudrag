@@ -10,6 +10,10 @@ class H(BaseHTTPRequestHandler):
             user = json.loads(body["messages"][1]["content"])
             content = {"links": [{"line_id": x["line_id"], "option": x["options"][0]["option"], "same_payee": True}
                                  for x in user["statement_lines"]]}
+        elif "answers" in props:
+            user = json.loads(body["messages"][1]["content"])
+            content = {"answers": [{"id": x["id"], "same_payee": x["name"][:2].lower() == x["descriptor"][:2].lower()}
+                                   for x in user["items"]]}
         else:
             content = {"label": "DEFER", "line_ids": [], "reason": "fake"}
         out = {"message": {"content": json.dumps(content)}, "prompt_eval_count": 100, "eval_count": 10}

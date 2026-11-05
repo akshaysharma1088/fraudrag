@@ -44,11 +44,26 @@ PAYEE_GUIDE = (
     "when the record clearly belongs to a different business or a different service, for example 'Lowe's' and "
     "'MENARDS 3315', or 'Lyft' rides and 'LYFT *BIKES'."
 )
+# v3: the same guidance with examples that appear in neither benchmark catalogue (the v2 examples
+# Lowe's, Panera, Grubhub and AT&T are LedgerShift v2 payees, so v2 runs use v3).
+PAYEE_GUIDE_V3 = (
+    " same_payee is about the business or person, not the exact text. Bank descriptors routinely abbreviate "
+    "names, drop words, add store numbers, cities, reference codes and processor prefixes, and the statement may "
+    "contain OCR errors. Treat these as the SAME payee, for example 'Ace Hardware' and 'ACE HDWE #05921', "
+    "'Jiffy Lube' and 'JIFFY LUBE #1820', 'Bluebird Diner' and 'SQ *BLUEBIRD DINER', 'Sherwin-Williams' and "
+    "'SHERWIN WILLIAMS 7012'. Answer false only when the record clearly belongs to a different business or a "
+    "different service of the same company, for example 'Ace Hardware' and 'MENARDS 3315', or 'Lime' scooter "
+    "rides and 'LIME *GROCERY DELIVERY'."
+)
 PROMPT_VERSION = "v1"
 
 
+def payee_guide():
+    return {"v2": PAYEE_GUIDE, "v3": PAYEE_GUIDE_V3}.get(PROMPT_VERSION, "")
+
+
 def link_instructions():
-    return LINK_INSTRUCTIONS + (PAYEE_GUIDE if PROMPT_VERSION == "v2" else "")
+    return LINK_INSTRUCTIONS + payee_guide()
 
 
 LINK_SCHEMA = {"type": "object", "properties": {"links": {"type": "array", "items": {"type": "object", "properties": {
@@ -114,10 +129,34 @@ def llm_only(model, inst):
     system = ("You verify a customer's submitted bank statement against the bank's reference evidence. "
               + POLICY + " Ledger descriptions are raw bank descriptors; statement text may contain OCR errors. "
               "Return the overall state, the line ids that drive it, and a one-sentence reason, in JSON only."
-              + (PAYEE_GUIDE.replace(" same_payee is", " Payee identity is") if PROMPT_VERSION == "v2" else ""))
+              + payee_guide().replace(" same_payee is", " Payee identity is"))
     out = _safe_chat(model, system, only_payload(inst), ONLY_SCHEMA)
     try:
         parsed = json.loads(out["content"]); out["label"] = parsed["label"]; out["error"] = ""
     except Exception as e:
         out["label"], out["error"] = "DEFER", out.get("call_error") or f"parse:{type(e).__name__}"
+    return out
+
+
+# ---------------- payee matching on its own (one judgment per pair, batched) ----------------
+PAIR_INSTRUCTIONS = (
+    "Each item pairs a payee name from a customer's submitted bank statement with a raw descriptor from the "
+    "bank's own ledger. Decide for every item whether the descriptor belongs to the same business or person as "
+    "the name (same_payee)." + PAYEE_GUIDE_V3 + " Answer for every item id, in JSON only."
+)
+PAIR_SCHEMA = {"type": "object", "properties": {"answers": {"type": "array", "items": {"type": "object", "properties": {
+    "id": {"type": "string"}, "same_payee": {"type": "boolean"}}, "required": ["id", "same_payee"]}}}, "required": ["answers"]}
+
+
+def payee_batch(model, pairs):
+    """pairs: list of (name, descriptor). Returns {index: bool} for the items the model answered."""
+    items = [{"id": f"P{k}", "name": a, "descriptor": b} for k, (a, b) in enumerate(pairs)]
+    out = _safe_chat(model, PAIR_INSTRUCTIONS, json.dumps({"items": items}, ensure_ascii=False), PAIR_SCHEMA)
+    try:
+        parsed = json.loads(out["content"])
+        ans = {int(x["id"][1:]): bool(x["same_payee"]) for x in parsed["answers"] if str(x.get("id", "")).startswith("P")}
+        out["error"] = ""
+    except Exception as e:
+        ans, out["error"] = {}, out.get("call_error") or f"parse:{type(e).__name__}"
+    out["answers"] = {k: v for k, v in ans.items() if 0 <= k < len(pairs)}
     return out

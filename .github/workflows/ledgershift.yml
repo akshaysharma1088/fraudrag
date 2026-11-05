@@ -17,10 +17,17 @@ on:
       shards:
         description: JSON list of shards to run (to rerun failed ones)
         default: '[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]'
+      task:
+        description: llm (statement-level LLM calls), pairs_llm (LLM payee matching), or scorers (embedding and fine-tuned matchers)
+        default: llm
+      bench:
+        description: v1 (original benchmark) or v2 (larger, payee-disjoint)
+        default: v1
 permissions:
   contents: read
 jobs:
   llm:
+    if: inputs.task == 'llm' || inputs.task == 'pairs_llm'
     runs-on: ubuntu-latest
     timeout-minutes: 340
     strategy:
@@ -42,28 +49,73 @@ jobs:
           (OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 ollama serve > /tmp/ollama.log 2>&1 &)
           sleep 5
           ollama pull ${{ inputs.model }}
-      - name: Build benchmark (deterministic, hash-checked)
+      - name: Build benchmarks (deterministic, hash-checked)
         run: |
           python -m ledgershift.run build
+          python -m ledgershift.run build --bench v2
           python - <<'PY'
-          import json; b=json.load(open('results/build.json')); e=json.load(open('expected_hashes.json'))
-          assert b['test_sha256']==e['test_sha256'] and b['dev_sha256']==e['dev_sha256'], 'benchmark changed'
+          import json
+          for b, e in (('results/build.json', 'expected_hashes.json'), ('results_v2/build.json', 'expected_hashes_v2.json')):
+              b, e = json.load(open(b)), json.load(open(e))
+              assert b['test_sha256'] == e['test_sha256'] and b['dev_sha256'] == e['dev_sha256'], 'benchmark changed'
           print('hashes ok')
           PY
       - name: LLM calls for this shard
-        run: python -m ledgershift.run llm --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --model ${{ inputs.model }} --split ${{ inputs.split }} --prompt ${{ inputs.prompt }}
+        if: inputs.task == 'llm'
+        run: python -m ledgershift.run llm --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --model ${{ inputs.model }} --split ${{ inputs.split }} --prompt ${{ inputs.prompt }} --bench ${{ inputs.bench }}
+      - name: LLM payee judgments for this shard
+        if: inputs.task == 'pairs_llm'
+        run: |
+          python -m ledgershift.scorers pairs
+          python -m ledgershift.run pairs_llm --shard ${{ matrix.shard }} --nshards ${{ inputs.nshards }} --model ${{ inputs.model }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: shard-${{ matrix.shard }}
           path: |
-            ledgershift/results/llm*/
-            ledgershift/results/build.json
+            ledgershift/results*/llm*/
+            ledgershift/results*/build.json
+          retention-days: 90
+
+  scorers:
+    if: inputs.task == 'scorers'
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    defaults:
+      run:
+        working-directory: ledgershift
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install CPU PyTorch and sentence-transformers
+        run: |
+          python -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cpu
+          python -m pip install sentence-transformers==3.3.1 transformers==4.46.3 numpy pytest
+      - name: Build, train and score
+        run: |
+          python -m pytest -q tests
+          python -m ledgershift.run build
+          python -m ledgershift.run build --bench v2
+          python -m ledgershift.scorers pairs
+          python -m ledgershift.scorers train
+          python -m ledgershift.scorers score
+          mkdir -p ../out/results && cp -r results_scorers ../out/results/ && rm -rf ../out/results/results_scorers/ditto_model
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ledgershift-results
+          path: out/results/
+          retention-days: 90
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ditto-model
+          path: ledgershift/results_scorers/ditto_model/
           retention-days: 90
 
   evaluate:
     needs: llm
-    if: always()
+    if: always() && inputs.task == 'llm'
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -82,12 +134,28 @@ jobs:
         run: |
           python -m pip install pytest
           python -m pytest -q tests
-          python -m ledgershift.run build
-          python -m ledgershift.run rules --split ${{ inputs.split }}
-          python -m ledgershift.run evaluate --split ${{ inputs.split }} --prompt ${{ inputs.prompt }}
-          ls -R results | head -40
+          python -m ledgershift.run build --bench ${{ inputs.bench }}
+          python -m ledgershift.run rules --split ${{ inputs.split }} --bench ${{ inputs.bench }}
+          python -m ledgershift.run evaluate --split ${{ inputs.split }} --prompt ${{ inputs.prompt }} --bench ${{ inputs.bench }}
+          ls -R results* | head -40
       - uses: actions/upload-artifact@v4
         with:
           name: ledgershift-results
-          path: ledgershift/results/
+          path: ledgershift/results${{ inputs.bench == 'v2' && '_v2' || '' }}/
+          retention-days: 90
+
+  collect_pairs:
+    needs: llm
+    if: always() && inputs.task == 'pairs_llm'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: shard-*
+          path: out/results
+          merge-multiple: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ledgershift-results
+          path: out/results/
           retention-days: 90
