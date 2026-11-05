@@ -45,11 +45,11 @@ jobs:
       - name: Install and start Ollama
         if: ${{ !startsWith(inputs.model, 'api:') }}
         run: |
-          curl -fsSL https://ollama.com/install.sh | sh
+          for i in 1 2 3 4 5; do curl -fsSL https://ollama.com/install.sh | sh && break; sleep 30; done
           sudo systemctl stop ollama 2>/dev/null || true
           (OLLAMA_NUM_PARALLEL=1 OLLAMA_MAX_LOADED_MODELS=1 nice -n 15 ollama serve > /tmp/ollama.log 2>&1 &)
           sleep 5
-          ollama pull ${{ inputs.model }}
+          for i in 1 2 3; do ollama pull ${{ inputs.model }} && break; sleep 30; done
       - name: Build benchmarks (deterministic, hash-checked)
         run: |
           python -m ledgershift.run build
