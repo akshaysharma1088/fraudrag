@@ -1,0 +1,18 @@
+{
+  "train_payees": 56,
+  "train_pairs": 3728,
+  "dev_payees": 73,
+  "test_payees": 111,
+  "excluded_families": [
+    "acme",
+    "cvs",
+    "duke",
+    "dunkin",
+    "google",
+    "planetfitness",
+    "rent",
+    "square",
+    "starbucks",
+    "venmo"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "n_linker_pairs": 18750,
+  "n_scored": 23552,
+  "models": {
+    "embed_minilm": "sentence-transformers/all-MiniLM-L6-v2",
+    "embed_bge": "BAAI/bge-small-en-v1.5",
+    "ditto": "distilroberta-base fine-tuned"
+  },
+  "eval_sets": {
+    "pairs_v2_dev": 411,
+    "pairs_v2_test": 637,
+    "pairs_foliome": 3915
+  }
+}

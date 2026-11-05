@@ -1,0 +1,637 @@
+{"name": "Walmart", "descriptor": "WM SUPERCENTER #1600", "label": 1, "kind": "positive", "payee": "Walmart"}
+{"name": "Walmart", "descriptor": "WALMART.COM 3Z6TCB", "label": 1, "kind": "positive", "payee": "Walmart"}
+{"name": "Walmart", "descriptor": "WM SUPERCENTER #490", "label": 1, "kind": "positive", "payee": "Walmart"}
+{"name": "Walmart", "descriptor": "SAMS CLUB #6029 OMAHA", "label": 0, "kind": "sibling", "payee": "Walmart"}
+{"name": "Walmart", "descriptor": "WALMART+ MEMBERSHIP", "label": 0, "kind": "sibling", "payee": "Walmart"}
+{"name": "Walmart", "descriptor": "GIANT 5419", "label": 0, "kind": "same_kind", "payee": "Walmart"}
+{"name": "Walmart", "descriptor": "ZELLE TO ZEXANG", "label": 0, "kind": "random", "payee": "Walmart"}
+{"name": "Walmart+", "descriptor": "WMT PLUS TQGJTR", "label": 1, "kind": "positive", "payee": "Walmart+"}
+{"name": "Walmart+", "descriptor": "WMT PLUS CDZZMR", "label": 1, "kind": "positive", "payee": "Walmart+"}
+{"name": "Wolrnart+", "descriptor": "WMT PLUS A2CRKC", "label": 1, "kind": "positive", "payee": "Walmart+"}
+{"name": "Walmart+", "descriptor": "WALMART.COM X9BV6C", "label": 0, "kind": "sibling", "payee": "Walmart+"}
+{"name": "Walmart+", "descriptor": "SAMS CLUB #6683 BOSTON", "label": 0, "kind": "sibling", "payee": "Walmart+"}
+{"name": "Walmart+", "descriptor": "PEACOCK 9WKXSS", "label": 0, "kind": "same_kind", "payee": "Walmart+"}
+{"name": "Walmart+", "descriptor": "EXPEDIA*JDSCJL", "label": 0, "kind": "random", "payee": "Walmart+"}
+{"name": "Sam's Club", "descriptor": "SAMSCLUB #1670", "label": 1, "kind": "positive", "payee": "Sam's Club"}
+{"name": "Sam's Club", "descriptor": "SAMS CLUB #1417 TAMPA", "label": 1, "kind": "positive", "payee": "Sam's Club"}
+{"name": "5arn's Club", "descriptor": "SAMS CLUB #7536 PORTLAND", "label": 1, "kind": "positive", "payee": "Sam's Club"}
+{"name": "Sam's Club", "descriptor": "WALMART.COM G8ZBHZ", "label": 0, "kind": "sibling", "payee": "Sam's Club"}
+{"name": "Sam's Club", "descriptor": "WALMART+ MEMBERSHIP", "label": 0, "kind": "sibling", "payee": "Sam's Club"}
+{"name": "Sam's Club", "descriptor": "GIANT 7496", "label": 0, "kind": "same_kind", "payee": "Sam's Club"}
+{"name": "Sam's Club", "descriptor": "MCDONALD'S F6209", "label": 0, "kind": "random", "payee": "Sam's Club"}
+{"name": "Costco", "descriptor": "COSTCO GAS #7689", "label": 1, "kind": "positive", "payee": "Costco"}
+{"name": "Costco", "descriptor": "COSTCO WHSE #5580", "label": 1, "kind": "positive", "payee": "Costco"}
+{"name": "Costco", "descriptor": "COSTCO GAS #8162", "label": 1, "kind": "positive", "payee": "Costco"}
+{"name": "Costco", "descriptor": "COSTCO *ANNUAL RENEWAL", "label": 0, "kind": "sibling", "payee": "Costco"}
+{"name": "Costco", "descriptor": "KROGER FUEL #6499", "label": 0, "kind": "same_kind", "payee": "Costco"}
+{"name": "Costco", "descriptor": "VERIZON WRLS RSLL7R", "label": 0, "kind": "random", "payee": "Costco"}
+{"name": "Costco Membership", "descriptor": "COSTCO MBRSHIP 76B2M3", "label": 1, "kind": "positive", "payee": "Costco Membership"}
+{"name": "Costco Membership", "descriptor": "COSTCO *ANNUAL RENEWAL", "label": 1, "kind": "positive", "payee": "Costco Membership"}
+{"name": "Co5tco Membership", "descriptor": "COSTCO MBRSHIP PG2NTN", "label": 1, "kind": "positive", "payee": "Costco Membership"}
+{"name": "Costco Membership", "descriptor": "COSTCO WHSE #239", "label": 0, "kind": "sibling", "payee": "Costco Membership"}
+{"name": "Costco Membership", "descriptor": "DISNEY PLUS E9X7T7", "label": 0, "kind": "same_kind", "payee": "Costco Membership"}
+{"name": "Costco Membership", "descriptor": "TARGET T-5795", "label": 0, "kind": "random", "payee": "Costco Membership"}
+{"name": "Target", "descriptor": "TARGET.COM *KAU7AZ", "label": 1, "kind": "positive", "payee": "Target"}
+{"name": "Target", "descriptor": "TARGET T-8914", "label": 1, "kind": "positive", "payee": "Target"}
+{"name": "Target", "descriptor": "TARGET.COM *FP3KFV", "label": 1, "kind": "positive", "payee": "Target"}
+{"name": "Target", "descriptor": "AMZN MKTP US*QTDHH2", "label": 0, "kind": "same_kind", "payee": "Target"}
+{"name": "Target", "descriptor": "DD *DOORDASH EX7ZL9", "label": 0, "kind": "random", "payee": "Target"}
+{"name": "Kroger", "descriptor": "KROGER FUEL #4883", "label": 1, "kind": "positive", "payee": "Kroger"}
+{"name": "Kroger", "descriptor": "KROGER #3996", "label": 1, "kind": "positive", "payee": "Kroger"}
+{"name": "Kroger", "descriptor": "KROGER FUEL #6644", "label": 1, "kind": "positive", "payee": "Kroger"}
+{"name": "Kroger", "descriptor": "FRED M 7909 DENVER", "label": 0, "kind": "sibling", "payee": "Kroger"}
+{"name": "Kroger", "descriptor": "RALPHS FUEL 2837", "label": 0, "kind": "sibling", "payee": "Kroger"}
+{"name": "Kroger", "descriptor": "STOP AND SHOP #7782", "label": 0, "kind": "same_kind", "payee": "Kroger"}
+{"name": "Kroger", "descriptor": "RITE AID STORE 4212", "label": 0, "kind": "random", "payee": "Kroger"}
+{"name": "Ralphs", "descriptor": "RALPHS #4033", "label": 1, "kind": "positive", "payee": "Ralphs"}
+{"name": "Ralphs", "descriptor": "RALPHS FUEL 7367", "label": 1, "kind": "positive", "payee": "Ralphs"}
+{"name": "Ralphs", "descriptor": "RALPHS #9733", "label": 1, "kind": "positive", "payee": "Ralphs"}
+{"name": "Ralphs", "descriptor": "FRED-MEYER #7494", "label": 0, "kind": "sibling", "payee": "Ralphs"}
+{"name": "Ralphs", "descriptor": "KROGER #4244", "label": 0, "kind": "sibling", "payee": "Ralphs"}
+{"name": "Ralphs", "descriptor": "SAMS CLUB #7725 AUSTIN", "label": 0, "kind": "same_kind", "payee": "Ralphs"}
+{"name": "Ralphs", "descriptor": "PETSMART # 892", "label": 0, "kind": "random", "payee": "Ralphs"}
+{"name": "Fred Meyer", "descriptor": "FRED-MEYER #2258", "label": 1, "kind": "positive", "payee": "Fred Meyer"}
+{"name": "Fred Meyer", "descriptor": "FRED-MEYER #6311", "label": 1, "kind": "positive", "payee": "Fred Meyer"}
+{"name": "Fred Meyer", "descriptor": "FRED M 4685 TAMPA", "label": 1, "kind": "positive", "payee": "Fred Meyer"}
+{"name": "Fred Meyer", "descriptor": "KROGER #2362", "label": 0, "kind": "sibling", "payee": "Fred Meyer"}
+{"name": "Fred Meyer", "descriptor": "RALPHS #3309", "label": 0, "kind": "sibling", "payee": "Fred Meyer"}
+{"name": "Fred Meyer", "descriptor": "COSTCO GAS #4643", "label": 0, "kind": "same_kind", "payee": "Fred Meyer"}
+{"name": "Fred Meyer", "descriptor": "DELTA AIR 4560", "label": 0, "kind": "random", "payee": "Fred Meyer"}
+{"name": "Whole Foods", "descriptor": "WHOLEFDS ATLANTA 2209", "label": 1, "kind": "positive", "payee": "Whole Foods"}
+{"name": "Whole Foods", "descriptor": "WFM #9616 TUCSON", "label": 1, "kind": "positive", "payee": "Whole Foods"}
+{"name": "Whole Foods", "descriptor": "WHOLEFDS CHICAGO 1707", "label": 1, "kind": "positive", "payee": "Whole Foods"}
+{"name": "Whole Foods", "descriptor": "PRIME VIDEO*BUJPKL", "label": 0, "kind": "sibling", "payee": "Whole Foods"}
+{"name": "Whole Foods", "descriptor": "AMAZON PRIME*TF98RK", "label": 0, "kind": "sibling", "payee": "Whole Foods"}
+{"name": "Whole Foods", "descriptor": "FOODLION 3821", "label": 0, "kind": "same_kind", "payee": "Whole Foods"}
+{"name": "Whole Foods", "descriptor": "WAWA 2366", "label": 0, "kind": "random", "payee": "Whole Foods"}
+{"name": "Amazon", "descriptor": "AMAZON.COM*RQDFAD", "label": 1, "kind": "positive", "payee": "Amazon"}
+{"name": "Amazon", "descriptor": "AMAZON.COM*QTGZZ9", "label": 1, "kind": "positive", "payee": "Amazon"}
+{"name": "Amaz0n", "descriptor": "AMZN MKTP US*WRDKUG", "label": 1, "kind": "positive", "payee": "Amazon"}
+{"name": "Amazon", "descriptor": "WFM #7266 BOSTON", "label": 0, "kind": "sibling", "payee": "Amazon"}
+{"name": "Amazon", "descriptor": "AMZN DIGITAL*GYZT8U", "label": 0, "kind": "sibling", "payee": "Amazon"}
+{"name": "Amazon", "descriptor": "MACYS AUSTIN", "label": 0, "kind": "same_kind", "payee": "Amazon"}
+{"name": "Amazon", "descriptor": "US TREASURY TAX REF", "label": 0, "kind": "random", "payee": "Amazon"}
+{"name": "Amazon Prime", "descriptor": "AMZN PRIME*CRQ3EZ", "label": 1, "kind": "positive", "payee": "Amazon Prime"}
+{"name": "Amazon Prime", "descriptor": "AMZN PRIME*RQNGA3", "label": 1, "kind": "positive", "payee": "Amazon Prime"}
+{"name": "omazon Prime", "descriptor": "AMZN PRIME*656L9J", "label": 1, "kind": "positive", "payee": "Amazon Prime"}
+{"name": "Amazon Prime", "descriptor": "PRIME VIDEO*K4S687", "label": 0, "kind": "sibling", "payee": "Amazon Prime"}
+{"name": "Amazon Prime", "descriptor": "WFM #7030 MIAMI", "label": 0, "kind": "sibling", "payee": "Amazon Prime"}
+{"name": "Amazon Prime", "descriptor": "MSFT * 8STR77", "label": 0, "kind": "same_kind", "payee": "Amazon Prime"}
+{"name": "Amazon Prime", "descriptor": "WENDY'S 4134", "label": 0, "kind": "random", "payee": "Amazon Prime"}
+{"name": "Prime Video", "descriptor": "PRIME VIDEO*577F26", "label": 1, "kind": "positive", "payee": "Prime Video"}
+{"name": "Prime Video", "descriptor": "AMZN DIGITAL*LKQM46", "label": 1, "kind": "positive", "payee": "Prime Video"}
+{"name": "Prime Video", "descriptor": "PRIME VIDEO*P7GHAZ", "label": 1, "kind": "positive", "payee": "Prime Video"}
+{"name": "Prime Video", "descriptor": "AMAZON PRIME*WF83R6", "label": 0, "kind": "sibling", "payee": "Prime Video"}
+{"name": "Prime Video", "descriptor": "AUDIBLE*YBV9JD", "label": 0, "kind": "sibling", "payee": "Prime Video"}
+{"name": "Prime Video", "descriptor": "WALMART+ MEMBERSHIP", "label": 0, "kind": "same_kind", "payee": "Prime Video"}
+{"name": "Prime Video", "descriptor": "CHIPOTLE ONLINE", "label": 0, "kind": "random", "payee": "Prime Video"}
+{"name": "Audible", "descriptor": "AUDIBLE US RQP7R3", "label": 1, "kind": "positive", "payee": "Audible"}
+{"name": "Audible", "descriptor": "AUDIBLE US LA38ZM", "label": 1, "kind": "positive", "payee": "Audible"}
+{"name": "Audib1e", "descriptor": "AUDIBLE*F7NMT3", "label": 1, "kind": "positive", "payee": "Audible"}
+{"name": "Audible", "descriptor": "WHOLEFDS PORTLAND 1997", "label": 0, "kind": "sibling", "payee": "Audible"}
+{"name": "Audible", "descriptor": "AMZN DIGITAL*7ETK8E", "label": 0, "kind": "sibling", "payee": "Audible"}
+{"name": "Audible", "descriptor": "LAFITNESS DUES", "label": 0, "kind": "same_kind", "payee": "Audible"}
+{"name": "Audible", "descriptor": "VZWRLSS*APOCC VISB", "label": 0, "kind": "random", "payee": "Audible"}
+{"name": "Trader Joe's", "descriptor": "TRADER JOE S #3219", "label": 1, "kind": "positive", "payee": "Trader Joe's"}
+{"name": "Trader Joe's", "descriptor": "TRADER JOES #1273 BOISE", "label": 1, "kind": "positive", "payee": "Trader Joe's"}
+{"name": "Troder Joe's", "descriptor": "TRADER JOES #4967 DENVER", "label": 1, "kind": "positive", "payee": "Trader Joe's"}
+{"name": "Trader Joe's", "descriptor": "GIANT 5025", "label": 0, "kind": "same_kind", "payee": "Trader Joe's"}
+{"name": "Trader Joe's", "descriptor": "APL*ICLOUD CX59YM", "label": 0, "kind": "random", "payee": "Trader Joe's"}
+{"name": "Wegmans", "descriptor": "WEGMANS #803", "label": 1, "kind": "positive", "payee": "Wegmans"}
+{"name": "Wegmans", "descriptor": "WEGMANS #8528", "label": 1, "kind": "positive", "payee": "Wegmans"}
+{"name": "Wegmon5", "descriptor": "WEGMANS #4344", "label": 1, "kind": "positive", "payee": "Wegmans"}
+{"name": "Wegmans", "descriptor": "COSTCO WHSE #2910", "label": 0, "kind": "same_kind", "payee": "Wegmans"}
+{"name": "Wegmans", "descriptor": "DOLLAR-GENERAL 124", "label": 0, "kind": "random", "payee": "Wegmans"}
+{"name": "Meijer", "descriptor": "MEIJER EXPRESS 2633", "label": 1, "kind": "positive", "payee": "Meijer"}
+{"name": "Meijer", "descriptor": "MEIJER EXPRESS 8266", "label": 1, "kind": "positive", "payee": "Meijer"}
+{"name": "Meijer", "descriptor": "MEIJER EXPRESS 6858", "label": 1, "kind": "positive", "payee": "Meijer"}
+{"name": "Meijer", "descriptor": "SAMSCLUB #3557", "label": 0, "kind": "same_kind", "payee": "Meijer"}
+{"name": "Meijer", "descriptor": "ESPN PLUS ZMQC5C", "label": 0, "kind": "random", "payee": "Meijer"}
+{"name": "Food Lion", "descriptor": "FOODLION 9052", "label": 1, "kind": "positive", "payee": "Food Lion"}
+{"name": "Food Lion", "descriptor": "FOODLION 9132", "label": 1, "kind": "positive", "payee": "Food Lion"}
+{"name": "Food Lion", "descriptor": "FOODLION 4321", "label": 1, "kind": "positive", "payee": "Food Lion"}
+{"name": "Food Lion", "descriptor": "STOP AND SHOP #7977", "label": 0, "kind": "sibling", "payee": "Food Lion"}
+{"name": "Food Lion", "descriptor": "GIANT 8810", "label": 0, "kind": "sibling", "payee": "Food Lion"}
+{"name": "Food Lion", "descriptor": "MEIJER EXPRESS 1789", "label": 0, "kind": "same_kind", "payee": "Food Lion"}
+{"name": "Food Lion", "descriptor": "CHIPOTLE ONLINE", "label": 0, "kind": "random", "payee": "Food Lion"}
+{"name": "Stop & Shop", "descriptor": "STOP AND SHOP #246", "label": 1, "kind": "positive", "payee": "Stop & Shop"}
+{"name": "Stop & Shop", "descriptor": "STOP & SHOP 9694", "label": 1, "kind": "positive", "payee": "Stop & Shop"}
+{"name": "Stop & Shop", "descriptor": "STOP AND SHOP #3160", "label": 1, "kind": "positive", "payee": "Stop & Shop"}
+{"name": "Stop & Shop", "descriptor": "GIANT FOOD #8975", "label": 0, "kind": "sibling", "payee": "Stop & Shop"}
+{"name": "Stop & Shop", "descriptor": "FOODLION 7018", "label": 0, "kind": "sibling", "payee": "Stop & Shop"}
+{"name": "Stop & Shop", "descriptor": "SAMSCLUB #7961", "label": 0, "kind": "same_kind", "payee": "Stop & Shop"}
+{"name": "Stop & Shop", "descriptor": "SPOTIFY USA XV5JRS", "label": 0, "kind": "random", "payee": "Stop & Shop"}
+{"name": "Giant Food", "descriptor": "GIANT FOOD #5433", "label": 1, "kind": "positive", "payee": "Giant Food"}
+{"name": "Giant Food", "descriptor": "GIANT FOOD #8330", "label": 1, "kind": "positive", "payee": "Giant Food"}
+{"name": "Giant F0od", "descriptor": "GIANT 3811", "label": 1, "kind": "positive", "payee": "Giant Food"}
+{"name": "Giant Food", "descriptor": "FOOD LION #200", "label": 0, "kind": "sibling", "payee": "Giant Food"}
+{"name": "Giant Food", "descriptor": "STOP & SHOP 4037", "label": 0, "kind": "sibling", "payee": "Giant Food"}
+{"name": "Giant Food", "descriptor": "TRADER JOE S #4574", "label": 0, "kind": "same_kind", "payee": "Giant Food"}
+{"name": "Giant Food", "descriptor": "HULU WD7C57", "label": 0, "kind": "random", "payee": "Giant Food"}
+{"name": "Instacart", "descriptor": "INSTACART*D3TH6U", "label": 1, "kind": "positive", "payee": "Instacart"}
+{"name": "Instacart", "descriptor": "INSTACART HTTPSINSTACAR", "label": 1, "kind": "positive", "payee": "Instacart"}
+{"name": "Instacort", "descriptor": "INSTACART HTTPSINSTACAR", "label": 1, "kind": "positive", "payee": "Instacart"}
+{"name": "Instacart", "descriptor": "KFC #4812", "label": 0, "kind": "same_kind", "payee": "Instacart"}
+{"name": "Instacart", "descriptor": "US TREASURY TAX REF", "label": 0, "kind": "random", "payee": "Instacart"}
+{"name": "Home Depot", "descriptor": "HOMEDEPOT.COM 7LMVKH", "label": 1, "kind": "positive", "payee": "Home Depot"}
+{"name": "Home Depot", "descriptor": "THE HOME DEPOT #551", "label": 1, "kind": "positive", "payee": "Home Depot"}
+{"name": "Home Dep0t", "descriptor": "THE HOME DEPOT #8060", "label": 1, "kind": "positive", "payee": "Home Depot"}
+{"name": "Home Depot", "descriptor": "MACYS DALLAS", "label": 0, "kind": "same_kind", "payee": "Home Depot"}
+{"name": "Home Depot", "descriptor": "DOMINO'S 121", "label": 0, "kind": "random", "payee": "Home Depot"}
+{"name": "Lowe's", "descriptor": "LOWES #4266", "label": 1, "kind": "positive", "payee": "Lowe's"}
+{"name": "Lowe's", "descriptor": "LOWE'S 4924 COLUMBUS", "label": 1, "kind": "positive", "payee": "Lowe's"}
+{"name": "Lowe's", "descriptor": "LOWE'S 7182 SAN JOSE", "label": 1, "kind": "positive", "payee": "Lowe's"}
+{"name": "Lowe's", "descriptor": "FAMILY DLR 9606", "label": 0, "kind": "same_kind", "payee": "Lowe's"}
+{"name": "Lowe's", "descriptor": "COMMONWEALTH EDISON", "label": 0, "kind": "random", "payee": "Lowe's"}
+{"name": "Best Buy", "descriptor": "BEST BUY 4882", "label": 1, "kind": "positive", "payee": "Best Buy"}
+{"name": "Best Buy", "descriptor": "BESTBUY.COM ASMUAN", "label": 1, "kind": "positive", "payee": "Best Buy"}
+{"name": "Best Buy", "descriptor": "BEST BUY 901", "label": 1, "kind": "positive", "payee": "Best Buy"}
+{"name": "Best Buy", "descriptor": "IKEA AUSTIN", "label": 0, "kind": "same_kind", "payee": "Best Buy"}
+{"name": "Best Buy", "descriptor": "INSTACART HTTPSINSTACAR", "label": 0, "kind": "random", "payee": "Best Buy"}
+{"name": "IKEA", "descriptor": "IKEA US 2BSSVW", "label": 1, "kind": "positive", "payee": "IKEA"}
+{"name": "IKEA", "descriptor": "IKEA MIAMI", "label": 1, "kind": "positive", "payee": "IKEA"}
+{"name": "IKEA", "descriptor": "IKEA BOISE", "label": 1, "kind": "positive", "payee": "IKEA"}
+{"name": "IKEA", "descriptor": "AMAZON.COM*87XUK7", "label": 0, "kind": "same_kind", "payee": "IKEA"}
+{"name": "IKEA", "descriptor": "PARAMOUNT+ 3MQW4U", "label": 0, "kind": "random", "payee": "IKEA"}
+{"name": "Dollar Tree", "descriptor": "DOLLARTREE DALLAS", "label": 1, "kind": "positive", "payee": "Dollar Tree"}
+{"name": "Dollar Tree", "descriptor": "DOLLARTREE NASHVILLE", "label": 1, "kind": "positive", "payee": "Dollar Tree"}
+{"name": "Dollar Tree", "descriptor": "DOLLARTREE COLUMBUS", "label": 1, "kind": "positive", "payee": "Dollar Tree"}
+{"name": "Dollar Tree", "descriptor": "FAMILY DOLLAR #2040", "label": 0, "kind": "sibling", "payee": "Dollar Tree"}
+{"name": "Dollar Tree", "descriptor": "AMAZON.COM*GN2N4R", "label": 0, "kind": "same_kind", "payee": "Dollar Tree"}
+{"name": "Dollar Tree", "descriptor": "DROPBOX*FZNPY8", "label": 0, "kind": "random", "payee": "Dollar Tree"}
+{"name": "Family Dollar", "descriptor": "FAMILY DLR 4690", "label": 1, "kind": "positive", "payee": "Family Dollar"}
+{"name": "Family Dollar", "descriptor": "FAMILY DOLLAR #3953", "label": 1, "kind": "positive", "payee": "Family Dollar"}
+{"name": "Family Dollar", "descriptor": "FAMILY DLR 8167", "label": 1, "kind": "positive", "payee": "Family Dollar"}
+{"name": "Family Dollar", "descriptor": "DOLLAR TREE 5857", "label": 0, "kind": "sibling", "payee": "Family Dollar"}
+{"name": "Family Dollar", "descriptor": "WAYFAIR*NPPGCD", "label": 0, "kind": "same_kind", "payee": "Family Dollar"}
+{"name": "Family Dollar", "descriptor": "HULU 7MW2JA", "label": 0, "kind": "random", "payee": "Family Dollar"}
+{"name": "Dollar General", "descriptor": "DOLLAR GENERAL #6719", "label": 1, "kind": "positive", "payee": "Dollar General"}
+{"name": "Dollar General", "descriptor": "DOLLAR GENERAL #3524", "label": 1, "kind": "positive", "payee": "Dollar General"}
+{"name": "Dollar General", "descriptor": "DOLLAR-GENERAL 5066", "label": 1, "kind": "positive", "payee": "Dollar General"}
+{"name": "Dollar General", "descriptor": "FAMILY DOLLAR #7194", "label": 0, "kind": "same_kind", "payee": "Dollar General"}
+{"name": "Dollar General", "descriptor": "MICROSOFT*MICROSOFT 365", "label": 0, "kind": "random", "payee": "Dollar General"}
+{"name": "Macy's", "descriptor": "MACYS.COM VJU9VE", "label": 1, "kind": "positive", "payee": "Macy's"}
+{"name": "Macy's", "descriptor": "MACYS MIAMI", "label": 1, "kind": "positive", "payee": "Macy's"}
+{"name": "Macy's", "descriptor": "MACYS SEATTLE", "label": 1, "kind": "positive", "payee": "Macy's"}
+{"name": "Macy's", "descriptor": "EBAY O*FV97LD", "label": 0, "kind": "same_kind", "payee": "Macy's"}
+{"name": "Macy's", "descriptor": "WAWA #4240 COLUMBUS", "label": 0, "kind": "random", "payee": "Macy's"}
+{"name": "Petco", "descriptor": "PETCO 1312", "label": 1, "kind": "positive", "payee": "Petco"}
+{"name": "Petco", "descriptor": "PETCO.COM AKYLTS", "label": 1, "kind": "positive", "payee": "Petco"}
+{"name": "Petco", "descriptor": "PETCO.COM Y4WSW9", "label": 1, "kind": "positive", "payee": "Petco"}
+{"name": "Petco", "descriptor": "TARGET.COM *EE8JMH", "label": 0, "kind": "same_kind", "payee": "Petco"}
+{"name": "Petco", "descriptor": "SPOTIFY PB6CJNA", "label": 0, "kind": "random", "payee": "Petco"}
+{"name": "PetSmart", "descriptor": "PETSMART # 7479", "label": 1, "kind": "positive", "payee": "PetSmart"}
+{"name": "PetSmart", "descriptor": "PETSMART # 8821", "label": 1, "kind": "positive", "payee": "PetSmart"}
+{"name": "PetSmart", "descriptor": "PETSMART # 5774", "label": 1, "kind": "positive", "payee": "PetSmart"}
+{"name": "PetSmart", "descriptor": "TARGET 8442 TAMPA", "label": 0, "kind": "same_kind", "payee": "PetSmart"}
+{"name": "PetSmart", "descriptor": "APL*ICLOUD WTK3VD", "label": 0, "kind": "random", "payee": "PetSmart"}
+{"name": "eBay", "descriptor": "EBAY *4ULFJV", "label": 1, "kind": "positive", "payee": "eBay"}
+{"name": "eBay", "descriptor": "EBAY *9ES7UH", "label": 1, "kind": "positive", "payee": "eBay"}
+{"name": "eBay", "descriptor": "EBAY *G4CB4P", "label": 1, "kind": "positive", "payee": "eBay"}
+{"name": "eBay", "descriptor": "IKEA NASHVILLE", "label": 0, "kind": "same_kind", "payee": "eBay"}
+{"name": "eBay", "descriptor": "WALMART+ MEMBERSHIP", "label": 0, "kind": "random", "payee": "eBay"}
+{"name": "Wayfair", "descriptor": "WAYFAIR4L3WA24", "label": 1, "kind": "positive", "payee": "Wayfair"}
+{"name": "Wayfair", "descriptor": "WAYFAIR4GRSUAC", "label": 1, "kind": "positive", "payee": "Wayfair"}
+{"name": "Woyfair", "descriptor": "WAYFAIR4C96MN5", "label": 1, "kind": "positive", "payee": "Wayfair"}
+{"name": "Wayfair", "descriptor": "TEMU *DGE5V5", "label": 0, "kind": "same_kind", "payee": "Wayfair"}
+{"name": "Wayfair", "descriptor": "TIMHORTONS 8827", "label": 0, "kind": "random", "payee": "Wayfair"}
+{"name": "Temu", "descriptor": "TEMU.COM EY482T", "label": 1, "kind": "positive", "payee": "Temu"}
+{"name": "Temu", "descriptor": "TEMU.COM 8DJ385", "label": 1, "kind": "positive", "payee": "Temu"}
+{"name": "Temu", "descriptor": "TEMU *4N3ZJ9", "label": 1, "kind": "positive", "payee": "Temu"}
+{"name": "Temu", "descriptor": "DOLLAR GENERAL #5731", "label": 0, "kind": "same_kind", "payee": "Temu"}
+{"name": "Temu", "descriptor": "CHIPOTLE ONLINE", "label": 0, "kind": "random", "payee": "Temu"}
+{"name": "Apple Store", "descriptor": "APPLE STORE #R4936", "label": 1, "kind": "positive", "payee": "Apple Store"}
+{"name": "Apple Store", "descriptor": "APPLE STORE #R6172", "label": 1, "kind": "positive", "payee": "Apple Store"}
+{"name": "Apple Store", "descriptor": "APPLE ONLINE STORE UCAEJF", "label": 1, "kind": "positive", "payee": "Apple Store"}
+{"name": "Apple Store", "descriptor": "APPLE.COM/BILL", "label": 0, "kind": "sibling", "payee": "Apple Store"}
+{"name": "Apple Store", "descriptor": "APPLE CASH SENT MONEY", "label": 0, "kind": "sibling", "payee": "Apple Store"}
+{"name": "Apple Store", "descriptor": "BESTBUY.COM NM39TM", "label": 0, "kind": "same_kind", "payee": "Apple Store"}
+{"name": "Apple Store", "descriptor": "UBER EATS G49HCG", "label": 0, "kind": "random", "payee": "Apple Store"}
+{"name": "Apple Music", "descriptor": "APPLE.COM/BILL", "label": 1, "kind": "positive", "payee": "Apple Music"}
+{"name": "Apple Music", "descriptor": "APPLE.COM/US UMBS88", "label": 1, "kind": "positive", "payee": "Apple Music"}
+{"name": "App1e Music", "descriptor": "APPLE.COM/US KH2MYK", "label": 1, "kind": "positive", "payee": "Apple Music"}
+{"name": "Apple Music", "descriptor": "APL*APPLE TV T6RR3T", "label": 0, "kind": "sibling", "payee": "Apple Music"}
+{"name": "Apple Music", "descriptor": "APPLE.COM/BILL ICLOUD", "label": 0, "kind": "sibling", "payee": "Apple Music"}
+{"name": "Apple Music", "descriptor": "MSFT * BST8D3", "label": 0, "kind": "same_kind", "payee": "Apple Music"}
+{"name": "Apple Music", "descriptor": "PETCO 9896", "label": 0, "kind": "random", "payee": "Apple Music"}
+{"name": "iCloud", "descriptor": "APL*ICLOUD FF5KLK", "label": 1, "kind": "positive", "payee": "iCloud"}
+{"name": "iCloud", "descriptor": "APL*ICLOUD E5XEE7", "label": 1, "kind": "positive", "payee": "iCloud"}
+{"name": "iCloud", "descriptor": "APL*ICLOUD 9ATPDW", "label": 1, "kind": "positive", "payee": "iCloud"}
+{"name": "iCloud", "descriptor": "APL*APPLE TV 6UFZ5M", "label": 0, "kind": "sibling", "payee": "iCloud"}
+{"name": "iCloud", "descriptor": "APPLE CASH SENT MONEY", "label": 0, "kind": "sibling", "payee": "iCloud"}
+{"name": "iCloud", "descriptor": "UBER *ONE MEMBERSHIP", "label": 0, "kind": "same_kind", "payee": "iCloud"}
+{"name": "iCloud", "descriptor": "UNITED 5070", "label": 0, "kind": "random", "payee": "iCloud"}
+{"name": "Apple TV+", "descriptor": "APL*APPLE TV UXZA65", "label": 1, "kind": "positive", "payee": "Apple TV+"}
+{"name": "Apple TV+", "descriptor": "APPLE.COM/BILL TV", "label": 1, "kind": "positive", "payee": "Apple TV+"}
+{"name": "Apple TV+", "descriptor": "APL*APPLE TV RVGJCK", "label": 1, "kind": "positive", "payee": "Apple TV+"}
+{"name": "Apple TV+", "descriptor": "APPLE ONLINE STORE RYZDSN", "label": 0, "kind": "sibling", "payee": "Apple TV+"}
+{"name": "Apple TV+", "descriptor": "APL*ICLOUD X3QKLV", "label": 0, "kind": "sibling", "payee": "Apple TV+"}
+{"name": "Apple TV+", "descriptor": "SPOTIFY PQ4ZP5E", "label": 0, "kind": "same_kind", "payee": "Apple TV+"}
+{"name": "Apple TV+", "descriptor": "TRADER JOE S #2749", "label": 0, "kind": "random", "payee": "Apple TV+"}
+{"name": "Walgreens", "descriptor": "WALGREENS #8221", "label": 1, "kind": "positive", "payee": "Walgreens"}
+{"name": "Walgreens", "descriptor": "WALGREENS #8592", "label": 1, "kind": "positive", "payee": "Walgreens"}
+{"name": "Walgrcens", "descriptor": "WAG #7556 BOSTON", "label": 1, "kind": "positive", "payee": "Walgreens"}
+{"name": "Walgreens", "descriptor": "QUEST DIAGNOSTICS S589QJ", "label": 0, "kind": "same_kind", "payee": "Walgreens"}
+{"name": "Walgreens", "descriptor": "KROGER #4259", "label": 0, "kind": "random", "payee": "Walgreens"}
+{"name": "Rite Aid", "descriptor": "RITE AID STORE 9570", "label": 1, "kind": "positive", "payee": "Rite Aid"}
+{"name": "Rite Aid", "descriptor": "RITE AID 7510", "label": 1, "kind": "positive", "payee": "Rite Aid"}
+{"name": "Rite Aid", "descriptor": "RITE AID STORE 8807", "label": 1, "kind": "positive", "payee": "Rite Aid"}
+{"name": "Rite Aid", "descriptor": "WALGREENS #3640", "label": 0, "kind": "same_kind", "payee": "Rite Aid"}
+{"name": "Rite Aid", "descriptor": "DROPBOX*H6R7GY", "label": 0, "kind": "random", "payee": "Rite Aid"}
+{"name": "Quest Diagnostics", "descriptor": "QUEST DIAG INC", "label": 1, "kind": "positive", "payee": "Quest Diagnostics"}
+{"name": "Quest Diagnostics", "descriptor": "QUEST DIAG INC", "label": 1, "kind": "positive", "payee": "Quest Diagnostics"}
+{"name": "Que5t Diagnostics", "descriptor": "QUEST DIAG INC", "label": 1, "kind": "positive", "payee": "Quest Diagnostics"}
+{"name": "Quest Diagnostics", "descriptor": "WAG #109 PORTLAND", "label": 0, "kind": "same_kind", "payee": "Quest Diagnostics"}
+{"name": "Quest Diagnostics", "descriptor": "QT 5926", "label": 0, "kind": "random", "payee": "Quest Diagnostics"}
+{"name": "Chevron", "descriptor": "CHEVRON 2712", "label": 1, "kind": "positive", "payee": "Chevron"}
+{"name": "Chevron", "descriptor": "CHEVRON 4250", "label": 1, "kind": "positive", "payee": "Chevron"}
+{"name": "Chevron", "descriptor": "CHEVRON 02502 TUCSON", "label": 1, "kind": "positive", "payee": "Chevron"}
+{"name": "Chevron", "descriptor": "TEXACO 5758", "label": 0, "kind": "sibling", "payee": "Chevron"}
+{"name": "Chevron", "descriptor": "WAWA #9228 MIAMI", "label": 0, "kind": "same_kind", "payee": "Chevron"}
+{"name": "Chevron", "descriptor": "APPLE.COM/US 5GRRHN", "label": 0, "kind": "random", "payee": "Chevron"}
+{"name": "Texaco", "descriptor": "TEXACO 713", "label": 1, "kind": "positive", "payee": "Texaco"}
+{"name": "Texaco", "descriptor": "TEXACO 8373", "label": 1, "kind": "positive", "payee": "Texaco"}
+{"name": "Tcxaco", "descriptor": "TEXACO 04941", "label": 1, "kind": "positive", "payee": "Texaco"}
+{"name": "Texaco", "descriptor": "CHEVRON 9645", "label": 0, "kind": "sibling", "payee": "Texaco"}
+{"name": "Texaco", "descriptor": "7 ELEVEN #6100", "label": 0, "kind": "same_kind", "payee": "Texaco"}
+{"name": "Texaco", "descriptor": "MCDONALDS 8285", "label": 0, "kind": "random", "payee": "Texaco"}
+{"name": "Shell", "descriptor": "SHELL OIL 6014", "label": 1, "kind": "positive", "payee": "Shell"}
+{"name": "Shell", "descriptor": "SHELL OIL 4304", "label": 1, "kind": "positive", "payee": "Shell"}
+{"name": "Shcll", "descriptor": "SHELL OIL 1597", "label": 1, "kind": "positive", "payee": "Shell"}
+{"name": "Shell", "descriptor": "7 ELEVEN #5860", "label": 0, "kind": "same_kind", "payee": "Shell"}
+{"name": "Shell", "descriptor": "WFM #5636 DENVER", "label": 0, "kind": "random", "payee": "Shell"}
+{"name": "Speedway", "descriptor": "SPEEDWAY 1486", "label": 1, "kind": "positive", "payee": "Speedway"}
+{"name": "Speedway", "descriptor": "SPEEDWAY 8463", "label": 1, "kind": "positive", "payee": "Speedway"}
+{"name": "Speedwoy", "descriptor": "SPEEDWAY 09659 DENVER", "label": 1, "kind": "positive", "payee": "Speedway"}
+{"name": "Speedway", "descriptor": "7-ELEVEN 3009", "label": 0, "kind": "sibling", "payee": "Speedway"}
+{"name": "Speedway", "descriptor": "CHEVRON 2954", "label": 0, "kind": "same_kind", "payee": "Speedway"}
+{"name": "Speedway", "descriptor": "AUDIBLE US 7ZMSKU", "label": 0, "kind": "random", "payee": "Speedway"}
+{"name": "7-Eleven", "descriptor": "7-ELEVEN 3690", "label": 1, "kind": "positive", "payee": "7-Eleven"}
+{"name": "7-Eleven", "descriptor": "7-ELEVEN 7252", "label": 1, "kind": "positive", "payee": "7-Eleven"}
+{"name": "7-Eleven", "descriptor": "7-ELEVEN 6542", "label": 1, "kind": "positive", "payee": "7-Eleven"}
+{"name": "7-Eleven", "descriptor": "SPEEDWAY 8972", "label": 0, "kind": "sibling", "payee": "7-Eleven"}
+{"name": "7-Eleven", "descriptor": "WAWA #6079 COLUMBUS", "label": 0, "kind": "same_kind", "payee": "7-Eleven"}
+{"name": "7-Eleven", "descriptor": "FAMILY DOLLAR #466", "label": 0, "kind": "random", "payee": "7-Eleven"}
+{"name": "Wawa", "descriptor": "WAWA 6292", "label": 1, "kind": "positive", "payee": "Wawa"}
+{"name": "Wawa", "descriptor": "WAWA #484 TUCSON", "label": 1, "kind": "positive", "payee": "Wawa"}
+{"name": "Wawa", "descriptor": "WAWA #1759 ATLANTA", "label": 1, "kind": "positive", "payee": "Wawa"}
+{"name": "Wawa", "descriptor": "CHEVRON 1551", "label": 0, "kind": "same_kind", "payee": "Wawa"}
+{"name": "Wawa", "descriptor": "AMZN PRIME*KRQVA4", "label": 0, "kind": "random", "payee": "Wawa"}
+{"name": "QuikTrip", "descriptor": "QUIKTRIP #8804", "label": 1, "kind": "positive", "payee": "QuikTrip"}
+{"name": "QuikTrip", "descriptor": "QUIKTRIP #9424", "label": 1, "kind": "positive", "payee": "QuikTrip"}
+{"name": "QuikTr1p", "descriptor": "QUIKTRIP #975", "label": 1, "kind": "positive", "payee": "QuikTrip"}
+{"name": "QuikTrip", "descriptor": "SHELL OIL 7199", "label": 0, "kind": "same_kind", "payee": "QuikTrip"}
+{"name": "QuikTrip", "descriptor": "DOORDASH*U9RKJN", "label": 0, "kind": "random", "payee": "QuikTrip"}
+{"name": "Casey's", "descriptor": "CASEY'S GEN STORE 4302", "label": 1, "kind": "positive", "payee": "Casey's"}
+{"name": "Casey's", "descriptor": "CASEY'S GEN STORE 9705", "label": 1, "kind": "positive", "payee": "Casey's"}
+{"name": "Casey's", "descriptor": "CASEY'S GEN STORE 8514", "label": 1, "kind": "positive", "payee": "Casey's"}
+{"name": "Casey's", "descriptor": "SPEEDWAY 619", "label": 0, "kind": "same_kind", "payee": "Casey's"}
+{"name": "Casey's", "descriptor": "APPLEBEES 3070", "label": 0, "kind": "random", "payee": "Casey's"}
+{"name": "McDonald's", "descriptor": "MCDONALD'S F8806", "label": 1, "kind": "positive", "payee": "McDonald's"}
+{"name": "McDonald's", "descriptor": "MCDONALD'S F1263", "label": 1, "kind": "positive", "payee": "McDonald's"}
+{"name": "McDonald's", "descriptor": "MCDONALD'S F4321", "label": 1, "kind": "positive", "payee": "McDonald's"}
+{"name": "McDonald's", "descriptor": "TIMHORTONS 3601", "label": 0, "kind": "same_kind", "payee": "McDonald's"}
+{"name": "McDonald's", "descriptor": "UBER ONE PV9FCS", "label": 0, "kind": "random", "payee": "McDonald's"}
+{"name": "Chipotle", "descriptor": "CHIPOTLE 9611", "label": 1, "kind": "positive", "payee": "Chipotle"}
+{"name": "Chipotle", "descriptor": "CHIPOTLE 5152", "label": 1, "kind": "positive", "payee": "Chipotle"}
+{"name": "Chipotle", "descriptor": "CHIPOTLE ONLINE", "label": 1, "kind": "positive", "payee": "Chipotle"}
+{"name": "Chipotle", "descriptor": "GRUBHUB HOLDINGS", "label": 0, "kind": "same_kind", "payee": "Chipotle"}
+{"name": "Chipotle", "descriptor": "TRADER JOE S #1898", "label": 0, "kind": "random", "payee": "Chipotle"}
+{"name": "Taco Bell", "descriptor": "TACO BELL 4633 NASHVILLE", "label": 1, "kind": "positive", "payee": "Taco Bell"}
+{"name": "Taco Bell", "descriptor": "TACO BELL 6055 SEATTLE", "label": 1, "kind": "positive", "payee": "Taco Bell"}
+{"name": "Tac0 Bel1", "descriptor": "TACO BELL #2047", "label": 1, "kind": "positive", "payee": "Taco Bell"}
+{"name": "Taco Bell", "descriptor": "KFC #3850", "label": 0, "kind": "sibling", "payee": "Taco Bell"}
+{"name": "Taco Bell", "descriptor": "PIZZAHUT.COM SFUEPY", "label": 0, "kind": "sibling", "payee": "Taco Bell"}
+{"name": "Taco Bell", "descriptor": "WENDY'S 1987", "label": 0, "kind": "same_kind", "payee": "Taco Bell"}
+{"name": "Taco Bell", "descriptor": "SAMS CLUB #5491 ATLANTA", "label": 0, "kind": "random", "payee": "Taco Bell"}
+{"name": "KFC", "descriptor": "KFC 7797", "label": 1, "kind": "positive", "payee": "KFC"}
+{"name": "KFC", "descriptor": "KFC 6542", "label": 1, "kind": "positive", "payee": "KFC"}
+{"name": "KFC", "descriptor": "KFC #7650", "label": 1, "kind": "positive", "payee": "KFC"}
+{"name": "KFC", "descriptor": "PIZZA HUT 2852", "label": 0, "kind": "sibling", "payee": "KFC"}
+{"name": "KFC", "descriptor": "TACO BELL 8824 PORTLAND", "label": 0, "kind": "sibling", "payee": "KFC"}
+{"name": "KFC", "descriptor": "CHIPOTLE ONLINE", "label": 0, "kind": "same_kind", "payee": "KFC"}
+{"name": "KFC", "descriptor": "FOOD LION #4606", "label": 0, "kind": "random", "payee": "KFC"}
+{"name": "Pizza Hut", "descriptor": "PIZZAHUT.COM 9PTR3W", "label": 1, "kind": "positive", "payee": "Pizza Hut"}
+{"name": "Pizza Hut", "descriptor": "PIZZA HUT 9596", "label": 1, "kind": "positive", "payee": "Pizza Hut"}
+{"name": "P1zzo Hut", "descriptor": "PIZZA HUT 5033", "label": 1, "kind": "positive", "payee": "Pizza Hut"}
+{"name": "Pizza Hut", "descriptor": "KFC 2900", "label": 0, "kind": "sibling", "payee": "Pizza Hut"}
+{"name": "Pizza Hut", "descriptor": "TACO BELL 2550 PORTLAND", "label": 0, "kind": "sibling", "payee": "Pizza Hut"}
+{"name": "Pizza Hut", "descriptor": "DD *DOORDASH JKDX4S", "label": 0, "kind": "same_kind", "payee": "Pizza Hut"}
+{"name": "Pizza Hut", "descriptor": "DOLLARTREE PORTLAND", "label": 0, "kind": "random", "payee": "Pizza Hut"}
+{"name": "Wendy's", "descriptor": "WENDY'S 3073", "label": 1, "kind": "positive", "payee": "Wendy's"}
+{"name": "Wendy's", "descriptor": "WENDY'S 2949", "label": 1, "kind": "positive", "payee": "Wendy's"}
+{"name": "Wcndy's", "descriptor": "WENDYS #8601", "label": 1, "kind": "positive", "payee": "Wendy's"}
+{"name": "Wendy's", "descriptor": "GRUBHUB HOLDINGS", "label": 0, "kind": "same_kind", "payee": "Wendy's"}
+{"name": "Wendy's", "descriptor": "PARAMOUNT+ E4CHFX", "label": 0, "kind": "random", "payee": "Wendy's"}
+{"name": "Burger King", "descriptor": "BK #2755", "label": 1, "kind": "positive", "payee": "Burger King"}
+{"name": "Burger King", "descriptor": "BURGER KING #802", "label": 1, "kind": "positive", "payee": "Burger King"}
+{"name": "Burger King", "descriptor": "BK #163", "label": 1, "kind": "positive", "payee": "Burger King"}
+{"name": "Burger King", "descriptor": "POPEYES 9835", "label": 0, "kind": "sibling", "payee": "Burger King"}
+{"name": "Burger King", "descriptor": "TIMHORTONS 7328", "label": 0, "kind": "sibling", "payee": "Burger King"}
+{"name": "Burger King", "descriptor": "CHIPOTLE 5696", "label": 0, "kind": "same_kind", "payee": "Burger King"}
+{"name": "Burger King", "descriptor": "LA FITNESS 6657", "label": 0, "kind": "random", "payee": "Burger King"}
+{"name": "Popeyes", "descriptor": "POPEYES #9925", "label": 1, "kind": "positive", "payee": "Popeyes"}
+{"name": "Popeyes", "descriptor": "POPEYES #4272", "label": 1, "kind": "positive", "payee": "Popeyes"}
+{"name": "Popcyes", "descriptor": "POPEYES #2024", "label": 1, "kind": "positive", "payee": "Popeyes"}
+{"name": "Popeyes", "descriptor": "BK #7983", "label": 0, "kind": "sibling", "payee": "Popeyes"}
+{"name": "Popeyes", "descriptor": "TIMHORTONS 3356", "label": 0, "kind": "sibling", "payee": "Popeyes"}
+{"name": "Popeyes", "descriptor": "UBER EATS Y5G2NT", "label": 0, "kind": "same_kind", "payee": "Popeyes"}
+{"name": "Popeyes", "descriptor": "ATM WITHDRAWAL 9171", "label": 0, "kind": "random", "payee": "Popeyes"}
+{"name": "Tim Hortons", "descriptor": "TIMHORTONS 6676", "label": 1, "kind": "positive", "payee": "Tim Hortons"}
+{"name": "Tim Hortons", "descriptor": "TIMHORTONS 7937", "label": 1, "kind": "positive", "payee": "Tim Hortons"}
+{"name": "Tim Hortons", "descriptor": "TIMHORTONS 2133", "label": 1, "kind": "positive", "payee": "Tim Hortons"}
+{"name": "Tim Hortons", "descriptor": "BK #1528", "label": 0, "kind": "sibling", "payee": "Tim Hortons"}
+{"name": "Tim Hortons", "descriptor": "POPEYES #8944", "label": 0, "kind": "sibling", "payee": "Tim Hortons"}
+{"name": "Tim Hortons", "descriptor": "INSTACART*TVDUD8", "label": 0, "kind": "same_kind", "payee": "Tim Hortons"}
+{"name": "Tim Hortons", "descriptor": "DUOLINGO.COM", "label": 0, "kind": "random", "payee": "Tim Hortons"}
+{"name": "Domino's", "descriptor": "DOMINOS 848", "label": 1, "kind": "positive", "payee": "Domino's"}
+{"name": "Domino's", "descriptor": "DOMINO'S 6606", "label": 1, "kind": "positive", "payee": "Domino's"}
+{"name": "Domino's", "descriptor": "DOMINO'S 8971", "label": 1, "kind": "positive", "payee": "Domino's"}
+{"name": "Domino's", "descriptor": "CHIPOTLE 4453", "label": 0, "kind": "same_kind", "payee": "Domino's"}
+{"name": "Domino's", "descriptor": "WAWA #4311 COLUMBUS", "label": 0, "kind": "random", "payee": "Domino's"}
+{"name": "Panera Bread", "descriptor": "PANERA BREAD #6477", "label": 1, "kind": "positive", "payee": "Panera Bread"}
+{"name": "Panera Bread", "descriptor": "PANERA BREAD #794", "label": 1, "kind": "positive", "payee": "Panera Bread"}
+{"name": "Panera Bread", "descriptor": "PANERA BREAD #9925", "label": 1, "kind": "positive", "payee": "Panera Bread"}
+{"name": "Panera Bread", "descriptor": "IHOP 7966", "label": 0, "kind": "same_kind", "payee": "Panera Bread"}
+{"name": "Panera Bread", "descriptor": "STATE FARM RO XDLU2K", "label": 0, "kind": "random", "payee": "Panera Bread"}
+{"name": "Applebee's", "descriptor": "APPLEBEE'S AUSTIN", "label": 1, "kind": "positive", "payee": "Applebee's"}
+{"name": "Applebee's", "descriptor": "APPLEBEE'S CHICAGO", "label": 1, "kind": "positive", "payee": "Applebee's"}
+{"name": "Applebee's", "descriptor": "APPLEBEES 9508", "label": 1, "kind": "positive", "payee": "Applebee's"}
+{"name": "Applebee's", "descriptor": "IHOP #333", "label": 0, "kind": "sibling", "payee": "Applebee's"}
+{"name": "Applebee's", "descriptor": "CHIPOTLE 2628", "label": 0, "kind": "same_kind", "payee": "Applebee's"}
+{"name": "Applebee's", "descriptor": "COSTCO *ANNUAL RENEWAL", "label": 0, "kind": "random", "payee": "Applebee's"}
+{"name": "IHOP", "descriptor": "IHOP 5691", "label": 1, "kind": "positive", "payee": "IHOP"}
+{"name": "IHOP", "descriptor": "IHOP #6612", "label": 1, "kind": "positive", "payee": "IHOP"}
+{"name": "IH0P", "descriptor": "IHOP 9234", "label": 1, "kind": "positive", "payee": "IHOP"}
+{"name": "IHOP", "descriptor": "APPLEBEE'S COLUMBUS", "label": 0, "kind": "sibling", "payee": "IHOP"}
+{"name": "IHOP", "descriptor": "WENDY'S 4252", "label": 0, "kind": "same_kind", "payee": "IHOP"}
+{"name": "IHOP", "descriptor": "WFM #8192 RALEIGH", "label": 0, "kind": "random", "payee": "IHOP"}
+{"name": "DoorDash", "descriptor": "DD *DOORDASH VG94UX", "label": 1, "kind": "positive", "payee": "DoorDash"}
+{"name": "DoorDash", "descriptor": "DOORDASH*8XZME4", "label": 1, "kind": "positive", "payee": "DoorDash"}
+{"name": "DoorDash", "descriptor": "DOORDASH*9ESCLV", "label": 1, "kind": "positive", "payee": "DoorDash"}
+{"name": "DoorDash", "descriptor": "DD *DASHPASS", "label": 0, "kind": "sibling", "payee": "DoorDash"}
+{"name": "DoorDash", "descriptor": "CHIPOTLE 5062", "label": 0, "kind": "same_kind", "payee": "DoorDash"}
+{"name": "DoorDash", "descriptor": "AT&T *PAYMENT 8Z9PM6", "label": 0, "kind": "random", "payee": "DoorDash"}
+{"name": "DashPass", "descriptor": "DOORDASH DASHPASS", "label": 1, "kind": "positive", "payee": "DashPass"}
+{"name": "DashPass", "descriptor": "DOORDASH DASHPASS", "label": 1, "kind": "positive", "payee": "DashPass"}
+{"name": "DashPass", "descriptor": "DOORDASH DASHPASS", "label": 1, "kind": "positive", "payee": "DashPass"}
+{"name": "DashPass", "descriptor": "DOORDASH*YYENUK", "label": 0, "kind": "sibling", "payee": "DashPass"}
+{"name": "DashPass", "descriptor": "AMZN DIGITAL*V5NZ7Q", "label": 0, "kind": "same_kind", "payee": "DashPass"}
+{"name": "DashPass", "descriptor": "SPECTRUM YYNSZD", "label": 0, "kind": "random", "payee": "DashPass"}
+{"name": "Grubhub", "descriptor": "GRUBHUB*USRR3G", "label": 1, "kind": "positive", "payee": "Grubhub"}
+{"name": "Grubhub", "descriptor": "GRUBHUB HOLDINGS", "label": 1, "kind": "positive", "payee": "Grubhub"}
+{"name": "Grubhub", "descriptor": "GRUBHUB HOLDINGS", "label": 1, "kind": "positive", "payee": "Grubhub"}
+{"name": "Grubhub", "descriptor": "KFC #6505", "label": 0, "kind": "same_kind", "payee": "Grubhub"}
+{"name": "Grubhub", "descriptor": "BESTBUY.COM EUJ2H3", "label": 0, "kind": "random", "payee": "Grubhub"}
+{"name": "Uber", "descriptor": "UBER *TRIP L49C9U", "label": 1, "kind": "positive", "payee": "Uber"}
+{"name": "Uber", "descriptor": "UBER TRIP HELP.UBER.COM", "label": 1, "kind": "positive", "payee": "Uber"}
+{"name": "Uber", "descriptor": "UBER *TRIP 5BVTWK", "label": 1, "kind": "positive", "payee": "Uber"}
+{"name": "Uber", "descriptor": "UBER *ONE MEMBERSHIP", "label": 0, "kind": "sibling", "payee": "Uber"}
+{"name": "Uber", "descriptor": "UBER EATS VTRFWL", "label": 0, "kind": "sibling", "payee": "Uber"}
+{"name": "Uber", "descriptor": "E-ZPASS NY REBILL", "label": 0, "kind": "same_kind", "payee": "Uber"}
+{"name": "Uber", "descriptor": "QUEST DIAG INC", "label": 0, "kind": "random", "payee": "Uber"}
+{"name": "Uber Eats", "descriptor": "UBER *EATS YEG7EC", "label": 1, "kind": "positive", "payee": "Uber Eats"}
+{"name": "Uber Eats", "descriptor": "UBER EATS 8R7CWH", "label": 1, "kind": "positive", "payee": "Uber Eats"}
+{"name": "Uber cats", "descriptor": "UBER EATS G5KTXS", "label": 1, "kind": "positive", "payee": "Uber Eats"}
+{"name": "Uber Eats", "descriptor": "UBER TRIP HELP.UBER.COM", "label": 0, "kind": "sibling", "payee": "Uber Eats"}
+{"name": "Uber Eats", "descriptor": "UBER *ONE MEMBERSHIP", "label": 0, "kind": "sibling", "payee": "Uber Eats"}
+{"name": "Uber Eats", "descriptor": "KFC #7868", "label": 0, "kind": "same_kind", "payee": "Uber Eats"}
+{"name": "Uber Eats", "descriptor": "APPLE ONLINE STORE 9KW6G3", "label": 0, "kind": "random", "payee": "Uber Eats"}
+{"name": "Uber One", "descriptor": "UBER *ONE MEMBERSHIP", "label": 1, "kind": "positive", "payee": "Uber One"}
+{"name": "Uber One", "descriptor": "UBER ONE 796D3U", "label": 1, "kind": "positive", "payee": "Uber One"}
+{"name": "Uber One", "descriptor": "UBER *ONE MEMBERSHIP", "label": 1, "kind": "positive", "payee": "Uber One"}
+{"name": "Uber One", "descriptor": "UBER *TRIP 8BGHNR", "label": 0, "kind": "sibling", "payee": "Uber One"}
+{"name": "Uber One", "descriptor": "UBER EATS QCUAHZ", "label": 0, "kind": "sibling", "payee": "Uber One"}
+{"name": "Uber One", "descriptor": "PARAMOUNT+ LTDN36", "label": 0, "kind": "same_kind", "payee": "Uber One"}
+{"name": "Uber One", "descriptor": "DOLLAR TREE 5104", "label": 0, "kind": "random", "payee": "Uber One"}
+{"name": "Spotify", "descriptor": "SPOTIFY USA ZJJKDX", "label": 1, "kind": "positive", "payee": "Spotify"}
+{"name": "Spotify", "descriptor": "SPOTIFY USA 888P2J", "label": 1, "kind": "positive", "payee": "Spotify"}
+{"name": "Spot1fy", "descriptor": "SPOTIFY PUVBKUW", "label": 1, "kind": "positive", "payee": "Spotify"}
+{"name": "Spotify", "descriptor": "PRIME VIDEO*UB3WDE", "label": 0, "kind": "same_kind", "payee": "Spotify"}
+{"name": "Spotify", "descriptor": "NICOR GAS 5HYJB6", "label": 0, "kind": "random", "payee": "Spotify"}
+{"name": "Hulu", "descriptor": "HULU 9CJ48V", "label": 1, "kind": "positive", "payee": "Hulu"}
+{"name": "Hulu", "descriptor": "HULU 877-8244858", "label": 1, "kind": "positive", "payee": "Hulu"}
+{"name": "Hulu", "descriptor": "HULU 877-8244858", "label": 1, "kind": "positive", "payee": "Hulu"}
+{"name": "Hulu", "descriptor": "DISNEY PLUS NYBSGC", "label": 0, "kind": "sibling", "payee": "Hulu"}
+{"name": "Hulu", "descriptor": "ESPN PLUS JGRZHP", "label": 0, "kind": "sibling", "payee": "Hulu"}
+{"name": "Hulu", "descriptor": "MICROSOFT*XBOX V22V35", "label": 0, "kind": "same_kind", "payee": "Hulu"}
+{"name": "Hulu", "descriptor": "WENDYS #1999", "label": 0, "kind": "random", "payee": "Hulu"}
+{"name": "Disney+", "descriptor": "DISNEYPLUS AKZ9KC", "label": 1, "kind": "positive", "payee": "Disney+"}
+{"name": "Disney+", "descriptor": "DISNEY PLUS T8QXAZ", "label": 1, "kind": "positive", "payee": "Disney+"}
+{"name": "Disncy+", "descriptor": "DISNEY PLUS Z7YCJF", "label": 1, "kind": "positive", "payee": "Disney+"}
+{"name": "Disney+", "descriptor": "HULU B42HP8", "label": 0, "kind": "sibling", "payee": "Disney+"}
+{"name": "Disney+", "descriptor": "ESPN+ G6AT8P", "label": 0, "kind": "sibling", "payee": "Disney+"}
+{"name": "Disney+", "descriptor": "SONY INTERACTIVE MFGEBH", "label": 0, "kind": "same_kind", "payee": "Disney+"}
+{"name": "Disney+", "descriptor": "IHOP 7556", "label": 0, "kind": "random", "payee": "Disney+"}
+{"name": "ESPN+", "descriptor": "ESPN PLUS 5VCDDW", "label": 1, "kind": "positive", "payee": "ESPN+"}
+{"name": "ESPN+", "descriptor": "ESPN PLUS 2ZVNGG", "label": 1, "kind": "positive", "payee": "ESPN+"}
+{"name": "ESPN+", "descriptor": "ESPN+ L2JAZG", "label": 1, "kind": "positive", "payee": "ESPN+"}
+{"name": "ESPN+", "descriptor": "HULU N2GAD6", "label": 0, "kind": "sibling", "payee": "ESPN+"}
+{"name": "ESPN+", "descriptor": "DISNEYPLUS XUNULV", "label": 0, "kind": "sibling", "payee": "ESPN+"}
+{"name": "ESPN+", "descriptor": "PELOTON* MEMBERSHIP", "label": 0, "kind": "same_kind", "payee": "ESPN+"}
+{"name": "ESPN+", "descriptor": "WM SUPERCENTER #6652", "label": 0, "kind": "random", "payee": "ESPN+"}
+{"name": "Paramount+", "descriptor": "PARAMOUNTPLUS FRY2DY", "label": 1, "kind": "positive", "payee": "Paramount+"}
+{"name": "Paramount+", "descriptor": "PARAMOUNTPLUS CUMDSY", "label": 1, "kind": "positive", "payee": "Paramount+"}
+{"name": "Poramount+", "descriptor": "PARAMOUNT+ UENV7Q", "label": 1, "kind": "positive", "payee": "Paramount+"}
+{"name": "Paramount+", "descriptor": "HULU 877-8244858", "label": 0, "kind": "same_kind", "payee": "Paramount+"}
+{"name": "Paramount+", "descriptor": "WFM #9985 RALEIGH", "label": 0, "kind": "random", "payee": "Paramount+"}
+{"name": "Peacock", "descriptor": "PEACOCKTV QVCGTK", "label": 1, "kind": "positive", "payee": "Peacock"}
+{"name": "Peacock", "descriptor": "PEACOCKTV 9JPQM2", "label": 1, "kind": "positive", "payee": "Peacock"}
+{"name": "Peac0ck", "descriptor": "PEACOCKTV DCCCPB", "label": 1, "kind": "positive", "payee": "Peacock"}
+{"name": "Peacock", "descriptor": "XFINITY *FGXC6S", "label": 0, "kind": "sibling", "payee": "Peacock"}
+{"name": "Peacock", "descriptor": "MICROSOFT*MICROSOFT 365", "label": 0, "kind": "same_kind", "payee": "Peacock"}
+{"name": "Peacock", "descriptor": "XFER TO SAV DWG4DC", "label": 0, "kind": "random", "payee": "Peacock"}
+{"name": "Comcast Xfinity", "descriptor": "COMCAST CABLE COMM", "label": 1, "kind": "positive", "payee": "Comcast Xfinity"}
+{"name": "Comcast Xfinity", "descriptor": "COMCAST CABLE COMM", "label": 1, "kind": "positive", "payee": "Comcast Xfinity"}
+{"name": "Comcast Xfinity", "descriptor": "XFINITY *7F62W3", "label": 1, "kind": "positive", "payee": "Comcast Xfinity"}
+{"name": "Comcast Xfinity", "descriptor": "PEACOCKTV RZS74T", "label": 0, "kind": "sibling", "payee": "Comcast Xfinity"}
+{"name": "Comcast Xfinity", "descriptor": "STATE FARM RO S4ZVB9", "label": 0, "kind": "same_kind", "payee": "Comcast Xfinity"}
+{"name": "Comcast Xfinity", "descriptor": "AUDIBLE US XNJ2HM", "label": 0, "kind": "random", "payee": "Comcast Xfinity"}
+{"name": "Microsoft 365", "descriptor": "MSFT * VWLY74", "label": 1, "kind": "positive", "payee": "Microsoft 365"}
+{"name": "Microsoft 365", "descriptor": "MICROSOFT*MICROSOFT 365", "label": 1, "kind": "positive", "payee": "Microsoft 365"}
+{"name": "Micro5oft 365", "descriptor": "MICROSOFT*MICROSOFT 365", "label": 1, "kind": "positive", "payee": "Microsoft 365"}
+{"name": "Microsoft 365", "descriptor": "MSFT*XBOX GAME PASS", "label": 0, "kind": "sibling", "payee": "Microsoft 365"}
+{"name": "Microsoft 365", "descriptor": "WALMART+ MEMBERSHIP", "label": 0, "kind": "same_kind", "payee": "Microsoft 365"}
+{"name": "Microsoft 365", "descriptor": "CASEYS #8300", "label": 0, "kind": "random", "payee": "Microsoft 365"}
+{"name": "Xbox Game Pass", "descriptor": "MICROSOFT*XBOX UP2E2H", "label": 1, "kind": "positive", "payee": "Xbox Game Pass"}
+{"name": "Xbox Game Pass", "descriptor": "MICROSOFT*XBOX 73VP3E", "label": 1, "kind": "positive", "payee": "Xbox Game Pass"}
+{"name": "Xbox Game Pass", "descriptor": "MICROSOFT*XBOX V6UEHX", "label": 1, "kind": "positive", "payee": "Xbox Game Pass"}
+{"name": "Xbox Game Pass", "descriptor": "MICROSOFT*MICROSOFT 365", "label": 0, "kind": "sibling", "payee": "Xbox Game Pass"}
+{"name": "Xbox Game Pass", "descriptor": "PARAMOUNTPLUS 2AM6QC", "label": 0, "kind": "same_kind", "payee": "Xbox Game Pass"}
+{"name": "Xbox Game Pass", "descriptor": "GIANT FOOD #5618", "label": 0, "kind": "random", "payee": "Xbox Game Pass"}
+{"name": "Dropbox", "descriptor": "DROPBOX*2P3LQ7", "label": 1, "kind": "positive", "payee": "Dropbox"}
+{"name": "Dropbox", "descriptor": "DROPBOX*6MZA84", "label": 1, "kind": "positive", "payee": "Dropbox"}
+{"name": "Dropbox", "descriptor": "DROPBOX*V257H7", "label": 1, "kind": "positive", "payee": "Dropbox"}
+{"name": "Dropbox", "descriptor": "MICROSOFT*XBOX 4FEU5L", "label": 0, "kind": "same_kind", "payee": "Dropbox"}
+{"name": "Dropbox", "descriptor": "CHEVRON 8316", "label": 0, "kind": "random", "payee": "Dropbox"}
+{"name": "LA Fitness", "descriptor": "LA FITNESS 3689", "label": 1, "kind": "positive", "payee": "LA Fitness"}
+{"name": "LA Fitness", "descriptor": "LAFITNESS DUES", "label": 1, "kind": "positive", "payee": "LA Fitness"}
+{"name": "LA Fitncss", "descriptor": "LAFITNESS DUES", "label": 1, "kind": "positive", "payee": "LA Fitness"}
+{"name": "LA Fitness", "descriptor": "UBER *ONE MEMBERSHIP", "label": 0, "kind": "same_kind", "payee": "LA Fitness"}
+{"name": "LA Fitness", "descriptor": "INITECH DIR DEP", "label": 0, "kind": "random", "payee": "LA Fitness"}
+{"name": "Peloton", "descriptor": "PELOTON* MEMBERSHIP", "label": 1, "kind": "positive", "payee": "Peloton"}
+{"name": "Peloton", "descriptor": "PELOTON* MEMBERSHIP", "label": 1, "kind": "positive", "payee": "Peloton"}
+{"name": "Pe1oton", "descriptor": "PELOTON* MEMBERSHIP", "label": 1, "kind": "positive", "payee": "Peloton"}
+{"name": "Peloton", "descriptor": "DUOLINGO ENHAFV", "label": 0, "kind": "same_kind", "payee": "Peloton"}
+{"name": "Peloton", "descriptor": "DOLLAR-GENERAL 6885", "label": 0, "kind": "random", "payee": "Peloton"}
+{"name": "Duolingo", "descriptor": "DUOLINGO SLPUNC", "label": 1, "kind": "positive", "payee": "Duolingo"}
+{"name": "Duolingo", "descriptor": "DUOLINGO.COM", "label": 1, "kind": "positive", "payee": "Duolingo"}
+{"name": "Duolingo", "descriptor": "DUOLINGO.COM", "label": 1, "kind": "positive", "payee": "Duolingo"}
+{"name": "Duolingo", "descriptor": "DD *DASHPASS", "label": 0, "kind": "same_kind", "payee": "Duolingo"}
+{"name": "Duolingo", "descriptor": "VZWRLSS*APOCC VISB", "label": 0, "kind": "random", "payee": "Duolingo"}
+{"name": "PlayStation Network", "descriptor": "PLAYSTATION NETWORK", "label": 1, "kind": "positive", "payee": "PlayStation Network"}
+{"name": "PlayStation Network", "descriptor": "PLAYSTATION NETWORK", "label": 1, "kind": "positive", "payee": "PlayStation Network"}
+{"name": "PlayStation Nctwork", "descriptor": "PLAYSTATION NETWORK", "label": 1, "kind": "positive", "payee": "PlayStation Network"}
+{"name": "PlayStation Network", "descriptor": "SPOTIFY PX69YA5", "label": 0, "kind": "same_kind", "payee": "PlayStation Network"}
+{"name": "PlayStation Network", "descriptor": "THE HOME DEPOT #2649", "label": 0, "kind": "random", "payee": "PlayStation Network"}
+{"name": "Verizon Wireless", "descriptor": "VZWRLSS*APOCC VISB", "label": 1, "kind": "positive", "payee": "Verizon Wireless"}
+{"name": "Verizon Wireless", "descriptor": "VZWRLSS*APOCC VISB", "label": 1, "kind": "positive", "payee": "Verizon Wireless"}
+{"name": "Verizon Wireles5", "descriptor": "VERIZON WRLS 97V5NG", "label": 1, "kind": "positive", "payee": "Verizon Wireless"}
+{"name": "Verizon Wireless", "descriptor": "VZ FIOS BILL PAY", "label": 0, "kind": "sibling", "payee": "Verizon Wireless"}
+{"name": "Verizon Wireless", "descriptor": "TFS PAYMENT 8YP8T9", "label": 0, "kind": "same_kind", "payee": "Verizon Wireless"}
+{"name": "Verizon Wireless", "descriptor": "IHOP #1303", "label": 0, "kind": "random", "payee": "Verizon Wireless"}
+{"name": "Verizon Fios", "descriptor": "VZ FIOS BILL PAY", "label": 1, "kind": "positive", "payee": "Verizon Fios"}
+{"name": "Verizon Fios", "descriptor": "VERIZON*FIOS ARA4SN", "label": 1, "kind": "positive", "payee": "Verizon Fios"}
+{"name": "Verizon Fios", "descriptor": "VZ FIOS BILL PAY", "label": 1, "kind": "positive", "payee": "Verizon Fios"}
+{"name": "Verizon Fios", "descriptor": "VERIZON WRLS GAHVLP", "label": 0, "kind": "sibling", "payee": "Verizon Fios"}
+{"name": "Verizon Fios", "descriptor": "NELNET LNS 2KUJLN", "label": 0, "kind": "same_kind", "payee": "Verizon Fios"}
+{"name": "Verizon Fios", "descriptor": "EBAY O*3BCGGF", "label": 0, "kind": "random", "payee": "Verizon Fios"}
+{"name": "AT&T", "descriptor": "ATT*BILL PAYMENT", "label": 1, "kind": "positive", "payee": "AT&T"}
+{"name": "AT&T", "descriptor": "ATT*BILL PAYMENT", "label": 1, "kind": "positive", "payee": "AT&T"}
+{"name": "AT&T", "descriptor": "AT&T *PAYMENT 5F36VV", "label": 1, "kind": "positive", "payee": "AT&T"}
+{"name": "AT&T", "descriptor": "DISCOVER E-PAYMENT ANY3Y6", "label": 0, "kind": "same_kind", "payee": "AT&T"}
+{"name": "AT&T", "descriptor": "BEST BUY 1028", "label": 0, "kind": "random", "payee": "AT&T"}
+{"name": "Spectrum", "descriptor": "SPECTRUM SM3U84", "label": 1, "kind": "positive", "payee": "Spectrum"}
+{"name": "Spectrum", "descriptor": "CHARTER COMM SPECTRUM", "label": 1, "kind": "positive", "payee": "Spectrum"}
+{"name": "Spectrum", "descriptor": "CHARTER COMM SPECTRUM", "label": 1, "kind": "positive", "payee": "Spectrum"}
+{"name": "Spectrum", "descriptor": "NICOR GAS 4Y97CC", "label": 0, "kind": "same_kind", "payee": "Spectrum"}
+{"name": "Spectrum", "descriptor": "GRUBHUB HOLDINGS", "label": 0, "kind": "random", "payee": "Spectrum"}
+{"name": "ComEd", "descriptor": "COMMONWEALTH EDISON", "label": 1, "kind": "positive", "payee": "ComEd"}
+{"name": "ComEd", "descriptor": "COMED PAYMENT AK6Y3L", "label": 1, "kind": "positive", "payee": "ComEd"}
+{"name": "ComEd", "descriptor": "COMMONWEALTH EDISON", "label": 1, "kind": "positive", "payee": "ComEd"}
+{"name": "ComEd", "descriptor": "PECO ENERGY PAYMENT", "label": 0, "kind": "sibling", "payee": "ComEd"}
+{"name": "ComEd", "descriptor": "DISCOVER DC PYMNTS", "label": 0, "kind": "same_kind", "payee": "ComEd"}
+{"name": "ComEd", "descriptor": "SPEEDWAY 05245 SAN JOSE", "label": 0, "kind": "random", "payee": "ComEd"}
+{"name": "PECO", "descriptor": "PECO WFGJZU", "label": 1, "kind": "positive", "payee": "PECO"}
+{"name": "PECO", "descriptor": "PECO ENERGY PAYMENT", "label": 1, "kind": "positive", "payee": "PECO"}
+{"name": "PECO", "descriptor": "PECO 9CNG2N", "label": 1, "kind": "positive", "payee": "PECO"}
+{"name": "PECO", "descriptor": "COMMONWEALTH EDISON", "label": 0, "kind": "sibling", "payee": "PECO"}
+{"name": "PECO", "descriptor": "VERIZON*FIOS S896AE", "label": 0, "kind": "same_kind", "payee": "PECO"}
+{"name": "PECO", "descriptor": "MARRIOTT MIAMI", "label": 0, "kind": "random", "payee": "PECO"}
+{"name": "Nicor Gas", "descriptor": "NICOR GAS X6LRRU", "label": 1, "kind": "positive", "payee": "Nicor Gas"}
+{"name": "Nicor Gas", "descriptor": "NICOR GAS PAYMENT", "label": 1, "kind": "positive", "payee": "Nicor Gas"}
+{"name": "Nic0r Gas", "descriptor": "NICOR GAS PAYMENT", "label": 1, "kind": "positive", "payee": "Nicor Gas"}
+{"name": "Nicor Gas", "descriptor": "ATT*BILL PAYMENT", "label": 0, "kind": "same_kind", "payee": "Nicor Gas"}
+{"name": "Nicor Gas", "descriptor": "WAG #515 OMAHA", "label": 0, "kind": "random", "payee": "Nicor Gas"}
+{"name": "GEICO", "descriptor": "GEICO *AUTO ZBCWRN", "label": 1, "kind": "positive", "payee": "GEICO"}
+{"name": "GEICO", "descriptor": "GEICO *AUTO ATRZNR", "label": 1, "kind": "positive", "payee": "GEICO"}
+{"name": "GEIC0", "descriptor": "GEICO PAYMENT", "label": 1, "kind": "positive", "payee": "GEICO"}
+{"name": "GEICO", "descriptor": "COMED PAYMENT FVYAS8", "label": 0, "kind": "same_kind", "payee": "GEICO"}
+{"name": "GEICO", "descriptor": "WAG #2017 COLUMBUS", "label": 0, "kind": "random", "payee": "GEICO"}
+{"name": "State Farm", "descriptor": "STATE FARM INSURANCE", "label": 1, "kind": "positive", "payee": "State Farm"}
+{"name": "State Farm", "descriptor": "STATE FARM RO JEFLQJ", "label": 1, "kind": "positive", "payee": "State Farm"}
+{"name": "Statc Farm", "descriptor": "STATE FARM INSURANCE", "label": 1, "kind": "positive", "payee": "State Farm"}
+{"name": "State Farm", "descriptor": "NICOR GAS TFLEVF", "label": 0, "kind": "same_kind", "payee": "State Farm"}
+{"name": "State Farm", "descriptor": "SPEEDWAY 06274 AUSTIN", "label": 0, "kind": "random", "payee": "State Farm"}
+{"name": "Allstate", "descriptor": "ALLSTATE INS CO DFWQTE", "label": 1, "kind": "positive", "payee": "Allstate"}
+{"name": "Allstate", "descriptor": "ALLSTATE PAYMENT", "label": 1, "kind": "positive", "payee": "Allstate"}
+{"name": "Allstate", "descriptor": "ALLSTATE PAYMENT", "label": 1, "kind": "positive", "payee": "Allstate"}
+{"name": "Allstate", "descriptor": "SPECTRUM SUJ4NE", "label": 0, "kind": "same_kind", "payee": "Allstate"}
+{"name": "Allstate", "descriptor": "CHEVRON 04901 NASHVILLE", "label": 0, "kind": "random", "payee": "Allstate"}
+{"name": "Rocket Mortgage", "descriptor": "QUICKEN LOANS MTG PMT", "label": 1, "kind": "positive", "payee": "Rocket Mortgage"}
+{"name": "Rocket Mortgage", "descriptor": "QUICKEN LOANS MTG PMT", "label": 1, "kind": "positive", "payee": "Rocket Mortgage"}
+{"name": "R0cket Mortgagc", "descriptor": "ROCKET MORTGAGE PMT", "label": 1, "kind": "positive", "payee": "Rocket Mortgage"}
+{"name": "Rocket Mortgage", "descriptor": "COMMONWEALTH EDISON", "label": 0, "kind": "same_kind", "payee": "Rocket Mortgage"}
+{"name": "Rocket Mortgage", "descriptor": "DISNEY PLUS F5LZDB", "label": 0, "kind": "random", "payee": "Rocket Mortgage"}
+{"name": "Nelnet", "descriptor": "NELNET LNS 26ZYSE", "label": 1, "kind": "positive", "payee": "Nelnet"}
+{"name": "Nelnet", "descriptor": "NELNET LNS T8Q9PP", "label": 1, "kind": "positive", "payee": "Nelnet"}
+{"name": "Nelnet", "descriptor": "NELNET LNS J8KW7T", "label": 1, "kind": "positive", "payee": "Nelnet"}
+{"name": "Nelnet", "descriptor": "NICOR GAS PAYMENT", "label": 0, "kind": "same_kind", "payee": "Nelnet"}
+{"name": "Nelnet", "descriptor": "BK #1549", "label": 0, "kind": "random", "payee": "Nelnet"}
+{"name": "Toyota Financial", "descriptor": "TFS PAYMENT NVELN5", "label": 1, "kind": "positive", "payee": "Toyota Financial"}
+{"name": "Toyota Financial", "descriptor": "TOYOTA FINANCIAL SVC", "label": 1, "kind": "positive", "payee": "Toyota Financial"}
+{"name": "Toyota F1nancial", "descriptor": "TFS PAYMENT TGHBUJ", "label": 1, "kind": "positive", "payee": "Toyota Financial"}
+{"name": "Toyota Financial", "descriptor": "VERIZON WRLS E22UFP", "label": 0, "kind": "same_kind", "payee": "Toyota Financial"}
+{"name": "Toyota Financial", "descriptor": "WAWA #6161 SAN JOSE", "label": 0, "kind": "random", "payee": "Toyota Financial"}
+{"name": "Discover Card", "descriptor": "DISCOVER E-PAYMENT GPPG9Y", "label": 1, "kind": "positive", "payee": "Discover Card"}
+{"name": "Discover Card", "descriptor": "DISCOVER E-PAYMENT Y5CHTL", "label": 1, "kind": "positive", "payee": "Discover Card"}
+{"name": "Disc0vcr Card", "descriptor": "DISCOVER E-PAYMENT NW5FGF", "label": 1, "kind": "positive", "payee": "Discover Card"}
+{"name": "Discover Card", "descriptor": "XFINITY *GYLQ8E", "label": 0, "kind": "same_kind", "payee": "Discover Card"}
+{"name": "Discover Card", "descriptor": "QUEST DIAG INC", "label": 0, "kind": "random", "payee": "Discover Card"}
+{"name": "Southwest Airlines", "descriptor": "SOUTHWES 813", "label": 1, "kind": "positive", "payee": "Southwest Airlines"}
+{"name": "Southwest Airlines", "descriptor": "SOUTHWES 7606", "label": 1, "kind": "positive", "payee": "Southwest Airlines"}
+{"name": "Southwest Airlines", "descriptor": "SOUTHWES 4234", "label": 1, "kind": "positive", "payee": "Southwest Airlines"}
+{"name": "Southwest Airlines", "descriptor": "MARRIOTT RALEIGH", "label": 0, "kind": "same_kind", "payee": "Southwest Airlines"}
+{"name": "Southwest Airlines", "descriptor": "CASEYS #1507", "label": 0, "kind": "random", "payee": "Southwest Airlines"}
+{"name": "Delta Air Lines", "descriptor": "DELTA AIR 9335", "label": 1, "kind": "positive", "payee": "Delta Air Lines"}
+{"name": "Delta Air Lines", "descriptor": "DELTA AIR LINES 28DUNN", "label": 1, "kind": "positive", "payee": "Delta Air Lines"}
+{"name": "Delta Air 1inc5", "descriptor": "DELTA AIR LINES K9RBZY", "label": 1, "kind": "positive", "payee": "Delta Air Lines"}
+{"name": "Delta Air Lines", "descriptor": "UNITED AIRLINES 5AHEPG", "label": 0, "kind": "same_kind", "payee": "Delta Air Lines"}
+{"name": "Delta Air Lines", "descriptor": "BK #8089", "label": 0, "kind": "random", "payee": "Delta Air Lines"}
+{"name": "United Airlines", "descriptor": "UNITED 139", "label": 1, "kind": "positive", "payee": "United Airlines"}
+{"name": "United Airlines", "descriptor": "UNITED 893", "label": 1, "kind": "positive", "payee": "United Airlines"}
+{"name": "United oirl1nes", "descriptor": "UNITED AIRLINES 9NL5PV", "label": 1, "kind": "positive", "payee": "United Airlines"}
+{"name": "United Airlines", "descriptor": "UBER TRIP HELP.UBER.COM", "label": 0, "kind": "same_kind", "payee": "United Airlines"}
+{"name": "United Airlines", "descriptor": "DOLLAR GENERAL #1033", "label": 0, "kind": "random", "payee": "United Airlines"}
+{"name": "Marriott", "descriptor": "MARRIOTT RALEIGH", "label": 1, "kind": "positive", "payee": "Marriott"}
+{"name": "Marriott", "descriptor": "MARRIOTT BOISE", "label": 1, "kind": "positive", "payee": "Marriott"}
+{"name": "Marriott", "descriptor": "MARRIOTT OMAHA", "label": 1, "kind": "positive", "payee": "Marriott"}
+{"name": "Marriott", "descriptor": "E-ZPASS NY REBILL", "label": 0, "kind": "same_kind", "payee": "Marriott"}
+{"name": "Marriott", "descriptor": "CASEY'S GEN STORE 2247", "label": 0, "kind": "random", "payee": "Marriott"}
+{"name": "Expedia", "descriptor": "EXPEDIA*6359X4", "label": 1, "kind": "positive", "payee": "Expedia"}
+{"name": "Expedia", "descriptor": "EXPEDIA 6393J6", "label": 1, "kind": "positive", "payee": "Expedia"}
+{"name": "cxpedia", "descriptor": "EXPEDIA*JSB3NG", "label": 1, "kind": "positive", "payee": "Expedia"}
+{"name": "Expedia", "descriptor": "DELTA AIR 815", "label": 0, "kind": "same_kind", "payee": "Expedia"}
+{"name": "Expedia", "descriptor": "COSTCO *ANNUAL RENEWAL", "label": 0, "kind": "random", "payee": "Expedia"}
+{"name": "E-ZPass", "descriptor": "E-ZPASS NY REBILL", "label": 1, "kind": "positive", "payee": "E-ZPass"}
+{"name": "E-ZPass", "descriptor": "EZPASS YMYVZ3", "label": 1, "kind": "positive", "payee": "E-ZPass"}
+{"name": "E-ZPoss", "descriptor": "E-ZPASS NY REBILL", "label": 1, "kind": "positive", "payee": "E-ZPass"}
+{"name": "E-ZPass", "descriptor": "UNITED AIRLINES YKR5KM", "label": 0, "kind": "same_kind", "payee": "E-ZPass"}
+{"name": "E-ZPass", "descriptor": "DISCOVER E-PAYMENT UAYN8D", "label": 0, "kind": "random", "payee": "E-ZPass"}
+{"name": "ParkMobile", "descriptor": "PMOBILE BOISE", "label": 1, "kind": "positive", "payee": "ParkMobile"}
+{"name": "ParkMobile", "descriptor": "PARKMOBILE NHCFAY", "label": 1, "kind": "positive", "payee": "ParkMobile"}
+{"name": "ParkMobile", "descriptor": "PARKMOBILE K27X3X", "label": 1, "kind": "positive", "payee": "ParkMobile"}
+{"name": "ParkMobile", "descriptor": "EXPEDIA*CWNBJY", "label": 0, "kind": "same_kind", "payee": "ParkMobile"}
+{"name": "ParkMobile", "descriptor": "KROGER #5193", "label": 0, "kind": "random", "payee": "ParkMobile"}
+{"name": "Payroll Initech", "descriptor": "INITECH DIR DEP", "label": 1, "kind": "positive", "payee": "Payroll Initech"}
+{"name": "Payroll Initech", "descriptor": "INITECH DIR DEP", "label": 1, "kind": "positive", "payee": "Payroll Initech"}
+{"name": "Payroll Initech", "descriptor": "INITECH DIR DEP", "label": 1, "kind": "positive", "payee": "Payroll Initech"}
+{"name": "Payroll Initech", "descriptor": "IRS TREAS 310 TAX REF", "label": 0, "kind": "same_kind", "payee": "Payroll Initech"}
+{"name": "Payroll Initech", "descriptor": "PECO ENERGY PAYMENT", "label": 0, "kind": "random", "payee": "Payroll Initech"}
+{"name": "IRS tax refund", "descriptor": "IRS TREAS 310 TAX REF", "label": 1, "kind": "positive", "payee": "IRS tax refund"}
+{"name": "IRS tax refund", "descriptor": "IRS TREAS 310 TAX REF", "label": 1, "kind": "positive", "payee": "IRS tax refund"}
+{"name": "IRS tax rcfund", "descriptor": "US TREASURY TAX REF", "label": 1, "kind": "positive", "payee": "IRS tax refund"}
+{"name": "IRS tax refund", "descriptor": "SSA TREAS 310", "label": 0, "kind": "same_kind", "payee": "IRS tax refund"}
+{"name": "IRS tax refund", "descriptor": "WAG #6139 TAMPA", "label": 0, "kind": "random", "payee": "IRS tax refund"}
+{"name": "Social Security", "descriptor": "SSA TREAS 310", "label": 1, "kind": "positive", "payee": "Social Security"}
+{"name": "Social Security", "descriptor": "SSA TREAS 310", "label": 1, "kind": "positive", "payee": "Social Security"}
+{"name": "S0cia1 Security", "descriptor": "SSA TREAS 310", "label": 1, "kind": "positive", "payee": "Social Security"}
+{"name": "Social Security", "descriptor": "INITECH PAYROLL PPD", "label": 0, "kind": "same_kind", "payee": "Social Security"}
+{"name": "Social Security", "descriptor": "RALPHS #5209", "label": 0, "kind": "random", "payee": "Social Security"}
+{"name": "Zelle", "descriptor": "ZELLE TO 5THGXJ", "label": 1, "kind": "positive", "payee": "Zelle"}
+{"name": "Zelle", "descriptor": "ZELLE PAYMENT TO K69X28", "label": 1, "kind": "positive", "payee": "Zelle"}
+{"name": "Zelle", "descriptor": "ZELLE PAYMENT TO 9ZLWX4", "label": 1, "kind": "positive", "payee": "Zelle"}
+{"name": "Zelle", "descriptor": "ATM WITHDRAWAL 4331", "label": 0, "kind": "same_kind", "payee": "Zelle"}
+{"name": "Zelle", "descriptor": "PRIME VIDEO*DB6RDK", "label": 0, "kind": "random", "payee": "Zelle"}
+{"name": "Apple Cash", "descriptor": "APPLE CASH WT48ZR", "label": 1, "kind": "positive", "payee": "Apple Cash"}
+{"name": "Apple Cash", "descriptor": "APPLE CASH E9GVJK", "label": 1, "kind": "positive", "payee": "Apple Cash"}
+{"name": "Apple Cash", "descriptor": "APPLE CASH SENT MONEY", "label": 1, "kind": "positive", "payee": "Apple Cash"}
+{"name": "Apple Cash", "descriptor": "APL*ICLOUD CSUAP3", "label": 0, "kind": "sibling", "payee": "Apple Cash"}
+{"name": "Apple Cash", "descriptor": "APPLE.COM/BILL TV", "label": 0, "kind": "sibling", "payee": "Apple Cash"}
+{"name": "Apple Cash", "descriptor": "XFER TO SAV Y8X784", "label": 0, "kind": "same_kind", "payee": "Apple Cash"}
+{"name": "Apple Cash", "descriptor": "DISNEYPLUS 25N5H8", "label": 0, "kind": "random", "payee": "Apple Cash"}
+{"name": "ATM Withdrawal", "descriptor": "ATM WD RALEIGH 9473", "label": 1, "kind": "positive", "payee": "ATM Withdrawal"}
+{"name": "ATM Withdrawal", "descriptor": "ATM WD COLUMBUS 3079", "label": 1, "kind": "positive", "payee": "ATM Withdrawal"}
+{"name": "ATM Withdrawal", "descriptor": "ATM WD TUCSON 5947", "label": 1, "kind": "positive", "payee": "ATM Withdrawal"}
+{"name": "ATM Withdrawal", "descriptor": "XFER TO SAV A6AX2H", "label": 0, "kind": "same_kind", "payee": "ATM Withdrawal"}
+{"name": "ATM Withdrawal", "descriptor": "UNITED 6785", "label": 0, "kind": "random", "payee": "ATM Withdrawal"}
+{"name": "Savings transfer", "descriptor": "ONLINE TRANSFER TO SAV", "label": 1, "kind": "positive", "payee": "Savings transfer"}
+{"name": "Savings transfer", "descriptor": "XFER TO SAV GSDXHK", "label": 1, "kind": "positive", "payee": "Savings transfer"}
+{"name": "Savings tronsfer", "descriptor": "ONLINE TRANSFER TO SAV", "label": 1, "kind": "positive", "payee": "Savings transfer"}
+{"name": "Savings transfer", "descriptor": "ATM WD TAMPA 6356", "label": 0, "kind": "same_kind", "payee": "Savings transfer"}
+{"name": "Savings transfer", "descriptor": "WEGMANS PORTLAND", "label": 0, "kind": "random", "payee": "Savings transfer"}
+{"name": "Robinhood", "descriptor": "ROBINHOOD DEBITS SJDXDS", "label": 1, "kind": "positive", "payee": "Robinhood"}
+{"name": "Robinhood", "descriptor": "ROBINHOOD DEBITS 5ZJB8V", "label": 1, "kind": "positive", "payee": "Robinhood"}
+{"name": "R0binhood", "descriptor": "ROBINHOOD SECURITIES", "label": 1, "kind": "positive", "payee": "Robinhood"}
+{"name": "Robinhood", "descriptor": "APPLE CASH Y52B7M", "label": 0, "kind": "same_kind", "payee": "Robinhood"}
+{"name": "Robinhood", "descriptor": "APL*APPLE TV 2YTUXE", "label": 0, "kind": "random", "payee": "Robinhood"}
