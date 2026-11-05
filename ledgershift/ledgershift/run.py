@@ -36,6 +36,10 @@ def configure(bench):
         DATA, OUT = ROOT / "data_v2", ROOT / "results_v2"
         DEV_SEED, TEST_SEED, N_DEV, N_TEST = 20261201, 20261202, 100, 200
         V.use_catalogue_v2()
+    else:
+        DATA, OUT = ROOT / "data", ROOT / "results"
+        DEV_SEED, TEST_SEED, N_DEV, N_TEST = 20261101, 20261102, 40, 60
+        V.ALIAS_RE = None
 
 
 def _generate(n, seed, split):

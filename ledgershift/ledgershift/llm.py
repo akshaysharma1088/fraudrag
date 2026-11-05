@@ -7,7 +7,9 @@ Two uses:
 from __future__ import annotations
 
 import json
+import os
 import time
+import urllib.error
 import urllib.request
 
 OLLAMA = "http://localhost:11434/api/chat"
@@ -76,7 +78,34 @@ ONLY_SCHEMA = {"type": "object", "properties": {
     "required": ["label", "line_ids", "reason"]}
 
 
+def _chat_openai(model, system, user, schema, timeout=900):
+    """OpenAI-compatible endpoint (for open-weights models too large for a free runner, served by a free API tier).
+    Set LLM_API_BASE (e.g. https://api.groq.com/openai/v1) and LLM_API_KEY; the model name has the prefix 'api:'."""
+    base, key = os.environ["LLM_API_BASE"].rstrip("/"), os.environ["LLM_API_KEY"]
+    body = {"model": model[4:], "temperature": 0, "seed": OPTIONS["seed"], "response_format": {"type": "json_object"},
+            "messages": [{"role": "system", "content": system + " Respond with a JSON object matching this schema: "
+                          + json.dumps(schema)}, {"role": "user", "content": user}]}
+    req = urllib.request.Request(base + "/chat/completions", data=json.dumps(body).encode(),
+                                 headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}",
+                                          "User-Agent": "ledgershift-benchmark"})
+    t = time.monotonic()
+    for attempt in range(6):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as f:
+                raw = json.load(f)
+            break
+        except urllib.error.HTTPError as e:      # free tiers rate-limit; back off and retry
+            if e.code != 429 or attempt == 5:
+                raise
+            time.sleep(min(60, 5 * 2 ** attempt))
+    u = raw.get("usage", {})
+    return {"content": raw["choices"][0]["message"]["content"], "prompt_tokens": u.get("prompt_tokens", 0),
+            "output_tokens": u.get("completion_tokens", 0), "seconds": round(time.monotonic() - t, 2)}
+
+
 def _chat(model, system, user, schema, timeout=900):
+    if model.startswith("api:"):
+        return _chat_openai(model, system, user, schema, timeout)
     body = {"model": model, "stream": False, "format": schema, "options": OPTIONS,
             "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}]}
     req = urllib.request.Request(OLLAMA, data=json.dumps(body).encode(), headers={"Content-Type": "application/json"})
