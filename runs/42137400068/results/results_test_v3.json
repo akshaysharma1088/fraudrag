@@ -1,0 +1,280 @@
+{
+  "overall": {
+    "exact": {
+      "n": 1200,
+      "accuracy": 0.5658,
+      "macro_f1": 0.2724,
+      "false_clearance": 0.0,
+      "false_alarm": 0.75,
+      "defer_rate": 0.0
+    },
+    "fuzzy": {
+      "n": 1200,
+      "accuracy": 0.9458,
+      "macro_f1": 0.9446,
+      "false_clearance": 0.0462,
+      "false_alarm": 0.0,
+      "defer_rate": 0.115
+    },
+    "alias": {
+      "n": 1200,
+      "accuracy": 0.9758,
+      "macro_f1": 0.9766,
+      "false_clearance": 0.01,
+      "false_alarm": 0.0275,
+      "defer_rate": 0.105
+    },
+    "escalate_oracle": {
+      "n": 1200,
+      "accuracy": 1.0,
+      "macro_f1": 1.0,
+      "false_clearance": 0.0,
+      "false_alarm": 0.0,
+      "defer_rate": 0.1008
+    }
+  },
+  "by_condition": {
+    "clean": {
+      "exact": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "fuzzy": {
+        "n": 200,
+        "accuracy": 0.98,
+        "macro_f1": 0.98,
+        "false_clearance": 0.04,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "alias": {
+        "n": 200,
+        "accuracy": 0.99,
+        "macro_f1": 0.99,
+        "false_clearance": 0.02,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "escalate_oracle": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      }
+    },
+    "format": {
+      "exact": {
+        "n": 200,
+        "accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "false_clearance": 0.0,
+        "false_alarm": 1.0,
+        "defer_rate": 0.0
+      },
+      "fuzzy": {
+        "n": 200,
+        "accuracy": 0.94,
+        "macro_f1": 0.9398,
+        "false_clearance": 0.12,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "alias": {
+        "n": 200,
+        "accuracy": 0.99,
+        "macro_f1": 0.99,
+        "false_clearance": 0.02,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "escalate_oracle": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      }
+    },
+    "ocr": {
+      "exact": {
+        "n": 200,
+        "accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "false_clearance": 0.0,
+        "false_alarm": 1.0,
+        "defer_rate": 0.0
+      },
+      "fuzzy": {
+        "n": 200,
+        "accuracy": 0.95,
+        "macro_f1": 0.9499,
+        "false_clearance": 0.1,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "alias": {
+        "n": 200,
+        "accuracy": 0.935,
+        "macro_f1": 0.9349,
+        "false_clearance": 0.02,
+        "false_alarm": 0.11,
+        "defer_rate": 0.0
+      },
+      "escalate_oracle": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      }
+    },
+    "split": {
+      "exact": {
+        "n": 200,
+        "accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "false_clearance": 0.0,
+        "false_alarm": 1.0,
+        "defer_rate": 0.0
+      },
+      "fuzzy": {
+        "n": 200,
+        "accuracy": 0.945,
+        "macro_f1": 0.9448,
+        "false_clearance": 0.11,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "alias": {
+        "n": 200,
+        "accuracy": 0.99,
+        "macro_f1": 0.99,
+        "false_clearance": 0.02,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "escalate_oracle": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      }
+    },
+    "partial": {
+      "exact": {
+        "n": 200,
+        "accuracy": 0.395,
+        "macro_f1": 0.2832,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "fuzzy": {
+        "n": 200,
+        "accuracy": 0.915,
+        "macro_f1": 0.9069,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.69
+      },
+      "alias": {
+        "n": 200,
+        "accuracy": 0.975,
+        "macro_f1": 0.9735,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.63
+      },
+      "escalate_oracle": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.605
+      }
+    },
+    "conflict": {
+      "exact": {
+        "n": 200,
+        "accuracy": 0.5,
+        "macro_f1": 0.3333,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "fuzzy": {
+        "n": 200,
+        "accuracy": 0.945,
+        "macro_f1": 0.9448,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "alias": {
+        "n": 200,
+        "accuracy": 0.975,
+        "macro_f1": 0.975,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      },
+      "escalate_oracle": {
+        "n": 200,
+        "accuracy": 1.0,
+        "macro_f1": 1.0,
+        "false_clearance": 0.0,
+        "false_alarm": 0.0,
+        "defer_rate": 0.0
+      }
+    }
+  },
+  "paired_accuracy_ci95": {},
+  "escalated_line_share": 0.3172,
+  "instances_with_escalation": 1067,
+  "llm_usage": {},
+  "confusion": {
+    "exact": {
+      "SUPPORTED->SUPPORTED": 100,
+      "DIFFERENT->DIFFERENT": 579,
+      "SUPPORTED->DIFFERENT": 300,
+      "DEFER->DIFFERENT": 121,
+      "CONFLICTING->DIFFERENT": 100
+    },
+    "fuzzy": {
+      "SUPPORTED->SUPPORTED": 400,
+      "DIFFERENT->DIFFERENT": 514,
+      "DIFFERENT->SUPPORTED": 37,
+      "DEFER->DEFER": 121,
+      "DIFFERENT->DEFER": 17,
+      "CONFLICTING->CONFLICTING": 100,
+      "DIFFERENT->CONFLICTING": 11
+    },
+    "alias": {
+      "SUPPORTED->SUPPORTED": 389,
+      "DIFFERENT->DIFFERENT": 561,
+      "DIFFERENT->SUPPORTED": 8,
+      "SUPPORTED->DIFFERENT": 11,
+      "DEFER->DEFER": 121,
+      "DIFFERENT->DEFER": 5,
+      "CONFLICTING->CONFLICTING": 100,
+      "DIFFERENT->CONFLICTING": 5
+    },
+    "escalate_oracle": {
+      "SUPPORTED->SUPPORTED": 400,
+      "DIFFERENT->DIFFERENT": 579,
+      "DEFER->DEFER": 121,
+      "CONFLICTING->CONFLICTING": 100
+    }
+  }
+}

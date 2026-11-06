@@ -1,0 +1,21 @@
+[
+ {
+  "instance_id": "test-clean-003",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 516,
+   "output_tokens": 29,
+   "seconds": 63.64,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ }
+]

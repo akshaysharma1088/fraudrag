@@ -1,0 +1,16 @@
+[
+ {
+  "instance_id": "test-ocr-064",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "TimeoutError:timed out",
+   "content": "",
+   "pending_lines": 10,
+   "label": "DIFFERENT"
+  }
+ }
+]

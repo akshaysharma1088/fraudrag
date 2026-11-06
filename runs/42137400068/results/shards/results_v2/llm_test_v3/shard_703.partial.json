@@ -1,0 +1,41 @@
+[
+ {
+  "instance_id": "test-split-103",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L05": {
+     "option": "O1",
+     "same_payee": false
+    },
+    "L07": {
+     "option": "O1",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L10": {
+     "option": "O1",
+     "same_payee": false
+    },
+    "L14": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L15": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 2855,
+   "output_tokens": 144,
+   "seconds": 532.72,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L05\", \"option\": \"O1\", \"same_payee\": false}, {\"line_id\": \"L07\", \"option\": \"O1\", \"same_payee\": false}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L10\", \"option\": \"O1\", \"same_payee\": false}, {\"line_id\": \"L14\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L15\", \"option\": \"O0\", \"same_payee\": false}]}",
+   "pending_lines": 6,
+   "label": "DIFFERENT"
+  }
+ }
+]
