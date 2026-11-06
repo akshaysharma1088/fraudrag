@@ -1,0 +1,16 @@
+[
+ {
+  "instance_id": "test-clean-167",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "DIFFERENT"
+  }
+ }
+]
