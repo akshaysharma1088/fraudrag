@@ -33,14 +33,16 @@ def main(out):
         xs = [100 * p["false_alarm"] for p in pts]; ys = [100 * p["false_clearance"] for p in pts]
         ax.plot(xs, ys, color=col, lw=2, label=f"{label} (threshold sweep)", zorder=2)
     offs = {"fuzzy": (6, 4), "alias": (6, 4), "llm_llama3.1_8b": (4, -12), "llm_gemma3_12b": (4, -12),
-            "llm_qwen2.5_14b": (4, -12), "escalate_llm": (4, -12)}
+            "llm_qwen2.5_14b": (4, -12), "escalate_llm": (-6, -36)}
     for k, label, mk in POINTS:
         o = a["overall"].get(k)
         if not o:
             continue
         x, y = 100 * o["false_alarm"], 100 * o["false_clearance"]
         ax.scatter([x], [y], s=46, marker=mk, color=INK, edgecolor="white", linewidth=1.5, zorder=4)
-        ax.annotate(label, (x, y), xytext=offs.get(k, (6, 4)), textcoords="offset points", fontsize=7.5, color=INK)
+        ax.annotate(label, (x, y), xytext=offs.get(k, (6, 4)), textcoords="offset points", fontsize=7.5, color=INK,
+                    ha="right" if k == "escalate_llm" else "left",
+                    arrowprops=dict(arrowstyle="-", color=MUTED, lw=0.7) if k == "escalate_llm" else None)
     ax.set_xlabel("False alarms (% of genuine statements)", fontsize=9, color=INK)
     ax.set_ylabel("False clearances (% of altered or\nunsupported statements)", fontsize=9, color=INK)
     ax.set_xlim(-2, 80); ax.set_ylim(-0.7, 5.2)
