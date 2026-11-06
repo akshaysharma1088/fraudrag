@@ -1,0 +1,21 @@
+[
+ {
+  "instance_id": "test-conflict-125",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 600,
+   "output_tokens": 29,
+   "seconds": 72.21,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "DIFFERENT"
+  }
+ }
+]

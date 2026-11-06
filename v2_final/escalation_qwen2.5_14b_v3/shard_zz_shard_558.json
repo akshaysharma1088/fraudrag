@@ -1,0 +1,33 @@
+[
+ {
+  "instance_id": "test-ocr-158",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O2",
+     "same_payee": false
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1770,
+   "output_tokens": 98,
+   "seconds": 314.47,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O2\", \"same_payee\": false}, {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": false}]}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  }
+ }
+]

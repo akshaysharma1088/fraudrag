@@ -1,0 +1,45 @@
+[
+ {
+  "instance_id": "test-ocr-193",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3412,
+   "output_tokens": 167,
+   "seconds": 636.88,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 7,
+   "label": "DIFFERENT"
+  }
+ }
+]

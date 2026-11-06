@@ -1,0 +1,29 @@
+[
+ {
+  "instance_id": "test-partial-058",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L07": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "none",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 682,
+   "output_tokens": 73,
+   "seconds": 126.18,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L07\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L12\", \"option\": \"none\", \"same_payee\": false}]}",
+   "pending_lines": 3,
+   "label": "DEFER"
+  }
+ }
+]

@@ -1,0 +1,25 @@
+[
+ {
+  "instance_id": "test-conflict-193",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1054,
+   "output_tokens": 51,
+   "seconds": 118.67,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 2,
+   "label": "DIFFERENT"
+  }
+ }
+]

@@ -1,0 +1,25 @@
+[
+ {
+  "instance_id": "test-clean-113",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L02": {
+     "option": "O1",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 775,
+   "output_tokens": 52,
+   "seconds": 94.36,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L02\", \"option\": \"O1\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": false}]}",
+   "pending_lines": 2,
+   "label": "DIFFERENT"
+  }
+ }
+]

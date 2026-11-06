@@ -1,0 +1,595 @@
+[
+ {
+  "instance_id": "test-clean-030",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-clean-090",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-clean-150",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {},
+   "prompt_tokens": 0,
+   "output_tokens": 0,
+   "seconds": 0,
+   "error": "",
+   "content": "",
+   "pending_lines": 0,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-format-010",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1225,
+   "output_tokens": 74,
+   "seconds": 169.37,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 3,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-format-070",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L03": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 698,
+   "output_tokens": 52,
+   "seconds": 56.34,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": false}]}",
+   "pending_lines": 2,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-format-130",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 687,
+   "output_tokens": 52,
+   "seconds": 54.35,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 2,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-format-190",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 470,
+   "output_tokens": 29,
+   "seconds": 23.62,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 1,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-ocr-050",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3303,
+   "output_tokens": 220,
+   "seconds": 468.6,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\n      \"line_id\": \"L00\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L03\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L06\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L07\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L09\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L10\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L11\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    }\n  ]\n}",
+   "pending_lines": 7,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-ocr-110",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1639,
+   "output_tokens": 131,
+   "seconds": 197.65,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\n      \"line_id\": \"L03\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L05\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L06\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    },\n    {\n      \"line_id\": \"L07\",\n      \"option\": \"O0\",\n      \"same_payee\": true\n    }\n  ]\n}",
+   "pending_lines": 4,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-ocr-170",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L14": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 2228,
+   "output_tokens": 120,
+   "seconds": 258.77,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L14\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 5,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-split-030",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L14": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 2087,
+   "output_tokens": 98,
+   "seconds": 229.13,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L14\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 4,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-split-090",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L05": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1265,
+   "output_tokens": 74,
+   "seconds": 125.55,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L05\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 3,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-split-150",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L16": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1508,
+   "output_tokens": 98,
+   "seconds": 164.22,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L12\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L16\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 4,
+   "label": "SUPPORTED"
+  }
+ },
+ {
+  "instance_id": "test-partial-010",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L01": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L03": {
+     "option": "O0",
+     "same_payee": false
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L08": {
+     "option": "O3",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O2",
+     "same_payee": false
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L11": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 3495,
+   "output_tokens": 189,
+   "seconds": 474.48,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L01\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L03\", \"option\": \"O0\", \"same_payee\": false}, {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L08\", \"option\": \"O3\", \"same_payee\": false}, {\"line_id\": \"L09\", \"option\": \"O2\", \"same_payee\": false}, {\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L11\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 8,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-partial-070",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L01": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L04": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L08": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "none",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 1204,
+   "output_tokens": 117,
+   "seconds": 142.7,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L01\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L04\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L08\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"none\", \"same_payee\": false}]}",
+   "pending_lines": 5,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "test-partial-130",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L09": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L14": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1694,
+   "output_tokens": 140,
+   "seconds": 209.48,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L06\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L09\", \"option\": \"none\", \"same_payee\": false}, {\"line_id\": \"L14\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 6,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "test-partial-190",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L02": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L04": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L06": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O2",
+     "same_payee": false
+    },
+    "L09": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "none",
+     "same_payee": false
+    },
+    "L13": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L14": {
+     "option": "none",
+     "same_payee": false
+    }
+   },
+   "prompt_tokens": 3108,
+   "output_tokens": 222,
+   "seconds": 442.05,
+   "error": "",
+   "content": "{\n  \"links\": [\n    {\"line_id\": \"L00\", \"option\": \"none\", \"same_payee\": false},\n    {\"line_id\": \"L02\", \"option\": \"none\", \"same_payee\": false},\n    {\"line_id\": \"L04\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L06\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L07\", \"option\": \"O2\", \"same_payee\": false},\n    {\"line_id\": \"L09\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L10\", \"option\": \"none\", \"same_payee\": false},\n    {\"line_id\": \"L13\", \"option\": \"O0\", \"same_payee\": true},\n    {\"line_id\": \"L14\", \"option\": \"none\", \"same_payee\": false}\n  ]\n}",
+   "pending_lines": 9,
+   "label": "DEFER"
+  }
+ },
+ {
+  "instance_id": "test-conflict-050",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1257,
+   "output_tokens": 74,
+   "seconds": 126.69,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L02\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 3,
+   "label": "CONFLICTING"
+  }
+ },
+ {
+  "instance_id": "test-conflict-110",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L02": {
+     "option": "O2",
+     "same_payee": true
+    },
+    "L07": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1713,
+   "output_tokens": 98,
+   "seconds": 188.0,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L02\", \"option\": \"O2\", \"same_payee\": true}, {\"line_id\": \"L07\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  }
+ },
+ {
+  "instance_id": "test-conflict-170",
+  "model": "qwen2.5:14b",
+  "escalation": {
+   "answers": {
+    "L00": {
+     "option": "O3",
+     "same_payee": false
+    },
+    "L01": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L10": {
+     "option": "O0",
+     "same_payee": true
+    },
+    "L12": {
+     "option": "O0",
+     "same_payee": true
+    }
+   },
+   "prompt_tokens": 1616,
+   "output_tokens": 98,
+   "seconds": 177.71,
+   "error": "",
+   "content": "{\"links\": [{\"line_id\": \"L00\", \"option\": \"O3\", \"same_payee\": false}, {\"line_id\": \"L01\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L10\", \"option\": \"O0\", \"same_payee\": true}, {\"line_id\": \"L12\", \"option\": \"O0\", \"same_payee\": true}]}",
+   "pending_lines": 4,
+   "label": "DIFFERENT"
+  }
+ }
+]
